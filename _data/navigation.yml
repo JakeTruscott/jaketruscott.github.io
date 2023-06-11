@@ -6,6 +6,9 @@ main:
     
   - title: "Publications"
     url: /publications/
+    
+  - title: "Active Research"
+    url: /active/    
 
   - title: "Packages"
     url: /packages/
