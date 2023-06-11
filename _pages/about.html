@@ -11,7 +11,7 @@
 
 
 
-<title>Home - Jake S. Truscott, Ph.D</title>
+<title>about</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -348,131 +348,77 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Home - Jake S. Truscott, Ph.D</h1>
 
 </div>
 
 
-<p>This is the front page of a website that is powered by the <a href="https://github.com/academicpages/academicpages.github.io">academicpages
-template</a> and hosted on GitHub pages. <a href="https://pages.github.com">GitHub pages</a> is a free service in
-which websites are built and hosted from code and data stored in a
-GitHub repository, automatically updating when a new commit is made to
-the respository. This template was forked from the <a href="https://mmistakes.github.io/minimal-mistakes/">Minimal Mistakes
-Jekyll Theme</a> created by Michael Rose, and then extended to support
-the kinds of content that academics have: publications, talks, teaching,
-a portfolio, blog posts, and a dynamically-generated CV. You can fork <a href="https://github.com/academicpages/academicpages.github.io">this
-repository</a> right now, modify the configuration and markdown files,
-add your own PDFs and other content, and have your own site for free,
-with no ads! An older version of this template powers my own personal
-website at <a href="http://stuartgeiger.com">stuartgeiger.com</a>, which
-uses <a href="https://github.com/staeiou/staeiou.github.io">this Github
-repository</a>.</p>
-<div id="a-data-driven-personal-website" class="section level1">
-<h1>A data-driven personal website</h1>
-<p>Like many other Jekyll-based GitHub Pages templates, academicpages
-makes you separate the website’s content from its form. The content
-&amp; metadata of your website are in structured markdown files, while
-various other files constitute the theme, specifying how to transform
-that content &amp; metadata into HTML pages. You keep these various
-markdown (.md), YAML (.yml), HTML, and CSS files in a public GitHub
-repository. Each time you commit and push an update to the repository,
-the <a href="https://pages.github.com/">GitHub pages</a> service creates
-static HTML pages based on these files, which are hosted on GitHub’s
-servers free of charge.</p>
-<p>Many of the features of dynamic content management systems (like
-Wordpress) can be achieved in this fashion, using a fraction of the
-computational resources and with far less vulnerability to hacking and
-DDoSing. You can also modify the theme to your heart’s content without
-touching the content of your site. If you get to a point where you’ve
-broken something in Jekyll/HTML/CSS beyond repair, your markdown files
-describing your talks, publications, etc. are safe. You can rollback the
-changes or even delete the repository and start over – just be sure to
-save the markdown files! Finally, you can also write scripts that
-process the structured data on the site, such as <a href="https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb">this
-one</a> that analyzes metadata in pages about talks to display <a href="https://academicpages.github.io/talkmap.html">a map of every
-location you’ve given a talk</a>.</p>
-</div>
-<div id="getting-started" class="section level1">
-<h1>Getting started</h1>
-<ol style="list-style-type: decimal">
-<li>Register a GitHub account if you don’t have one and confirm your
-e-mail (required!)</li>
-<li>Fork <a href="https://github.com/academicpages/academicpages.github.io">this
-repository</a> by clicking the “fork” button in the top right.</li>
-<li>Go to the repository’s settings (rightmost item in the tabs that
-start with “Code”, should be below “Unwatch”). Rename the repository
-“[your GitHub username].github.io”, which will also be your website’s
-URL.</li>
-<li>Set site-wide configuration and create content &amp; metadata (see
-below – also see <a href="http://archive.is/3TPas">this set of diffs</a>
-showing what files were changed to set up <a href="https://getorg-testacct.github.io">an example site</a> for a user
-with the username “getorg-testacct”)</li>
-<li>Upload any files (like PDFs, .zip files, etc.) to the files/
-directory. They will appear at <a href="https://%5Byour" class="uri">https://[your</a> GitHub
-username].github.io/files/example.pdf.<br />
-</li>
-<li>Check status by going to the repository settings, in the “GitHub
-pages” section</li>
-</ol>
-<div id="site-wide-configuration" class="section level2">
-<h2>Site-wide configuration</h2>
-<p>The main configuration file for the site is in the base directory in
-<a href="https://github.com/academicpages/academicpages.github.io/blob/master/_config.yml">_config.yml</a>,
-which defines the content in the sidebars and other site-wide features.
-You will need to replace the default variables with ones about yourself
-and your site’s github repository. The configuration file for the top
-menu is in <a href="https://github.com/academicpages/academicpages.github.io/blob/master/_data/navigation.yml">_data/navigation.yml</a>.
-For example, if you don’t have a portfolio or blog posts, you can remove
-those items from that navigation.yml file to remove them from the
-header.</p>
-</div>
-<div id="create-content-metadata" class="section level2">
-<h2>Create content &amp; metadata</h2>
-<p>For site content, there is one markdown file for each type of
-content, which are stored in directories like _publications, _talks,
-_posts, _teaching, or _pages. For example, each talk is a markdown file
-in the <a href="https://github.com/academicpages/academicpages.github.io/tree/master/_talks">_talks
-directory</a>. At the top of each markdown file is structured data in
-YAML about the talk, which the theme will parse to do lots of cool
-stuff. The same structured data about a talk is used to generate the
-list of talks on the <a href="https://academicpages.github.io/talks">Talks page</a>, each <a href="https://academicpages.github.io/talks/2012-03-01-talk-1">individual
-page</a> for specific talks, the talks section for the <a href="https://academicpages.github.io/cv">CV page</a>, and the <a href="https://academicpages.github.io/talkmap.html">map of places you’ve
-given a talk</a> (if you run this <a href="https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.py">python
-file</a> or <a href="https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb">Jupyter
-notebook</a>, which creates the HTML for the map based on the contents
-of the _talks directory).</p>
-<p><strong>Markdown generator</strong></p>
-<p>I have also created <a href="https://github.com/academicpages/academicpages.github.io/tree/master/markdown_generator">a
-set of Jupyter notebooks</a> that converts a CSV containing structured
-data about talks or presentations into individual markdown files that
-will be properly formatted for the academicpages template. The sample
-CSVs in that directory are the ones I used to create my own personal
-website at stuartgeiger.com. My usual workflow is that I keep a
-spreadsheet of my publications and talks, then run the code in these
-notebooks to generate the markdown files, then commit and push them to
-the GitHub repository.</p>
-</div>
-<div id="how-to-edit-your-sites-github-repository" class="section level2">
-<h2>How to edit your site’s GitHub repository</h2>
-<p>Many people use a git client to create files on their local computer
-and then push them to GitHub’s servers. If you are not familiar with
-git, you can directly edit these configuration and markdown files
-directly in the github.com interface. Navigate to a file (like <a href="https://github.com/academicpages/academicpages.github.io/blob/master/_talks/2012-03-01-talk-1.md">this
-one</a> and click the pencil icon in the top right of the content
-preview (to the right of the “Raw | Blame | History” buttons). You can
-delete a file by clicking the trashcan icon to the right of the pencil
-icon. You can also create new files or upload files by navigating to a
-directory and clicking the “Create new file” or “Upload files”
-buttons.</p>
-<p>Example: editing a markdown file for a talk <img src="/images/editing-talk.png" alt="Editing a markdown file for a talk" /></p>
-</div>
-<div id="for-more-info" class="section level2">
-<h2>For more info</h2>
-<p>More info about configuring academicpages can be found in <a href="https://academicpages.github.io/markdown/">the guide</a>. The <a href="https://mmistakes.github.io/minimal-mistakes/docs/configuration/">guides
-for the Minimal Mistakes theme</a> (which this theme was forked from)
-might also be helpful.</p>
-</div>
-</div>
+<p>Welcome! My name is Jake S. Truscott and I will join the Center for
+C-SPAN Scholarship and Engagement at Purdue University (West Lafayette,
+IN) as a Postdoctoral Researcher in Fall 2023. I received my Ph.D. from
+the University of Georgia (2023) with focuses in American Politics
+(Major) &amp; Formal Theory (Minor). My research works to merge
+conventional studies of judicial politics with emerging computational
+methods. To date, my research has been published or featured in <em>The
+Journal of Law and Courts</em>, <em>The Justice System Journal</em>,
+<em>The Associated Press</em>, <em>The Washington Times</em>, <em>The
+Daily Kos</em>, <em>SCOTUSBlog</em>, and <em>Empirical SCOTUS</em>,
+among others.</p>
+<p>My dissertation (under the direction of Dr. Richard L. Vining, Jr.)
+explores how media outlets and average Americans employ social media
+platforms like Twitter to instigate public discourse in response to
+decision-making by the United States Supreme Court. Leveraging data
+mining, machine learning, and ideal point estimation techniques, my
+research provides novel contributions toward discerning the theoretical
+motivations underpinning strategic media framing behaviors and the
+capacity for the public to engage in discourse online. I find that
+social media facilitates ideologically driven behaviors as a reflection
+of predisposed beliefs, perceptions of trends in the justices’
+decision-making, and strategic media behaviors</p>
+<p>In addition to my dissertation, my research focuses extensively on
+federal courts, with particular interest in the United States Supreme
+Court. To date, I have published or have works in progress that consider
+the motivations and effects of rhetorical behaviors during Supreme Court
+nomination hearings, the institutionalization of the Article III federal
+courts, strategic retention and departure of lower federal court judges,
+among other research areas. For more information on my published and
+pending research, please see my CV.</p>
+<p>Apart from published research, I recently completed Version 0.0.1 of
+<code>scotustext</code>, a Comprehensive R Package for Retrieving,
+Cleaning, and Parsing Documents from the United States Supreme Court.
+For more information, please visit the <a href="https://jaketruscott.github.io/scotustext/">Package Site</a>.</p>
+<p>Prior to my postdoctoral appointment at Purdue, I received my Ph.D
+from the University of Georgia and Dual B.A.’s from the University of
+Nevada, Reno. When I am not researching, you can find me watching the
+back-to-back national champion Georgia Bulldogs or engaging in a
+perpetual spiral of self-loathing while watching the New York Mets waste
+another $350 million payroll and proving that being able to actually hit
+a baseball is apparently not a pre-requisite to be a major league
+position player. My wife, a native of South Georgia, appears to enjoy it
+when I’m doing either.</p>
+<hr />
+<table>
+<colgroup>
+<col width="47%" />
+<col width="52%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><strong>Education</strong></th>
+<th align="center"><strong>Research Interests</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>2023</strong>: University of Georgia <br>
+(Doctor of Philosophy in Political Science) <br><br>
+<strong>2018</strong>: University of Nevada, Reno <br> (Dual B.A. in
+Political Science &amp; International Affairs)</td>
+<td align="center">Judicial Politics <br> Federal Courts <br> Text as
+Data <br> Natural Language Processing <br> Computational Social
+Science</td>
+</tr>
+</tbody>
+</table>
 
 
 
