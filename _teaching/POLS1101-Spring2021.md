@@ -4,7 +4,7 @@ collection: teaching
 type: "Lecture"
 permalink: /teaching/POLS1101
 venue: "University of Georgia, Department of Political Science"
-date: ""
+
 location: "Athens, GA"
 ---
 
