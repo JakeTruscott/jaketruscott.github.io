@@ -19,7 +19,6 @@ redirect_from:
 
 <p>Prior to my postdoctoral appointment at Purdue, I received my Ph.D from the University of Georgia and Dual B.A.’s from the University of Nevada, Reno. When I am not researching, you can find me watching the back-to-back national champion Georgia Bulldogs or engaging in a perpetual spiral of self-loathing while watching the New York Mets waste another $350 million payroll and proving that being able to actually hit a baseball is apparently not a pre-requisite to be a major league position player. My wife, a native of South Georgia, appears to enjoy it when I’m doing either.</p>
 
-<br>
 
 <head>
     <style>
