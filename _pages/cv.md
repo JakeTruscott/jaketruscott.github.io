@@ -55,7 +55,7 @@ Research Skills
         <tr>
             <td>R (Advanced), Python (Intermediate)</td>
             <td>Stata, SPSS, Excel, R </td>
-            <td>TensorFlow, Twitter API (v1 & v2), Unsupervised Learning Models (e.g, BERT, GPT-3) ,
+            <td>TensorFlow, Twitter API (v1 & v2), Unsupervised Learning Models (e.g, BERT, GPT-3),<br>
 Supervised Learning (Bag of Words, Naive Bayes, etc.)</td>
         </tr>
     </table>
@@ -73,7 +73,7 @@ Packages
 ======
 * Truscott, Jake S. (2023). scotustext: A Comprehensive R Package for Retrieving, Cleaning, and Parsing Documents from the United States Supreme Court. Retrieved from GitHub repository: https://github.com/JakeTruscott/scotustext
 
-Works In Progress
+Works Under Review
 ======
 
 * How to Train Your Stochastic Parrot: Deep Language Models for Political Texts
@@ -82,6 +82,14 @@ Works In Progress
 Winner: 2022 Gosnell Prize for Excellence in Political Methodology
 Awarded for the best work in political methodology presented at any political science conference
 during the preceding year (PolMeth). </p>
+
+Works In Progress
+======
+* Public Perceptions of the Supreme Court’s Shadow Docket on Social Media. (Co-Author: EmiLee Smart - University of Kentucky)
+* The Utility of Lagged Independent Variables for Causal Inference (Co-Author: Dr. Garrett Vande Kamp - University of Georgia)
+* Speaking the Same Language? Analyzing the Rhetorical Behaviors of Supreme Court Oral Arguments
+
+
 
 Other Publications & Media
 ======
