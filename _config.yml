@@ -78,7 +78,6 @@ analytics:
 author:
   name             : "Jake S. Truscott"
   avatar           : "profile.png"
-  avatar_size      : "200" # Adjust the size as needed
   bio              : "Post-Doctoral Researcher <br> Center for C-SPAN <br> Scholarship & Engagement <br> Purdue University"
   location         : "West Lafayette, IN"
   employer         :
@@ -153,7 +152,10 @@ collections:
     permalink: /:collection/:path/
   active:
     output: true
-    permalink: /:collection/:path/    
+    permalink: /:collection/:path/   
+  packages:
+    output: true
+    permalink: /:collection/:path/  
   publications:
     output: true
     permalink: /:collection/:path/
@@ -197,6 +199,15 @@ defaults:
   - scope:
       path: ""
       type: active
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comments: true
+  # _packages
+  - scope:
+      path: ""
+      type: packages
     values:
       layout: single
       author_profile: true
