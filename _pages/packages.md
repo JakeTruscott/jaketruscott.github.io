@@ -9,7 +9,12 @@ author_profile: true
   <img src="/images/scotus_hex.png" alt="scotustext_heg" width="300" height="200">
 </p>
 
-<a href="https://github.com/JakeTruscott/scotustext" target="_blank">
-  <img src="github-button.png" alt="GitHub" width="120" height="40">
-</a>
+```R
+remotes::install_github("JakeTruscott/scotustext")
+library(scotustext)
+```
 
+
+<p>
+Truscott, Jake S. (2023). scotustext: A Comprehensive R Package for Retrieving, Cleaning, and Parsing Documents from the United States Supreme Court. Retrieved from GitHub repository: https://github.com/JakeTruscott/scotustext
+</p>
