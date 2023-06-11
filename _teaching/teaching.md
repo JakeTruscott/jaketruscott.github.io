@@ -15,7 +15,7 @@ Lecture, <em>University of Georgia</em>, <em>Department of Political Science</em
 primarily discuss how actors and institutions operate within the norms and traditions of modern government
 at the local, state, and federal levels, as well as why these political norms and traditions exist. Especially
 as we enter the post-2020 Election period, the goal of this course is to reinforce that political discourse is,
-at its core, a good thing.</p> <br>
+at its core, a good thing.</p> 
 
 [Download Syllabus Here (Updated Spring 2021)]("/files/American_Politics_Syllabus_Sample.pdf") <br><br>
 
@@ -27,7 +27,7 @@ administration of criminal justice in the United States. We will primarily focus
 areas of the criminal justice system – including, but not limited to: criminal behavior and theory, police,
 arrest, bail, prosecution, plea bargaining, conviction, sentencing, correction, probation, and reentry. We
 will also spend a good deal of time focusing on current events and the broader legal implications of modern
-criminal justice.</p> <br>
+criminal justice.</p> 
 
 [Download Syllabus Here (Updated Fall 2022)]("/files/CJ_Administration_Syllabus_Sample.pdf")
 
@@ -44,7 +44,7 @@ decisions and public behaviors by the justices have caused political turmoil. Th
 how did the judiciary become such an object for political scrutiny? This course provides a holistic view of
 the Supreme Court and its politics. Rather than strictly leveraging our analysis through caselaw, we will
 analyze the Supreme Court as an institution - from the politics of confirmation hearings to the theories
-underpinning judicial decision-making and their effect on public opinion </p><br>
+underpinning judicial decision-making and their effect on public opinion </p>
 
 [Download Syllabus Here (Updated Fall 2022)]("/files/Supreme_Court_Seminar_Syllabus_Truscott.pdf")
 
@@ -55,6 +55,6 @@ underpinning judicial decision-making and their effect on public opinion </p><br
 trivial disputes can instigate substantial legal and political repercussions. This course will analyze the Court
 and it’s decision-making through the lenses of caselaw and American Political Development (APD). The
 cases we will analyze will concern the separation of powers, national and state regulatory powers, the federal
-system, and the role of the Courts in American government </p><br>
+system, and the role of the Courts in American government </p><
 
 [Download Syllabus Here (Updated Fall 2022)]("/files/Constitutional_Law__Powers_Syllabus_Truscott.pdf")
