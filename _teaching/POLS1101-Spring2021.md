@@ -15,3 +15,4 @@ at the local, state, and federal levels, as well as why these political norms an
 as we enter the post-2020 Election period, the goal of this course is to reinforce that political discourse is,
 at its core, a good thing.
 
+[Download Syllabus Here (Updated Spring 2021)]("/files/American_Politics_Syllabus_Sample.pdf")
