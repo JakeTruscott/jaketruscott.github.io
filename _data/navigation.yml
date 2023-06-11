@@ -8,7 +8,7 @@ main:
     url: /publications/
 
   - title: "Active Research"
-    url: /active_research/    
+    url: /active/    
 
   - title: "Packages"
     url: /packages/
