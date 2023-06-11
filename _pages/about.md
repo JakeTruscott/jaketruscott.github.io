@@ -15,7 +15,7 @@ redirect_from:
 
 <p>In addition to my dissertation, my research focuses extensively on federal courts, with particular interest in the United States Supreme Court. To date, I have published or have works in progress that consider the motivations and effects of rhetorical behaviors during Supreme Court nomination hearings, the institutionalization of the Article III federal courts, strategic retention and departure of lower federal court judges, among other research areas. For more information on my published and pending research, please see my CV.</p>
 
-<p>Apart from published research, I recently completed Version 0.0.1 of `scotustext`, a Comprehensive R Package for Retrieving, Cleaning, and Parsing Documents from the United States Supreme Court. For more information, please visit the <a href="Package Site">Package Site</a>.</p>
+<p>Apart from published research, I recently completed Version 0.0.1 of <em><b>scotustext</b></em>, a Comprehensive R Package for Retrieving, Cleaning, and Parsing Documents from the United States Supreme Court. For more information, please visit the <a href="Package Site">Package Site</a>.</p>
 
 <p>Prior to my postdoctoral appointment at Purdue, I received my Ph.D from the University of Georgia and Dual B.A.’s from the University of Nevada, Reno. When I am not researching, you can find me watching the back-to-back national champion Georgia Bulldogs or engaging in a perpetual spiral of self-loathing while watching the New York Mets waste another $350 million payroll and proving that being able to actually hit a baseball is apparently not a pre-requisite to be a major league position player. My wife, a native of South Georgia, appears to enjoy it when I’m doing either.</p>
 
