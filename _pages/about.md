@@ -18,7 +18,7 @@ redirect_from:
 
 <p>Apart from published research, I recently completed Version 0.0.1 of <em><b>scotustext</b></em>, a Comprehensive R Package for Retrieving, Cleaning, and Parsing Documents from the United States Supreme Court. For more information, please visit the <a href="https://jaketruscott.github.io/scotustext/">Package Site</a>.</p>
 
-<p>Prior to my postdoctoral appointment at Purdue, I received my Ph.D from the University of Georgia and Dual B.A.’s from the University of Nevada, Reno. When I am not researching, you can find me watching the back-to-back national champion Georgia Bulldogs or engaging in a perpetual spiral of self-loathing while watching the New York Mets waste another $350 million payroll and prove that being able to actually hit a baseball is apparently not a pre-requisite play in the major leagues. My wife, a fellow Georgia alumnus and Atlanta Braves fan -- albeit only because she knows it gets under my skin, appears to enjoy it when I’m doing either.</p>
+<p>Prior to my postdoctoral appointment at Purdue, I received my Ph.D from the University of Georgia and Dual B.A.’s from the University of Nevada, Reno. When I am not researching, you can find me watching the back-to-back national champion Georgia Bulldogs or engaging in a perpetual spiral of self-loathing while watching the New York Mets waste another $350 million payroll and prove that being able to hit a baseball is apparently not a pre-requisite to play in the major leagues. My wife, a fellow Georgia alumnus and Atlanta Braves fan (albeit only because she knows it gets under my skin), appears to enjoy it when I’m doing either.</p>
 
 
 <head>
