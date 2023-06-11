@@ -159,7 +159,7 @@ collections:
   talks:
     output: true
     permalink: /:collection/:path/
-  active_research:
+  active:
     output: true
     permalink: /:collection/:path/
 
@@ -201,10 +201,10 @@ defaults:
       author_profile: true
       share: true
       comments: true
-  # _active_research
+  # _active
   - scope:
       path: ""
-      type: active_research
+      type: active
     values:
       layout: single
       author_profile: true
