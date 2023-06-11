@@ -5,22 +5,48 @@ permalink: /packages/
 author_profile: true
 ---
 
-<script async defer src="https://buttons.github.io/buttons.js">
-</script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<head>
+    <title>Button Redirect</title>
+    <style>
+        body {
+            text-align: center;
+        }
 
+        button {
+            background-color: #24292e;
+            border: none;
+            color: #ffffff;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            font-family: 'Monaco', 'Consolas', monospace;
+        }
 
-<font size="+5">
+        button img {
+            vertical-align: middle;
+            margin-right: 5px;
+        }
 
-```R
-remotes::install_github("JakeTruscott/scotustext")
-library(scotustext)
-```
-</font>
+        button:hover {
+            background-color: #0366d6;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="window.location.href = 'https://jaketruscott.github.io/scotustext/';">
+        <img src="/images/github_logo.png" width="20" height="20">
+        scotustext Documentation
+    </button>
+    <button onclick="window.location.href = 'https://github.com/JakeTruscott/scotustext.git';">
+        <img src="/images/github_logo.png" width="20" height="20">
+        scotustext Repository
+    </button>
+    
+</body>
 
-<p align = "center">
-<a class="github-button" href="https://github.com/JakeTruscott/scotustext" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" aria-label="scotustext Repository">scotustext Repository</a>
-<a class="github-button" href="https://jaketruscott.github.io/scotustext/" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" aria-label="scotustext Documentation">scotustext Documentation</a>
-</p>
 
 <p align = "center">
   <img src="/images/scotus_hex.png" alt="scotustext_heg" width="300" height="200">
