@@ -1,7 +1,7 @@
 ---
 layout: archive
 title: "Active Research"
-permalink: /active_research/
+permalink: /active/
 author_profile: true
 ---
 
