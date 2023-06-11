@@ -201,7 +201,7 @@ defaults:
       author_profile: true
       share: true
       comments: true
-  # _active_research (corrected section)
+  # _active_research
   - scope:
       path: ""
       type: active_research
