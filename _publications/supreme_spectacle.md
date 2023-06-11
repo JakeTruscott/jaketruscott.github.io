@@ -14,7 +14,7 @@ excerpt: While many are aware that the Supreme Court allocates seats for the pub
   a traditional courtroom setting.
 permalink: "/publication/Supreme-Spectacle"
 venue: Justice System Journal
-paperurl: https://www.tandfonline.com/doi/abs/10.1080/0098261X.2022.2107964
+#paperurl: https://www.tandfonline.com/doi/abs/10.1080/0098261X.2022.2107964
 citation: "Jake S. Truscott (2022) The Supreme Spectacle: An Analysis of Public Attendance
   at the Supreme Court, <i>Justice System Journal</i>, 43:3, 470-481, DOI: 10.1080/0098261X.2022.2107964"
 ---
