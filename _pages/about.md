@@ -8,6 +8,7 @@ redirect_from:
 - /about.html
 ---
 
+![Wallpaper](/images/wallpaper.png)
 
 <p>Welcome! My name is Jake S. Truscott and I will join the Center for C-SPAN Scholarship and Engagement at Purdue University (West Lafayette, IN) as a Postdoctoral Researcher in Fall 2023. I received my Ph.D. from the University of Georgia (2023) with focuses in American Politics (Major) & Formal Theory (Minor). My research works to merge conventional studies of judicial politics with emerging computational methods. To date, my research has been published or featured in <em>The Journal of Law and Courts</em>, <em>The Justice System Journal</em>, <em>The Associated Press</em>, <em>The Washington Times</em>, <em>The Daily Kos</em>, <em>SCOTUSBlog</em>, and <em>Empirical SCOTUS</em>, among others.</p>
 
