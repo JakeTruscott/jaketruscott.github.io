@@ -1,3 +1,10 @@
+---
+layout: archive
+title: ""
+permalink: /teaching/
+author_profile: true
+---
+
 <h1>Courses Taught</h1>
 
 <h3>POLS 1101: Introduction to American Government</h3>
