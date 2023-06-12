@@ -1,6 +1,6 @@
 ---
 title: 'Transcripts of Ketanji Brown Jackson Hearing'
-date: 2023-03-23
+date: 2022-03-23
 permalink: /posts/kbj_hearing/
 tags:
   - Ketanji Brown Jackson
