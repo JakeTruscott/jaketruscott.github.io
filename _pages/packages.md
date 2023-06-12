@@ -14,9 +14,9 @@ author_profile: true
         }
 
         button {
-            background-color: #24292e;
-            border: none;
-            color: #ffffff;
+            background-color: #ffffff;
+            border: ;
+            border-color: #24292e; 
             padding: 10px 20px;
             font-size: 14px;
             border-radius: 6px;
@@ -31,7 +31,7 @@ author_profile: true
         }
 
         button:hover {
-            background-color: #0366d6;
+            background-color: #8d918e;
         }
     </style>
 </head>
@@ -47,6 +47,7 @@ author_profile: true
     
 </body>
 
+<br>
 
 <p align = "center">
   <img src="/images/scotus_hex.png" alt="scotustext_heg" width="300" height="200">
