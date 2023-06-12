@@ -47,8 +47,6 @@ author_profile: true
     
 </body>
 
-<br>
-
 <p align = "center">
   <img src="/images/scotus_hex.png" alt="scotustext_heg" width="300" height="200">
 </p>
