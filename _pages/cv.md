@@ -1,6 +1,7 @@
 ---
 layout: archive
 title: ""
+excerpt: "CV"
 permalink: /cv/
 author_profile: true
 redirect_from:
@@ -85,95 +86,4 @@ during the preceding year (PolMeth). </p>
 
 Works In Progress
 ======
-* Public Perceptions of the Supreme Court’s Shadow Docket on Social Media. (Co-Author: EmiLee Smart - University of Kentucky)
-* The Utility of Lagged Independent Variables for Causal Inference (Co-Author: Dr. Garrett Vande Kamp - University of Georgia)
-* Speaking the Same Language? Analyzing the Rhetorical Behaviors of Supreme Court Oral Arguments
-
-
-
-Other Publications & Media
-======
-* Sherman, M. & Gresko, J. (2023, April 27). SUPREME COURT NOTEBOOK: Gender gap persists at arguments. <i>The Associated Press</i>. Retrieved from https://apnews.com/article/supreme-court-ketanji-jackson-diversity-1e77336b8958b33ee65e6e2f4a6a9377 <br>
-* Feldman, A. (2023, May 8). A New Landscape Unfolds: Supreme Court Oral Arguments in the 2022-2023 Term. <i>Empirical SCOTUS </i>. Retrieved from https://empiricalscotus.com/2023/05/08/a-new-landscape-unfolds-supreme-court-oral-arguments-in-the-2022-2023-term/ <br>
-* Truscott, J. & Feldman, A. (2022, December 30). The new hot bench: With Jackson leading the way, the
-justices are speaking more during oral arguments. <i>SCOTUSblog</i>. Retrieved from www.scotusblog.com <br>
-* Truscott, J. & Feldman, A. (2022, July 28). Lengthier opinions and shrinking cohesion: Indications for
-the future of the Supreme Court. <i>SCOTUSblog</i>. Retrieved from www.scotusblog.com <br>
-* Zoller, M. (2022, July 5). Listen: Jake Truscott talks Supreme Court decisions. <i>AccessWDUN</i>. Retrieved
-from https://accesswdun.com/article/2022/7/1114689/listen-jake-truscott-talks-supreme-court-decisions <br>
-* Truscott, J. (2019, July 24). GUEST COLUMN: 7 things to expect from the next Democratic primary
-debate. <i>The Red & Black. Retrieved from www.redandblack.com <br>
-* Truscott, J. (2019, January 8). GUEST COLUMN: Hosting a 2020 presidential debate could offer an
-incredible opportunity for UGA. <i>The Red & Black</i>. Retrieved from www.redandblack.co <br>
-* Drukman, J. (2020, October 23). UGA students more than twice as likely to favor Biden over Trump
-for president, according to survey data. <i>The Red & Black</i>. Retrieved from www.redandblack.com (Mentioned) <br>
-* Singleton, R. (2018, November 1). Too close to call: Polling conducted by UGA predicts a tight gubernatorial race. <i>The Red & Black</i>. Retrieved from www.redandblack.com (Mentioned) <br>
-
-Talks
-======
-* "I Will Keep This Brief: Media Framing and Responses to Supreme Court News on Social Media Platforms.” Guest Lecture. University of Texas, El Paso (Virtual). Course on Public Opinion, Media, and Technology (Instructor: Dr. Melissa Baker).
-
-Teaching
-======
-<b>University of Georgia</b> <br>
-* POLS 1101: Introduction to American Government (Spring 2021) <br>
-* POLS 3600: Criminal Justice Administration (Fall 2021, 2022)
-  
-Conference Participation
-======
-* “The Utility of Lagged Independent Variables for Causal Inference.” Presented at the Annual Meeting of
-the Southern Political Science Association, St. Pete Beach, Florida, January 2023.<br>
-* “Public Perceptions of the Supreme Court’s Shadow Docket on Social Media.” Presented at the Annual
-Meeting of the Southern Political Science Association, St. Pete Beach, Florida, January 2023.<br>
-* “I Will Keep This Brief: Media Framing and Responses to Supreme Court News on Social Media Platforms.” Presented at the Annual Meeting of the American Political Science Association, Montreal, Quebec, Canada, September 2022.<br>
-* “How To Train Your Stochastic Parrot: Deep Language Models for Political Texts” (Coauthors: Dr. Joseph
-Ornstein and Elise Blasingame). Presented at the Annual Meeting of the American Political Science
-Association, Montreal, Quebec, Canada, September 2022.<br>
-* “Ideological Congruence and Judicial Departure in the U.S. Circuit Courts” (Coauthor: Richard L. Vining).
-Presented at the Annual Meeting of the Midwest Political Science Association, Chicago, Illinois, April
-2022.<br>
-* “Applying Sentiment Analysis to Supreme Court Confirmation Hearings.” Presented at the Annual Meeting
-of the Southern Political Science Association, San Antonio, Texas, January 2022.<br>
-Chair, “Transitioning from Graduate School to Academia.” At the Annual Meeting of the Southern Political
-Science Association, San Antonio, Texas, January 2022.<br>
-* “Ideological Congruence and Strategic Departure in the Federal District Courts.” Presented at the Annual
-Meeting of the Midwest Political Science Association, Chicago, Illinois, April 2021.<br>
-* “The Supreme Spectacle: Media, Law, and Public Participation at the Supreme Court.” Presented at the
-Annual Meeting of the Southern Political Science Association, Virtual, January 2021.<br>
-* “Ideological Congruence and Strategic Departure in the Federal District Courts.” Presented at the Atlanta
-Symposium on Political Science, Atlanta, Georgia, March 2022.<br>
-
-
-Awards & Grants
-======
-* Society for Political Methodology (PolMeth) Gosnell Prize (2022)<br>
-* UGA Graduate Teaching Award (2022-2023)<br>
-* Sidney M. Robinson Memorial Scholarship (2017)<br>
-* Peter Mekis Memorial Scholarship (2018-2023)<br>
-* 2022 Summer Research Grant, University of Georgia Graduate School (2022)<br>
-
-References
-======
-* Dr. Richard Vining (Dissertation Advisor) <br>
-rvining@uga.edu <br>
-Associate Professor of Political Science <br>
-University of Georgia <br><br>
-* Dr. Teena Wilhlem <br>
-twilhelm@uga.edu <br>
-Associate Professor of Political Science<br>
-Director of Graduate Studies <br>
-University of Georgia <br><br>
-* Dr. Joseph Ornstein <br>
-jornstein@uga.edu<br>
-Assistant Professor of Political Science<br>
-University of Georgia<br><br>
-* Dr. Lefteris Jason Anastasopolous<br>
-ljanastas@uga.edu<br>
-Assistant Professor of Political Science<br>
-Assistant Professor of Public Administration and Policy<br>
-Adjunct Professor of Statistics<br>
-Faculty Affiliate, Institute of Artificial Intelligence<br>
-University of Georgia<br>
-
-
-
+* Public Perceptions of the Supreme Courtb
