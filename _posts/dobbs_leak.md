@@ -4,6 +4,7 @@ date: 2022-05-22
 permalink: /posts/dobbs_leak/
 tags:
   - Dobbs v. Jackson
+  - Dobbs
   - Supreme Court
   - Politico
 ---
