@@ -67,7 +67,7 @@ Publications
 * Truscott, J.S. (2023). Analyzing the Rhetoric of Supreme Court Confirmation Hearings. <i>Journal of Law and Courts</i>, 1-22. doi:10.1017/jlc.2023.2 <br>
 * Truscott, J.S. (2022). Review of the Book A Right to Lie? Presidents, Other Liars, and the First Amendment. <i>The Law and Politics Book Review</i>, Vol. 33 No. 03 (March 2023) pp. 28-31. <br>
 * Truscott, J. S. (2022). The Supreme Spectacle: An Analysis of Public Attendance at the Supreme Court. <i>Justice System Journal</i>, 1-12. <br>
-* Explaining Congressional Support for the Federal Judiciary (Co-Author: Dr. Teena Wilhelm). <i>The Handbook on Law and Political Systems</i>, 2nd Edition (Forthcoming: 2023).
+* Explaining Congressional Support for the Federal Judiciary (Co-Author: Dr. Teena Wilhelm). <i>The Handbook on Law and Political Systems</i>, 2nd Edition (Forthcoming 2023).
 
 Packages
 ======
@@ -90,24 +90,36 @@ Works In Progress
 * Speaking the Same Language? Analyzing the Rhetorical Behaviors of Supreme Court Oral Arguments
 
 
-
-Other Publications & Media
+Media Coverage
 ======
+* Barnes, R. (2023, July 1). Supreme Court delivered big conservative wins, and a mixed message. <i> The Washington Post </i>. Retrieved from  https://www.washingtonpost.com/politics/2023/07/01/supreme-court-term-conservative-wins/ <br>
+* Hurley, L. (2023, July 2). 'Unabashed': Justice Jackson marks her first year on the Supreme Court unafraid to stake her own position. <i> NBCNews </i>. Retrieved from  https://www.nbcnews.com/politics/supreme-court/unabashed-justice-jackson-marks-first-year-supreme-court-unafraid-stak-rcna87424 <br>
+* Adler, J.H. (2023, July 1). Looking Back on the Supreme Court's 2022-23 Term. <i> reason </i>. Retrieved from  https://reason.com/volokh/2023/07/01/looking-back-on-the-supreme-courts-2022-23-term/ <br>
+* Marimow, A.E. (2023, July 2). Justice Ketanji Brown Jackson's bold debut and independent streak. <i> The Washington Post </i>. Retrieved from  https://www.washingtonpost.com/politics/2023/07/02/ketanji-brown-jackson-first-term/ <br>
+* Thomas-DeVeaux, A. & Fuong, H. (2023, July 7). The Supreme Court Had A Few Surprises This Year. That Doesn’t Make It Moderate. <i> FiveThirtyEight </i>. Retrieved from  https://fivethirtyeight.com/features/the-supreme-court-had-a-few-surprises-this-year-that-doesnt-make-it-moderate/amp/
+* Bravin, J. (2023, July 7). John Roberts and Brett Kavanaugh Are Now the Supreme Court’s Swing Votes. <i> The Wall Street Journal </i>. Retrieved from  https://www.wsj.com/articles/john-roberts-and-brett-kavanaugh-are-now-the-supreme-courts-swing-votes-8f90c4f6 <br>
+* Schonfeld, Z. (2023, July 8). How John Roberts exhibited his power in the Supreme Court’s biggest decisions. <i> The Hill </i>. Retrieved from  https://thehill.com/regulation/court-battles/4085653-how-john-roberts-exhibited-his-power-in-the-supreme-courts-biggest-decisions/
+* Gresko, J. (2023, July 3). The Supreme Court just issued its biggest rulings of the year. Here's what you need to know. <i> The Associated Press </i>. Retrieved from  https://abcnews.go.com/amp/US/wireStory/supreme-court-issued-biggest-rulings-year-100567223 <br>
+* Wagner, J., Douglas-Gabriel, D., Barnes, R., Berman, M., Vazquez, M., &amp; Alfaro, M. (2023, June 30). Supreme Court’s halt on student loan relief isn’t end of Biden’s effort. <i>The Washington Post</i>. Retrieved from  https://www.washingtonpost.com/education/2023/06/30/student-loan-forgiveness-supreme-court-decision/#link-TZTU6TZRRVBH3H2OMAD2IP7SG4 <br>
+* Gigot, P., Strassel, K., McGurn, B., &amp; Peterson, K. (2023, July 3). What did we learn from the latest Supreme Court term? - opinion: Potomac Watch - WSJ Podcasts. <i>.The Wall Street Journal</i>. Retrieved from  https://www.wsj.com/podcasts/opinion-potomac-watch/what-did-we-learn-from-the-latest-supreme-court-term/6377bbf1-168b-4c05-8b34-1291e3771c42 <br>
 * Sherman, M. & Gresko, J. (2023, April 27). SUPREME COURT NOTEBOOK: Gender gap persists at arguments. <i>The Associated Press</i>. Retrieved from https://apnews.com/article/supreme-court-ketanji-jackson-diversity-1e77336b8958b33ee65e6e2f4a6a9377 <br>
-* Feldman, A. (2023, May 8). A New Landscape Unfolds: Supreme Court Oral Arguments in the 2022-2023 Term. <i>Empirical SCOTUS </i>. Retrieved from https://empiricalscotus.com/2023/05/08/a-new-landscape-unfolds-supreme-court-oral-arguments-in-the-2022-2023-term/ <br>
+* Feldman, A. (2023, May 8). A New Landscape Unfolds: Supreme Court Oral Arguments in the 2022-2023 Term. <i>Empirical SCOTUS </i>. Retrieved from https://empiricalscotus.com/2023/05/08/a-new-landscape-unfolds-supreme-court-oral-arguments-in-the-2022-2023-term/   <br>
+* Zoller, M. (2022, July 5). Listen: Jake Truscott talks Supreme Court decisions. <i>AccessWDUN</i>. Retrieved
+from https://accesswdun.com/article/2022/7/1114689/listen-jake-truscott-talks-supreme-court-decisions <br>
+* Drukman, J. (2020, October 23). UGA students more than twice as likely to favor Biden over Trump
+for president, according to survey data. <i>The Red & Black</i>. Retrieved from www.redandblack.com (Mentioned) <br>
+* Singleton, R. (2018, November 1). Too close to call: Polling conducted by UGA predicts a tight gubernatorial race. <i>The Red & Black</i>. Retrieved from www.redandblack.com  <br>
+
+Other Publications
+======
 * Truscott, J. & Feldman, A. (2022, December 30). The new hot bench: With Jackson leading the way, the
 justices are speaking more during oral arguments. <i>SCOTUSblog</i>. Retrieved from www.scotusblog.com <br>
 * Truscott, J. & Feldman, A. (2022, July 28). Lengthier opinions and shrinking cohesion: Indications for
 the future of the Supreme Court. <i>SCOTUSblog</i>. Retrieved from www.scotusblog.com <br>
-* Zoller, M. (2022, July 5). Listen: Jake Truscott talks Supreme Court decisions. <i>AccessWDUN</i>. Retrieved
-from https://accesswdun.com/article/2022/7/1114689/listen-jake-truscott-talks-supreme-court-decisions <br>
 * Truscott, J. (2019, July 24). GUEST COLUMN: 7 things to expect from the next Democratic primary
-debate. <i>The Red & Black. Retrieved from www.redandblack.com <br>
+debate. <i>The Red & Black</i>. Retrieved from www.redandblack.com <br>
 * Truscott, J. (2019, January 8). GUEST COLUMN: Hosting a 2020 presidential debate could offer an
 incredible opportunity for UGA. <i>The Red & Black</i>. Retrieved from www.redandblack.co <br>
-* Drukman, J. (2020, October 23). UGA students more than twice as likely to favor Biden over Trump
-for president, according to survey data. <i>The Red & Black</i>. Retrieved from www.redandblack.com (Mentioned) <br>
-* Singleton, R. (2018, November 1). Too close to call: Polling conducted by UGA predicts a tight gubernatorial race. <i>The Red & Black</i>. Retrieved from www.redandblack.com (Mentioned) <br>
 
 Talks
 ======
