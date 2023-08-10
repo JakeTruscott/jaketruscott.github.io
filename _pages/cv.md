@@ -77,7 +77,7 @@ Works Under Review
 ======
 
 * How to Train Your Stochastic Parrot: Deep Language Models for Political Texts
-(Co-Authors: Joseph Ornstein and Elise Blasingame, Under Review at <i> American Journal of Political Science</i>) <br><br>
+(Co-Authors: Joseph Ornstein and Elise Blasingame, Under Review at <i>Political Analysis</i>) <br><br>
 <p align = center>
 Winner: 2022 Gosnell Prize for Excellence in Political Methodology
 Awarded for the best work in political methodology presented at any political science conference
@@ -85,6 +85,7 @@ during the preceding year (PolMeth). </p>
 
 Works In Progress
 ======
+* Supreme Windfall: Organized Certiorari Efforts at the Supreme Court
 * Public Perceptions of the Supreme Court’s Shadow Docket on Social Media. (Co-Author: EmiLee Smart - University of Kentucky)
 * The Utility of Lagged Independent Variables for Causal Inference (Co-Author: Dr. Garrett Vande Kamp - University of Georgia)
 * Speaking the Same Language? Analyzing the Rhetorical Behaviors of Supreme Court Oral Arguments
@@ -112,6 +113,7 @@ for president, according to survey data. <i>The Red & Black</i>. Retrieved from 
 
 Other Publications
 ======
+* Truscott, J. (2023, August 1). The Supreme Court: Where Everyone Knows Your Name. <i>EmpiricalSCOTUS</i>. Retrieved from: https://empiricalscotus.com
 * Truscott, J. & Feldman, A. (2022, December 30). The new hot bench: With Jackson leading the way, the
 justices are speaking more during oral arguments. <i>SCOTUSblog</i>. Retrieved from www.scotusblog.com <br>
 * Truscott, J. & Feldman, A. (2022, July 28). Lengthier opinions and shrinking cohesion: Indications for
@@ -167,9 +169,13 @@ Awards & Grants
 References
 ======
 * Dr. Richard Vining (Dissertation Advisor) <br>
-rvining@uga.edu <br>
+bjdietri@purdue.edu <br>
 Associate Professor of Political Science <br>
 University of Georgia <br><br>
+* Dr. Bryce Dietrich <br>
+rvining@uga.edu <br>
+Associate Professor of Political Science <br>
+Purdue University <br><br>
 * Dr. Teena Wilhlem <br>
 twilhelm@uga.edu <br>
 Associate Professor of Political Science<br>
@@ -179,12 +185,5 @@ University of Georgia <br><br>
 jornstein@uga.edu<br>
 Assistant Professor of Political Science<br>
 University of Georgia<br><br>
-* Dr. Lefteris Jason Anastasopolous<br>
-ljanastas@uga.edu<br>
-Assistant Professor of Political Science<br>
-Assistant Professor of Public Administration and Policy<br>
-Adjunct Professor of Statistics<br>
-Faculty Affiliate, Institute of Artificial Intelligence<br>
-University of Georgia<br>
 
 
