@@ -55,7 +55,7 @@ Research Skills
         <tr>
             <td>R (Advanced), Python (Intermediate)</td>
             <td>Stata, SPSS, Excel, R </td>
-            <td>TensorFlow, Twitter API (v1 & v2), Unsupervised Learning Models (e.g, BERT, GPT-3),<br>
+            <td>TensorFlow, API Proficiency, Unsupervised Learning Models (e.g, BERT, GPT-3),<br>
 Supervised Learning (Bag of Words, Naive Bayes, etc.)</td>
         </tr>
     </table>
