@@ -1,6 +1,7 @@
 ---
-title: ''
-permalink: /
+layout: archive
+title: ""
+permalink: /scotuswatch/
 excerpt: SCOTUS Watch
 author_profile: yes
 redirect_from:
