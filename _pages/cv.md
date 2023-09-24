@@ -172,11 +172,11 @@ Awards & Grants
 References
 ======
 * Dr. Richard Vining (Dissertation Advisor) <br>
-bjdietri@purdue.edu <br>
+rvining@uga.edu <br>
 Associate Professor of Political Science <br>
 University of Georgia <br><br>
 * Dr. Bryce Dietrich <br>
-rvining@uga.edu <br>
+bjdietri@purdue.edu <br>
 Associate Professor of Political Science <br>
 Purdue University <br><br>
 * Dr. Teena Wilhlem <br>
