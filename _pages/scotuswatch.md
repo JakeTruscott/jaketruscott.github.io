@@ -1,8 +1,7 @@
 ---
-layout: archive
+layout: default
 title: ""
 permalink: /scotuswatch/
-excerpt: SCOTUS Watch
 ---
 
 <h3>Welcome!</h3>
