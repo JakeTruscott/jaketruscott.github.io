@@ -152,7 +152,10 @@ collections:
     permalink: /:collection/:path/
   active:
     output: true
-    permalink: /:collection/:path/   
+    permalink: /:collection/:path/  
+  scotuswatch:
+    output: true
+    permalink: /:collection/:path/ 
   packages:
     output: true
     permalink: /:collection/:path/  
@@ -208,6 +211,15 @@ defaults:
   - scope:
       path: ""
       type: active
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comments: true
+  # _scotuswatch
+  - scope:
+      path: ""
+      type: scotuswatch
     values:
       layout: single
       author_profile: true
