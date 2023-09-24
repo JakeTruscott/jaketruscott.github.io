@@ -35,3 +35,8 @@ At the seat of America's judicial hierarchy is the Supreme Court, whose decision
 At the seat of America's judicial hierarchy is the Supreme Court, whose decision-making on even the most trivial disputes can instigate substantial legal and political repercussions. This course will analyze the Court and its decision-making through the lenses of caselaw and American Political Development (APD). The cases we will analyze will concern the separation of powers, national and state regulatory powers, the federal system, and the role of the Courts in American government
 
 [Download Syllabus Here (Updated Spring 2023)]("/files/Constitutional_Law__Powers_Syllabus_Truscott")
+
+<h3>Text As Data in the Social Sciences</h3>
+So much information in our political world is stored not in tidy datasets, but in non-traditional sources like text, video, and audio. Social media posts, party manifestos, judicial decisions, presidential debates, testimonials, Congressional floor speeches, etc... the practice of politics in its myriad forms ultimately comes to be recorded in words on a page. How do we take all this unstructured text, far too extensive for any one researcher to read, and convert it into useful information for scientific inquiry? This course attempts to answer these questions by exploring the cutting edge of text as data, with a focus on how to developing practical skills to retrieve, represent, and analyze political texts as usable data. 
+
+[Download Syllabus Here (Updated Spring 2023)]("/files/Text_As_Data_Syllabus_Sample")
