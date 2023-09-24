@@ -85,9 +85,9 @@ during the preceding year (PolMeth). </p>
 
 Works In Progress
 ======
-*Tipping The Hand: Rhetoric as a Predictor of Coalitions in Supreme Court Oral Arguments
-*Supreme Windfall: Organized Certiorari Efforts at the Supreme Court
-*Do Oral Arguments Influence the Language of Majority Opinions? Co-Authors: Dr. Bryce Dietrich (Purdue University) and Dr. Maya Sen (Harvard University)
+* Tipping The Hand: Rhetoric as a Predictor of Coalitions in Supreme Court Oral Arguments
+* Supreme Windfall: Organized Certiorari Efforts at the Supreme Court
+* Do Oral Arguments Influence the Language of Majority Opinions? Co-Authors: Dr. Bryce Dietrich (Purdue University) and Dr. Maya Sen (Harvard University)
 * Untitled Research Using C-SPAN Archives. Co-Author: Dr. Bryce Dietrich (Purdue University)
 * Ideological Congruence and Judicial Departures from the U.S. Courts of Appeals. Co-Author: Dr. Richard Vining (University of Georgia)
 * Public Perceptions of the Supreme Court’s Shadow Docket on Social Media. Co-Author: EmiLee Smart (University of Kentucky)
