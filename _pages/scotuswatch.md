@@ -24,9 +24,7 @@ h4 {text-align: center;}
 <h2> October Term 2023: Active Stats</h2>
 
 <h3> Oral Arguments </h3>
-<p> Statistics and raw data from OT23 Oral Arguments will be posted here following the October Sitting. </p>
-
-
+<p> Statistics and raw data for OT23 Oral Arguments will be posted here following the October Sitting. </p>
 
 
 <h3> Decisions </h3>
@@ -36,7 +34,14 @@ h4 {text-align: center;}
 
 <h2> Earlier Terms </h2>
 
-For Oral Argument transcript data between the 2003 and 2022 terms, <a href="https://github.com/JakeTruscott/scotustext/raw/master/Data/scotus_transcripts.rdata">Click HERE </a>
+<h4>Oral Argument Rhetoric - Totals (October Term 2022)</h4>
+<iframe src="totals_table.html" width="100%" height="70pt"></iframe>
+
+<h4>Oral Argument Rhetoric - By Argument (October Term 2022)</h4>
+<iframe src="oa_table.html" width="100%" height="400pt"></iframe>
+<br>
+
+For Oral Argument transcript data (.rdata) between the 2003 and 2022 terms, <a href="https://github.com/JakeTruscott/scotustext/raw/master/Data/scotus_transcripts.rdata">Click HERE </a>
 
 
 
