@@ -26,9 +26,6 @@ h4 {text-align: center;}
 <h3> Oral Arguments </h3>
 <p> Statistics and raw data from OT23 Oral Arguments will be posted here following the October Sitting. </p>
 
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(tidy = FALSE, echo = FALSE)
-```
 
 
 
