@@ -1,11 +1,12 @@
 source "https://rubygems.org"
 
 gem "github-pages", group: :jekyll_plugins
-gem 'jekyll', '4.3.2'
+gem 'jekyll', '>= 3.0', '< 5.0'
+
 
 gem 'tzinfo-data'
 gem 'webrick'
-gem 'github-pages', '214'
+
 
 
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
