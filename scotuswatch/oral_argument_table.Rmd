@@ -1,0 +1,53 @@
+---
+title: "scotuswatch_oral_argument_table"
+author: "Jake Truscott"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = F) 
+library(kableExtra)
+library(dplyr)
+library(tidyr)
+library(scotustext)
+```
+
+```{r, echo = F}
+
+base_url <- "https://github.com/JakeTruscott/scotustext/raw/master/Data/"
+rdata_url <- paste0(base_url, "scotus_transcripts.rdata")
+load(url(rdata_url))
+
+scotus <- scotus %>%
+  filter(term == 2022) %>%
+  filter(type == 'Justice') %>%
+  group_by(speaker, argument) %>%
+  summarise(total_word_count = sum(word_count)) %>%
+  pivot_wider(names_from = speaker, values_from = total_word_count, names_prefix = "word_count_") 
+
+names(scotus) <- gsub('(CHIEF JUSTICE |JUSTICE )', '', names(scotus)) 
+names(scotus) <- gsub('word_count_', '', names(scotus))
+names(scotus)[1] <- 'Case'
+
+arguments <- unique(scotus$Case)
+
+case_names <- scotustext::docket_search(docket_id = arguments)
+case_names <- case_names %>%
+  select(docket_number, case_title)
+
+scotus$case_title <- case_names$case_title[match(scotus$Case, case_names$argument)]
+
+scotus <- scotus %>%
+  relocate(case_title) 
+
+names(scotus)[1] <- 'Case Name'
+
+scotus  %>%
+  kbl() %>%
+  column_spec(1, bold = T, border_right = T) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+
+
+```
+

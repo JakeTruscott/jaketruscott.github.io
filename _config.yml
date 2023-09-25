@@ -219,7 +219,7 @@ defaults:
   # _scotuswatch
   - scope:
       path: ""
-      type: scotuswatch
+      type: active
     values:
       layout: single
       author_profile: true
