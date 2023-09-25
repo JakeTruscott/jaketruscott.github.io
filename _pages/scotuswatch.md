@@ -43,7 +43,8 @@ For Oral Argument transcript data between the 2003 and 2022 terms, <a href="http
 <h2> </h2>
 <h4>About SCOTUSWatch</h4>
 
-<h4> SCOTUSWatch is a collaborative effort between Dr. Jake S. Truscott (Center for C-SPAN Scholarship & Engagement, Purdue University) & Dr. Adam Feldman (EmpiricalSCOTUS Blog, CSU Northridge) aimed at consistently updating and disseminating data related to the United States Supreme Court. While our data will be principally hosted on this website, corresponding analysis and weekly round-ups will be posted at <a href="https://empiricalscotus.com/">EmpiricalSCOTUS</a> For media and other inquiries, please contact </h4>
+<h4> SCOTUSWatch is a collaborative effort between Dr. Jake S. Truscott (Center for C-SPAN Scholarship & Engagement, Purdue University) & Dr. Adam Feldman (EmpiricalSCOTUS Blog, CSU Northridge) aimed at consistently updating and disseminating data related to the United States Supreme Court. While our data will be principally hosted on this website, corresponding analysis and weekly round-ups will be available at <a href="https://empiricalscotus.com/">EmpiricalSCOTUS</a>. <br> For media and other inquiries, Please <a href="mailto:adam@feldmannet.com?cc=jtruscot@purdue.edu" target="_blank">E-Mail Us</a>.
+<br>
 <br>
 <div class="container">
         <div class="image">
