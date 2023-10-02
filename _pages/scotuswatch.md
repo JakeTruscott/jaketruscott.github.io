@@ -37,9 +37,16 @@ h4 {text-align: center;}
 <h4>Oral Argument Rhetoric - Totals (October Term 2022)</h4>
 <iframe src="/images/scotuswatch_tables/totals_table.html" width="100%" height="70pt"></iframe>
 
+<img src="/images/scotuswatch_tables/word_count_plot_OT22.png" width="100%" max-height="500px">
+<br>
+
 <h4>Oral Argument Rhetoric - By Argument (October Term 2022)</h4>
 <iframe src="/images/scotuswatch_tables/oa_table.html" width="100%" height="400pt"></iframe>
+
+
 <br>
+
+
 
 For Oral Argument transcript data (.rdata) between the 2003 and 2022 terms, <a href="https://github.com/JakeTruscott/scotustext/raw/master/Data/scotus_transcripts.rdata">Click HERE </a>
 
