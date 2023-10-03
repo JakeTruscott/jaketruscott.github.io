@@ -22,17 +22,18 @@ h4 {text-align: center;}
 
 
 <h2> October Term 2023: Active Stats</h2>
+<p><em>Last Updated August 2, 2023</em></p>
 
 <h3> Oral Arguments </h3>
 
 <h4>Oral Argument Rhetoric - Totals (October Term 2023)</h4>
-<iframe src="/images/scotuswatch_tables/totals_table_OT23_active.html" width="100%" height="70pt"></iframe>
+<iframe src="/images/scotuswatch_tables/totals_table_OT23_active.html" width="110%" height="110pt"></iframe>
 
-<img src="/images/scotuswatch_tables/word_count_plot_OT23.png" width="100%" max-height="500px">
+<img src="/images/scotuswatch_tables/word_count_plot_OT23.png" width="110%" max-height="500px">
 <br>
 
 <h4>Oral Argument Rhetoric - By Argument (October Term 2023)</h4>
-<iframe src="/images/scotuswatch_tables/oa_table_23_active.html" width="100%" height="70pt"></iframe>
+<iframe src="/images/scotuswatch_tables/oa_table_23_active.html" width="110%" height="125pt"></iframe>
 
 
 <h3> Decisions </h3>
