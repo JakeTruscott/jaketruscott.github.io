@@ -18,7 +18,14 @@ h4 {text-align: center;}
         .text {
             margin-top: 10px;
         }
+  hr {
+    border: none;
+    background-color: black;
+    height: 2px; /* Optional: Set the height of the horizontal line */
+  }
+
 </style>
+
 
 
 <h2> October Term 2023: Active Stats</h2>
@@ -37,11 +44,17 @@ For Oral Argument transcript data (.rdata) for the 2023 Term, <a href="https://g
 <h4>Oral Argument Rhetoric - By Argument (October Term 2023)</h4>
 <iframe src="/images/scotuswatch_tables/oa_table_23_active.html" width="110%" height="125pt"></iframe>
 
+<h4>Oral Attorney Participation & Response to Justices - By Argument (October Term 2022)</h4>
+<iframe src="/images/scotuswatch_tables/attorney_participation_23_active.html" width="110%" height="300pt"></iframe>
+
+
 
 <h3> Decisions </h3>
 <p> First Decisions Expected Winter 2023/2024 </p>
+<br>
 
-
+<hr>
+<hr>
 
 <h2> Earlier Terms </h2>
 
@@ -61,9 +74,9 @@ For Oral Argument transcript data (.rdata) for the 2023 Term, <a href="https://g
 
 For Oral Argument transcript data (.rdata) between the 2003 and 2022 terms, <a href="https://github.com/JakeTruscott/scotustext/raw/master/Data/scotus_transcripts.rdata">Click HERE </a>
 
-
-
-<h2> </h2>
+<br>
+<hr>
+<hr>
 <h4>About SCOTUSWatch</h4>
 
 <h4> SCOTUSWatch is a collaborative effort between Dr. Jake S. Truscott (Center for C-SPAN Scholarship & Engagement, Purdue University) & Dr. Adam Feldman (EmpiricalSCOTUS Blog, CSU Northridge) aimed at consistently updating and disseminating data related to the United States Supreme Court. While our data will be principally hosted on this website, corresponding analysis and weekly round-ups will be available at <a href="https://empiricalscotus.com/">EmpiricalSCOTUS</a>. <br> For media and other inquiries, Please <a href="mailto:adam@feldmannet.com?cc=jtruscot@purdue.edu" target="_blank">E-Mail Us</a>.
