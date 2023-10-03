@@ -31,21 +31,26 @@ h4 {text-align: center;}
 <h2> October Term 2023: Active Stats</h2>
 <p><em>Last Updated August 2, 2023</em></p>
 
-For Oral Argument transcript data (.rdata) for the 2023 Term, <a href="https://github.com/JakeTruscott/scotustext/raw/master/Data/scotus_transcripts_23.rdata">Click HERE </a>
+To Access Oral Argument transcript data for the 2023 Term: <br> <a href="https://github.com/JakeTruscott/scotustext/raw/master/Data/scotus_transcripts_23.rdata">Download Here (.rdata) </a> <br>
+<a href="https://github.com/JakeTruscott/scotustext/raw/master/Data/scotus_transcripts_23.xlsx">Download Here (.xlsx) </a>
 
 <h3> Oral Arguments </h3>
 
 <h4>Oral Argument Rhetoric - Totals (October Term 2023)</h4>
-<iframe src="/images/scotuswatch_tables/totals_table_OT23_active.html" width="110%" height="110pt"></iframe>
+<iframe src="/images/scotuswatch_tables/totals_table_OT23_active.html" width="110%" height="130pt"></iframe>
 
 <img src="/images/scotuswatch_tables/word_count_plot_OT23.png" width="110%" max-height="500px">
 <br>
 
+
+
 <h4>Oral Argument Rhetoric - By Argument (October Term 2023)</h4>
-<iframe src="/images/scotuswatch_tables/oa_table_23_active.html" width="110%" height="125pt"></iframe>
+<iframe src="/images/scotuswatch_tables/oa_table_23_active.html" width="110%" height="350pt"></iframe>
+
+
 
 <h4>Oral Attorney Participation & Response to Justices - By Argument (October Term 2022)</h4>
-<iframe src="/images/scotuswatch_tables/attorney_participation_23_active.html" width="110%" height="300pt"></iframe>
+<iframe src="/images/scotuswatch_tables/attorney_participation_23_active.html" width="110%" height="400pt"></iframe>
 
 
 
