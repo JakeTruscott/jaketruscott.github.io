@@ -189,4 +189,6 @@ jornstein@uga.edu<br>
 Assistant Professor of Political Science<br>
 University of Georgia<br><br>
 
+<p>Click the link below to download the PDF:</p>
+        <a href="/files/Truscott_CV_2023.pdf" download>Download PDF</a>
 
