@@ -6,8 +6,9 @@ main:
 
   - title: "SCOTUSWatch"
     url: /scotuswatch/
-    
-
+  
+  - title: "SCOTUS Arguments"
+    url: /scotusoa/
 
   - title: "Publications"
     url: /publications/

@@ -156,6 +156,9 @@ collections:
   scotuswatch:
     output: true
     permalink: /:collection/:path/ 
+  scotusoa: 
+    output: true
+    permalink: /:collection/:path/ 
   packages:
     output: true
     permalink: /:collection/:path/  
@@ -225,6 +228,15 @@ defaults:
       author_profile: true
       share: true
       comments: true
+  # _scotusoa
+  - scope:
+     path: ""
+     type: ""
+    values:
+     layout: single
+     author_profile: true
+     share: true
+     comments: true
   # _packages
   - scope:
       path: ""
