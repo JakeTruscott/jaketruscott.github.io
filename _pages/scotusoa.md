@@ -79,19 +79,6 @@ h4 {text-align: center;}
 <table style="border-collapse: collapse; border: none;">
   <tr style="border-collapse: collapse; border: none;">
 <th style="border-collapse: collapse; border: none; text-align: center;">
-  <a href="https://github.com/JakeTruscott/jaketruscott.github.io/raw/master/transcript_data/transcripts_2010s.rdata"> Download Transcripts (.rdata) for <br> OT2010-OT2019 </a> </th>
-<th style="border-collapse: collapse; border: none; text-align: center;">
-  <a href="https://github.com/JakeTruscott/jaketruscott.github.io/raw/master/transcript_data/transcripts_2020s.rdata"> Download Transcripts (.rdata) for <br> OT2020-OT2021 </a> </th>
-  </tr>
-  <tr style="border-collapse: collapse; border: none;">
-    <td style="border-collapse: collapse; border: none;"><img src="/images/scotus_transcript_eras_images/2010s.png" alt="Oral Arguments (2010-2019 Terms)" width='500' height='500'></td>
-    <td style="border-collapse: collapse; border: none;"><img src="/images/scotus_transcript_eras_images/2020s.png" alt="Oral Arguments (2020-2021 Terms)" width='500' height='500'></td>
-  </tr>
-</table>
-
-<table style="border-collapse: collapse; border: none;">
-  <tr style="border-collapse: collapse; border: none;">
-<th style="border-collapse: collapse; border: none; text-align: center;">
   <a href="https://github.com/JakeTruscott/scotustext/raw/master/Data/scotus_transcripts_04-22.rdata"> Download Transcripts (.rdata) for <br> OT2005-OT2022 </a> </th>
 <th style="border-collapse: collapse; border: none; text-align: center;">
   <a href="https://github.com/JakeTruscott/scotustext/raw/master/Data/scotus_transcripts_23.rdata"> Download Transcripts (.rdata) for <br> OT2023 (Current Term) </a> </th>
