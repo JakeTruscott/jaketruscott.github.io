@@ -5,6 +5,14 @@ permalink: /active/
 author_profile: true
 ---
 
+<h2><b>Overview</b></h2> 
+
+My research agenda serves to explore impactful questions concerning the role of the judicial branch in
+the American political system, the motivations and subsequent effects of judicial decision-making, and the
+emerging methodological tools of computational social science - particularly in the realms of natural language
+processing, data analysis and visualization, and machine learning models. I provide a brief overview of my active research in these fields below, much of which more recently has served to bridge my interests in
+judicial politics and computational methods.
+
 <h2><b>Under Review</b></h2> 
 
 <h3>How to Train Your Stochastic Parrot: Large Language Models for Political Texts</h3>
@@ -15,20 +23,23 @@ Large language models pre-trained on massive corpora of text from the Internet h
 
 Recommended citation: Ornstein, J. T., Blasingame, E. N., & Truscott, J. S. (2022). How to Train Your Stochastic Parrot: Large Language Models for Political Texts.
 
+<h3> A Social Media Platform Model of Supreme Court News </h3>
+An economic model of news (Hamilton 2004; McManus 1988; Vining and Marcin 2014) contends that the pressures of limited column space and market competition force media actors to be strategic about which notable events receive a great deal of coverage, if any at all. Applying this framework to the Supreme Court can explain why print and digital coverage of the justices’ decision-making has historically been sensationalized and reserved for decisions sure to have a pronounced effect on public discourse. However, the emergence of social media as a practical alternative for mass media dissemination raises notable questions, chief among them being whether the economic framework fully extends to this newer medium. In this study, I analyze media coverage of the Court using Twitter and observe important distinctions among environments for news dissemination. I argue that the apparent reduction in the economic costs associated with coverage dissemination and consumption on social media like Twitter requires viewing Supreme Court news on these platforms through an amended theoretical framework.
+
 
 <h2><b>Works in Progress</b></h2> 
 
-<h3>Public Perceptions of the Supreme Court’s Shadow Docket on Social Media</h3>
-<i> Co-Authored with Emilee Smart (University of Kentucky)</i> <br><br>
-Recent terms have demonstrated a prominent increase in the Court’s reliance on its emergency docket powers, which as of late has garnered national attention under the sobriquet of the shadow docket. Though not a new phenomenon, this trend has raised concerns regarding the transparency of the justices’ decision-making as being obscured by a process that shirks conventional procedures in favor of single-justice dispositions with minimal – if any – corresponding justification. We leverage data mining and unsupervised machine learning to examine the public discourse instigated by this unique decision-making behavior on social media platforms like Twitter. Of particular interest is whether the public views these decisions as an extension of the Court’s traditional decision-making, as well as whether support or opposition follows traditional indicators rooted in ideological congruence with the decisions – or perhaps more broadly with the justices themselves. <br>
+<h3> Idea Diffusion and Coalition Building: How Oral Arguments Influence the Language of U.S. Supreme Court Opinions</h3>
+<i> Co-Authored with Bryce Dietrich (Purdue University) and Maya Sen (Harvard University)</i><br>
 
-[Download Working Paper](/files/Truscott_Smart_Shadow_Docket.pdf) <br>
-
+<h3> Measuring Judicial Ideology Through Text </h3>
+<i> Co-Authored with Michael K. Romano (Shenandoah University) </i>
 
 <h3>Ideological Congruence and Judicial Departures from the U.S. Courts of Appeals</h3>
 <i> Co-Authored with Dr. Richard Vining (University of Georgia)</i>
 
-<h3>The Utility of Lagged Independent Variables for Causal Inference</h3>
-<i> Co-Authored with Dr. Garrett Vande Kamp (University of Georgia)</i> 
+<h3> Understanding the Value of Floor Speeches in a Multimedia Environment </h3>
+<i> Co-Authored with Bryce Dietrich, Myriam Shiran, Jasper Neath, and Ryan Funkhouser (Purdue University) </i>
 
-<h3>Speaking the Same Language? Analyzing the Rhetorical Behaviors of Supreme Court Oral Arguments</h3>
+<h3> Amici as Information: Re-Examining the Role of Amicus Curiae in an Information-Bolstering Environment </h3>
+<i> Co-Authored with Bryce Dietrich (Purdue University </i>
