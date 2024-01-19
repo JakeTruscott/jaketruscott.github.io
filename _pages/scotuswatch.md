@@ -61,7 +61,7 @@ To Access Oral Argument transcript data for the 2023 Term: <br> <a href="https:/
 
 
 <h3> Decisions </h3>
-<h4>Oral Decisions - By Argument (October Term 2023)</h4>
+<h4>Decisions - By Argument (October Term 2023)</h4>
 <iframe id="iframeToCapture" src="/images/scotuswatch_tables/Decisions/OT_23_Decisions_Table.html" width="110%" height="400pt"></iframe>
 <a href="/images/scotuswatch_tables/Decisions/OT_23_Decisions_Table.png"  download="Decisions">View Image</a>
 <br>
