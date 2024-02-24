@@ -61,6 +61,7 @@ library(dplyr); library(stringi); library(stringr); library(ggplot2); library(gg
     totals <- cbind(data.frame('case_name' = 'Totals'), totals)
 
     oa <- oa %>%
+      mutate(case_name = ifelse(grepl('Kinder Morgan', case_name), 'Ohio, Et Al. Applicants v. Epa (Consolidated w/ 23A350, 23A351, 23A384)', case_name)) %>%
       rename(' ' = case_name)
   } #Process Data
 
@@ -340,6 +341,7 @@ library(dplyr); library(stringi); library(stringr); library(ggplot2); library(gg
     totals <- cbind(data.frame('case_name' = 'Totals'), totals)
 
     oa <- oa %>%
+      mutate(case_name = ifelse(grepl('Kinder Morgan', case_name), 'Ohio, Et Al. Applicants v. Epa (Consolidated w/ 23A350, 23A351, 23A384)', case_name)) %>%
       rename(' ' = case_name)
   } #Process Data
 
@@ -532,6 +534,7 @@ library(dplyr); library(stringi); library(stringr); library(ggplot2); library(gg
       mutate('Total Words' = rowSums(select(., -c(case_name, speaker)), na.rm = TRUE)) %>%
       relocate('Total Words', .after = speaker) %>%
       group_by(case_name, speaker) %>%
+      mutate(case_name = ifelse(grepl('Kinder Morgan', case_name), 'Ohio, Et Al. Applicants v. Epa (Consolidated w/ 23A350, 23A351, 23A384)', case_name)) %>%
       rename(' ' = case_name,
              'Attorney' = speaker)
 
