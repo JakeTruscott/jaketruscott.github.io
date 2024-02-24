@@ -31,7 +31,7 @@ h4 {text-align: center;}
 
 
 <h2> October Term 2023: Active Stats</h2>
-<p><em>Last Updated February 9, 2024</em> </p>
+<p><em>Last Updated February 24, 2024</em> </p>
 
 To Access Oral Argument transcript data for the 2023 Term: <br> <a href="https://github.com/JakeTruscott/scotustext/raw/master/Data/scotus_transcripts_23.rdata">Download Here (.rdata) </a> <br>
 <a href="https://github.com/JakeTruscott/scotustext/raw/master/Data/scotus_transcripts_23.xlsx">Download Here (.xlsx) </a>
