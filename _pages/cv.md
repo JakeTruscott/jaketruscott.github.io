@@ -12,6 +12,7 @@ redirect_from:
 Academic Appointments
 ======
 * Postdoctoral Researcher, Center for C-SPAN Scholarship and Engagement (Purdue University), 2023-Present
+* Assistant Professor of Political Science, University of Florida, Beginning Fall 2024
 
 Education
 ======
@@ -77,11 +78,12 @@ Works Under Review
 ======
 
 * How to Train Your Stochastic Parrot: Deep Language Models for Political Texts
-(Co-Authors: Joseph Ornstein and Elise Blasingame, Under Review at <i>Political Science Research and Methods</i>) <br><br>
+(Co-Authors: Joseph Ornstein and Elise Blasingame, Revise and Resubmit at <i>Political Science Research and Methods</i>) <br><br>
 <p align = center>
 Winner: 2022 Gosnell Prize for Excellence in Political Methodology
 Awarded for the best work in political methodology presented at any political science conference
 during the preceding year (PolMeth). </p>
+* A Social Media Platform Model of Supreme Court News (Conditionally Accepted at <i>Political Research Quarterly</i>)
 
 Works In Progress
 ======
@@ -90,8 +92,6 @@ Works In Progress
 * Do Oral Arguments Influence the Language of Majority Opinions? Co-Authors: Dr. Bryce Dietrich (Purdue University) and Dr. Maya Sen (Harvard University)
 * Untitled Research Using C-SPAN Archives. Co-Author: Dr. Bryce Dietrich (Purdue University)
 * Ideological Congruence and Judicial Departures from the U.S. Courts of Appeals. Co-Author: Dr. Richard Vining (University of Georgia)
-* Public Perceptions of the Supreme Court’s Shadow Docket on Social Media. Co-Author: EmiLee Smart (University of Kentucky)
-* The Utility of Lagged Independent Variables for Causal Inference. Co-Author: Dr. Garrett Vande Kamp (University of Georgia)
 
 
 Media Coverage
