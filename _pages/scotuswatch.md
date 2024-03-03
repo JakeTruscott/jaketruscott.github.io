@@ -31,7 +31,7 @@ h4 {text-align: center;}
 
 
 <h2> October Term 2023: Active Stats</h2>
-<p><em>Last Updated February 29, 2024</em> </p>
+<p><em>Last Updated March 3, 2024</em> </p>
 
 To Access Oral Argument transcript data for the 2023 Term: <br> <a href="https://github.com/JakeTruscott/scotustext/raw/master/Data/scotus_transcripts_23.rdata">Download Here (.rdata) </a> <br>
 <a href="https://github.com/JakeTruscott/scotustext/raw/master/Data/scotus_transcripts_23.xlsx">Download Here (.xlsx) </a>
@@ -48,12 +48,12 @@ To Access Oral Argument transcript data for the 2023 Term: <br> <a href="https:/
 
 
 <h4>Oral Argument Rhetoric - By Argument (October Term 2023)</h4>
-<iframe src="/images/scotuswatch_tables/oa_table_23_active.html" width="110%" height="350pt"></iframe>
+<iframe src="/images/scotuswatch_tables/oa_table_23_active.html" width="110%" height="800pt"></iframe>
 <a href="/images/scotuswatch_tables/oa_table_23_active.png"  download="Justice Participation in SCOTUS OA">View Image</a>
 
 
 <h4>Oral Attorney Participation & Response to Justices - By Argument (October Term 2023)</h4>
-<iframe id="iframeToCapture" src="/images/scotuswatch_tables/attorney_participation_23_active.html" width="110%" height="400pt"></iframe>
+<iframe id="iframeToCapture" src="/images/scotuswatch_tables/attorney_participation_23_active.html" width="110%" height="800pt"></iframe>
 <a href="/images/scotuswatch_tables/attorney_participation_23_active.png"  download="Attorney Participation in SCOTUS OA">View Image</a>
 
 
@@ -62,10 +62,10 @@ To Access Oral Argument transcript data for the 2023 Term: <br> <a href="https:/
 
 <h3> Decisions </h3>
 <h4>Decisions - By Argument (October Term 2023)</h4>
-<iframe id="iframeToCapture" src="/images/scotuswatch_tables/Decisions/OT_23_Decisions_Table.html" width="110%" height="400pt"></iframe>
+<iframe id="iframeToCapture" src="/images/scotuswatch_tables/Decisions/OT_23_Decisions_Table.html" width="110%" height="800pt"></iframe>
 <a href="/images/scotuswatch_tables/Decisions/OT_23_Decisions_Table.png"  download="Decisions">View Image</a>
 <br>
-<iframe id="iframeToCapture" src="/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info.html" width="110%" height="400pt"></iframe>
+<iframe id="iframeToCapture" src="/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info.html" width="110%" height="600pt"></iframe>
 <a href="/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info.png"  download="Decisions Info">View Image</a>
 
 <hr>

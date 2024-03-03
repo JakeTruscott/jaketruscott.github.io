@@ -179,11 +179,11 @@ get_vote_color <- function(value){
        <span style=\"margin-left: 10px;\"></span>
        <span style=\"border-radius: 1px; padding: 1px; background-color: #99CCFF !important; color: white;\">M</span> = Joined Majority
        <span style=\"margin-left: 10px;\"></span>
-       <span style=\"border-radius: 1px; padding: 1px; background-color: #66B2FF !important; color: white;\">RC</span> = Wrote Regular Concurrence
+       <span style=\"border-radius: 1px; padding: 1px; background-color: #66B2FF !important; color: white;\">RC</span> = Wrote Concurrence
        <span style=\"margin-left: 10px;\"></span>
-       <span style=\"border-radius: 1px; padding: 1px; background-color: #3399FF !important; color: white;\">JRC</span> = Joined Regular Concurrence
+       <span style=\"border-radius: 1px; padding: 1px; background-color: #3399FF !important; color: white;\">JRC</span> = Joined Concurrence
        <span style=\"margin-left: 10px;\"></span>
-       <span style=\"border-radius: 1px; padding: 1px; background-color: #66B2FF !important; color: white;\">RC & JRC</span> = Wrote & Joined Regular Concurrence",
+       <span style=\"border-radius: 1px; padding: 1px; background-color: #66B2FF !important; color: white;\">RC & JRC</span> = Wrote & Joined Concurrence",
 
         "<span style=\"border-radius: 3px; padding: 1px; background-color: white !important; color: white;\"> </span>",
 

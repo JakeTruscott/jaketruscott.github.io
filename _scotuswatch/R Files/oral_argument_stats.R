@@ -14,7 +14,6 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 # Justice Images
 # Note: Set Directory to Folder Containing Data Repository (Will Include 'justice_images' folder...)
 ################################################################################
-
 {
   ROBERTS <- readPNG("justice_images/Roberts.png")
   ALITO <- readPNG("justice_images/Alito.png")
@@ -47,7 +46,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
 
 ################################################################################
-# OT 2023 (Aggregate Total Term Stats)
+# OT 2023 (Aggregate Total Term Stats - Words)
 ################################################################################
 {
 
@@ -126,12 +125,12 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     oa_table
 
   } #By Argument Table
-  save_kable(oa_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/oa_table_23_active.html")
+  save_kable(oa_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/oa_table_23_active.html")
 
-  html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/oa_table_23_active.html"
+  html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/oa_table_23_active.html"
   #webshot::install_phantomjs(force = T)
   phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
-  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/oa_table_23_active.png", vwidth = 900, vheight = 70)
+  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/oa_table_23_active.png", vwidth = 900, vheight = 70)
 
   {
 
@@ -188,12 +187,12 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
     totals_table
   } #Totals Table (Active)
-  save_kable(totals_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/totals_table_OT23_active.html")
+  save_kable(totals_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/totals_table_OT23_active.html")
 
-  html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/totals_table_OT23_active.html"
+  html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/totals_table_OT23_active.html"
   #webshot::install_phantomjs(force = T)
   #phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
-  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/totals_table_OT23_active.png", vwidth = 900, vheight = 70)
+  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/totals_table_OT23_active.png", vwidth = 900, vheight = 70)
 
   {
     custom_colors <- c("#5FA934", "#3B5E8B", "#522559")
@@ -243,7 +242,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     word_count_plot
 
   } #Totals Graph (Active)
-  ggsave("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/word_count_plot_OT23.png", word_count_plot, dpi = 300)
+  ggsave("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/word_count_plot_OT23.png", word_count_plot, dpi = 300)
 
   {
 
@@ -319,18 +318,17 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     attorney_participation_table
 
   } #Attorneys OA Participation Figure
-  save_kable(attorney_participation_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/attorney_participation_23_active.html")
+  save_kable(attorney_participation_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/attorney_participation_23_active.html")
 
-  html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/attorney_participation_23_active.html"
+  html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/attorney_participation_23_active.html"
   #webshot::install_phantomjs(force = T)
   #phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
-  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/attorney_participation_23_active.png", vwidth = 800, vheight = 70)
+  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/attorney_participation_23_active.png", vwidth = 800, vheight = 70)
 
 } #OT 2023 (Totals)
 
-
 ################################################################################
-# OT 2023 (By Active Sitting)
+# OT 2023 (By Active Sitting - Words)
 # Currently *February Sitting*
 ################################################################################
 {
@@ -412,11 +410,10 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
   } #By Argument Table
   save_kable(oa_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/oa_table_23_February.html")
-
   html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/oa_table_23_February.html"
   #webshot::install_phantomjs(force = T)
   phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
-  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/oa_table_23_February.png", vwidth = 900, vheight = 70)
+  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/oa_table_23_February.png", vwidth = 1250, vheight = 100)
 
   {
 
@@ -474,11 +471,8 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     totals_table
   } #Totals Table (Active)
   save_kable(totals_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/totals_table_OT23_February.html")
-
   html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/totals_table_OT23_February.html"
-  #webshot::install_phantomjs(force = T)
-  #phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
-  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/totals_table_OT23_February.png", vwidth = 900, vheight = 70)
+  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/totals_table_OT23_February.png", vwidth = 1250, vheight = 100)
 
   {
     custom_colors <- c("#5FA934", "#3B5E8B", "#522559")
@@ -535,7 +529,6 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
 
     attorneys <- scotus_OT23 %>%
-      #select(-id) %>%
       filter(sitting == "February") %>%
       mutate(response_to = ifelse(lag(speaker_type) == 'Justice', lag(speaker), NA)) %>%
       filter(speaker_type == "Attorney") %>%
@@ -611,16 +604,172 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
   } #Attorneys OA Participation Figure
   save_kable(attorney_participation_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/attorney_participation_23_February.html")
-
   html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/attorney_participation_23_February.html"
-  #webshot::install_phantomjs(force = T)
-  #phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
-  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/attorney_participation_23_February.png", vwidth = 1100, vheight = 70)
+  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/attorney_participation_23_February.png", vwidth = 1250, vheight = 100)
 
 } #OT 2023 (By Sitting) -- Currently February
 
+
 ################################################################################
-#Earlier Terms
+# OT 2023 (Aggregate Total Term Stats - Speaking Time)
+################################################################################
+
+{
+
+  base_url <- "https://github.com/JakeTruscott/scotustext/raw/master/Data/"
+  rdata_url <- paste0(base_url, "scotus_transcripts_23.rdata")
+  load(url(rdata_url))
+} #Compile Data from Github (If OT23 Data Not Already Loaded...)
+
+{
+  time_spoken_total <- scotus_OT23 %>%
+    filter(speaker_type == 'Justice') %>%
+    mutate(time_spoken = text_stop - text_start) %>%
+    group_by(speaker, case_name) %>%
+    summarise(total_time_spoken = sum(time_spoken)) %>%
+    mutate(total_time_spoken_minutes = round(total_time_spoken/60, 2)) %>%
+    pivot_wider(names_from = speaker, values_from = total_time_spoken_minutes, names_prefix = "time_spoken_") %>%
+    select(-case_name) %>%
+    summarise_all(.funs = sum, na.rm = T) %>%
+    mutate(total_time_spoken = rowSums(across(-total_time_spoken))) %>%
+    rename_with(~str_replace(., "time_spoken_", ""), -total_time_spoken) %>%
+    rename("Total Time\n(Minutes)" = total_time_spoken)
+
+
+  speaking_data <- time_spoken_total
+  matching_columns <- intersect(colnames(speaking_data), names(justice_image_labels))
+
+  original_column_names <- colnames(speaking_data)
+  original_column_names[1] <- ' '
+
+  speaking_data <- speaking_data %>%
+    rename_at(.vars = matching_columns, .funs = ~ justice_image_labels[.])
+} #Compile Speaking Times from scotus_OT23
+
+{
+  speaking_times_total_OT23 <- speaking_data %>%
+    kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
+    add_header_above( original_column_names) %>%
+    column_spec(1, bold = TRUE, border_right = TRUE) %>%
+    row_spec(0, bold = TRUE, color = 'white', background = '#080808', align = 'center') %>%
+    row_spec(seq(1, nrow(speaking_data), 1), align = 'center') %>%
+    kable_styling(font_size = 12, bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+    column_spec(2, color = "white",
+                background = spec_color(time_spoken_total$ROBERTS, end = 0.5),
+                popover = paste("am:", time_spoken_total$ROBERTS)) %>%
+    column_spec(3, color = "white",
+                background = spec_color(time_spoken_total$ALITO, end = 0.5),
+                popover = paste("am:", time_spoken_total$ALITO)) %>%
+    column_spec(4, color = "white",
+                background = spec_color(time_spoken_total$BARRETT, end = 0.5),
+                popover = paste("am:", time_spoken_total$BARRETT)) %>%
+    column_spec(5, color = "white",
+                background = spec_color(time_spoken_total$GORSUCH, end = 0.5),
+                popover = paste("am:", time_spoken_total$GORSUCH)) %>%
+    column_spec(6, color = "white",
+                background = spec_color(time_spoken_total$JACKSON, end = 0.5),
+                popover = paste("am:", time_spoken_total$JACKSON)) %>%
+    column_spec(7, color = "white",
+                background = spec_color(time_spoken_total$KAGAN, end = 0.5),
+                popover = paste("am:", time_spoken_total$KAGAN)) %>%
+    column_spec(8, color = "white",
+                background = spec_color(time_spoken_total$KAVANAUGH, end = 0.5),
+                popover = paste("am:", time_spoken_total$KAVANAUGH)) %>%
+    column_spec(9, color = "white",
+                background = spec_color(time_spoken_total$SOTOMAYOR, end = 0.5),
+                popover = paste("am:", time_spoken_total$SOTOMAYOR)) %>%
+    column_spec(10, color = "white",
+                background = spec_color(time_spoken_total$THOMAS, end = 0.5),
+                popover = paste("am:", time_spoken_total$THOMAS))
+} #Compile Table
+
+speaking_times_total_OT23  #Print Preview
+save_kable(speaking_times_total_OT23, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/oa23_speaking_times_active.html")
+html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/oa23_speaking_times_active.html"
+phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
+webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/oa23_speaking_times_active.png", vwidth = 1250, vheight = 100)
+
+
+
+################################################################################
+# OT 2023 (By Active Sitting - Speaking Tim)
+# Currently *February Sitting*
+################################################################################
+
+{
+  time_spoken_total_february <- scotus_OT23 %>%
+    filter(speaker_type == 'Justice') %>%
+    filter(sitting == 'February') %>%
+    mutate(case_name = ifelse(grepl('Kinder Morgan', case_name), 'Ohio, Et Al. Applicants v. Epa (Consolidated w/ 23A350, 23A351, 23A384)', case_name)) %>%
+    mutate(time_spoken = text_stop - text_start) %>%
+    group_by(speaker, case_name) %>%
+    summarise(total_time_spoken = sum(time_spoken)) %>%
+    mutate(total_time_spoken_minutes = round(total_time_spoken/60, 2)) %>%
+    group_by(case_name) %>%
+    pivot_wider(names_from = speaker, values_from = total_time_spoken_minutes, names_prefix = "time_spoken_") %>%
+    summarise_all(.funs = sum, na.rm = T) %>%
+    mutate(total_time_spoken = rowSums(across(-c(total_time_spoken, case_name)))) %>%
+    rename_with(~str_replace(., "time_spoken_", ""), -total_time_spoken) %>%
+    rename("Total Time\n(Minutes)" = total_time_spoken)
+
+
+  speaking_data <- time_spoken_total_february
+  matching_columns <- intersect(colnames(speaking_data), names(justice_image_labels))
+
+  original_column_names <- colnames(speaking_data)
+  original_column_names[1:2] <- ' '
+
+  speaking_data <- speaking_data %>%
+    rename_at(.vars = matching_columns, .funs = ~ justice_image_labels[.]) %>%
+    rename(`Case` = case_name)
+} #Compile Speaking Times from scotus_OT23
+
+{
+  speaking_times_february <- speaking_data %>%
+    kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
+    add_header_above( original_column_names) %>%
+    column_spec(1, bold = TRUE, border_right = TRUE, width = "350px") %>%
+    row_spec(0, bold = TRUE, color = 'white', background = '#080808', align = 'center') %>%
+    row_spec(seq(1, nrow(speaking_data), 1), align = 'center') %>%
+    kable_styling(font_size = 12, bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+    column_spec(3, color = "white",
+                background = spec_color(time_spoken_total_february$ROBERTS, end = 0.5),
+                popover = paste("am:", time_spoken_total_february$ROBERTS)) %>%
+    column_spec(4, color = "white",
+                background = spec_color(time_spoken_total_february$ALITO, end = 0.5),
+                popover = paste("am:", time_spoken_total_february$ALITO)) %>%
+    column_spec(5, color = "white",
+                background = spec_color(time_spoken_total_february$BARRETT, end = 0.5),
+                popover = paste("am:", time_spoken_total_february$BARRETT)) %>%
+    column_spec(6, color = "white",
+                background = spec_color(time_spoken_total_february$GORSUCH, end = 0.5),
+                popover = paste("am:", time_spoken_total_february$GORSUCH)) %>%
+    column_spec(7, color = "white",
+                background = spec_color(time_spoken_total_february$JACKSON, end = 0.5),
+                popover = paste("am:", time_spoken_total_february$JACKSON)) %>%
+    column_spec(8, color = "white",
+                background = spec_color(time_spoken_total_february$KAGAN, end = 0.5),
+                popover = paste("am:", time_spoken_total_february$KAGAN)) %>%
+    column_spec(9, color = "white",
+                background = spec_color(time_spoken_total_february$KAVANAUGH, end = 0.5),
+                popover = paste("am:", time_spoken_total_february$KAVANAUGH)) %>%
+    column_spec(10, color = "white",
+                background = spec_color(time_spoken_total_february$SOTOMAYOR, end = 0.5),
+                popover = paste("am:", time_spoken_total_february$SOTOMAYOR)) %>%
+    column_spec(11, color = "white",
+                background = spec_color(time_spoken_total_february$THOMAS, end = 0.5),
+                popover = paste("am:", time_spoken_total_february$THOMAS))
+} #Compile Table
+
+speaking_times_february #Print Preview
+save_kable(speaking_times_february, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/total_speaking_time.html")
+html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/total_speaking_time.html"
+phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
+webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/total_speaking_time.png", vwidth = 1250, vheight = 100)
+
+
+################################################################################
+#Earlier Terms - Words
 ################################################################################
 {
 
@@ -686,7 +835,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
   oa_table
 
-  save_kable(oa_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/oa_table.html")
+  save_kable(oa_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/oa_table.html")
 
 
 
@@ -726,7 +875,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
                 popover = paste("am:", oa$THOMAS))
 
   totals_table
-  save_kable(totals_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/totals_table.html")
+  save_kable(totals_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/totals_table.html")
 
   custom_colors <- c("#5FA934", "#3B5E8B", "#522559")
 
@@ -776,6 +925,6 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
   word_count_plot
 
-  ggsave("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/word_count_plot_OT22.png", word_count_plot, dpi = 300)
+  ggsave("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/word_count_plot_OT22.png", word_count_plot, dpi = 300)
 
 } #OT 2022

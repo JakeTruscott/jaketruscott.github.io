@@ -602,7 +602,6 @@ library(dplyr); library(stringi); library(stringr); library(ggplot2); library(gg
 
 } #OT 2023 (By Sitting) -- Currently February
 
-
 {
 
   base_url <- "https://github.com/JakeTruscott/scotustext/raw/master/Data/"

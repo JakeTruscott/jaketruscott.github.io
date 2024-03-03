@@ -117,7 +117,44 @@ We give particular thanks to \textcolor{blue}{\textless NAME\textgreater{}} and 
 \newpage
 \section{\underline{Toplines}}
 
+\noindent \Large{\underline{\textbf{Decisions}}} %Decisions
+\normalsize
+\begin{itemize}
+\item Most Authored Opinions:
+  \begin{itemize}
+    \item Majority Opinions:
+    \item Concurrences:
+    \item Dissents:
+  \end{itemize}
+\item Decisions by Coalition:
+  \begin{itemize}
+    \item (9-0):
+    \item (8-1):
+    \item (7-2):
+    \item (6-3, Any Combination):
+    \item (6-3, Ideologically Split):
+    \item (5-4):
+  \end{itemize}
+\item Longest Opinion (Word Count):
+\end{itemize}
+\vspace{2.5mm}
 
+\noindent \Large{\underline{\textbf{Oral Arguments}}} %Oral Arguments
+\normalsize
+\begin{itemize}
+\item Longest Argument (Minutes):
+\item Most Frequent Arguing Counsel:
+\item Most Time Speaking (Term Total, Justice):
+\item Most Time Speaking (Single Argument, Justice):
+\item Most Time Speaking (Single Argument, Attorney):
+\end{itemize}
+
+\noindent \vspace{2.5mm}
+\noindent \Large{\underline{\textbf{Docket}}} %Docket\
+\normalsize
+\begin{itemize}
+\item Petitions Filed (Approx.):
+\end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Decisions %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
