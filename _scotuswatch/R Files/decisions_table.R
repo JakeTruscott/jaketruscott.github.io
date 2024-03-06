@@ -145,7 +145,9 @@ get_vote_color <- function(value){
 
 {
   decisions_info <- decisions_data[,1:7] %>%
-    arrange(`Date Argued`) %>%
+    mutate(`Date Decided` = as.Date(`Date Decided`, "%m/%d/%y"),
+           `Date Argued` = as.Date(`Date Argued`, "%m/%d/%y")) %>%
+    arrange(`Date Decided`) %>%
     kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
     column_spec(c(1:6), bold = TRUE) %>%
     column_spec(7, bold = TRUE, border_right = TRUE) %>%
@@ -157,8 +159,9 @@ get_vote_color <- function(value){
 
 {
   decision_table <- decisions_data[, c(1:3, 8:16)] %>%
-    arrange(`Date Argued`) %>%
-    select(-c(`Date Argued`)) %>%
+    mutate(`Date Decided` = as.Date(`Date Decided`, "%m/%d/%y"),
+           `Date Argued` = as.Date(`Date Argued`, "%m/%d/%y")) %>%
+    arrange(`Date Decided`) %>%    select(-c(`Date Argued`)) %>%
     kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
     add_header_above(c(" ", " ", original_column_names[8:16])) %>%
     column_spec(1, width = "3cm", bold = TRUE, border_right = TRUE) %>%
@@ -213,6 +216,7 @@ get_vote_color <- function(value){
       escape = FALSE  # Add escape parameter to allow HTML formatting
     )
 } #Compile Vote Matrix Table
+
 
 
 decisions_info #Preview Info Table
