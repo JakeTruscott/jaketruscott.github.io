@@ -222,3 +222,45 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
   phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
   webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/argument_sittings/february_sitting_cases.png", vwidth = 900, vheight = 70)
 } #February Sitting
+
+{
+  case <- c('MURTHY v. MISSOURI', 'NRA v. VULLO', 'GUADALUPE DIAZ v. UNITED STATES', 'TRUCK INSURANCE EXCHANGE v. KAISER GYPSUM CO.', 'GONZALEZ v. TREVINO', 'TEXAS v. NEW MEXICO & COLORADO', 'BECERRA v. SAN CARLOS APACHE TRIBE (Con. w/ 23-253)', 'HARROW v. DOD', 'FDA v. ALLIANCE FOR HIPPOCRATIC MEDICINE (Con. w/ 23-236)', 'ERLINGER v. UNITED STATES', 'THOMAS A. CONNELLY v. UNITED STATES')
+  argued <- c('03/18/2024', '03/18/2024', '03/19/2024', '03/19/2024', '03/20/2024', '03/20/2024', '03/25/2024', '03/25/2024', '03/26/2024', '03/27/2024', '03/27/2024' )
+  petitioner <- c('Brian Fletcher', 'David Cole', 'Jeffrey Fisher', 'Allyson Ho', 'Anya Bidwell', 'Frederick Lui', 'Carolyn Flynn', 'Joshua Davis', 'Elizabeth Prelogar (Federal) & Jessica Ellsworth (Danco)', 'Jeffrey Fisher', 'Kannon Shanmugam')
+  respondent <- c('J. Benjamin Aguinaga', 'Neal Katyal', 'Matthew Guarnieri', 'C. Kevin Marshall (Debtor) & David Frederick (Claimant)', 'Lisa Blatt', 'Lanora Pettit (Texas) & Jeffrey Wechsler (New Mexico)', 'Adam Unikowsky (23-253) & Lloyd Miller (23-250)', 'Aimee w. Brown', 'Erin Hawley', 'Eric Feigin (Resp. Supporting Petitioner)', 'Yaira Dubin')
+  amici <- c('', 'Ephraim McDowell', '', 'Anthony Yang', 'Nicole Reaves', '', 'Lloyd Miller (23-250)', '', '', 'D. Nick Harper', '')
+  lower_court <- c('CA5', 'CA2', 'CA9', 'CA4', 'CA5', 'Orig.', 'CA9 & CA10', 'CAFC', 'CA5', 'CA7', 'CA8')
+  cert_amici <- c(5,7,0,1,7,'NA', 0,0,14,0,0)
+  merits_amici <-  c(44,32,3,7,16,7,4,5,74,3,3)
+
+  March_sitting <- data.frame(
+    'Case' = case,
+    'Argued' = argued,
+    'Petitioner Counsel' = petitioner,
+    'Respondent Counsel' = respondent,
+    'Arguing Amici' = amici,
+    'Lower Court' = lower_court,
+    'Cert-Stage Amici' = cert_amici,
+    'Merits-Stage Amici' = merits_amici
+  )
+  names(March_sitting) <- gsub("\\.", " ", names(March_sitting))
+
+  March_sitting_cases <- March_sitting %>%
+    kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
+    column_spec(1, bold = TRUE, border_right = TRUE, width = "6cm") %>%  # Set the width of the first column
+    column_spec(2, width = "4cm") %>%  # Set the width of columns 2 to 8
+    column_spec(3:4, width = "6cm") %>%  # Set the width of the first column
+    column_spec(5:8, width = "4cm") %>%  # Set the width of columns 2 to 8
+    row_spec(0, bold = TRUE, color = 'white', background = '#080808', align = 'center') %>%
+    row_spec(seq(1, nrow(March_sitting), 1), align = 'center') %>%
+    kable_styling(font_size = 12, bootstrap_options = c("striped", "hover", "condensed"))
+
+  March_sitting_cases
+
+  save_kable(March_sitting_cases, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/argument_sittings/march_sitting_cases.html")
+
+  html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/argument_sittings/march_sitting_cases.html"
+  #webshot::install_phantomjs(force = T)
+  phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
+  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/argument_sittings/march_sitting_cases.png", vwidth = 1000, vheight = 70)
+} #March Sitting

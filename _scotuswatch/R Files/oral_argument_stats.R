@@ -340,7 +340,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   {
     oa <- scotus_OT23 %>%
       filter(speaker_type == 'Justice') %>%
-      filter(sitting == 'February') %>%
+      filter(sitting == 'March') %>%
       group_by(speaker, case_name) %>%
       summarise(total_word_count = sum(word_count)) %>%
       pivot_wider(names_from = speaker, values_from = total_word_count, names_prefix = "word_count_")
@@ -409,11 +409,11 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     oa_table
 
   } #By Argument Table
-  save_kable(oa_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/oa_table_23_February.html")
-  html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/oa_table_23_February.html"
+  save_kable(oa_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/March Sitting 2023/oa_table_23_march.html")
+  html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/March Sitting 2023/oa_table_23_march.html"
   #webshot::install_phantomjs(force = T)
   phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
-  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/oa_table_23_February.png", vwidth = 1250, vheight = 100)
+  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/March Sitting 2023/oa_table_23_march.png", vwidth = 1250, vheight = 100)
 
   {
 
@@ -470,15 +470,15 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
     totals_table
   } #Totals Table (Active)
-  save_kable(totals_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/totals_table_OT23_February.html")
-  html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/totals_table_OT23_February.html"
-  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/totals_table_OT23_February.png", vwidth = 1250, vheight = 100)
+  save_kable(totals_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/March Sitting 2023/totals_table_OT23_march.html")
+  html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/March Sitting 2023/totals_table_OT23_march.html"
+  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/March Sitting 2023/totals_table_OT23_march.png", vwidth = 1250, vheight = 100)
 
   {
     custom_colors <- c("#5FA934", "#3B5E8B", "#522559")
 
     scotus_term <- scotus_OT23 %>%
-      filter(sitting == 'February') %>%
+      filter(sitting == 'March') %>%
       filter(speaker_type == 'Justice') %>%
       group_by(speaker, case_name) %>%
       summarise(total_word_count = sum(word_count)) %>%
@@ -523,13 +523,13 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     word_count_plot
 
   } #Totals Graph (Active)
-  ggsave("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/word_count_plot_OT23_February.png", word_count_plot, dpi = 300)
+  ggsave("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/March Sitting 2023/word_count_plot_OT23_march.png", word_count_plot, dpi = 300)
 
   {
 
 
     attorneys <- scotus_OT23 %>%
-      filter(sitting == "February") %>%
+      filter(sitting == "March") %>%
       mutate(response_to = ifelse(lag(speaker_type) == 'Justice', lag(speaker), NA)) %>%
       filter(speaker_type == "Attorney") %>%
       mutate(speaker = ifelse(speaker == 'MR. SYNDER', 'MR. SNYDER', speaker)) %>%
@@ -603,11 +603,11 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     attorney_participation_table
 
   } #Attorneys OA Participation Figure
-  save_kable(attorney_participation_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/attorney_participation_23_February.html")
-  html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/attorney_participation_23_February.html"
-  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/attorney_participation_23_February.png", vwidth = 1250, vheight = 100)
+  save_kable(attorney_participation_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/March Sitting 2023/attorney_participation_23_march.html")
+  html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/March Sitting 2023/attorney_participation_23_march.html"
+  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/March Sitting 2023/attorney_participation_23_march.png", vwidth = 1250, vheight = 100)
 
-} #OT 2023 (By Sitting) -- Currently February
+} #OT 2023 (By Sitting) -- Currently march
 
 
 ################################################################################
@@ -692,7 +692,7 @@ webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketr
 
 
 ################################################################################
-# OT 2023 (By Active Sitting - Speaking Tim)
+# OT 2023 (By Active Sitting - Speaking Time)
 # Currently *February Sitting*
 ################################################################################
 
