@@ -39,22 +39,22 @@ To Access Oral Argument transcript data for the 2023 Term: <br> <a href="https:/
 <h3> Oral Arguments </h3>
 
 <h4>Oral Argument Rhetoric - Totals (October Term 2023)</h4>
-<iframe src="/images/scotuswatch_tables/totals_table_OT23_active.html" width="110%" height="130pt"></iframe>
-<a href="/images/scotuswatch_tables/totals_table_OT23_active.png"  download="Justice Participation in SCOTUS OA Totals">View Image</a>
+<iframe src="/images/scotuswatch_tables/OT23 Totals/totals_table_OT23_active.html" width="110%" height="130pt"></iframe>
+<a href="/images/scotuswatch_tables/OT23 Totals/totals_table_OT23_active.png"  download="Justice Participation in SCOTUS OA Totals">View Image</a>
 
-<img src="/images/scotuswatch_tables/word_count_plot_OT23.png" width="110%" max-height="500px">
+<img src="/images/scotuswatch_tables/OT23 Totals/word_count_plot_OT23.png" width="110%" max-height="500px">
 <br>
-<a href="/images/scotuswatch_tables/word_count_plot_OT23.png"  download="Justice Participation in SCOTUS OA Bar Chart">View Image</a>
+<a href="/images/scotuswatch_tables/OT23 Totals/word_count_plot_OT23.png"  download="Justice Participation in SCOTUS OA Bar Chart">View Image</a>
 
 
 <h4>Oral Argument Rhetoric - By Argument (October Term 2023)</h4>
-<iframe src="/images/scotuswatch_tables/oa_table_23_active.html" width="110%" height="800pt"></iframe>
-<a href="/images/scotuswatch_tables/oa_table_23_active.png"  download="Justice Participation in SCOTUS OA">View Image</a>
+<iframe src="/images/scotuswatch_tables/OT23 Totals/oa_table_23_active.html" width="110%" height="800pt"></iframe>
+<a href="/images/scotuswatch_tables/OT23 Totals/oa_table_23_active.png"  download="Justice Participation in SCOTUS OA">View Image</a>
 
 
 <h4>Oral Attorney Participation & Response to Justices - By Argument (October Term 2023)</h4>
-<iframe id="iframeToCapture" src="/images/scotuswatch_tables/attorney_participation_23_active.html" width="110%" height="800pt"></iframe>
-<a href="/images/scotuswatch_tables/attorney_participation_23_active.png"  download="Attorney Participation in SCOTUS OA">View Image</a>
+<iframe id="iframeToCapture" src="/images/scotuswatch_tables/OT23 Totals/attorney_participation_23_active.html" width="110%" height="800pt"></iframe>
+<a href="/images/scotuswatch_tables/OT23 Totals/attorney_participation_23_active.png"  download="Attorney Participation in SCOTUS OA">View Image</a>
 
 
 
