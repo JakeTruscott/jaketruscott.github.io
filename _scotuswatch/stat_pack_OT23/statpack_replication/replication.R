@@ -58,6 +58,48 @@ for (i in 1:length(earlier_decisions_path)){
 }
 
 
+################################################################################
+#Oral Arguments
+# Calendar
+# Participation - Justices & Attorneys
+# Time & Word Counts - By Argument
+################################################################################
+
+{
+
+  base_url <- "https://github.com/JakeTruscott/scotustext/raw/master/Data/"
+  rdata_url <- paste0(base_url, "scotus_transcripts_23.rdata")
+  oa23 <- get(load(url(rdata_url)))
+
+} #Load OT2023 OA Data
+
+{
+
+  arguments <- oa23 %>%
+    filter(speaker_type == 'Attorney') %>%
+    select(sitting, case_name, docket, speaker, speaker_type) %>%
+    unique() %>%
+    group_by(case_name, docket, sitting) %>%
+    mutate(attorney_count = max(row_number())) %>%
+    reframe(speaker = paste(speaker, collapse = " \\\\ & &  "),
+            attorney_count = attorney_count) %>%
+    unique() %>%
+    mutate(case_name = paste0('multirow{', attorney_count, '}{=}{', case_name, '}'),
+           docket = paste0('multirow{', attorney_count, '}{*}{', docket, '}')) %>%
+    rowwise() %>%
+    mutate(latex = paste0(case_name, ' & ', docket, ' & ', speaker, ' \\\\ \\addlinespace')) %>%
+    filter(sitting == 'February') %>%
+    unique() %>%
+    select(latex)
+
+  cat(arguments$latex)
+
+
+
+
+
+} #Clean & Compile Table
+
 
 
 
