@@ -126,11 +126,88 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
   } #By Argument Table
   save_kable(oa_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/oa_table_23_active.html")
-
   html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/oa_table_23_active.html"
   #webshot::install_phantomjs(force = T)
   phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
   webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/oa_table_23_active.png", vwidth = 900, vheight = 70)
+
+  {
+
+
+
+    min = seq(1, nrow(oa_data), by = 10)
+    max = min + 10
+    max = ifelse(max > nrow(oa), nrow(oa), max)
+
+    oa_data <- oa
+    matching_columns <- intersect(colnames(oa_data), names(justice_image_labels))
+
+    original_column_names <- colnames(oa_data)
+
+    oa_data <- oa_data %>%
+      rename_at(.vars = matching_columns, .funs = ~ justice_image_labels[.])
+
+    for (i in 1:length(min)){
+
+      start = min[i]
+      end = max[i]
+
+      oa_data_temp = oa_data[c(start:end),]
+
+      oa_table_temp <- oa_data_temp %>%
+        kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
+        add_header_above(original_column_names) %>%
+        column_spec(1, bold = TRUE, border_right = TRUE, color = "black") %>%
+        row_spec(0, bold = TRUE, color = 'white', background = '#080808', align = 'center') %>%
+        row_spec(seq(1, nrow(oa_data_temp), 1), align = 'center') %>%
+        kable_styling(font_size = 12, bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+        column_spec(2, color = "white",
+                    background = spec_color(oa$ROBERTS, end = 0.5),
+                    popover = paste("am:", oa$ROBERTS), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
+        column_spec(3, color = "white",
+                    background = spec_color(oa$ALITO, end = 0.5),
+                    popover = paste("am:", oa$ALITO), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
+        column_spec(4, color = "white",
+                    background = spec_color(oa$BARRETT, end = 0.5),
+                    popover = paste("am:", oa$BARRETT), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
+        column_spec(5, color = "white",
+                    background = spec_color(oa$GORSUCH, end = 0.5),
+                    popover = paste("am:", oa$GORSUCH), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
+        column_spec(6, color = "white",
+                    background = spec_color(oa$JACKSON, end = 0.5),
+                    popover = paste("am:", oa$JACKSON), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
+        column_spec(7, color = "white",
+                    background = spec_color(oa$KAGAN, end = 0.5),
+                    popover = paste("am:", oa$KAGAN), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
+        column_spec(8, color = "white",
+                    background = spec_color(oa$KAVANAUGH, end = 0.5),
+                    popover = paste("am:", oa$KAVANAUGH), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
+        column_spec(9, color = "white",
+                    background = spec_color(oa$SOTOMAYOR, end = 0.5),
+                    popover = paste("am:", oa$SOTOMAYOR), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
+        column_spec(10, color = "white",
+                    background = spec_color(oa$THOMAS, end = 0.5),
+                    popover = paste("am:", oa$THOMAS), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;")
+
+
+      oa_table_temp
+
+      output_dir = paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/totals_table_OT23_active_", i, ".html")
+
+      save_kable(oa_table_temp, file = output_dir)
+
+
+    }
+
+
+    for (i in 1:length(min)){
+      html_file_path <- paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/totals_table_OT23_active_", i, ".html")
+      webshot::webshot(html_file_path, paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/totals_table_OT23_active_", i, ".png"), vwidth = 900, vheight = 70)
+
+    }
+
+
+  } #Argument Table by Month - For Statpack
 
   {
 
@@ -324,6 +401,38 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   #webshot::install_phantomjs(force = T)
   #phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
   webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/attorney_participation_23_active.png", vwidth = 800, vheight = 70)
+
+  {
+
+    attorney_sp <- attorney_participation[,c(1:3)]
+    names(attorney_sp) = c('Argument', 'Attorney', 'Total_Words')
+
+    min = seq(1, nrow(attorney_sp), by = 25)
+    max = min + 25
+    max = ifelse(max > nrow(attorney_sp), nrow(attorney_sp), max)
+
+
+    temp <- attorney_sp[c(min[6]:max[6]),] %>%
+      arrange(desc(Argument)) %>%
+      mutate(Attorney = gsub('(Jr\\.|| I|| II)', '', Attorney)) %>%
+      mutate(Attorney = sapply(strsplit(as.character(Attorney), '\\s+'), tail, 1)) %>%
+      group_by(Argument) %>%
+      mutate(attorney_count = max(row_number())) %>%
+      mutate(Argument = paste0('multirow{', attorney_count, '}{=}{', Argument, "} &")) %>%
+      reframe(combined = paste0(Attorney, ' (', Total_Words, ') \\ &')) %>%
+      ungroup() %>%
+      group_by(Argument) %>%
+      summarise(combined = paste0(combined, collapse = ' ')) %>%
+      ungroup() %>%
+      mutate(combined = paste0(Argument, ' ', combined),
+             combined = gsub('\\&$', 'addlinespace', combined)) %>%
+      select(combined)
+
+
+    cat(temp$combined)
+
+  } #Attorney Participation Table - Shortened for StatPack
+
 
 } #OT 2023 (Totals)
 
@@ -766,6 +875,103 @@ save_kable(speaking_times_february, "C:/Users/Jake Truscott/Documents/GitHub/jak
 html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/total_speaking_time.html"
 phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
 webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/total_speaking_time.png", vwidth = 1250, vheight = 100)
+
+################################################################################
+# OT 2023 (By Active Sitting - Speaking Time)
+# By Sitting
+################################################################################
+
+{
+
+  for (i in unique(scotus_OT23$sitting)){
+
+    time_spoken_total <- scotus_OT23 %>%
+      filter(speaker_type == 'Justice') %>%
+      filter(sitting == i) %>%
+      mutate(case_name = ifelse(grepl('Kinder Morgan', case_name), 'Ohio, Et Al. Applicants v. Epa', case_name)) %>%
+      mutate(time_spoken = text_stop - text_start) %>%
+      group_by(speaker, case_name) %>%
+      summarise(total_time_spoken = sum(time_spoken)) %>%
+      mutate(total_time_spoken_minutes = round(total_time_spoken/60, 2)) %>%
+      group_by(case_name) %>%
+      pivot_wider(names_from = speaker, values_from = total_time_spoken_minutes, names_prefix = "time_spoken_") %>%
+      summarise_all(.funs = sum, na.rm = T) %>%
+      mutate(total_time_spoken = rowSums(across(-c(total_time_spoken, case_name)))) %>%
+      rename_with(~str_replace(., "time_spoken_", ""), -total_time_spoken) %>%
+      rename("Total Time\n(Minutes)" = total_time_spoken)
+
+
+    speaking_data <- time_spoken_total
+    matching_columns <- intersect(colnames(speaking_data), names(justice_image_labels))
+
+    original_column_names <- colnames(speaking_data)
+    original_column_names[1:2] <- ' '
+
+    speaking_data <- speaking_data %>%
+      rename_at(.vars = matching_columns, .funs = ~ justice_image_labels[.]) %>%
+      rename(`Case` = case_name)
+
+
+    speaking_times <- speaking_data %>%
+      kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
+      add_header_above( original_column_names) %>%
+      column_spec(1, bold = TRUE, border_right = TRUE, width = "1000px", extra_css = 'font-size: 14px;') %>%
+      row_spec(0, bold = TRUE, color = 'white', background = '#080808', align = 'center') %>%
+      row_spec(seq(1, nrow(speaking_data), 1), align = 'center') %>%
+      kable_styling(font_size = 12, bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+      column_spec(1, color = 'black') %>%
+      column_spec(2, color = "black",
+                  popover = paste("am:", time_spoken_total$`Total Time
+(Minutes)`), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;")  %>%
+      column_spec(3, color = "white",
+                  background = spec_color(time_spoken_total$ROBERTS, end = 0.5),
+                  popover = paste("am:", time_spoken_total$ROBERTS), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
+      column_spec(4, color = "white",
+                  background = spec_color(time_spoken_total$ALITO, end = 0.5),
+                  popover = paste("am:", time_spoken_total$ALITO), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
+      column_spec(5, color = "white",
+                  background = spec_color(time_spoken_total$BARRETT, end = 0.5),
+                  popover = paste("am:", time_spoken_total$BARRETT), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
+      column_spec(6, color = "white",
+                  background = spec_color(time_spoken_total$GORSUCH, end = 0.5),
+                  popover = paste("am:", time_spoken_total$GORSUCH), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
+      column_spec(7, color = "white",
+                  background = spec_color(time_spoken_total$JACKSON, end = 0.5),
+                  popover = paste("am:", time_spoken_total$JACKSON), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
+      column_spec(8, color = "white",
+                  background = spec_color(time_spoken_total$KAGAN, end = 0.5),
+                  popover = paste("am:", time_spoken_total$KAGAN), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
+      column_spec(9, color = "white",
+                  background = spec_color(time_spoken_total$KAVANAUGH, end = 0.5),
+                  popover = paste("am:", time_spoken_total$KAVANAUGH), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
+      column_spec(10, color = "white",
+                  background = spec_color(time_spoken_total$SOTOMAYOR, end = 0.5),
+                  popover = paste("am:", time_spoken_total$SOTOMAYOR), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
+      column_spec(11, color = "white",
+                  background = spec_color(time_spoken_total$THOMAS, end = 0.5),
+                  popover = paste("am:", time_spoken_total$THOMAS), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;")
+
+    output_path = paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/statpack_oa_times/oa_speaking_times_", i, '.html')
+
+     save_kable(speaking_times, file = output_path)
+
+
+  }
+
+
+  for (i in unique(scotus_OT23$sitting)){
+
+    html_file_path = paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/statpack_oa_times/oa_speaking_times_", i, '.html')
+    png_file_path = paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/statpack_oa_times/oa_speaking_times_", i, '.png')
+    webshot::webshot(html_file_path, png_file_path, vwidth = 1000, vheight = 100)
+
+  }
+
+
+
+} #Speaking Times by Sitting - For Statpack
+
+
 
 
 ################################################################################
