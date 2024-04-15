@@ -1,7 +1,7 @@
-\input{"C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/statpack_style.tex"}
-
+\input{"statpack_style.tex"}
 
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 
 \begin{tikzpicture}[remember picture, overlay]
   \draw[line width = 4pt] ($(current page.north west) + (0.7in,-0.7in)$) rectangle ($(current page.south east) + (-0.7in,0.7in)$);
@@ -48,7 +48,7 @@ We give particular thanks to \textcolor{blue}{\textless NAME\textgreater{}} and 
 
 \section{\underline{Preface}}
 
-\input{"C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/statpack_sections/preface_statpack.tex"}
+\input{"statpack_sections/preface_statpack.tex"}
 
 
 
@@ -58,7 +58,7 @@ We give particular thanks to \textcolor{blue}{\textless NAME\textgreater{}} and 
 \newpage
 \section{\underline{Data Disclosure}}
 
-\input{"C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/statpack_sections/data_disclosure_statpack.tex"}
+\input{"statpack_sections/data_disclosure_statpack.tex"}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -74,7 +74,7 @@ We give particular thanks to \textcolor{blue}{\textless NAME\textgreater{}} and 
 
 \newpage
 
-\input{"C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/statpack_sections/topline_statistics_statpack.tex"}
+\input{"statpack_sections/topline_statistics_statpack.tex"}
 
 \newpage
 
@@ -91,10 +91,10 @@ We give particular thanks to \textcolor{blue}{\textless NAME\textgreater{}} and 
     {\Huge\textbf{\section{\underline{Oral Arguments}}}} % Large and bold text
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.85\textwidth]{C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/Figures/hennessey_courtroom_sketch.jpg} \\
+        \includegraphics[width=0.85\textwidth]{Figures/hennessey_courtroom_sketch.jpg} \\
         \footnotesize{Photo Credit: Courtroom sketch by Bill Hennessy (PBS NewsHour)} \\
         \vspace{2mm}
-        \includegraphics[width=0.85\textwidth]{C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/Figures/hennessey_courtroom_sketch_2.jpg} \\
+        \includegraphics[width=0.85\textwidth]{Figures/hennessey_courtroom_sketch_2.jpg} \\
         \footnotesize{Photo Credit: Courtroom sketch by Bill Hennessy (CNN)} \\
 
     \end{figure}
@@ -106,7 +106,7 @@ We give particular thanks to \textcolor{blue}{\textless NAME\textgreater{}} and 
 
 \newpage
 
-\input{"C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/statpack_sections/oral_argument_calendar_statpack.tex"}
+\input{"statpack_sections/oral_argument_calendar_statpack.tex"}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Participation - Totals (Justice)
@@ -118,7 +118,7 @@ We give particular thanks to \textcolor{blue}{\textless NAME\textgreater{}} and 
 \centering
 \caption{Total Word Counts (By Justice - OT2023)}
 \vspace{2.5mm}
-\includegraphics[width = 0.9\textwidth]{"C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/word_count_plot_OT23.png"} \\
+\includegraphics[width = 0.9\textwidth]{"Figures/word_count_plot_OT23.png"} \\
 \vspace{2mm}
 \footnotesize{Data Source: Compiled from Oyez}
 \end{figure}
@@ -127,19 +127,19 @@ We give particular thanks to \textcolor{blue}{\textless NAME\textgreater{}} and 
 % OA Justice Word Counts
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{"C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/statpack_sections/oral_argument_word_counts_justices_statpack.tex"}
+\input{"statpack_sections/oral_argument_word_counts_justices_statpack.tex"}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % OA Attorney Word Counts
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{"C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/statpack_sections/oral_argument_participation_attorneys_statpack.tex"}
+\input{"statpack_sections/oral_argument_participation_attorneys_statpack.tex"}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % OA Justice Speaking Times
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{"C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/statpack_sections/oral_argument_justice_speaking_times_statpack.tex"}
+\input{"statpack_sections/oral_argument_justice_speaking_times_statpack.tex"}
 
 
 \newpage
@@ -225,10 +225,10 @@ We give particular thanks to \textcolor{blue}{\textless NAME\textgreater{}} and 
     {\Huge\textbf{\section{\underline{Docket}}}} % Large and bold text
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.85\textwidth]{C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/Figures/docket_filing.jpg} \\
+        \includegraphics[width=0.85\textwidth]{Figures/docket_filing.jpg} \\
         \footnotesize{Photo Credit: Chris Geidner (Law Dork)} \\
         \vspace{2mm}
-        \includegraphics[width=0.85\textwidth]{C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/Figures/docket_filing_books.jpg} \\
+        \includegraphics[width=0.85\textwidth]{Figures/docket_filing_books.jpg} \\
         \footnotesize{Photo Credit: Donna Sokol (Library of Congress Blogs)} \\
 
     \end{figure}
@@ -243,7 +243,7 @@ We give particular thanks to \textcolor{blue}{\textless NAME\textgreater{}} and 
 \subsection{\centering Filing Trends -- 2023 Term}
 \centering
 \caption{Filing Trends by Type (OT2023)}
-\includegraphics[width = 0.9\textwidth]{"C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/Figures/dockets_ot_23.png"} \\
+\includegraphics[width = 0.9\textwidth]{"Figures/dockets_ot_23.png"} \\
 \footnotesize{\emph{Note}: Does not include original jurisdiction filings.} \\
 \footnotesize{Data Source: \href{https://www.supremecourt.gov/docket/docket.aspx}{Supreme Court of the United States} (Retrieved using \href{https://jaketruscott.github.io/scotustext/}{\texttt{scotustext R}})}
 
@@ -255,7 +255,7 @@ We give particular thanks to \textcolor{blue}{\textless NAME\textgreater{}} and 
 % Court of Origin
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{"C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/statpack_sections/docket_court_of_origin.tex"}
+\input{"statpack_sections/docket_court_of_origin.tex"}
 
 \newpage
 

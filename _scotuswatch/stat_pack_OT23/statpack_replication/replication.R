@@ -131,7 +131,7 @@ combined_decisions
       rename(case_name = short_hand) %>%
       mutate(case_name = gsub('\\,', '', case_name))
 
-    output_path = paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/oral_argument_speaking/attorney_participation_", i, ".csv")
+    output_path = paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/Tables/oral_argument_speaking/attorney_participation_", i, ".csv")
 
     write.table(attorneys, file = output_path,  row.names = F, quote = F, sep = ',')
 
