@@ -21,7 +21,7 @@ Statpack: Feldman, A. & Truscott, J. S. (2024, June 30). Supreme Court 2023-2024
 ################################################################################
 # Load Packages
 ################################################################################
-library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); library(htmltools); library(ggplot2); library(png); library(dplyr); library(stringi); library(stringr); library(ggplot2); library(ggthemes); library(anytime); library(tm); library(scotustext); library(readxl); library(ggpattern); library(png); library(ggtext); library(grid); library(tidyr); library(readxl); library(anytime); library(sf)
+library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); library(htmltools); library(ggplot2); library(png); library(dplyr); library(stringi); library(stringr); library(ggplot2); library(ggthemes); library(anytime); library(tm); library(scotustext); library(readxl); library(ggpattern); library(png); library(ggtext); library(grid); library(tidyr); library(readxl); library(anytime); library(sf); library(purrr)
 
 
 ################################################################################
@@ -70,20 +70,55 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
 {
 
-  decisions_ot_23 <- read_xlsx(path = "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/ot23_decisions/OT_23_Decisions.xlsx")
+  decisions_ot_23 <- read_xlsx(path = "ot23_decisions/OT_23_Decisions.xlsx")
   decisions_ot_23 <- decisions_ot_23 %>%
     mutate(`Case` = gsub('\\,', '', `Case`),
            Decision = gsub('\\,', '', Decision))
-  write.table(decisions_ot_23, file = "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/ot23_decisions/OT_23_Decisions.csv", row.names = F, quote = F, sep = ',')
+  write.table(decisions_ot_23, file = "ot23_decisions/OT_23_Decisions.csv", row.names = F, quote = F, sep = ',')
 
 
 } # Decision Breakdowns
 
-decisions_23 <- scotustext::decision_processor(dir_path = "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/ot23_decisions/decision_pdfs_OT23") #OT23
+decisions_23 <- scotustext::decision_processor(dir_path = "ot23_decisions/decision_pdfs_OT23") #OT23
 
-earlier_decisions <- get(load('C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/ot23_decisions/earlier_decisions_processed.rdata'))
+earlier_decisions <- get(load('ot23_decisions/earlier_decisions_processed.rdata'))
 
 combined_decisions
+
+
+{
+
+  decisions_matrix_data <- decisions_ot_23 %>%
+    select(ROBERTS, ALITO, THOMAS, SOTOMAYOR, KAGAN, GORSUCH, KAVANAUGH, BARRETT, JACKSON) %>%
+    mutate(across(everything(), ~ ifelse(. > 0, 1, 0)))
+  judge_matrix <- as.matrix(decisions_matrix_data)
+
+  n_judges <- ncol(decisions_matrix_data)
+  agreement_matrix <- matrix(NA, nrow = n_judges, ncol = n_judges)
+
+  # Calculate the percentage agreement between each pair of judges
+  for (i in 1:n_judges) {
+    for (j in 1:n_judges) {
+      agreement_matrix[i, j] <- round(sum(decisions_matrix_data[, i] == decisions_matrix_data[, j]) / nrow(decisions_matrix_data) * 100, 2)
+    }
+  }
+
+
+  colnames(agreement_matrix) <- colnames(decisions_matrix_data)
+  rownames(agreement_matrix) <- colnames(decisions_matrix_data)
+
+  row_names_column <- paste0(stringr::str_to_title(colnames(decisions_matrix_data)), ".png")
+
+  agreement_matrix <- data.frame(cbind(row_names_column, agreement_matrix))
+  names(agreement_matrix)[1] <- ""
+
+
+  write.table(agreement_matrix, file = 'stat_pack_OT23/Tables/decision_tables/agreement_matrix.csv', sep = ',', quote = FALSE, row.names = F)
+
+
+
+
+} # Justice Vote Matrix (OT23)
 
 
 ################################################################################

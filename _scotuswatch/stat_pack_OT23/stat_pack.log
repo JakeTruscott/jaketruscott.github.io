@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3.31) (preloaded format=pdflatex 2024.4.15)  15 APR 2024 12:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3.31) (preloaded format=pdflatex 2024.4.15)  15 APR 2024 16:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -836,6 +836,9 @@ LaTeX Warning: Label `tab:table1' multiply defined.
 
 
 LaTeX Warning: Label `tab:table1' multiply defined.
+
+
+LaTeX Warning: Label `tab:yourlabel' multiply defined.
 
 
 LaTeX Warning: Label `tab:yourlabel' multiply defined.
@@ -2297,139 +2300,234 @@ l.210 \end{landscape}
                      ])
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 170.
+(hyperref)                removing `math shift' on input line 155.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 170.
+(hyperref)                removing `\@@underline' on input line 155.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 170.
+(hyperref)                removing `\hbox' on input line 155.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 170.
+(hyperref)                removing `\mathsurround' on input line 155.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 170.
+(hyperref)                removing `\z@' on input line 155.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 170.
+(hyperref)                removing `math shift' on input line 155.
+
+(statpack_sections/decisions_agreement_matrix.tex
+File: Figures/justice_images/Roberts.png Graphic file (type png)
+<use Figures/justice_images/Roberts.png>
+Package pdftex.def Info: Figures/justice_images/Roberts.png  used on input line
+ 24.
+(pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
+File: Figures/justice_images/Thomas.png Graphic file (type png)
+<use Figures/justice_images/Thomas.png>
+Package pdftex.def Info: Figures/justice_images/Thomas.png  used on input line 
+24.
+(pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
+File: Figures/justice_images/Alito.png Graphic file (type png)
+<use Figures/justice_images/Alito.png>
+Package pdftex.def Info: Figures/justice_images/Alito.png  used on input line 2
+4.
+(pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
+File: Figures/justice_images/Sotomayor.png Graphic file (type png)
+<use Figures/justice_images/Sotomayor.png>
+Package pdftex.def Info: Figures/justice_images/Sotomayor.png  used on input li
+ne 24.
+(pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
+File: Figures/justice_images/Kagan.png Graphic file (type png)
+<use Figures/justice_images/Kagan.png>
+Package pdftex.def Info: Figures/justice_images/Kagan.png  used on input line 2
+4.
+(pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
+File: Figures/justice_images/Gorsuch.png Graphic file (type png)
+<use Figures/justice_images/Gorsuch.png>
+Package pdftex.def Info: Figures/justice_images/Gorsuch.png  used on input line
+ 24.
+(pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
+File: Figures/justice_images/Kavanaugh.png Graphic file (type png)
+<use Figures/justice_images/Kavanaugh.png>
+Package pdftex.def Info: Figures/justice_images/Kavanaugh.png  used on input li
+ne 24.
+(pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
+File: Figures/justice_images/Barrett.png Graphic file (type png)
+<use Figures/justice_images/Barrett.png>
+Package pdftex.def Info: Figures/justice_images/Barrett.png  used on input line
+ 24.
+(pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
+File: Figures/justice_images/Jackson.png Graphic file (type png)
+<use Figures/justice_images/Jackson.png>
+Package pdftex.def Info: Figures/justice_images/Jackson.png  used on input line
+ 24.
+(pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
+File: Figures/justice_images/Roberts.png Graphic file (type png)
+<use Figures/justice_images/Roberts.png>
+Package pdftex.def Info: Figures/justice_images/Roberts.png  used on input line
+ 24.
+(pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
+File: Figures/justice_images/Alito.png Graphic file (type png)
+<use Figures/justice_images/Alito.png>
+Package pdftex.def Info: Figures/justice_images/Alito.png  used on input line 2
+4.
+(pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
+File: Figures/justice_images/Thomas.png Graphic file (type png)
+<use Figures/justice_images/Thomas.png>
+Package pdftex.def Info: Figures/justice_images/Thomas.png  used on input line 
+24.
+(pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
+File: Figures/justice_images/Sotomayor.png Graphic file (type png)
+<use Figures/justice_images/Sotomayor.png>
+Package pdftex.def Info: Figures/justice_images/Sotomayor.png  used on input li
+ne 24.
+(pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
+File: Figures/justice_images/Kagan.png Graphic file (type png)
+<use Figures/justice_images/Kagan.png>
+Package pdftex.def Info: Figures/justice_images/Kagan.png  used on input line 2
+4.
+(pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
+File: Figures/justice_images/Gorsuch.png Graphic file (type png)
+<use Figures/justice_images/Gorsuch.png>
+Package pdftex.def Info: Figures/justice_images/Gorsuch.png  used on input line
+ 24.
+(pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
+File: Figures/justice_images/Kavanaugh.png Graphic file (type png)
+<use Figures/justice_images/Kavanaugh.png>
+Package pdftex.def Info: Figures/justice_images/Kavanaugh.png  used on input li
+ne 24.
+(pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
+File: Figures/justice_images/Barrett.png Graphic file (type png)
+<use Figures/justice_images/Barrett.png>
+Package pdftex.def Info: Figures/justice_images/Barrett.png  used on input line
+ 24.
+(pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
+File: Figures/justice_images/Jackson.png Graphic file (type png)
+<use Figures/justice_images/Jackson.png>
+Package pdftex.def Info: Figures/justice_images/Jackson.png  used on input line
+ 24.
+(pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
+)
+Overfull \hbox (80.11879pt too wide) in paragraph at lines 24--164
+[]
+ []
+
+
+Package hyperref Warning: The anchor of a bookmark and its parent's must not
+(hyperref)                be the same. Added a new anchor on input line 169.
 
 [26
 
 ]
 
-Package hyperref Warning: The anchor of a bookmark and its parent's must not
-(hyperref)                be the same. Added a new anchor on input line 178.
-
-[27]
-
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 226.
+(hyperref)                removing `math shift' on input line 198.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 226.
+(hyperref)                removing `\@@underline' on input line 198.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 226.
+(hyperref)                removing `\hbox' on input line 198.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 226.
+(hyperref)                removing `\mathsurround' on input line 198.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 226.
+(hyperref)                removing `\z@' on input line 198.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 226.
+(hyperref)                removing `math shift' on input line 198.
 
-<Figures/docket_filing.jpg, id=323, 1409.265pt x 666.49pt>
+<Figures/docket_filing.jpg, id=319, 1409.265pt x 666.49pt>
 File: Figures/docket_filing.jpg Graphic file (type jpg)
 <use Figures/docket_filing.jpg>
-Package pdftex.def Info: Figures/docket_filing.jpg  used on input line 229.
+Package pdftex.def Info: Figures/docket_filing.jpg  used on input line 201.
 (pdftex.def)             Requested size: 399.29463pt x 188.83295pt.
-<Figures/docket_filing_books.jpg, id=324, 798.985pt x 542.025pt>
+<Figures/docket_filing_books.jpg, id=320, 798.985pt x 542.025pt>
 File: Figures/docket_filing_books.jpg Graphic file (type jpg)
 <use Figures/docket_filing_books.jpg>
-Package pdftex.def Info: Figures/docket_filing_books.jpg  used on input line 23
-2.
+Package pdftex.def Info: Figures/docket_filing_books.jpg  used on input line 20
+4.
 (pdftex.def)             Requested size: 399.29463pt x 270.8795pt.
-[28 <./Figures/docket_filing.jpg> <./Figures/docket_filing_books.jpg>]
+[27 <./Figures/docket_filing.jpg> <./Figures/docket_filing_books.jpg>]
 
 Package hyperref Warning: The anchor of a bookmark and its parent's must not
-(hyperref)                be the same. Added a new anchor on input line 244.
+(hyperref)                be the same. Added a new anchor on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 244.
+(hyperref)                removing `\<let>-command' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\\' on input line 244.
+(hyperref)                removing `\\' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@centercr' on input line 244.
+(hyperref)                removing `\@centercr' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rightskip' on input line 244.
+(hyperref)                removing `\rightskip' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@flushglue' on input line 244.
+(hyperref)                removing `\@flushglue' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leftskip' on input line 244.
+(hyperref)                removing `\leftskip' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@flushglue' on input line 244.
+(hyperref)                removing `\@flushglue' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\finalhyphendemerits' on input line 244.
+(hyperref)                removing `\finalhyphendemerits' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 244.
+(hyperref)                removing `\z@' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\parindent' on input line 244.
+(hyperref)                removing `\parindent' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 244.
+(hyperref)                removing `\z@' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\parfillskip' on input line 244.
+(hyperref)                removing `\parfillskip' on input line 216.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@skip' on input line 244.
+(hyperref)                removing `\z@skip' on input line 216.
 
-<Figures/dockets_ot_23.png, id=329, 642.7212pt x 609.9588pt>
+<Figures/dockets_ot_23.png, id=325, 642.7212pt x 609.9588pt>
 File: Figures/dockets_ot_23.png Graphic file (type png)
 <use Figures/dockets_ot_23.png>
-Package pdftex.def Info: Figures/dockets_ot_23.png  used on input line 247.
+Package pdftex.def Info: Figures/dockets_ot_23.png  used on input line 219.
 (pdftex.def)             Requested size: 422.77664pt x 401.22452pt.
-[29
+[28
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.253 \newpage
+l.225 \newpage
                <./Figures/dockets_ot_23.png>] (statpack_sections/docket_court_o
 f_origin.tex
 
@@ -2489,7 +2587,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 30--30
 []|\T1/cmr/m/n/9 Superior Court of Penn-syl-va-nia -
  []
 
-[30
+[29
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{table.27}) ha
@@ -2506,7 +2604,7 @@ l.35 \newpage
              ]
 Overfull \vbox (2.12369pt too high) has occurred while \output is active []
 
-[31
+[30
 pdfTeX warning (ext4): destination with the same identifier (name{table.29}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2523,7 +2621,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 78--78
 []|\T1/cmr/m/n/9 Supreme Ju-di-cial Court of Mas-
  []
 
-[32
+[31
 pdfTeX warning (ext4): destination with the same identifier (name{table.31}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2558,7 +2656,7 @@ Underfull \hbox (badness 1454) in paragraph at lines 124--124
 
 Overfull \vbox (35.12369pt too high) has occurred while \output is active []
 
-[33
+[32
 pdfTeX warning (ext4): destination with the same identifier (name{table.33}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2571,77 +2669,77 @@ s been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.128 \end{landscape}
                      ]
-<Figures/circuit_origin_figure.png, id=361, 433.62pt x 252.945pt>
+<Figures/circuit_origin_figure.png, id=357, 433.62pt x 252.945pt>
 File: Figures/circuit_origin_figure.png Graphic file (type png)
 <use Figures/circuit_origin_figure.png>
 Package pdftex.def Info: Figures/circuit_origin_figure.png  used on input line 
 147.
 (pdftex.def)             Requested size: 446.26582pt x 260.33556pt.
-) [34
+) [33
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{table.35}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.261 \newpage
+l.233 \newpage
               
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.261 \newpage
-               <./Figures/circuit_origin_figure.png>] [35]
+l.233 \newpage
+               <./Figures/circuit_origin_figure.png>] [34]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 277.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 277.
+(hyperref)                removing `math shift' on input line 249.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 277.
+(hyperref)                removing `\@@underline' on input line 249.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 277.
+(hyperref)                removing `\hbox' on input line 249.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 277.
+(hyperref)                removing `\mathsurround' on input line 249.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 277.
-
-[36]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 286.
+(hyperref)                removing `\z@' on input line 249.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 286.
+(hyperref)                removing `math shift' on input line 249.
+
+[35]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 258.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 286.
+(hyperref)                removing `\@@underline' on input line 258.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 286.
+(hyperref)                removing `\hbox' on input line 258.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 286.
+(hyperref)                removing `\mathsurround' on input line 258.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 286.
+(hyperref)                removing `\z@' on input line 258.
 
-[37] 
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 258.
+
+[36] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (stat_pack.aux)
  ***********
@@ -2655,10 +2753,10 @@ Package rerunfilecheck Info: File `stat_pack.out' has not changed.
 (rerunfilecheck)             Checksum: 0886B68620CF5D2C5882B2A2B3D8FAF7;4159.
  ) 
 Here is how much of TeX's memory you used:
- 22935 strings out of 474423
- 438490 string characters out of 5741718
+ 22945 strings out of 474423
+ 439025 string characters out of 5741718
  1983496 words of memory out of 5000000
- 44721 multiletter control sequences out of 15000+600000
+ 44727 multiletter control sequences out of 15000+600000
  578714 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,19n,90p,898b,548s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2681,9 +2779,9 @@ Users\jaket\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1728.pk
 \ecbx2488.pk><C:/Users/jaket/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
 msfonts/cm/cmsy6.pfb><C:/Users/jaket/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/amsfonts/cm/cmsy8.pfb>
-Output written on stat_pack.pdf (39 pages, 4679321 bytes).
+Output written on stat_pack.pdf (38 pages, 4678932 bytes).
 PDF statistics:
- 906 PDF objects out of 1000 (max. 8388607)
- 83 named destinations out of 1000 (max. 500000)
+ 901 PDF objects out of 1000 (max. 8388607)
+ 82 named destinations out of 1000 (max. 500000)
  307 words of extra memory for PDF output out of 10000 (max. 10000000)
 
