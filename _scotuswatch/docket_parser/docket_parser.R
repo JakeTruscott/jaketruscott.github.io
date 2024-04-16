@@ -427,15 +427,21 @@ docket_parser_old_dockets <- function(dockets){
 
         docket_contacts <- tidyr::fill(docket_contacts, type)
 
+        petitioner_counsel <- data.frame()
+        respondent_counsel <- data.frame()
+        other_counsel <- data.frame()
+
         {
+
           petitioner_contacts <- docket_contacts %>%
-            filter(type == 'petitioner') %>%
+            filter(type == 'Petitioner') %>%
             filter(!X1 == '') %>%
-            filter(!grepl('(Attorney|Attorneys) for (petitioner|petitioners|Appellee|Appellees)', X1, ignore.case = T))
+            filter(!grepl('(Attorney|Attorneys) for (Petitioner|Petitioners|Appellee|Appellees)', X1, ignore.case = T)) %>%
+            filter(!grepl('Party name:', X1))
 
           if (nrow(petitioner_contacts >= 1)){
             petitioner_contacts <- petitioner_contacts %>%
-              mutate(id = rep(1:(n() / 2), each = 2))
+              mutate(id = row_number())
             petitioner_counsel <- data.frame()
 
             for (i in unique(petitioner_contacts$id)){
@@ -445,17 +451,15 @@ docket_parser_old_dockets <- function(dockets){
                 mutate(
                   name = X1[1],
                   location = X2[1],
-                  contact = X3[1],
-                  party = X1[2]
+                  contact = X3[1]
                 ) %>%
-                mutate(party = gsub('Party name: ', '', party, ignore.case = T),
-                       counsel_type = ifelse(grepl('Counsel of Record', name), 'Counsel of Record', 'Additional')) %>%
-                select(name, location, contact, party, counsel_type) %>%
+                mutate(counsel_type = ifelse(grepl('Counsel of Record', name), 'Counsel of Record', 'Additional')) %>%
+                select(name, location, contact, counsel_type) %>%
                 mutate(name = ifelse(grepl('Counsel of Record', name, ignore.case = T), gsub('\\s*Counsel of Record.*', '', name), name)) %>%
                 slice(1) %>%
                 mutate(name = str_trim(name, side = "right")) %>%
                 mutate(name = trimws(name)) %>%
-                mutate(party_type = 'petitioner')
+                mutate(party_type = 'Petitioner')
 
               petitioner_counsel <- bind_rows(petitioner_counsel, petitioner_contacts_temp)
 
@@ -465,18 +469,19 @@ docket_parser_old_dockets <- function(dockets){
             petitioner_counsel <- data.frame()
           }
 
-        } #Petitioner
+        } # petitioner
 
         {
 
           respondent_contacts <- docket_contacts %>%
             filter(type == 'Respondent') %>%
             filter(!X1 == '') %>%
-            filter(!grepl('(Attorney|Attorneys) for (Respondent|Respondents|Appellee|Appellees)', X1, ignore.case = T))
+            filter(!grepl('(Attorney|Attorneys) for (Respondent|Respondents|Appellee|Appellees)', X1, ignore.case = T)) %>%
+            filter(!grepl('Party name:', X1))
 
           if (nrow(respondent_contacts >= 1)){
             respondent_contacts <- respondent_contacts %>%
-              mutate(id = rep(1:(n() / 2), each = 2))
+              mutate(id = row_number())
             respondent_counsel <- data.frame()
 
             for (i in unique(respondent_contacts$id)){
@@ -486,12 +491,10 @@ docket_parser_old_dockets <- function(dockets){
                 mutate(
                   name = X1[1],
                   location = X2[1],
-                  contact = X3[1],
-                  party = X1[2]
+                  contact = X3[1]
                 ) %>%
-                mutate(party = gsub('Party name: ', '', party, ignore.case = T),
-                       counsel_type = ifelse(grepl('Counsel of Record', name), 'Counsel of Record', 'Additional')) %>%
-                select(name, location, contact, party, counsel_type) %>%
+                mutate(counsel_type = ifelse(grepl('Counsel of Record', name), 'Counsel of Record', 'Additional')) %>%
+                select(name, location, contact, counsel_type) %>%
                 mutate(name = ifelse(grepl('Counsel of Record', name, ignore.case = T), gsub('\\s*Counsel of Record.*', '', name), name)) %>%
                 slice(1) %>%
                 mutate(name = str_trim(name, side = "right")) %>%
@@ -513,20 +516,12 @@ docket_parser_old_dockets <- function(dockets){
           other_contacts <- docket_contacts %>%
             filter(type == 'Other') %>%
             filter(!X1 == '') %>%
-            filter(!X1 == 'Other') %>%
-            filter(!X1 == 'other')
+            filter(!grepl('(Attorney|Attorneys) for (Other|Others|Appellee|Appellees)', X1, ignore.case = T)) %>%
+            filter(!grepl('Party name:', X1))
 
-          if (nrow(other_contacts) == 0){
-            other_counsel = data.frame()
-          }  else {
-
-            if (grepl("Party name", other_contacts$X1[1], ignore.case = T)){
-              other_contacts <- other_contacts[-1,]
-            }
-
+          if (nrow(other_contacts >= 1)){
             other_contacts <- other_contacts %>%
-              mutate(id = rep(1:(n() / 2), each = 2))
-
+              mutate(id = row_number())
             other_counsel <- data.frame()
 
             for (i in unique(other_contacts$id)){
@@ -536,25 +531,25 @@ docket_parser_old_dockets <- function(dockets){
                 mutate(
                   name = X1[1],
                   location = X2[1],
-                  contact = X3[1],
-                  party = X1[2]
+                  contact = X3[1]
                 ) %>%
-                mutate(party = gsub('Party name: ', '', party, ignore.case = T),
-                       counsel_type = ifelse(grepl('Counsel of Record', name), 'Counsel of Record', 'Additional')) %>%
-                select(name, location, contact, party, counsel_type) %>%
+                mutate(counsel_type = ifelse(grepl('Counsel of Record', name), 'Counsel of Record', 'Additional')) %>%
+                select(name, location, contact, counsel_type) %>%
                 mutate(name = ifelse(grepl('Counsel of Record', name, ignore.case = T), gsub('\\s*Counsel of Record.*', '', name), name)) %>%
                 slice(1) %>%
                 mutate(name = str_trim(name, side = "right")) %>%
                 mutate(name = trimws(name)) %>%
-                mutate(party_type = 'Other/Amicus')
+                mutate(party_type = 'Other')
 
               other_counsel <- bind_rows(other_counsel, other_contacts_temp)
+
             }
 
+          } else {
+            Other_counsel <- data.frame()
           }
 
-        } #Other
-
+        } # Other
 
         if (nrow(petitioner_counsel) >= 1){
           petitioner_counsel$name <- trimws(petitioner_counsel$name, whitespace = "\\s+")

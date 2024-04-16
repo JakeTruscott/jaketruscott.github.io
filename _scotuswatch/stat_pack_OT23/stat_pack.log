@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.15)  16 APR 2024 08:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.15)  16 APR 2024 14:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -28,6 +28,10 @@ File: size11.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip48
 \belowcaptionskip=\skip49
 \bibindent=\dimen140
+)
+(C:\Users\Jake Truscott\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\times.st
+y
+Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
 ) (C:/PROGRA~1/R/R-43~1.0/share/texmf/tex/latex\Sweave.sty
 Package: Sweave 
 
@@ -85,7 +89,12 @@ Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 (C:\Users\Jake Truscott\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.st
 y
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-))
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 11
+2.
+
+(C:\Users\Jake Truscott\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+)))
 (C:\Users\Jake Truscott\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geomet
 ry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
@@ -1078,8 +1087,9 @@ Package pdftex.def Info: Figures/empirical_scotus_logo.png  used on input line
 (pdftex.def)             Requested size: 301.1261pt x 301.1365pt.
 [1
 
-{C:/Users/Jake Truscott/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Fi
-gures/empirical_scotus_logo.png>]
+{C:/Users/Jake Truscott/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Us
+ers/Jake Truscott/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <.
+/Figures/empirical_scotus_logo.png>]
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <20.74> on input line 41.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -1188,10 +1198,11 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 60.
 
 (statpack_sections/data_disclosure_statpack.tex
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 2
-.
-(C:\Users\Jake Truscott\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
-File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 2.
+
+
+(C:\Users\Jake Truscott\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
@@ -1218,13 +1229,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 10--11
  []
 
 )
-Overfull \hbox (2.51244pt too wide) in paragraph at lines 12--63
-\T1/cmr/m/n/12 Term Stat Pack (Ver-sion 0.1). \T1/cmr/m/it/12 Em-pir-i-calSCO-T
-US\T1/cmr/m/n/12 . Avail-able at: []$\T1/cmtt/m/n/12 https : / / empiricalscotu
-s .
- []
-
-
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
@@ -1311,13 +1315,13 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 92.
 
-<Figures/hennessey_courtroom_sketch.jpg, id=182, 1232.605pt x 748.7975pt>
+<Figures/hennessey_courtroom_sketch.jpg, id=172, 1232.605pt x 748.7975pt>
 File: Figures/hennessey_courtroom_sketch.jpg Graphic file (type jpg)
 <use Figures/hennessey_courtroom_sketch.jpg>
 Package pdftex.def Info: Figures/hennessey_courtroom_sketch.jpg  used on input 
 line 95.
 (pdftex.def)             Requested size: 399.29463pt x 242.56793pt.
-<Figures/hennessey_courtroom_sketch_2.jpg, id=183, 1192.455pt x 683.55376pt>
+<Figures/hennessey_courtroom_sketch_2.jpg, id=173, 1192.455pt x 683.55376pt>
 File: Figures/hennessey_courtroom_sketch_2.jpg Graphic file (type jpg)
 <use Figures/hennessey_courtroom_sketch_2.jpg>
 Package pdftex.def Info: Figures/hennessey_courtroom_sketch_2.jpg  used on inpu
@@ -1490,7 +1494,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 117.
 
-<Figures/word_count_plot_OT23.png, id=208, 601.5273pt x 604.1772pt>
+<Figures/word_count_plot_OT23.png, id=197, 601.5273pt x 604.1772pt>
 File: Figures/word_count_plot_OT23.png Graphic file (type png)
 <use Figures/word_count_plot_OT23.png>
 Package pdftex.def Info: Figures/word_count_plot_OT23.png  used on input line 1
@@ -1555,55 +1559,55 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 2.
 
-<Figures/justice_images/Roberts.png, id=213, 301.125pt x 200.75pt>
+<Figures/justice_images/Roberts.png, id=202, 301.125pt x 200.75pt>
 File: Figures/justice_images/Roberts.png Graphic file (type png)
 <use Figures/justice_images/Roberts.png>
 Package pdftex.def Info: Figures/justice_images/Roberts.png  used on input line
  28.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-<Figures/justice_images/Thomas.png, id=214, 301.125pt x 200.75pt>
+<Figures/justice_images/Thomas.png, id=203, 301.125pt x 200.75pt>
 File: Figures/justice_images/Thomas.png Graphic file (type png)
 <use Figures/justice_images/Thomas.png>
 Package pdftex.def Info: Figures/justice_images/Thomas.png  used on input line 
 28.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-<Figures/justice_images/Alito.png, id=215, 301.125pt x 200.75pt>
+<Figures/justice_images/Alito.png, id=204, 301.125pt x 200.75pt>
 File: Figures/justice_images/Alito.png Graphic file (type png)
 <use Figures/justice_images/Alito.png>
 Package pdftex.def Info: Figures/justice_images/Alito.png  used on input line 2
 8.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-<Figures/justice_images/Sotomayor.png, id=216, 301.125pt x 200.75pt>
+<Figures/justice_images/Sotomayor.png, id=205, 301.125pt x 200.75pt>
 File: Figures/justice_images/Sotomayor.png Graphic file (type png)
 <use Figures/justice_images/Sotomayor.png>
 Package pdftex.def Info: Figures/justice_images/Sotomayor.png  used on input li
 ne 28.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-<Figures/justice_images/Kagan.png, id=217, 301.125pt x 200.75pt>
+<Figures/justice_images/Kagan.png, id=206, 301.125pt x 200.75pt>
 File: Figures/justice_images/Kagan.png Graphic file (type png)
 <use Figures/justice_images/Kagan.png>
 Package pdftex.def Info: Figures/justice_images/Kagan.png  used on input line 2
 8.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-<Figures/justice_images/Gorsuch.png, id=218, 301.125pt x 200.75pt>
+<Figures/justice_images/Gorsuch.png, id=207, 301.125pt x 200.75pt>
 File: Figures/justice_images/Gorsuch.png Graphic file (type png)
 <use Figures/justice_images/Gorsuch.png>
 Package pdftex.def Info: Figures/justice_images/Gorsuch.png  used on input line
  28.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-<Figures/justice_images/Kavanaugh.png, id=219, 301.125pt x 200.75pt>
+<Figures/justice_images/Kavanaugh.png, id=208, 301.125pt x 200.75pt>
 File: Figures/justice_images/Kavanaugh.png Graphic file (type png)
 <use Figures/justice_images/Kavanaugh.png>
 Package pdftex.def Info: Figures/justice_images/Kavanaugh.png  used on input li
 ne 28.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-<Figures/justice_images/Barrett.png, id=220, 301.125pt x 200.75pt>
+<Figures/justice_images/Barrett.png, id=209, 301.125pt x 200.75pt>
 File: Figures/justice_images/Barrett.png Graphic file (type png)
 <use Figures/justice_images/Barrett.png>
 Package pdftex.def Info: Figures/justice_images/Barrett.png  used on input line
  28.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-<Figures/justice_images/Jackson.png, id=221, 301.125pt x 200.75pt>
+<Figures/justice_images/Jackson.png, id=210, 301.125pt x 200.75pt>
 File: Figures/justice_images/Jackson.png Graphic file (type png)
 <use Figures/justice_images/Jackson.png>
 Package pdftex.def Info: Figures/justice_images/Jackson.png  used on input line
@@ -1966,7 +1970,7 @@ s been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.87 \newpage
              ])
-Overfull \hbox (19.61047pt too wide) in paragraph at lines 89--138
+Overfull \hbox (19.28001pt too wide) in paragraph at lines 89--138
 [][] []
  []
 
@@ -2040,7 +2044,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 2.
 
-<Figures/total_time_spoken_plot_OT23.png, id=279, 721.0137pt x 604.1772pt>
+<Figures/total_time_spoken_plot_OT23.png, id=268, 721.0137pt x 604.1772pt>
 File: Figures/total_time_spoken_plot_OT23.png Graphic file (type png)
 <use Figures/total_time_spoken_plot_OT23.png>
 Package pdftex.def Info: Figures/total_time_spoken_plot_OT23.png  used on input
@@ -2101,7 +2105,7 @@ Package pdftex.def Info: Figures/justice_images/Jackson.png  used on input line
  40.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
 
-Overfull \hbox (10.69421pt too wide) in paragraph at lines 40--42
+Overfull \hbox (7.7583pt too wide) in paragraph at lines 40--42
  [][] 
  []
 
@@ -2151,7 +2155,7 @@ Package pdftex.def Info: Figures/justice_images/Jackson.png  used on input line
  72.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
 
-Overfull \hbox (10.69421pt too wide) in paragraph at lines 72--74
+Overfull \hbox (7.7583pt too wide) in paragraph at lines 72--74
  [][] 
  []
 
@@ -2208,7 +2212,7 @@ Package pdftex.def Info: Figures/justice_images/Jackson.png  used on input line
  105.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
 
-Overfull \hbox (10.69421pt too wide) in paragraph at lines 105--107
+Overfull \hbox (7.7583pt too wide) in paragraph at lines 105--107
  [][] 
  []
 
@@ -2265,7 +2269,7 @@ Package pdftex.def Info: Figures/justice_images/Jackson.png  used on input line
  138.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
 
-Overfull \hbox (10.69421pt too wide) in paragraph at lines 138--140
+Overfull \hbox (7.7583pt too wide) in paragraph at lines 138--140
  [][] 
  []
 
@@ -2322,7 +2326,7 @@ Package pdftex.def Info: Figures/justice_images/Jackson.png  used on input line
  171.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
 
-Overfull \hbox (10.69421pt too wide) in paragraph at lines 171--173
+Overfull \hbox (7.7583pt too wide) in paragraph at lines 171--173
  [][] 
  []
 
@@ -2379,7 +2383,7 @@ Package pdftex.def Info: Figures/justice_images/Jackson.png  used on input line
  204.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
 
-Overfull \hbox (10.69421pt too wide) in paragraph at lines 204--206
+Overfull \hbox (7.7583pt too wide) in paragraph at lines 204--206
  [][] 
  []
 
@@ -2420,7 +2424,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 161.
 
-<Figures/decision_image_1.jpg, id=315, 660.4675pt x 449.68pt>
+<Figures/decision_image_1.jpg, id=304, 660.4675pt x 449.68pt>
 File: Figures/decision_image_1.jpg Graphic file (type jpg)
 <use Figures/decision_image_1.jpg>
 Package pdftex.def Info: Figures/decision_image_1.jpg  used on input line 164.
@@ -2477,11 +2481,6 @@ File: Figures/justice_images/Jackson.png Graphic file (type png)
 Package pdftex.def Info: Figures/justice_images/Jackson.png  used on input line
  31.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-
-Overfull \hbox (2.53062pt too wide) in paragraph at lines 31--31
- []|\T1/cmr/m/n/9 Kavanaugh| 
- []
-
 File: Figures/justice_images/Roberts.png Graphic file (type png)
 <use Figures/justice_images/Roberts.png>
 Package pdftex.def Info: Figures/justice_images/Roberts.png  used on input line
@@ -2562,12 +2561,12 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 213.
 
-<Figures/docket_filing.jpg, id=328, 1409.265pt x 666.49pt>
+<Figures/docket_filing.jpg, id=317, 1409.265pt x 666.49pt>
 File: Figures/docket_filing.jpg Graphic file (type jpg)
 <use Figures/docket_filing.jpg>
 Package pdftex.def Info: Figures/docket_filing.jpg  used on input line 216.
 (pdftex.def)             Requested size: 399.29463pt x 188.83295pt.
-<Figures/docket_filing_books.jpg, id=329, 798.985pt x 542.025pt>
+<Figures/docket_filing_books.jpg, id=318, 798.985pt x 542.025pt>
 File: Figures/docket_filing_books.jpg Graphic file (type jpg)
 <use Figures/docket_filing_books.jpg>
 Package pdftex.def Info: Figures/docket_filing_books.jpg  used on input line 21
@@ -2630,7 +2629,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 231.
 
-<Figures/dockets_ot_23.png, id=335, 642.7212pt x 609.9588pt>
+<Figures/dockets_ot_23.png, id=324, 642.7212pt x 609.9588pt>
 File: Figures/dockets_ot_23.png Graphic file (type png)
 <use Figures/dockets_ot_23.png>
 Package pdftex.def Info: Figures/dockets_ot_23.png  used on input line 234.
@@ -2695,11 +2694,6 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 4.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 30--30
-[]|\T1/cmr/m/n/9 Superior Court of Penn-syl-va-nia -
- []
-
 [31
 
 
@@ -2714,10 +2708,7 @@ s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.35 \newpage
-             ]
-Overfull \vbox (2.12369pt too high) has occurred while \output is active []
-
-[32
+             ] [32
 pdfTeX warning (ext4): destination with the same identifier (name{table.30}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2729,12 +2720,7 @@ s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.66 \newpage
-             ]
-Underfull \hbox (badness 10000) in paragraph at lines 78--78
-[]|\T1/cmr/m/n/9 Supreme Ju-di-cial Court of Mas-
- []
-
-[33
+             ] [33
 pdfTeX warning (ext4): destination with the same identifier (name{table.32}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2747,27 +2733,14 @@ s been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.98 \newpage
              ]
-Underfull \hbox (badness 1466) in paragraph at lines 110--110
-[]|\T1/cmr/m/n/9 Circuit Court of Michi-gan - Wayne
+Underfull \hbox (badness 3724) in paragraph at lines 110--110
+[]|\T1/ptm/m/n/9 Circuit Court of Ten-nessee - David-son
  []
 
 
-Underfull \hbox (badness 2726) in paragraph at lines 124--124
-[]|\T1/cmr/m/n/9 Superior Court of Geor-gia - Butts
+Underfull \hbox (badness 1231) in paragraph at lines 110--110
+[]|\T1/ptm/m/n/9 Court of Ap-peals of Ohio - Wash-ing-ton
  []
-
-
-Underfull \hbox (badness 1454) in paragraph at lines 124--124
-[]|\T1/cmr/m/n/9 Superior Court of North Car-olina -
- []
-
-
-Underfull \hbox (badness 1454) in paragraph at lines 124--124
-[]|\T1/cmr/m/n/9 Superior Court of North Car-olina -
- []
-
-
-Overfull \vbox (35.12369pt too high) has occurred while \output is active []
 
 [34
 pdfTeX warning (ext4): destination with the same identifier (name{table.34}) ha
@@ -2782,7 +2755,7 @@ s been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.128 \end{landscape}
                      ]
-<Figures/circuit_origin_figure.png, id=366, 433.62pt x 252.945pt>
+<Figures/circuit_origin_figure.png, id=355, 433.62pt x 252.945pt>
 File: Figures/circuit_origin_figure.png Graphic file (type png)
 <use Figures/circuit_origin_figure.png>
 Package pdftex.def Info: Figures/circuit_origin_figure.png  used on input line 
@@ -2866,37 +2839,23 @@ Package rerunfilecheck Info: File `stat_pack.out' has not changed.
 (rerunfilecheck)             Checksum: E44E1DC87672F6837D663F2384585F77;4135.
  ) 
 Here is how much of TeX's memory you used:
- 23000 strings out of 474485
- 443254 string characters out of 5739922
+ 23062 strings out of 474485
+ 444123 string characters out of 5739922
  1982542 words of memory out of 5000000
- 44714 multiletter control sequences out of 15000+600000
- 578714 words of font info for 77 fonts, out of 8000000 for 9000
+ 44770 multiletter control sequences out of 15000+600000
+ 610143 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,19n,90p,899b,557s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Jake Truscott\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi
-600\ecbx1200.pk> <C:\Users\Jake Truscott\AppData\Local\MiKTeX\fonts/pk/ljfour/j
-knappen/ec/dpi600\ectt0900.pk> <C:\Users\Jake Truscott\AppData\Local\MiKTeX\fon
-ts/pk/ljfour/jknappen/ec/dpi600\ectt1200.pk> <C:\Users\Jake Truscott\AppData\Lo
-cal\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0900.pk> <C:\Users\Jake Trusc
-ott\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0600.pk> <C:\Us
-ers\Jake Truscott\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0
-800.pk> <C:\Users\Jake Truscott\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/e
-c/dpi600\ecti1200.pk> <C:\Users\Jake Truscott\AppData\Local\MiKTeX\fonts/pk/ljf
-our/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Jake Truscott\AppData\Local\MiKTe
-X\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\Jake Truscott\AppDa
-ta\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk> <C:\Users\Jake 
-Truscott\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <
-C:\Users\Jake Truscott\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\
-ecrm1095.pk> <C:\Users\Jake Truscott\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
-pen/ec/dpi600\ecti1728.pk> <C:\Users\Jake Truscott\AppData\Local\MiKTeX\fonts/p
-k/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Jake Truscott\AppData\Local\
-MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk><C:/Users/Jake Truscott/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users
-/Jake Truscott/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cms
-y8.pfb>
-Output written on stat_pack.pdf (40 pages, 4762616 bytes).
+<C:/Users/Jake Truscott/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmsy6.pfb><C:/Users/Jake Truscott/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Jake Truscott/AppData/Local/Program
+s/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/Jake Truscott/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Jake Truscott/App
+Data/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Jake Trus
+cott/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on stat_pack.pdf (40 pages, 4657705 bytes).
 PDF statistics:
- 912 PDF objects out of 1000 (max. 8388607)
+ 424 PDF objects out of 1000 (max. 8388607)
  84 named destinations out of 1000 (max. 500000)
  312 words of extra memory for PDF output out of 10000 (max. 10000000)
 
