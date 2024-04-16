@@ -21,7 +21,7 @@ Statpack: Feldman, A. & Truscott, J. S. (2024, June 30). Supreme Court 2023-2024
 ################################################################################
 # Load Packages
 ################################################################################
-library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); library(htmltools); library(ggplot2); library(png); library(dplyr); library(stringi); library(stringr); library(ggplot2); library(ggthemes); library(anytime); library(tm); library(scotustext); library(readxl); library(ggpattern); library(png); library(ggtext); library(grid); library(tidyr); library(readxl); library(anytime); library(sf); library(purrr)
+library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); library(htmltools); library(ggplot2); library(png); library(dplyr); library(stringi); library(stringr); library(ggplot2); library(ggthemes); library(anytime); library(tm); library(scotustext); library(readxl); library(ggpattern); library(png); library(ggtext); library(grid); library(tidyr); library(readxl); library(anytime); library(sf); library(purrr); library(readxl)
 
 
 ################################################################################
@@ -89,37 +89,134 @@ combined_decisions
 {
 
   decisions_matrix_data <- decisions_ot_23 %>%
-    select(ROBERTS, ALITO, THOMAS, SOTOMAYOR, KAGAN, GORSUCH, KAVANAUGH, BARRETT, JACKSON) %>%
-    mutate(across(everything(), ~ ifelse(. > 0, 1, 0)))
-  judge_matrix <- as.matrix(decisions_matrix_data)
+    select(ROBERTS, THOMAS, ALITO, SOTOMAYOR, KAGAN, GORSUCH, KAVANAUGH, BARRETT, JACKSON) %>%
+    mutate(across(everything(), ~ ifelse(. > 0, 1, 0))) #Get Justices and Replace Vote w/ Majority or Dissent
+  judge_matrix <- as.matrix(decisions_matrix_data) #Convert to Matrix
 
-  n_judges <- ncol(decisions_matrix_data)
-  agreement_matrix <- matrix(NA, nrow = n_judges, ncol = n_judges)
+  n_judges <- ncol(decisions_matrix_data) #Number of Justices
+  agreement_matrix <- matrix(NA, nrow = n_judges, ncol = n_judges) #Create Empty Matrix
 
   # Calculate the percentage agreement between each pair of judges
   for (i in 1:n_judges) {
     for (j in 1:n_judges) {
       agreement_matrix[i, j] <- round(sum(decisions_matrix_data[, i] == decisions_matrix_data[, j]) / nrow(decisions_matrix_data) * 100, 2)
     }
-  }
+  } #Calculate Agreement Percentage
 
+  for (i in 1:ncol(agreement_matrix)) {
+    for (j in 1:ncol(agreement_matrix)) {
+      if (i == j) {
+        agreement_matrix[i, j] <- ""
+      } else if (i < j) {
+        agreement_matrix[i, j] <- ""
+      }
+    }
+  } #Replace Diagonal & Above w/ ""
 
-  colnames(agreement_matrix) <- colnames(decisions_matrix_data)
-  rownames(agreement_matrix) <- colnames(decisions_matrix_data)
+  colnames(agreement_matrix) <- colnames(decisions_matrix_data) #Add Column Names
+  rownames(agreement_matrix) <- colnames(decisions_matrix_data) #Add Row Names
 
-  row_names_column <- paste0(stringr::str_to_title(colnames(decisions_matrix_data)), ".png")
+  row_names_column <- paste0(stringr::str_to_title(colnames(decisions_matrix_data)), ".png") #Add Row Name for Image Path
 
-  agreement_matrix <- data.frame(cbind(row_names_column, agreement_matrix))
+  agreement_matrix <- data.frame(cbind(row_names_column, agreement_matrix)) #Combine Row Names Column to Matrix
   names(agreement_matrix)[1] <- ""
 
 
-  write.table(agreement_matrix, file = 'stat_pack_OT23/Tables/decision_tables/agreement_matrix.csv', sep = ',', quote = FALSE, row.names = F)
+  write.table(agreement_matrix, file = 'stat_pack_OT23/Tables/decision_tables/agreement_matrix.csv', sep = ',', quote = FALSE, row.names = F) #Save
 
 
 
 
-} # Justice Vote Matrix (OT23)
+} # Justice Agreement Vote Matrix (OT23)
 
+{
+
+  opinion_type_by_justice_ot23 <- decisions_ot_23 %>%
+    select(ROBERTS, THOMAS, ALITO, SOTOMAYOR, KAGAN, GORSUCH, KAVANAUGH, BARRETT, JACKSON) %>%
+    pivot_longer(cols = c(ROBERTS, THOMAS, ALITO, SOTOMAYOR, KAGAN, GORSUCH, KAVANAUGH, BARRETT, JACKSON), names_to = "justice", values_to = "decision") %>%
+    mutate(decision_type = case_when(
+      .default = NA,
+      decision == 100 ~ "Majority",
+      decision == 2 ~ "Concurrence",
+      decision == 4 ~ "Concurrence",
+      decision == 5 ~ "Other Concurrence",
+      decision == 7 ~ "Other Concurrence",
+      decision == -1 ~ "Dissent",
+      decision == -3 ~ "Dissent")) %>%
+    select(-c(decision)) %>%
+    filter(!is.na(decision_type)) %>%
+    group_by(justice, decision_type) %>%
+    summarise(count = n()) %>%
+    pivot_wider(names_from = decision_type, values_from = count, values_fill = 0) %>%
+    select(justice, Majority, Concurrence, `Other Concurrence`, Dissent)
+
+  write.table(opinion_type_by_justice_ot23, file = 'stat_pack_OT23/Tables/decision_tables/opinion_type_by_justice_ot23.csv', sep = ',', quote = FALSE, row.names = F) #Save
+
+
+
+} #Table of Opinion Types by Justice (OT23)
+
+{
+
+
+  decisions_by_justice_1 <- decisions_ot_23 %>%
+    select(Case, Docket, Coalition, ROBERTS, THOMAS, ALITO, SOTOMAYOR, KAGAN) %>%
+    pivot_longer(cols = c(ROBERTS, THOMAS, ALITO, SOTOMAYOR, KAGAN), names_to = "justice", values_to = "decision") %>%
+    mutate(justice = factor(justice, levels = c('ROBERTS', 'THOMAS', 'ALITO', 'SOTOMAYOR', 'KAGAN'))) %>%
+    filter(decision == 100) %>%
+    select(-c(decision)) %>%
+    arrange(justice) %>%
+    rename(docket = Docket) %>%
+    left_join(shorthand_case_names, by = 'docket') %>%
+    select(short_hand, Coalition, justice) %>%
+    mutate(Case = paste0(short_hand, ' ', Coalition)) %>%
+    select(Case, justice) %>%
+    group_by(justice) %>%
+    mutate(justice_count = row_number()) %>%
+    mutate(justice = ifelse(justice_count == 1, as.character(justice), "")) %>%
+    select(-c(justice_count))
+
+  write.table(decisions_by_justice_1, file = 'stat_pack_OT23/Tables/decision_tables/decisions_by_justice_1.csv', sep = ',', quote = FALSE, row.names = F) #Save
+
+  decisions_by_justice_2 <- decisions_ot_23 %>%
+    select(Case, Docket, Coalition, GORSUCH, KAVANAUGH, BARRETT, JACKSON) %>%
+    pivot_longer(cols = c(GORSUCH, KAVANAUGH, BARRETT, JACKSON), names_to = "justice", values_to = "decision") %>%
+    mutate(justice = factor(justice, levels = c('GORSUCH', 'KAVANAUGH', 'BARRETT', 'JACKSON'))) %>%
+    filter(decision == 100) %>%
+    select(-c(decision)) %>%
+    arrange(justice) %>%
+    rename(docket = Docket) %>%
+    left_join(shorthand_case_names, by = 'docket') %>%
+    select(short_hand, Coalition, justice) %>%
+    mutate(Case = paste0(short_hand, ' ', Coalition)) %>%
+    select(Case, justice) %>%
+    group_by(justice) %>%
+    mutate(justice_count = row_number()) %>%
+    mutate(justice = ifelse(justice_count == 1, as.character(justice), "")) %>%
+    select(-c(justice_count))
+
+  write.table(decisions_by_justice_2, file = 'stat_pack_OT23/Tables/decision_tables/decisions_by_justice_2.csv', sep = ',', quote = FALSE, row.names = F) #Save
+
+
+} # Majority Opinions by Justice (OT23)
+
+
+{
+
+
+
+} #Cases by Coalition Type
+
+{
+
+
+} #Distribution of Coalitions
+
+
+{
+
+
+} # Word Counts
 
 ################################################################################
 #Oral Arguments
@@ -431,6 +528,9 @@ for (i in 1:nrow(dockets)){
 
 } #Fix Dockets w/out Docketed Date (Applications & Motions)
 
+save(dockets, file = 'docket_parser/OT23_docket_sheets/docket_filings_ot_23.rdata')
+
+load('docket_parser/OT23_docket_sheets/docket_filings_ot_23.rdata')
 
 {
 
@@ -500,6 +600,10 @@ for (i in 1:nrow(dockets)){
     rename(`Origin` = lower_court,
            `Petitions` = count,
            `Type` = origin_type)
+
+  fifth_circuit_petitions <- sum(dockets_ot_23_origin$Petitions[dockets_ot_23_origin$Origin == 'Fifth Circuit'])
+  total_petitions <- sum(dockets_ot_23_origin$Petitions)
+  (fifth_circuit_petitions / total_petitions) * 100
 
   min <- seq(1, nrow(dockets_ot_23_origin), by = 20)
   max = ifelse(min + 20 > nrow(dockets_ot_23_origin), nrow(dockets_ot_23_origin), min + 20)

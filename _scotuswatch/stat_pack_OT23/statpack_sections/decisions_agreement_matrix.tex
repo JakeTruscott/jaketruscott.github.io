@@ -1,26 +1,35 @@
-{\footnotesize 
+\begin{landscape}
+{
+\begin{table}[H]
+\centering
+    \renewcommand{\arraystretch}{1.5} % Add space between rows
+    \caption{Justice-Level Agreement (OT2023)}
+    \vspace{2mm}
 \csvreader[
-    tabular={cccccccccc}, % Adjust according to your table's structure
+    tabular={m{1.5cm}*{9}{>{\centering\arraybackslash}m{1.5cm}}},
     table head={
-        & % Add an empty cell for the new column
-        \includegraphics[width=1.5cm]{Figures/justice_images/Roberts.png} &
-        \includegraphics[width=1.5cm]{Figures/justice_images/Thomas.png} &
-        \includegraphics[width=1.5cm]{Figures/justice_images/Alito.png} &
-        \includegraphics[width=1.5cm]{Figures/justice_images/Sotomayor.png} &
-        \includegraphics[width=1.5cm]{Figures/justice_images/Kagan.png} &
-        \includegraphics[width=1.5cm]{Figures/justice_images/Gorsuch.png} &
-        \includegraphics[width=1.5cm]{Figures/justice_images/Kavanaugh.png} &
-        \includegraphics[width=1.5cm]{Figures/justice_images/Barrett.png} &
-        \includegraphics[width=1.5cm]{Figures/justice_images/Jackson.png} \\
-        \midrule
+            \multicolumn{1}{c}{} &
+            \multirow{2}{*}{\includegraphics[width=1.5cm]{"Figures/justice_images/Roberts.png"}} &
+            \multirow{2}{*}{\includegraphics[width=1.5cm]{"Figures/justice_images/Thomas.png"}} &
+            \multirow{2}{*}{\includegraphics[width=1.5cm]{"Figures/justice_images/Alito.png"}} &
+            \multirow{2}{*}{\includegraphics[width=1.5cm]{"Figures/justice_images/Sotomayor.png"}} &
+            \multirow{2}{*}{\includegraphics[width=1.5cm]{"Figures/justice_images/Kagan.png"}} &
+            \multirow{2}{*}{\includegraphics[width=1.5cm]{"Figures/justice_images/Gorsuch.png"}} &
+            \multirow{2}{*}{\includegraphics[width=1.5cm]{"Figures/justice_images/Kavanaugh.png"}} &
+            \multirow{2}{*}{\includegraphics[width=1.5cm]{"Figures/justice_images/Barrett.png"}} &
+            \multirow{2}{*}{\includegraphics[width=1.5cm]{"Figures/justice_images/Jackson.png"}} \\
+            \addlinespace
+            \addlinespace
+            & \footnotesize{Roberts} & \footnotesize{Thomas} & \footnotesize{Alito} & \footnotesize{Sotomayor} & \footnotesize{Kagan} & \footnotesize{Gorsuch} & \footnotesize{Kavanaugh} & \footnotesize{Barrett} & \footnotesize{Jackson} \\
+            \cmidrule{1-10}
     },
-    table foot=\bottomrule % Specify the footer rule
+        table foot=\bottomrule \multicolumn{10}{l}{\footnotesize{\emph{Note}: Cell values represent percentage of (orally argued) cases where Justices coalesced similarly (Majority vs. Dissent).}} \\ \bottomrule % Specify the footer rule
 ]{"Tables/decision_tables/agreement_matrix.csv"}{}%
-{ % Process each row
-    % Read the content of the first column, append the path and include the image
+{
     \includegraphics[width=1.5cm]{Figures/justice_images/\csvcoli}
-    % Print the rest of the columns as they are
     & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv & \csvcolvi & \csvcolvii & \csvcolviii & \csvcolix & \csvcolx
-} 
-\label{tab:yourlabel}
 }
+\label{tab:yourlabel}
+\end{table}
+}
+\end{landscape}
