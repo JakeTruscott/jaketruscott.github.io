@@ -135,84 +135,6 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
 
 
-    min = seq(1, nrow(oa_data), by = 10)
-    max = min + 10
-    max = ifelse(max > nrow(oa), nrow(oa), max)
-
-    oa_data <- oa
-    matching_columns <- intersect(colnames(oa_data), names(justice_image_labels))
-
-    original_column_names <- colnames(oa_data)
-
-    oa_data <- oa_data %>%
-      rename_at(.vars = matching_columns, .funs = ~ justice_image_labels[.])
-
-    for (i in 1:length(min)){
-
-      start = min[i]
-      end = max[i]
-
-      oa_data_temp = oa_data[c(start:end),]
-
-      oa_table_temp <- oa_data_temp %>%
-        kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
-        add_header_above(original_column_names) %>%
-        column_spec(1, bold = TRUE, border_right = TRUE, color = "black") %>%
-        row_spec(0, bold = TRUE, color = 'white', background = '#080808', align = 'center') %>%
-        row_spec(seq(1, nrow(oa_data_temp), 1), align = 'center') %>%
-        kable_styling(font_size = 12, bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
-        column_spec(2, color = "white",
-                    background = spec_color(oa$ROBERTS, end = 0.5),
-                    popover = paste("am:", oa$ROBERTS), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
-        column_spec(3, color = "white",
-                    background = spec_color(oa$ALITO, end = 0.5),
-                    popover = paste("am:", oa$ALITO), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
-        column_spec(4, color = "white",
-                    background = spec_color(oa$BARRETT, end = 0.5),
-                    popover = paste("am:", oa$BARRETT), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
-        column_spec(5, color = "white",
-                    background = spec_color(oa$GORSUCH, end = 0.5),
-                    popover = paste("am:", oa$GORSUCH), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
-        column_spec(6, color = "white",
-                    background = spec_color(oa$JACKSON, end = 0.5),
-                    popover = paste("am:", oa$JACKSON), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
-        column_spec(7, color = "white",
-                    background = spec_color(oa$KAGAN, end = 0.5),
-                    popover = paste("am:", oa$KAGAN), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
-        column_spec(8, color = "white",
-                    background = spec_color(oa$KAVANAUGH, end = 0.5),
-                    popover = paste("am:", oa$KAVANAUGH), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
-        column_spec(9, color = "white",
-                    background = spec_color(oa$SOTOMAYOR, end = 0.5),
-                    popover = paste("am:", oa$SOTOMAYOR), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;") %>%
-        column_spec(10, color = "white",
-                    background = spec_color(oa$THOMAS, end = 0.5),
-                    popover = paste("am:", oa$THOMAS), extra_css = "font-size: 18px; text-align: center; vertical-align: middle; font-weight: bold;")
-
-
-      oa_table_temp
-
-      output_dir = paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/totals_table_OT23_active_", i, ".html")
-
-      save_kable(oa_table_temp, file = output_dir)
-
-
-    }
-
-
-    for (i in 1:length(min)){
-      html_file_path <- paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/totals_table_OT23_active_", i, ".html")
-      webshot::webshot(html_file_path, paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/totals_table_OT23_active_", i, ".png"), vwidth = 900, vheight = 70)
-
-    }
-
-
-  } #Argument Table by Month - For Statpack
-
-  {
-
-
-
     totals_data <- totals
     matching_columns <- intersect(colnames(totals_data), names(justice_image_labels))
     original_column_names <- colnames(totals_data)
@@ -402,43 +324,12 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   #phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
   webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/attorney_participation_23_active.png", vwidth = 800, vheight = 70)
 
-  {
-
-    attorney_sp <- attorney_participation[,c(1:3)]
-    names(attorney_sp) = c('Argument', 'Attorney', 'Total_Words')
-
-    min = seq(1, nrow(attorney_sp), by = 25)
-    max = min + 25
-    max = ifelse(max > nrow(attorney_sp), nrow(attorney_sp), max)
-
-
-    temp <- attorney_sp[c(min[6]:max[6]),] %>%
-      arrange(desc(Argument)) %>%
-      mutate(Attorney = gsub('(Jr\\.|| I|| II)', '', Attorney)) %>%
-      mutate(Attorney = sapply(strsplit(as.character(Attorney), '\\s+'), tail, 1)) %>%
-      group_by(Argument) %>%
-      mutate(attorney_count = max(row_number())) %>%
-      mutate(Argument = paste0('multirow{', attorney_count, '}{=}{', Argument, "} &")) %>%
-      reframe(combined = paste0(Attorney, ' (', Total_Words, ') \\ &')) %>%
-      ungroup() %>%
-      group_by(Argument) %>%
-      summarise(combined = paste0(combined, collapse = ' ')) %>%
-      ungroup() %>%
-      mutate(combined = paste0(Argument, ' ', combined),
-             combined = gsub('\\&$', 'addlinespace', combined)) %>%
-      select(combined)
-
-
-    cat(temp$combined)
-
-  } #Attorney Participation Table - Shortened for StatPack
-
 
 } #OT 2023 (Totals)
 
 ################################################################################
 # OT 2023 (By Active Sitting - Words)
-# Currently *February Sitting*
+# Currently *April Sitting*
 ################################################################################
 {
 
@@ -449,7 +340,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   {
     oa <- scotus_OT23 %>%
       filter(speaker_type == 'Justice') %>%
-      filter(sitting == 'March') %>%
+      filter(sitting == 'April') %>%
       group_by(speaker, case_name) %>%
       summarise(total_word_count = sum(word_count)) %>%
       pivot_wider(names_from = speaker, values_from = total_word_count, names_prefix = "word_count_")
@@ -518,11 +409,11 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     oa_table
 
   } #By Argument Table
-  save_kable(oa_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/March Sitting 2023/oa_table_23_march.html")
-  html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/March Sitting 2023/oa_table_23_march.html"
+  save_kable(oa_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/April Sitting 2023/oa_table_23_april.html")
+  html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/April Sitting 2023/oa_table_23_april.html"
   #webshot::install_phantomjs(force = T)
   phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
-  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/March Sitting 2023/oa_table_23_march.png", vwidth = 1250, vheight = 100)
+  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/April Sitting 2023/oa_table_23_april.png", vwidth = 1250, vheight = 100)
 
   {
 
@@ -579,15 +470,15 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
     totals_table
   } #Totals Table (Active)
-  save_kable(totals_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/March Sitting 2023/totals_table_OT23_march.html")
-  html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/March Sitting 2023/totals_table_OT23_march.html"
-  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/March Sitting 2023/totals_table_OT23_march.png", vwidth = 1250, vheight = 100)
+  save_kable(totals_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/April Sitting 2023/totals_table_OT23_april.html")
+  html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/April Sitting 2023/totals_table_OT23_april.html"
+  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/April Sitting 2023/totals_table_OT23_april.png", vwidth = 1250, vheight = 100)
 
   {
     custom_colors <- c("#5FA934", "#3B5E8B", "#522559")
 
     scotus_term <- scotus_OT23 %>%
-      filter(sitting == 'March') %>%
+      filter(sitting == 'April') %>%
       filter(speaker_type == 'Justice') %>%
       group_by(speaker, case_name) %>%
       summarise(total_word_count = sum(word_count)) %>%
@@ -632,13 +523,13 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     word_count_plot
 
   } #Totals Graph (Active)
-  ggsave("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/March Sitting 2023/word_count_plot_OT23_march.png", word_count_plot, dpi = 300)
+  ggsave("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/April Sitting 2023/word_count_plot_OT23_april.png", word_count_plot, dpi = 300)
 
   {
 
 
     attorneys <- scotus_OT23 %>%
-      filter(sitting == "March") %>%
+      filter(sitting == "April") %>%
       mutate(response_to = ifelse(lag(speaker_type) == 'Justice', lag(speaker), NA)) %>%
       filter(speaker_type == "Attorney") %>%
       mutate(speaker = ifelse(speaker == 'MR. SYNDER', 'MR. SNYDER', speaker)) %>%
@@ -712,9 +603,9 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     attorney_participation_table
 
   } #Attorneys OA Participation Figure
-  save_kable(attorney_participation_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/March Sitting 2023/attorney_participation_23_march.html")
-  html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/March Sitting 2023/attorney_participation_23_march.html"
-  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/March Sitting 2023/attorney_participation_23_march.png", vwidth = 1250, vheight = 100)
+  save_kable(attorney_participation_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/April Sitting 2023/attorney_participation_23_april.html")
+  html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/April Sitting 2023/attorney_participation_23_april.html"
+  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/April Sitting 2023/attorney_participation_23_april.png", vwidth = 1250, vheight = 100)
 
 } #OT 2023 (By Sitting) -- Currently march
 
