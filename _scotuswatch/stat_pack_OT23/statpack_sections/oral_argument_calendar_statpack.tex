@@ -160,3 +160,25 @@
     \label{tab:table1}
 \end{table}
 \end{minipage}%
+
+\newpage
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{2} % Add space between rows
+    \caption{April Sitting}
+    \vspace{2mm}
+    \csvreader[
+        tabular= {>{\raggedright}p{0.4\textwidth}cc},
+        table head = {
+            \toprule
+            \multicolumn{1}{c}{\footnotesize Case} &
+            \multicolumn{1}{c}{\footnotesize Docket} &
+            \multicolumn{1}{c}{\footnotesize Attorneys} \\
+            \cline{1-3}
+        },
+        table foot=\bottomrule % Specify the footer rule
+    ]{"Tables/oral_argument_speaking/argument_calendar_April.csv"}{}%
+    {\footnotesize \csvcoli & \footnotesize \csvcolii & \footnotesize \makecell{\csvcoliii}} % Specify all columns to include
+    \label{tab:table1}
+\end{table}

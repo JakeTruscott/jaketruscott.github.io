@@ -28,37 +28,37 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 # Load Data
 ################################################################################
 {
-  ROBERTS <- readPNG("justice_images/Roberts.png")
-  ALITO <- readPNG("justice_images/Alito.png")
-  THOMAS <- readPNG("justice_images/Thomas.png")
-  SOTOMAYOR <- readPNG("justice_images/Sotomayor.png")
-  KAGAN <- readPNG("justice_images/Kagan.png")
-  GORSUCH <- readPNG("justice_images/Gorsuch.png")
-  KAVANAUGH <- readPNG("justice_images/Kavanaugh.png")
-  BARRETT <- readPNG("justice_images/Barrett.png")
-  JACKSON <- readPNG("justice_images/Jackson.png")
-  BREYER <- readPNG("justice_images/Breyer.png")
-  GINSBURG <- readPNG("justice_images/Ginsburg.png")
-  KENNEDY <- readPNG("justice_images/Kennedy.png")
+  ROBERTS <- readPNG("stat_pack_OT23/Figures/justice_images/Roberts.png")
+  ALITO <- readPNG("stat_pack_OT23/Figures/justice_images/Alito.png")
+  THOMAS <- readPNG("stat_pack_OT23/Figures/justice_images/Thomas.png")
+  SOTOMAYOR <- readPNG("stat_pack_OT23/Figures/justice_images/Sotomayor.png")
+  KAGAN <- readPNG("stat_pack_OT23/Figures/justice_images/Kagan.png")
+  GORSUCH <- readPNG("stat_pack_OT23/Figures/justice_images/Gorsuch.png")
+  KAVANAUGH <- readPNG("stat_pack_OT23/Figures/justice_images/Kavanaugh.png")
+  BARRETT <- readPNG("stat_pack_OT23/Figures/justice_images/Barrett.png")
+  JACKSON <- readPNG("stat_pack_OT23/Figures/justice_images/Jackson.png")
+  BREYER <- readPNG("stat_pack_OT23/Figures/justice_images/Breyer.png")
+  GINSBURG <- readPNG("stat_pack_OT23/Figures/justice_images/Ginsburg.png")
+  KENNEDY <- readPNG("stat_pack_OT23/Figures/justice_images/Kennedy.png")
 
   justice_image_labels <- c(
-    ALITO = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Alito.png' width='75' /><br>",
-    ROBERTS = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Roberts.png' width='75' /><br>",
-    THOMAS = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Thomas.png' width='75' /><br>",
-    SOTOMAYOR = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Sotomayor.png' width='75' /><br>",
-    KAGAN = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Kagan.png' width='75' /><br>",
-    GORSUCH = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Gorsuch.png' width='75' /><br>",
-    KAVANAUGH = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Kavanaugh.png' width='75' /><br>",
-    BARRETT = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Barrett.png' width='75' /><br>",
-    JACKSON = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Jackson.png' width='75' /><br>",
-    BREYER = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Breyer.png' width='75' /><br>",
-    GINSBURG = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Ginsburg.png' width='75' /><br>",
-    KENNEDY = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Kennedy.png' width='75' /><br>"
+    ALITO = "<img src='stat_pack_OT23/Figures/justice_images/Alito.png' width='75' /><br>",
+    ROBERTS = "<img src='stat_pack_OT23/Figures/justice_images/Roberts.png' width='75' /><br>",
+    THOMAS = "<img src='stat_pack_OT23/Figures/justice_images/Thomas.png' width='75' /><br>",
+    SOTOMAYOR = "<img src='stat_pack_OT23/Figures/justice_images/Sotomayor.png' width='75' /><br>",
+    KAGAN = "<img src='stat_pack_OT23/Figures/justice_images/Kagan.png' width='75' /><br>",
+    GORSUCH = "<img src='stat_pack_OT23/Figures/justice_images/Gorsuch.png' width='75' /><br>",
+    KAVANAUGH = "<img src='stat_pack_OT23/Figures/justice_images/Kavanaugh.png' width='75' /><br>",
+    BARRETT = "<img src='stat_pack_OT23/Figures/justice_images/Barrett.png' width='75' /><br>",
+    JACKSON = "<img src='stat_pack_OT23/Figures/justice_images/Jackson.png' width='75' /><br>",
+    BREYER = "<img src='stat_pack_OT23/Figures/justice_images/Breyer.png' width='75' /><br>",
+    GINSBURG = "<img src='stat_pack_OT23/Figures/justice_images/Ginsburg.png' width='75' /><br>",
+    KENNEDY = "<img src='stat_pack_OT23/Figures/justice_images/Kennedy.png' width='75' /><br>"
   )
 } #Justice Images
 {
 
-  shorthand_case_names <- read.csv('C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/ot23_decisions/shorthand_case_names.csv', as.is = T)
+  shorthand_case_names <- read.csv('ot23_decisions/shorthand_case_names.csv', as.is = T)
 
 
 } #Shorthand Case Names...
@@ -263,7 +263,7 @@ combined_decisions
       rename(case_name = short_hand) %>%
       mutate(case_name = gsub('\\,', '', case_name))
 
-    output_path = paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/Tables/oral_argument_speaking/attorney_participation_", i, ".csv")
+    output_path = paste0("stat_pack_OT23/Tables/oral_argument_speaking/attorney_participation_", i, ".csv")
 
     write.table(attorneys, file = output_path,  row.names = F, quote = F, sep = ',')
 
@@ -308,7 +308,7 @@ combined_decisions
 
 
 
-    output_path = paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/oral_argument_speaking/argument_calendar_", i, ".csv")
+    output_path = paste0("stat_pack_OT23/Tables/oral_argument_speaking/argument_calendar_", i, ".csv")
 
     write.table(calendar_temp, file = output_path,  row.names = F, quote = F, sep = ',')
 
@@ -367,10 +367,9 @@ combined_decisions
         plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
         plot.subtitle = element_text(size = 15, hjust = 0.5))
 
-    word_count_plot
 
   } #Totals Graph (Active)
-  ggsave("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/word_count_plot_OT23.png", word_count_plot, dpi = 300)
+  ggsave("stat_pack_OT23/Figures/statpack_figures/word_count_plot_OT23.png", word_count_plot, dpi = 300)
 
   oa <- scotus_OT23 %>%
     filter(speaker_type == 'Justice') %>%
@@ -399,7 +398,7 @@ combined_decisions
       mutate(case_name = gsub('\\,', '', case_name)) %>%
       select(case_name, ROBERTS, THOMAS, ALITO, SOTOMAYOR, KAGAN, GORSUCH, KAVANAUGH, BARRETT, JACKSON)
 
-    write.table(oa_data_temp, file = paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/oral_argument_speaking/oral_argument_participation_", i, ".csv"), row.names = F, quote = F, sep = ',')
+    write.table(oa_data_temp, file = paste0("stat_pack_OT23/Tables/oral_argument_speaking/oral_argument_participation_", i, ".csv"), row.names = F, quote = F, sep = ',')
 
   }
 
@@ -461,7 +460,7 @@ combined_decisions
 
 
   } #Totals Graph (Active)
-  ggsave("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/total_time_spoken_plot_OT23.png", total_time_spoken_plot, dpi = 300)
+  ggsave("stat_pack_OT23/Figures/statpack_figures/total_time_spoken_plot_OT23.png", total_time_spoken_plot, dpi = 300)
 
 
   for (i in unique(scotus_OT23$sitting)){
@@ -485,7 +484,7 @@ combined_decisions
 
 
 
-    output_path = paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/oral_argument_speaking/oral_argument_speaking_times_", i, '.csv')
+    output_path = paste0("stat_pack_OT23/Tables/oral_argument_speaking/oral_argument_speaking_times_", i, '.csv')
 
     write.table(time_spoken_total, file = output_path, row.names = F, quote = F, sep = ',')
 
