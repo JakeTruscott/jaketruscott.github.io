@@ -1,0 +1,31 @@
+\begin{landscape}
+
+\subsection{\centering Decisions by Coalition -- 2023 Term}
+
+\centering
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{2} % Add space between rows
+    \caption{October Sitting}
+    \vspace{2mm}
+    \csvreader[
+        tabular= {ccc},
+        table head = {
+            \toprule
+            \multicolumn{1}{c}{\footnotesize (6-3)} &
+            \multicolumn{1}{c}{\footnotesize (7-2)} &
+			\multicolumn{1}{c}{\footnotesize (9-0)} \\
+            \cline{1-3}
+        },
+        table foot=\bottomrule % Specify the footer rule
+    ]{"Tables/decision_tables/decisions_by_coalition.csv"}{}%
+    {\footnotesize \makecell[{{p{4cm}}}]{\csvcoli} & \footnotesize \makecell[{{p{4cm}}}]{\csvcolii} & \footnotesize \makecell[{{p{4cm}}}]{\csvcoliii}} % Specify all columns to include
+    \label{tab:table1}
+\end{table}
+
+\end{landscape}
+
+\newpage
+
+
+

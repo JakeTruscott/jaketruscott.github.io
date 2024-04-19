@@ -160,7 +160,6 @@ combined_decisions
 
 } # Decision-Level Breakdowns
 
-
 {
 
   opinion_type_by_justice_ot23 <- decisions_ot_23 %>%
@@ -235,6 +234,19 @@ combined_decisions
 
 {
 
+  decisions_by_coalition <- decisions_ot_23 %>%
+    rename(docket = Docket) %>%
+    left_join(shorthand_case_names, by = 'docket') %>%
+    select(short_hand, Coalition) %>%
+    rename(case = short_hand,
+           coalition = Coalition) %>%
+    group_by(coalition) %>%
+    summarise(case = list(case)) %>%
+    mutate(case = sapply(case, paste, collapse = "\\\\")) %>%
+    pivot_wider(names_from = 'coalition', values_from = 'case')
+
+
+  write.table(decisions_by_coalition, file = 'stat_pack_OT23/Tables/decision_tables/decisions_by_coalition.csv', row.names = F, quote = F, sep = ',')
 
 
 } #Cases by Coalition Type
