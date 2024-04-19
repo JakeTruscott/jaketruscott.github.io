@@ -70,14 +70,13 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
 {
 
-  decisions_ot_23 <- read_xlsx(path = "ot23_decisions/OT_23_Decisions.xlsx")
+  decisions_ot_23 <- read.csv(file = "ot23_decisions/OT_23_Decisions.csv")
   decisions_ot_23 <- decisions_ot_23 %>%
     mutate(`Case` = gsub('\\,', '', `Case`),
            Decision = gsub('\\,', '', Decision))
-  write.table(decisions_ot_23, file = "ot23_decisions/OT_23_Decisions.csv", row.names = F, quote = F, sep = ',')
 
 
-} # Decision Breakdowns
+} # Load OT23 Decisions Table
 
 decisions_23 <- scotustext::decision_processor(dir_path = "ot23_decisions/decision_pdfs_OT23") #OT23
 
@@ -128,6 +127,39 @@ combined_decisions
 
 
 } # Justice Agreement Vote Matrix (OT23)
+
+{
+
+  for (i in unique(shorthand_case_names$sitting)){
+
+    decision_descriptions_test <- decisions_ot_23 %>%
+      rowwise() %>%
+      mutate(Coalition = ifelse(any(c_across(ROBERTS:JACKSON) %in% c(2,4,7)), paste0(Coalition, '*'), Coalition)) %>%
+      ungroup() %>%
+      select(Docket, Date_Argued, Date_Decided, Lower_Court, Decision, Author, Coalition) %>%
+      rename(docket = Docket) %>%
+      left_join(shorthand_case_names, by = 'docket') %>%
+      mutate(docket = paste0('(', docket, ')')) %>%
+      mutate(description = 'This is a test. Your station is conducting a test of the Emergency Broadcast System. This is only a test.') %>%
+      mutate(Decision = gsub('\\&', '\\\\&', Decision)) %>%
+      select(short_hand, description, docket, Lower_Court, Decision, Author, Coalition, sitting) %>%
+      filter(sitting == i) %>%
+      select(-c(sitting))
+
+    write.table(decision_descriptions_test, file = paste0('stat_pack_OT23/Tables/decision_tables/decision_description_', i, '.csv'), sep = ',', quote = FALSE, row.names = F)
+
+
+  }
+
+
+
+
+  decision_descriptions_test
+
+  write.table(decision_descriptions_test, file = 'stat_pack_OT23/Tables/decision_tables/decision_description_1.csv', sep = ',', quote = FALSE, row.names = F)
+
+} # Decision-Level Breakdowns
+
 
 {
 
@@ -501,7 +533,7 @@ combined_decisions
 # Docket
 ################################################################################
 
-docket_path <- list.files("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/docket_parser/OT23_docket_sheets", full.names = T)
+docket_path <- list.files("docket_parser/OT23_docket_sheets", full.names = T)
 
 dockets <- data.frame()
 
@@ -663,3 +695,33 @@ load('docket_parser/OT23_docket_sheets/docket_filings_ot_23.rdata')
 
 
 } #Circuit Map
+
+{
+
+  {
+
+    old_dockets <- list.files('docket_parser/OT18_OT22_docket_sheets', full.names = T)
+
+    ot18_ot22_dockets <- data.frame()
+
+    for (i in 1:length(old_dockets)){
+
+      temp_docket <- get(load(old_dockets[i]))
+      ot18_ot22_dockets <- bind_rows(ot18_ot22_dockets, temp_docket)
+
+      if (i %% 250 == 0){
+        message('Completed ', i, ' of ', length(old_dockets))
+      }
+
+    }
+
+  } #Recompile (If Needed)
+  save(ot18_ot22_dockets, file = 'docket_parser/OT18_OT22_dockets.rdata')
+
+  load('docket_parser/OT18_OT22_dockets.rdata') #Load (Already Compiled...)
+
+
+
+
+
+} #Old Docketing Trends (18-22)

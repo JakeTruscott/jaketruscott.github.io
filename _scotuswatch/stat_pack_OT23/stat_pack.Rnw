@@ -174,10 +174,13 @@ We give particular thanks to \textcolor{blue}{\textless NAME\textgreater{}} and 
 %Agreement Matrix (Justice x Justice)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 \input{"statpack_sections/decisions_agreement_matrix.tex"}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Decision Descriptions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\input{"statpack_sections/decisions_descriptions_statpack.tex"}
 
 
 \subsection{Frequency in Majority}
