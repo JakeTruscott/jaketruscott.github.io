@@ -62,6 +62,18 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
 
 } #Shorthand Case Names...
+{
+
+  scdb_justice_names <- data.frame(
+    justice = c(106, 108, 109:118),
+    justice_name = c('KENNEDY', 'THOMAS', 'GINSBURG', 'BREYER', 'ROBERTS', 'ALITO', 'SOTOMAYOR', 'KAGAN', 'GORSUCH', 'KAVANAUGH', 'BARRETT', 'JACKSON'))
+
+} #SCDB Justice ID Conversion
+{
+  load("stat_pack_OT23/statpack_replication/Misc Data/scdb_cases_2023.rdata")
+  load("stat_pack_OT23/statpack_replication/Misc Data/scdb_justices_2023.rdata")
+
+} #SCDB Data (Updated September 2023)
 
 ################################################################################
 # Decisions
@@ -231,7 +243,6 @@ combined_decisions
 
 } # Majority Opinions by Justice (OT23)
 
-
 {
 
   decisions_by_coalition <- decisions_ot_23 %>%
@@ -240,21 +251,172 @@ combined_decisions
     select(short_hand, Coalition) %>%
     rename(case = short_hand,
            coalition = Coalition) %>%
+    mutate(case = ifelse(grepl('U\\.\\S\\.', case), case, gsub(' v\\..*', '', case)))
+
+  max_decision_rows <- decisions_by_coalition %>%
     group_by(coalition) %>%
-    summarise(case = list(case)) %>%
-    mutate(case = sapply(case, paste, collapse = "\\\\")) %>%
-    pivot_wider(names_from = 'coalition', values_from = 'case')
+    summarise(count = n()) %>%
+    select(count) %>%
+    filter(count == max(count))
+
+  coalition_types <- c('(9-0)', '(8-1)', '(7-2)', '(6-3)', '(5-4)')
+
+  decisions_by_coalition_combined <- data.frame(matrix(nrow = max_decision_rows$count, ncol = 5))
+  colnames(decisions_by_coalition_combined) <- factor(coalition_types)
+
+  for (i in unique(decisions_by_coalition$coalition)){
+
+    temp_coalition <- i
+    temp_decisions <- decisions_by_coalition %>%
+      filter(coalition == i)
+    temp_cases <- temp_decisions$case
+
+    for (case in 1:length(temp_cases)){
+      decisions_by_coalition_combined[case, temp_coalition] <- temp_cases[case]
+    }
 
 
-  write.table(decisions_by_coalition, file = 'stat_pack_OT23/Tables/decision_tables/decisions_by_coalition.csv', row.names = F, quote = F, sep = ',')
+  } #Populate Coalition-Level Cases
+
+  decisions_by_coalition_combined <- decisions_by_coalition_combined %>%
+    mutate_all(~ifelse(is.na(.), "       ", .))
+
+
+  write.table(decisions_by_coalition_combined, file = 'stat_pack_OT23/Tables/decision_tables/decisions_by_coalition.csv', row.names = F, quote = F, sep = ',')
 
 
 } #Cases by Coalition Type
 
 {
 
+  decisions_by_coalition_longitudinal <- decisions_ot_23 %>%
+    rename(docket = Docket) %>%
+    left_join(shorthand_case_names, by = 'docket') %>%
+    select(short_hand, Coalition) %>%
+    rename(case = short_hand,
+           coalition = Coalition) %>%
+    mutate(coalition = case_when(
+      .default = '(9-0)',
+      coalition %in% c('(8-1', '(8-0)') ~ '(8-1) or (8-0)',
+      coalition %in% c('(7-2)', '(7-1)') ~  '(7-2) or (7-1)',
+      coalition %in% c('(6-3)', '(6-2)') ~ '(6-3) or (6-2)',
+      coalition %in% c('(5-4)', '(5-3)') ~ '(5-4) or (5-3)',
+      coalition == '(4-4)' ~ '(4-4)')) %>%
+    mutate(case = ifelse(grepl('U\\.\\S\\.', case), case, gsub(' v\\..*', '', case)))
 
-} #Distribution of Coalitions
+  decisions_by_coalition_2018_2022 <- scdb_cases_2023 %>%
+    filter(term >= 2018) %>%
+    mutate(coalition = case_when(
+      majVotes == 9 ~ '(9-0)',
+      majVotes == 8 ~ '(8-1) or (8-0)',
+      majVotes == 7 ~ '(7-2) or (7-1)',
+      majVotes == 6 ~ '(6-3) or (6-2)',
+      majVotes == 5 ~ '(5-4) or (5-3)',
+      majVotes == 4 ~ '(4-4)')) %>%
+    filter(!majVotes == 4) %>%
+    select(term, coalition, docket) %>%
+    bind_rows(decisions_by_coalition_longitudinal %>%
+                mutate(term = 2023)) %>%
+    group_by(term, coalition) %>%
+    summarise(count = n()) %>%
+    ggplot(aes(x = factor(term), y = count, group = coalition)) +
+    geom_bar(stat = 'identity', fill = 'gray50', position = position_dodge2(0.9), colour = 'gray5') +
+    scale_y_continuous(lim = c(0, 40), breaks = seq(10, 40, 10)) +
+    facet_wrap(~coalition, nrow = 6) +
+    geom_text(aes(label = count), vjust = -1) +
+    geom_hline(yintercept = 0) +
+    theme_bw() +
+    labs(
+      x = '\nTerm\n',
+      y = '\nCount\n') +
+    theme(legend.position = 'none',
+          strip.text = element_text(size = 12, colour = 'black', face = 'bold',
+                                    margin = margin(b = 10), vjust = -1, hjust = 0.5),
+          strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+          panel.background = element_rect(size = 1, fill = 'white', colour = 'black'),
+          axis.text = element_text(size = 12, colour = 'black'),
+          axis.title = element_text(size = 12, colour = 'black'))
+
+
+    ggsave("stat_pack_OT23/Figures/statpack_figures/decisions_by_coalition_2018_2023.png", decisions_by_coalition_2018_2022, dpi = 300)
+
+
+
+    } #Distribution of Coalitions (Current v. Past)
+
+{
+
+  decisions_by_coalition_longitudinal <- decisions_ot_23 %>%
+    rename(docket = Docket) %>%
+    left_join(shorthand_case_names, by = 'docket') %>%
+    select(short_hand, Coalition) %>%
+    rename(case = short_hand,
+           coalition = Coalition) %>%
+    mutate(coalition = case_when(
+      .default = '(9-0)',
+      coalition %in% c('(8-1', '(8-0)') ~ '(8-1) or (8-0)',
+      coalition %in% c('(7-2)', '(7-1)') ~  '(7-2) or (7-1)',
+      coalition %in% c('(6-3)', '(6-2)') ~ '(6-3) or (6-2)',
+      coalition %in% c('(5-4)', '(5-3)') ~ '(5-4) or (5-3)',
+      coalition == '(4-4)' ~ '(4-4)')) %>%
+    mutate(case = ifelse(grepl('U\\.\\S\\.', case), case, gsub(' v\\..*', '', case)))
+
+  share_of_unanimity <- scdb_cases_2023 %>%
+    filter(term >= 2018) %>%
+    mutate(coalition = case_when(
+      majVotes == 9 ~ '(9-0)',
+      majVotes == 8 ~ '(8-1) or (8-0)',
+      majVotes == 7 ~ '(7-2) or (7-1)',
+      majVotes == 6 ~ '(6-3) or (6-2)',
+      majVotes == 5 ~ '(5-4) or (5-3)',
+      majVotes == 4 ~ '(4-4)')) %>%
+    filter(!majVotes == 4) %>%
+    select(term, coalition, docket) %>%
+    bind_rows(decisions_by_coalition_longitudinal %>%
+                mutate(term = 2023)) %>%
+    mutate(coalition = ifelse(coalition == "(9-0)", "(9-0)", "Other")) %>%
+    group_by(term, coalition) %>%
+    summarise(count = n()) %>%
+    group_by(term) %>%
+    reframe(total_cases = sum(count),
+            count = count,
+            coalition = coalition) %>%
+    mutate(percent = round((count/total_cases)*100, 2),
+           term = paste0(term, ' Term')) %>%
+    ggplot(aes(x = "", y = percent, fill = coalition)) +
+    geom_bar(stat = 'identity', colour = 'gray5') +
+    coord_polar(theta = "y", start = 0) +
+    facet_wrap(~term) +
+    theme_void() +
+    labs(
+      x = ' ',
+      y = ' ',
+      fill = ' ') +
+    scale_fill_manual(values = c('deepskyblue3', 'coral')) +
+    geom_label(aes(label = paste0(percent, ' %')), position = position_stack(vjust = 0.5), color = "gray5", size=5, show.legend = F) +
+    theme(legend.position = 'bottom',
+          legend.text = element_text(size = 15, colour = 'gray5'),
+          axis.text.x = element_blank(),
+          axis.ticks = element_blank(),
+          axis.title = element_text(size = 12),
+          axis.line = element_line(colour = 'black'),
+          strip.text = element_text(size = 12, colour = 'black', face = 'bold',
+                                    margin = margin(b = 10), vjust = -1, hjust = 0.5),
+          strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+          panel.background = element_rect(size = 1, fill = 'white', colour = 'black'))
+
+
+
+  ggsave("stat_pack_OT23/Figures/statpack_figures/share_of_unanimity_2018_2023.png", share_of_unanimity, dpi = 300)
+
+
+} #Share of Unanimity Over Time
+
+{
+
+
+
+} #Cases with Dissents/Concurrence Over Time
 
 
 {
@@ -612,10 +774,10 @@ load('docket_parser/OT23_docket_sheets/docket_filings_ot_23.rdata')
       panel.background = element_rect(size = 1, fill = 'white', colour = 'white'),
       plot.background = element_rect(size = 1, fill = 'white', colour = 'white'))
 
-  ggsave(dockets_ot_23, file = "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/Figures/dockets_ot_23.png")
+  ggsave("stat_pack_OT23/Figures/statpack_figures/dockets_ot_23.png", dockets_ot_23 , dpi = 300)
 
 
-} #Main Filing Trends (OT23) Figure
+} #Main Filing Trends (OT23) by Month
 
 {
 
@@ -710,30 +872,66 @@ load('docket_parser/OT23_docket_sheets/docket_filings_ot_23.rdata')
 
 {
 
-  {
-
-    old_dockets <- list.files('docket_parser/OT18_OT22_docket_sheets', full.names = T)
-
-    ot18_ot22_dockets <- data.frame()
-
-    for (i in 1:length(old_dockets)){
-
-      temp_docket <- get(load(old_dockets[i]))
-      ot18_ot22_dockets <- bind_rows(ot18_ot22_dockets, temp_docket)
-
-      if (i %% 250 == 0){
-        message('Completed ', i, ' of ', length(old_dockets))
-      }
-
-    }
-
-  } #Recompile (If Needed)
-  save(ot18_ot22_dockets, file = 'docket_parser/OT18_OT22_dockets.rdata')
-
   load('docket_parser/OT18_OT22_dockets.rdata') #Load (Already Compiled...)
 
+  dockets_ot_23 <- dockets %>%
+    mutate(docket_type = case_when(
+      .default = 'Petitions',
+      grepl('A', docket_number) ~ 'Applications',
+      grepl('M', docket_number) ~ 'Motions'),
+      docketed = lubridate::mdy(docketed),
+      docketed = format(docketed, "%Y-%m")) %>%
+    group_by(docketed, docket_type) %>%
+    summarise(count = n()) %>%
+    rename(filing_type = docket_type) %>%
+    group_by(filing_type) %>%
+    summarise(count = sum(count)) %>%
+    mutate(docketed = 2023)
+
+
+  longitudinal_docketing_trends_2018_2023 <- ot18_ot22_dockets %>%
+    mutate(filing_type = case_when(
+      .default = 'Petitions',
+      grepl('(M|m)', docket_number) ~ 'Motions',
+      grepl('(a|A)', docket_number) ~ 'Applications')) %>%
+    mutate(filing_term = as.numeric(gsub('(\\-.*|a.*|A.*|m.*|M.*)', '', docket_number))) %>%
+    select(filing_term, filing_type)  %>%
+    group_by(filing_term, filing_type) %>%
+    summarise(count = n()) %>%
+    unique() %>%
+    rename(docketed = filing_term) %>%
+    mutate(docketed = paste0('20', docketed),
+           docketed = as.numeric(docketed)) %>%
+    bind_rows(dockets_ot_23) %>%
+    ggplot(aes(x = factor(docketed), y = count)) +
+    geom_bar(stat = 'identity', color = 'gray5', aes(fill = filing_type), position = position_dodge2()) +
+    scale_fill_manual(values = c('coral3', 'deepskyblue4', 'gray50')) +
+    theme_minimal() +
+    facet_wrap(~ filing_type, scales = "free_y", nrow = 3) +
+    geom_text(aes(label = count), position = position_dodge(width = 0.9), vjust = -0.5, size = 4) +
+    scale_y_continuous(expand = expansion(mult = c(0.1, 0.2)))  +
+    geom_hline(yintercept = 0) +
+    labs(
+      x = '\n',
+      y = '\n') +
+    theme(
+      panel.border = element_rect(size = 1, colour = 'gray5', fill = NA),
+      axis.text = element_text(size = 12, colour = 'black'),
+      axis.title = element_text(size = 14, colour = 'black'),
+      plot.title = element_text(size = 16, colour = 'black', face = 'bold'),
+      plot.subtitle = element_text(size = 14, colour = 'black'),
+      legend.position = 'none',
+      legend.title = element_blank(),
+      legend.text = element_text(size = 10, colour = 'black'),
+      strip.text = element_text(size = 12, colour = 'black', face = 'bold'),
+      strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+      panel.background = element_rect(size = 1, fill = 'white', colour = 'white'),
+      plot.background = element_rect(size = 1, fill = 'white', colour = 'white'))
+
+
+  ggsave("stat_pack_OT23/Figures/statpack_figures/longitudinal_docketing_trends_2018_2023.png", longitudinal_docketing_trends_2018_2023 , dpi = 300)
 
 
 
 
-} #Old Docketing Trends (18-22)
+} #Combined Docket Trends (18-23)
