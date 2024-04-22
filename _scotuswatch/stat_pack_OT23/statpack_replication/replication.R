@@ -370,7 +370,6 @@ combined_decisions
       majVotes == 6 ~ '(6-3) or (6-2)',
       majVotes == 5 ~ '(5-4) or (5-3)',
       majVotes == 4 ~ '(4-4)')) %>%
-    filter(!majVotes == 4) %>%
     select(term, coalition, docket) %>%
     bind_rows(decisions_by_coalition_longitudinal %>%
                 mutate(term = 2023)) %>%
@@ -382,7 +381,7 @@ combined_decisions
             count = count,
             coalition = coalition) %>%
     mutate(percent = round((count/total_cases)*100, 2),
-           term = paste0(term, ' Term')) %>%
+           term = paste0(term, ' Term (', total_cases, ')')) %>%
     ggplot(aes(x = "", y = percent, fill = coalition)) +
     geom_bar(stat = 'identity', colour = 'gray5') +
     coord_polar(theta = "y", start = 0) +
@@ -406,7 +405,6 @@ combined_decisions
           panel.background = element_rect(size = 1, fill = 'white', colour = 'black'))
 
 
-
   ggsave("stat_pack_OT23/Figures/statpack_figures/share_of_unanimity_2018_2023.png", share_of_unanimity, dpi = 300)
 
 
@@ -414,6 +412,77 @@ combined_decisions
 
 {
 
+
+  opinion_type_share_18_23 <- scdb_justices_2023 %>%
+    filter(term >= 2018) %>%
+    select(vote, docket, term) %>%
+    mutate(justice_vote = case_when(
+      .default = 'Joined Majority',
+      vote %in% c(2, 6, 7) ~ 'Dissent',
+      vote %in% c(3:5) ~ 'Concurrence',
+      vote == 8 ~ 'Equally Divided')) %>%
+    filter(!justice_vote == 'Equally Divided') %>%
+    mutate(justice_vote = ifelse(justice_vote == 'Joined Majority', 'Majority', 'Other')) %>%
+    group_by(docket, justice_vote) %>%
+    reframe(count = n(),
+              term) %>%
+    unique() %>%
+    group_by(docket) %>%
+    reframe(total_voting = sum(count),
+              justice_vote,
+              term,
+              docket,
+            count)  %>%
+    group_by(term) %>%
+    pivot_wider(values_from = count, names_from = justice_vote) %>%
+    mutate(other_votes = ifelse(Other == 0 | is.na(Other), 0, 1)) %>%
+    group_by(term) %>%
+    reframe(total_cases = length(unique(docket)),
+            term,
+            concurrence_dissent = sum(other_votes)) %>%
+    unique() %>%
+    mutate(majority_only = total_cases - concurrence_dissent) %>%
+    pivot_longer(cols = c(concurrence_dissent, majority_only), names_to = 'votes') %>%
+    mutate(percent = round((value/total_cases)*100, 2)) %>%
+    bind_rows( decisions_ot_23 %>%
+                 rowwise() %>%
+                 mutate(other_votes = ifelse(any(!c_across(ROBERTS:JACKSON) %in% c(1, 100)), "concurrence_dissent", "majority_only")) %>%
+                 select(other_votes) %>%
+                 group_by(other_votes) %>%
+                 reframe(value = n(),
+                         votes = other_votes,
+                         total_cases = nrow(decisions_ot_23)) %>%
+                 unique() %>%
+                 mutate(term = 2023,
+                        percent = round((value/total_cases)*100, 2)) %>%
+                 select(term, total_cases, votes, value, percent)) %>%
+    mutate(votes = ifelse(votes == 'majority_only', 'Majority Only', 'Concurrences and (or) Dissents'),
+           votes = factor(votes, levels = c('Majority Only', 'Concurrences and (or) Dissents')),
+           term = paste0(term, ' Term (', total_cases, ')')) %>%
+    ggplot(aes(x = "", y = percent, fill = votes)) +
+    geom_bar(stat = 'identity', colour = 'gray5') +
+    coord_polar(theta = "y", start = 0) +
+    facet_wrap(~term) +
+    theme_void() +
+    labs(
+      x = ' ',
+      y = ' ',
+      fill = ' ') +
+    scale_fill_manual(values = c('deepskyblue3', 'coral')) +
+    geom_label(aes(label = paste0(percent, ' %')), position = position_stack(vjust = 0.5), color = "gray5", size=5, show.legend = F) +
+    theme(legend.position = 'bottom',
+          legend.text = element_text(size = 15, colour = 'gray5'),
+          axis.text.x = element_blank(),
+          axis.ticks = element_blank(),
+          axis.title = element_text(size = 12),
+          axis.line = element_line(colour = 'black'),
+          strip.text = element_text(size = 12, colour = 'black', face = 'bold',
+                                    margin = margin(b = 10), vjust = -1, hjust = 0.5),
+          strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+          panel.background = element_rect(size = 1, fill = 'white', colour = 'black'))
+
+
+  ggsave("stat_pack_OT23/Figures/statpack_figures/opinion_type_share_18_23.png", opinion_type_share_18_23, dpi = 300)
 
 
 } #Cases with Dissents/Concurrence Over Time
