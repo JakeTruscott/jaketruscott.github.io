@@ -878,8 +878,12 @@ load('docket_parser/OT23_docket_sheets/docket_filings_ot_23.rdata')
   total_petitions <- sum(dockets_ot_23_origin$Petitions)
   (fifth_circuit_petitions / total_petitions) * 100
 
-  min <- seq(1, nrow(dockets_ot_23_origin), by = 20)
-  max = ifelse(min + 20 > nrow(dockets_ot_23_origin), nrow(dockets_ot_23_origin), min + 20)
+  max <- seq(20, nrow(dockets_ot_23_origin), by = 20)
+  min = c()
+  for (i in 1:length(max)){
+    temp_min = max[i] - 19
+    min = c(min, temp_min)
+  }
 
   for (i in 1:length(min)){
 

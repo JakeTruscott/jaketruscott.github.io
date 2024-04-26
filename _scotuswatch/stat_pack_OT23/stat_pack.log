@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.15)  22 APR 2024 10:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.15)  26 APR 2024 11:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -997,27 +997,6 @@ LaTeX Warning: Label `tab:table1' multiply defined.
 
 
 LaTeX Warning: Label `tab:table1' multiply defined.
-
-
-LaTeX Warning: Label `tab:yourlabel' multiply defined.
-
-
-LaTeX Warning: Label `tab:yourlabel' multiply defined.
-
-
-LaTeX Warning: Label `tab:yourlabel' multiply defined.
-
-
-LaTeX Warning: Label `tab:yourlabel' multiply defined.
-
-
-LaTeX Warning: Label `tab:yourlabel' multiply defined.
-
-
-LaTeX Warning: Label `tab:yourlabel' multiply defined.
-
-
-LaTeX Warning: Label `tab:yourlabel' multiply defined.
 
 
 LaTeX Warning: Label `tab:yourlabel' multiply defined.
@@ -3142,79 +3121,27 @@ s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.35 \newpage
-             ] [44
-pdfTeX warning (ext4): destination with the same identifier (name{table.41}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.66 \newpage
-             
-pdfTeX warning (ext4): destination with the same identifier (name{table.42}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.66 \newpage
-             ] [45
-pdfTeX warning (ext4): destination with the same identifier (name{table.43}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.98 \newpage
-             
-pdfTeX warning (ext4): destination with the same identifier (name{table.44}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.98 \newpage
              ]
-Underfull \hbox (badness 3724) in paragraph at lines 110--110
-[]|\T1/ptm/m/n/9 Circuit Court of Ten-nessee - David-son
- []
-
-
-Underfull \hbox (badness 1231) in paragraph at lines 110--110
-[]|\T1/ptm/m/n/9 Court of Ap-peals of Ohio - Wash-ing-ton
- []
-
-[46
-pdfTeX warning (ext4): destination with the same identifier (name{table.45}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.128 \end{landscape}
-                     
-pdfTeX warning (ext4): destination with the same identifier (name{table.46}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.128 \end{landscape}
-                     ]
-<Figures/circuit_origin_figure.png, id=419, 433.62pt x 252.945pt>
+<Figures/circuit_origin_figure.png, id=401, 433.62pt x 252.945pt>
 File: Figures/circuit_origin_figure.png Graphic file (type png)
 <use Figures/circuit_origin_figure.png>
 Package pdftex.def Info: Figures/circuit_origin_figure.png  used on input line 
-147.
+40.
 (pdftex.def)             Requested size: 446.26582pt x 260.33556pt.
-) [47
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{table.47}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.252 \newpage
-              
+[44
 pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.252 \newpage
-               <./Figures/circuit_origin_figure.png>]
+l.43 \end{landscape}
+                     <./Figures/circuit_origin_figure.png>])
 Underfull \hbox (badness 10000) in paragraph at lines 258--258
 |\T1/ptm/b/n/12 Emergency Or-ders|
  []
 
-[48]
+[45
+
+]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 268.
@@ -3239,7 +3166,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 268.
 
-[49]
+[46]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 277.
@@ -3264,7 +3191,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 277.
 
-[50] 
+[47] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (stat_pack.aux)
  ***********
@@ -3278,8 +3205,8 @@ Package rerunfilecheck Info: File `stat_pack.out' has not changed.
 (rerunfilecheck)             Checksum: 65CDD749EFCAFC0991FE0A824B35CD3F;4214.
  ) 
 Here is how much of TeX's memory you used:
- 23182 strings out of 474485
- 449168 string characters out of 5739922
+ 23165 strings out of 474485
+ 448937 string characters out of 5739922
  1982542 words of memory out of 5000000
  44838 multiletter control sequences out of 15000+600000
  610143 words of font info for 92 fonts, out of 8000000 for 9000
@@ -3292,9 +3219,9 @@ s/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/Jake Truscott/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Jake Truscott/App
 Data/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Jake Trus
 cott/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on stat_pack.pdf (52 pages, 5616587 bytes).
+Output written on stat_pack.pdf (49 pages, 5609688 bytes).
 PDF statistics:
- 494 PDF objects out of 1000 (max. 8388607)
- 112 named destinations out of 1000 (max. 500000)
+ 472 PDF objects out of 1000 (max. 8388607)
+ 102 named destinations out of 1000 (max. 500000)
  316 words of extra memory for PDF output out of 10000 (max. 10000000)
 
