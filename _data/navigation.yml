@@ -9,9 +9,6 @@ main:
   
   - title: "SCOTUS Arguments"
     url: /scotusoa/
-
-  - title: "Publications"
-    url: /publications/
     
   - title: "Active Research"
     url: /active/    
@@ -21,6 +18,3 @@ main:
 
   - title: "Teaching"
     url: /teaching/    
-    
-  - title: "Posts"
-    url: /posts/    

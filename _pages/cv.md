@@ -65,7 +65,7 @@ Supervised Learning (Bag of Words, Naive Bayes, etc.)</td>
 
 Publications
 ======
-*Truscott, J. S. (2024). A Social Media Platform Model of Supreme Court News. Political Research Quarterly, 0(0). https://doi.org/10.1177/10659129241248586
+* Truscott, J. S. (2024). A Social Media Platform Model of Supreme Court News. Political Research Quarterly, 0(0). https://doi.org/10.1177/10659129241248586
 * Truscott, J.S. (2023). Analyzing the Rhetoric of Supreme Court Confirmation Hearings. <i>Journal of Law and Courts</i>, 1-22. doi:10.1017/jlc.2023.2 <br>
 * Truscott, J.S. (2022). Review of the Book A Right to Lie? Presidents, Other Liars, and the First Amendment. <i>The Law and Politics Book Review</i>, Vol. 33 No. 03 (March 2023) pp. 28-31. <br>
 * Truscott, J. S. (2022). The Supreme Spectacle: An Analysis of Public Attendance at the Supreme Court. <i>Justice System Journal</i>, 1-12. <br>
@@ -87,8 +87,8 @@ during the preceding year (PolMeth). </p>
 
 Works In Progress
 ======
-*Amici as Information: Re-Examining the Influence of Amicus Curiae in an Information-Bolstering Environment. Co-Author: Bryce Dietrich (Purdue University)
-*Measuring Judicial Ideology Through Text. Co-Author: Michael K. Romano (Shenandoah University).
+* Amici as Information: Re-Examining the Influence of Amicus Curiae in an Information-Bolstering Environment. Co-Author: Bryce Dietrich (Purdue University)
+* Measuring Judicial Ideology Through Text. Co-Author: Michael K. Romano (Shenandoah University).
 * Do Oral Arguments Influence the Language of Majority Opinions? Co-Authors: Dr. Bryce Dietrich (Purdue University) and Dr. Maya Sen (Harvard University)
 * Untitled Research Using C-SPAN Archives. Co-Author: Dr. Bryce Dietrich (Purdue University)
 * Ideological Congruence and Judicial Departures from the U.S. Courts of Appeals. Co-Author: Dr. Richard Vining (University of Georgia)
