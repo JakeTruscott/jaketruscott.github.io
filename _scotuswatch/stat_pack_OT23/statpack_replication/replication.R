@@ -677,7 +677,53 @@ combined_decisions
   }
 
 
-} #Word Count by Month
+} #Word Count (By Sitting)
+
+{
+  custom_colors <- c("#5FA934", "#3B5E8B", "#522559")
+
+  word_counts <- scotus_OT23 %>%
+    filter(speaker_type == 'Justice') %>%
+    group_by(speaker) %>%
+    summarise(word_count = sum(word_count)) %>%
+    mutate(speaker = factor(speaker, levels = c('ROBERTS', 'THOMAS', 'ALITO', 'SOTOMAYOR', 'KAGAN', 'GORSUCH', 'KAVANAUGH', 'BARRETT', 'JACKSON')))
+
+  word_count_plot <- ggplot(data = word_counts, aes(y = word_count, x = speaker, fill = word_count)) +
+    geom_hline(yintercept = 0, colour = 'gray5') +
+    geom_col(colour = 'gray5') +
+    geom_text(aes(label = scales::comma(word_count)), vjust = -0.5, size = 5) +
+    geom_vline(xintercept = 0, linetype = "solid", color = "black", size = 1) + # Add a vertical line for the y-axis
+    scale_fill_gradientn(
+      colors = custom_colors,
+      breaks = c(min(word_counts$word_count), mean(word_counts$word_count), max(word_counts$word_count)), # Custom breaks
+      labels = scales::comma_format(),
+      guide = guide_colorbar(
+        title = "Total Word Count",
+        title.position = "top")) +
+    labs(y  = " ",
+         x = " ",
+         title = " ") +
+    scale_x_discrete(labels = justice_image_labels) +
+    theme_classic() +
+    theme(
+      panel.grid = element_blank(),
+      axis.text.x = ggtext::element_markdown(),
+      axis.text.y = element_blank(),
+      axis.ticks.x = element_blank(),
+      axis.ticks.y = element_blank(),
+      legend.background = element_rect(linewidth = 1, fill = "NA", colour = "black"),
+      legend.box.background = element_rect(fill = NA, colour = "black"),
+      legend.position = "none",
+      legend.title = element_blank(),
+      legend.title.align = 0.5,
+      legend.text = element_text(size = 12),
+      plot.caption = element_text(hjust = 0.5, size = 12),
+      plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+      plot.subtitle = element_text(size = 15, hjust = 0.5))
+
+  ggsave(word_count_plot, file = 'stat_pack_OT23/figures/word_count_plot_OT23.png')
+
+} # Word Count (Total Figure)
 
 {
 
@@ -736,7 +782,6 @@ combined_decisions
   } #Totals Graph (Active)
   ggsave("stat_pack_OT23/Figures/statpack_figures/total_time_spoken_plot_OT23.png", total_time_spoken_plot, dpi = 300)
 
-
   for (i in unique(scotus_OT23$sitting)){
 
     time_spoken_total <- scotus_OT23 %>%
@@ -768,7 +813,73 @@ combined_decisions
 
 
 
-} #Speaking Times (Total & By Sitting)
+} #Speaking Times (By Sitting)
+
+{
+
+  custom_colors <- c("#5FA934", "#3B5E8B", "#522559")
+
+  time_spoken_total <- scotus_OT23 %>%
+    filter(speaker_type == 'Justice') %>%
+    mutate(time_spoken = text_stop - text_start) %>%
+    group_by(speaker, docket) %>%
+    summarise(total_time_spoken = sum(time_spoken)) %>%
+    mutate(total_time_spoken_minutes = round(total_time_spoken/60, 2)) %>%
+    group_by(docket) %>%
+    pivot_wider(names_from = speaker, values_from = total_time_spoken_minutes, names_prefix = "time_spoken_") %>%
+    summarise_all(.funs = sum, na.rm = T) %>%
+    mutate(total_time_spoken = rowSums(across(-c(total_time_spoken, docket)))) %>%
+    rename_with(~str_replace(., "time_spoken_", ""), -total_time_spoken) %>%
+    left_join(shorthand_case_names, by = 'docket') %>%
+    arrange(order) %>%
+    select(short_hand, total_time_spoken, ROBERTS, THOMAS, ALITO, SOTOMAYOR, KAGAN, GORSUCH, KAVANAUGH, BARRETT, JACKSON) %>%
+    mutate(short_hand = gsub('\\,', '', short_hand)) %>%
+    select(-c(short_hand, total_time_spoken)) %>%
+    summarise(across(everything(), sum)) %>%
+    pivot_longer(everything(),
+                 names_to = "speaker",
+                 values_to = "total_word_count") %>%
+    mutate(speaker = factor(speaker, levels = c('ROBERTS', 'THOMAS', 'ALITO', 'SOTOMAYOR', 'KAGAN', 'GORSUCH', 'KAVANAUGH', 'BARRETT', 'JACKSON')))
+
+  custom_colors <- c("#5FA934", "#3B5E8B", "#522559")
+
+  speaking_time_plot <- ggplot(data = time_spoken_total, aes(y = total_word_count, x = speaker, fill = total_word_count)) +
+    #scale_y_continuous(labels = scales::comma, breaks = seq(10000, 80000, 10000)) +
+    geom_hline(yintercept = 0, colour = 'gray5') +
+    geom_col(colour = 'gray5') +
+    geom_text(aes(label = scales::comma(total_word_count)), vjust = -0.5, size = 5) +
+    geom_vline(xintercept = 0, linetype = "solid", color = "black", size = 1) + # Add a vertical line for the y-axis
+    scale_fill_gradientn(
+      colors = custom_colors,
+      breaks = c(min(time_spoken_total$total_word_count), mean(time_spoken_total$total_word_count), max(time_spoken_total$total_word_count)), # Custom breaks
+      labels = scales::comma_format(),
+      guide = guide_colorbar(
+        title = "Total Word Count",
+        title.position = "top")) +
+    labs(y  = " ",
+         x = " ",
+         title = " ") +
+    scale_x_discrete(labels = justice_image_labels) +
+    theme_classic() +
+    theme(
+      panel.grid = element_blank(),
+      axis.text.x = ggtext::element_markdown(),
+      axis.text.y = element_blank(),
+      axis.ticks.x = element_blank(),
+      axis.ticks.y = element_blank(),
+      legend.background = element_rect(linewidth = 1, fill = "NA", colour = "black"),
+      legend.box.background = element_rect(fill = NA, colour = "black"),
+      legend.position = "none",
+      legend.title = element_blank(),
+      legend.title.align = 0.5,
+      legend.text = element_text(size = 12),
+      plot.caption = element_text(hjust = 0.5, size = 12),
+      plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+      plot.subtitle = element_text(size = 15, hjust = 0.5))
+
+    ggsave(speaking_time_plot, file = 'stat_pack_OT23/figures/total_time_spoken_plot_OT23.png')
+
+} #Speaking Times (Total Figure)
 
 
 ################################################################################

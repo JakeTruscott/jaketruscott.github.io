@@ -607,7 +607,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/April Sitting 2023/attorney_participation_23_april.html"
   webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/April Sitting 2023/attorney_participation_23_april.png", vwidth = 1250, vheight = 100)
 
-} #OT 2023 (By Sitting) -- Currently march
+} #OT 2023 (By Sitting) -- Currently April
 
 
 ################################################################################
@@ -693,13 +693,13 @@ webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketr
 
 ################################################################################
 # OT 2023 (By Active Sitting - Speaking Time)
-# Currently *February Sitting*
+# Currently *april Sitting*
 ################################################################################
 
 {
-  time_spoken_total_february <- scotus_OT23 %>%
+  time_spoken_total_april <- scotus_OT23 %>%
     filter(speaker_type == 'Justice') %>%
-    filter(sitting == 'February') %>%
+    filter(sitting == 'April') %>%
     mutate(case_name = ifelse(grepl('Kinder Morgan', case_name), 'Ohio, Et Al. Applicants v. Epa (Consolidated w/ 23A350, 23A351, 23A384)', case_name)) %>%
     mutate(time_spoken = text_stop - text_start) %>%
     group_by(speaker, case_name) %>%
@@ -713,7 +713,7 @@ webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketr
     rename("Total Time\n(Minutes)" = total_time_spoken)
 
 
-  speaking_data <- time_spoken_total_february
+  speaking_data <- time_spoken_total_april
   matching_columns <- intersect(colnames(speaking_data), names(justice_image_labels))
 
   original_column_names <- colnames(speaking_data)
@@ -725,7 +725,7 @@ webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketr
 } #Compile Speaking Times from scotus_OT23
 
 {
-  speaking_times_february <- speaking_data %>%
+  speaking_times_april <- speaking_data %>%
     kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
     add_header_above( original_column_names) %>%
     column_spec(1, bold = TRUE, border_right = TRUE, width = "350px") %>%
@@ -733,39 +733,39 @@ webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketr
     row_spec(seq(1, nrow(speaking_data), 1), align = 'center') %>%
     kable_styling(font_size = 12, bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
     column_spec(3, color = "white",
-                background = spec_color(time_spoken_total_february$ROBERTS, end = 0.5),
-                popover = paste("am:", time_spoken_total_february$ROBERTS)) %>%
+                background = spec_color(time_spoken_total_april$ROBERTS, end = 0.5),
+                popover = paste("am:", time_spoken_total_april$ROBERTS)) %>%
     column_spec(4, color = "white",
-                background = spec_color(time_spoken_total_february$ALITO, end = 0.5),
-                popover = paste("am:", time_spoken_total_february$ALITO)) %>%
+                background = spec_color(time_spoken_total_april$ALITO, end = 0.5),
+                popover = paste("am:", time_spoken_total_april$ALITO)) %>%
     column_spec(5, color = "white",
-                background = spec_color(time_spoken_total_february$BARRETT, end = 0.5),
-                popover = paste("am:", time_spoken_total_february$BARRETT)) %>%
+                background = spec_color(time_spoken_total_april$BARRETT, end = 0.5),
+                popover = paste("am:", time_spoken_total_april$BARRETT)) %>%
     column_spec(6, color = "white",
-                background = spec_color(time_spoken_total_february$GORSUCH, end = 0.5),
-                popover = paste("am:", time_spoken_total_february$GORSUCH)) %>%
+                background = spec_color(time_spoken_total_april$GORSUCH, end = 0.5),
+                popover = paste("am:", time_spoken_total_april$GORSUCH)) %>%
     column_spec(7, color = "white",
-                background = spec_color(time_spoken_total_february$JACKSON, end = 0.5),
-                popover = paste("am:", time_spoken_total_february$JACKSON)) %>%
+                background = spec_color(time_spoken_total_april$JACKSON, end = 0.5),
+                popover = paste("am:", time_spoken_total_april$JACKSON)) %>%
     column_spec(8, color = "white",
-                background = spec_color(time_spoken_total_february$KAGAN, end = 0.5),
-                popover = paste("am:", time_spoken_total_february$KAGAN)) %>%
+                background = spec_color(time_spoken_total_april$KAGAN, end = 0.5),
+                popover = paste("am:", time_spoken_total_april$KAGAN)) %>%
     column_spec(9, color = "white",
-                background = spec_color(time_spoken_total_february$KAVANAUGH, end = 0.5),
-                popover = paste("am:", time_spoken_total_february$KAVANAUGH)) %>%
+                background = spec_color(time_spoken_total_april$KAVANAUGH, end = 0.5),
+                popover = paste("am:", time_spoken_total_april$KAVANAUGH)) %>%
     column_spec(10, color = "white",
-                background = spec_color(time_spoken_total_february$SOTOMAYOR, end = 0.5),
-                popover = paste("am:", time_spoken_total_february$SOTOMAYOR)) %>%
+                background = spec_color(time_spoken_total_april$SOTOMAYOR, end = 0.5),
+                popover = paste("am:", time_spoken_total_april$SOTOMAYOR)) %>%
     column_spec(11, color = "white",
-                background = spec_color(time_spoken_total_february$THOMAS, end = 0.5),
-                popover = paste("am:", time_spoken_total_february$THOMAS))
+                background = spec_color(time_spoken_total_april$THOMAS, end = 0.5),
+                popover = paste("am:", time_spoken_total_april$THOMAS))
 } #Compile Table
 
-speaking_times_february #Print Preview
-save_kable(speaking_times_february, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/total_speaking_time.html")
-html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/total_speaking_time.html"
+speaking_times_april #Print Preview
+save_kable(speaking_times_april, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/April Sitting 2023/total_speaking_time.html")
+html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/April Sitting 2023/total_speaking_time.html"
 phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
-webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/February Sitting 2023/total_speaking_time.png", vwidth = 1250, vheight = 100)
+webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/April Sitting 2023/total_speaking_time.png", vwidth = 1250, vheight = 100)
 
 ################################################################################
 # OT 2023 (By Active Sitting - Speaking Time)

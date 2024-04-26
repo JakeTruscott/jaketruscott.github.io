@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.15)  26 APR 2024 11:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.15)  26 APR 2024 14:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1506,12 +1506,12 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 117.
 
-<Figures/word_count_plot_OT23.png, id=192, 601.5273pt x 604.1772pt>
+<Figures/word_count_plot_OT23.png, id=192, 721.7364pt x 551.9019pt>
 File: Figures/word_count_plot_OT23.png Graphic file (type png)
 <use Figures/word_count_plot_OT23.png>
 Package pdftex.def Info: Figures/word_count_plot_OT23.png  used on input line 1
 22.
-(pdftex.def)             Requested size: 422.77664pt x 424.65433pt.
+(pdftex.def)             Requested size: 422.77664pt x 323.29501pt.
 (statpack_sections/oral_argument_word_counts_justices_statpack.tex [9
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
 s been already used, duplicate ignored
@@ -2117,12 +2117,12 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 2.
 
-<Figures/total_time_spoken_plot_OT23.png, id=269, 721.0137pt x 604.1772pt>
+<Figures/total_time_spoken_plot_OT23.png, id=269, 721.7364pt x 551.9019pt>
 File: Figures/total_time_spoken_plot_OT23.png Graphic file (type png)
 <use Figures/total_time_spoken_plot_OT23.png>
 Package pdftex.def Info: Figures/total_time_spoken_plot_OT23.png  used on input
  line 7.
-(pdftex.def)             Requested size: 422.77664pt x 354.26733pt.
+(pdftex.def)             Requested size: 422.77664pt x 323.29501pt.
 [20
 
 
@@ -3219,7 +3219,7 @@ s/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/Jake Truscott/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Jake Truscott/App
 Data/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Jake Trus
 cott/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on stat_pack.pdf (49 pages, 5609688 bytes).
+Output written on stat_pack.pdf (49 pages, 5614635 bytes).
 PDF statistics:
  472 PDF objects out of 1000 (max. 8388607)
  102 named destinations out of 1000 (max. 500000)
