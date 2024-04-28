@@ -264,3 +264,45 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
   phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
   webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/argument_sittings/march_sitting_cases.png", vwidth = 1000, vheight = 70)
 } #March Sitting
+
+{
+  case <- c('Snyder v. United States', 'Chiaverini v. City of Napoleon, Ohio', 'Fischer v. United States', 'Thornell v. Jones', 'City of Grants Pass, Oregon v. Johnson', 'Smith v. Spizzirri', 'Department of State v. Munoz', 'Starbucks Corp. v. McKinney', 'Moyle v. United States', 'Trump v. United States')
+  argued <- c('04/15/2024', '04/15/2024', '04/16/2024', '04/17/2024', '04/22/2024', '04/22/2024', '04/23/2024', '04/23/2024', '04/24/2024', '04/25/2024')
+  petitioner <- c('Lisa S. Blatt', 'Easha Anand', 'Jeffrey T. Green', 'Jason D. Lewis', 'Thomas D. Evangelis', 'Daniel L. Geyser', 'Curtis E. Gannon', 'Lisa S. Blatt', 'Joshua N. Turner', 'D. John Sauer')
+  respondent <- c('Colleen R. Sindzak', 'Vivek Suri', 'Elizabeth B. Prelogar', 'Jean-Claude Andre', 'Edwin S. Kneedler', 'E. Joshua Rosenkranz', 'Eric T. Lee', 'Austin Raynor', 'Elizabeth B. Prelogar', 'Michael R. Dreeben')
+  amici <- c('', 'Megan M. Wold', '', '', 'Kelsi B. Corkran', '', '', '', '', '')
+  lower_court <- c('CA7', 'CA6', 'CADC', 'CA9', 'CA9', 'CA9', 'CA9', 'CA6', 'CA9', 'CADC')
+  cert_amici <- c(2, 1, 1, 0, 25, 0, 0, 3, 0, 8)
+  merits_amici <-  c(7, 8, 11, 4, 84, 3, 16, 13, 45, 36)
+
+  April_sitting <- data.frame(
+    'Case' = case,
+    'Argued' = argued,
+    'Petitioner Counsel' = petitioner,
+    'Respondent Counsel' = respondent,
+    'Arguing Amici' = amici,
+    'Lower Court' = lower_court,
+    'Cert-Stage Amici' = cert_amici,
+    'Merits-Stage Amici' = merits_amici
+  )
+  names(April_sitting) <- gsub("\\.", " ", names(April_sitting))
+
+  April_sitting_cases <- April_sitting %>%
+    kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
+    column_spec(1, bold = TRUE, border_right = TRUE, width = "6cm") %>%  # Set the width of the first column
+    column_spec(2, width = "4cm") %>%  # Set the width of columns 2 to 8
+    column_spec(3:4, width = "6cm") %>%  # Set the width of the first column
+    column_spec(5:8, width = "4cm") %>%  # Set the width of columns 2 to 8
+    row_spec(0, bold = TRUE, color = 'white', background = '#080808', align = 'center') %>%
+    row_spec(seq(1, nrow(April_sitting), 1), align = 'center') %>%
+    kable_styling(font_size = 12, bootstrap_options = c("striped", "hover", "condensed"))
+
+  April_sitting_cases
+
+  save_kable(April_sitting_cases, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/argument_sittings/april_sitting_cases.html")
+
+  html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/argument_sittings/april_sitting_cases.html"
+  #webshot::install_phantomjs(force = T)
+  phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
+  webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/argument_sittings/april_sitting_cases.png", vwidth = 1000, vheight = 70)
+} #April Sitting
