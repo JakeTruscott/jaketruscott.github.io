@@ -49,7 +49,7 @@ docket_parser <- function(dockets){
 
     tryCatch({
 
-      Sys.sleep(10)
+      Sys.sleep(5)
 
       base_url <- 'https://www.supremecourt.gov/search.aspx?filename=/docket/docketfiles/html/public/'
       url <- paste0(base_url, dockets[d], ".html")
