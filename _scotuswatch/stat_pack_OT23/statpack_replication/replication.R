@@ -55,7 +55,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     GINSBURG = "<img src='stat_pack_OT23/Figures/justice_images/Ginsburg.png' width='75' /><br>",
     KENNEDY = "<img src='stat_pack_OT23/Figures/justice_images/Kennedy.png' width='75' /><br>"
   )
-} #Justice Images
+} #Justice Images (Oyez)
 {
 
   shorthand_case_names <- read.csv('ot23_decisions/shorthand_case_names.csv', as.is = T)
@@ -135,6 +135,9 @@ combined_decisions
 
   write.table(agreement_matrix, file = 'stat_pack_OT23/Tables/decision_tables/agreement_matrix.csv', sep = ',', quote = FALSE, row.names = F) #Save
 
+  agreement_matrix[,1] = gsub('\\.png', '', toupper(rownames(agreement_matrix)))
+
+  write.table(agreement_matrix, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Agreement Matrix/OT23_justice_agreement_matrix.csv', sep = ',', quote = FALSE, row.names = F) #Save
 
 
 
@@ -160,15 +163,11 @@ combined_decisions
 
     write.table(decision_descriptions_test, file = paste0('stat_pack_OT23/Tables/decision_tables/decision_description_', i, '.csv'), sep = ',', quote = FALSE, row.names = F)
 
+    write.table(decision_descriptions_test, file = paste0('stat_pack_OT23/Statpack Replication Data/Decisions/Decision Descriptions/', i, '_Decision_Descriptions_OT23.csv'), sep = ',', quote = F, row.names = F)
+
 
   }
 
-
-
-
-  decision_descriptions_test
-
-  write.table(decision_descriptions_test, file = 'stat_pack_OT23/Tables/decision_tables/decision_description_1.csv', sep = ',', quote = FALSE, row.names = F)
 
 } # Decision-Level Breakdowns
 
@@ -284,6 +283,8 @@ combined_decisions
 
   write.table(decisions_by_coalition_combined, file = 'stat_pack_OT23/Tables/decision_tables/decisions_by_coalition.csv', row.names = F, quote = F, sep = ',')
 
+  write.table(decisions_by_coalition_combined, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Decisions by Coalition/decisions_by_coalition_OT23.csv', row.names = F, quote = F, sep = ',')
+
 
 } #Cases by Coalition Type
 
@@ -341,6 +342,23 @@ combined_decisions
     ggsave("stat_pack_OT23/Figures/statpack_figures/decisions_by_coalition_2018_2023.png", decisions_by_coalition_2018_2022, dpi = 300)
 
 
+    decisions_by_coalition_2018_2022 <- scdb_cases_2023 %>%
+      filter(term >= 2018) %>%
+      mutate(coalition = case_when(
+        majVotes == 9 ~ '(9-0)',
+        majVotes == 8 ~ '(8-1) or (8-0)',
+        majVotes == 7 ~ '(7-2) or (7-1)',
+        majVotes == 6 ~ '(6-3) or (6-2)',
+        majVotes == 5 ~ '(5-4) or (5-3)',
+        majVotes == 4 ~ '(4-4)')) %>%
+      filter(!majVotes == 4) %>%
+      select(term, coalition, docket) %>%
+      bind_rows(decisions_by_coalition_longitudinal %>%
+                  mutate(term = 2023)) %>%
+      group_by(term, coalition) %>%
+      summarise(count = n())
+
+    write.table(decisions_by_coalition_2018_2022, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Decisions by Coalition/decisions_by_coalition_OT18_OT23.csv', sep = ',', quote = F, row.names = F)
 
     } #Distribution of Coalitions (Current v. Past)
 
@@ -407,6 +425,30 @@ combined_decisions
 
   ggsave("stat_pack_OT23/Figures/statpack_figures/share_of_unanimity_2018_2023.png", share_of_unanimity, dpi = 300)
 
+
+  share_of_unanimity <- scdb_cases_2023 %>%
+    filter(term >= 2018) %>%
+    mutate(coalition = case_when(
+      majVotes == 9 ~ '(9-0)',
+      majVotes == 8 ~ '(8-1) or (8-0)',
+      majVotes == 7 ~ '(7-2) or (7-1)',
+      majVotes == 6 ~ '(6-3) or (6-2)',
+      majVotes == 5 ~ '(5-4) or (5-3)',
+      majVotes == 4 ~ '(4-4)')) %>%
+    select(term, coalition, docket) %>%
+    bind_rows(decisions_by_coalition_longitudinal %>%
+                mutate(term = 2023)) %>%
+    mutate(coalition = ifelse(coalition == "(9-0)", "(9-0)", "Other")) %>%
+    group_by(term, coalition) %>%
+    summarise(count = n()) %>%
+    group_by(term) %>%
+    reframe(total_cases = sum(count),
+            count = count,
+            coalition = coalition) %>%
+    mutate(percent = round((count/total_cases)*100, 2),
+           term = paste0(term, ' Term (', total_cases, ')'))
+
+  write.table(share_of_unanimity, file = 'stat_pack_OT23/Statpack replication Data/Decisions/Share of Unanimity/share_of_unanimity_OT18_OT23.csv', sep = ",", quote = F, row.names = F)
 
 } #Share of Unanimity Over Time
 
@@ -485,6 +527,56 @@ combined_decisions
   ggsave("stat_pack_OT23/Figures/statpack_figures/opinion_type_share_18_23.png", opinion_type_share_18_23, dpi = 300)
 
 
+  opinion_type_share_18_23 <- scdb_justices_2023 %>%
+    filter(term >= 2018) %>%
+    select(vote, docket, term) %>%
+    mutate(justice_vote = case_when(
+      .default = 'Joined Majority',
+      vote %in% c(2, 6, 7) ~ 'Dissent',
+      vote %in% c(3:5) ~ 'Concurrence',
+      vote == 8 ~ 'Equally Divided')) %>%
+    filter(!justice_vote == 'Equally Divided') %>%
+    mutate(justice_vote = ifelse(justice_vote == 'Joined Majority', 'Majority', 'Other')) %>%
+    group_by(docket, justice_vote) %>%
+    reframe(count = n(),
+            term) %>%
+    unique() %>%
+    group_by(docket) %>%
+    reframe(total_voting = sum(count),
+            justice_vote,
+            term,
+            docket,
+            count)  %>%
+    group_by(term) %>%
+    pivot_wider(values_from = count, names_from = justice_vote) %>%
+    mutate(other_votes = ifelse(Other == 0 | is.na(Other), 0, 1)) %>%
+    group_by(term) %>%
+    reframe(total_cases = length(unique(docket)),
+            term,
+            concurrence_dissent = sum(other_votes)) %>%
+    unique() %>%
+    mutate(majority_only = total_cases - concurrence_dissent) %>%
+    pivot_longer(cols = c(concurrence_dissent, majority_only), names_to = 'votes') %>%
+    mutate(percent = round((value/total_cases)*100, 2)) %>%
+    bind_rows( decisions_ot_23 %>%
+                 rowwise() %>%
+                 mutate(other_votes = ifelse(any(!c_across(ROBERTS:JACKSON) %in% c(1, 100)), "concurrence_dissent", "majority_only")) %>%
+                 select(other_votes) %>%
+                 group_by(other_votes) %>%
+                 reframe(value = n(),
+                         votes = other_votes,
+                         total_cases = nrow(decisions_ot_23)) %>%
+                 unique() %>%
+                 mutate(term = 2023,
+                        percent = round((value/total_cases)*100, 2)) %>%
+                 select(term, total_cases, votes, value, percent)) %>%
+    mutate(votes = ifelse(votes == 'majority_only', 'Majority Only', 'Concurrences and (or) Dissents'),
+           votes = factor(votes, levels = c('Majority Only', 'Concurrences and (or) Dissents')),
+           term = paste0(term, ' Term (', total_cases, ')'))
+
+
+  write.table(opinion_type_share_18_23, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Share of Unanimity/opinion_type_share_OT18_OT23.csv', quote = F, row.names = F, sep = ',')
+
 } #Cases with Dissents/Concurrence Over Time
 
 {
@@ -538,8 +630,27 @@ combined_decisions
       mutate(case_name = gsub('\\,', '', case_name))
 
     output_path = paste0("stat_pack_OT23/Tables/oral_argument_speaking/attorney_participation_", i, ".csv")
-
     write.table(attorneys, file = output_path,  row.names = F, quote = F, sep = ',')
+
+    attorneys <- scotus_OT23 %>%
+      filter(sitting == i) %>%
+      mutate(response_to = ifelse(lag(speaker_type) == 'Justice', lag(speaker), NA)) %>%
+      filter(speaker_type == "Attorney") %>%
+      mutate(speaker = ifelse(speaker == 'MR. SYNDER', 'MR. SNYDER', speaker)) %>%
+      filter(!is.na(response_to)) %>%
+      group_by(case_name, speaker, response_to) %>%
+      summarise(total_words = sum(word_count, na.rm = TRUE)) %>%
+      ungroup() %>%
+      mutate(response_to = gsub("(CHIEF JUSTICE |JUSTICE )", "", response_to)) %>%
+      pivot_wider(names_from = response_to, values_from = total_words) %>%
+      mutate(total_words = rowSums(select(., -c(case_name, speaker)), na.rm = TRUE)) %>%
+      select(case_name, speaker, total_words) %>%
+      mutate(speaker = gsub('(\\, Jr\\.| II$| III$)', '', speaker),
+             speaker = str_extract(speaker, "\\b\\w+$"),
+             case_name = gsub('\\,', '', case_name))
+
+    output_path = paste0("stat_pack_OT23/Statpack Replication Data/Oral Arguments/Attorney Participation/", i, "_Sitting_Calendar_OT23.csv")
+    write.csv(attorneys, file = output_path,  row.names = F, quote = F)
 
   }
 
@@ -674,6 +785,8 @@ combined_decisions
 
     write.table(oa_data_temp, file = paste0("stat_pack_OT23/Tables/oral_argument_speaking/oral_argument_participation_", i, ".csv"), row.names = F, quote = F, sep = ',')
 
+    write.table(oa_data_temp, file = paste0('stat_pack_OT23/Statpack Replication Data/Oral Arguments/Justice Word Counts/', i, '_Sitting_OT23.csv'), row.names = F, quote = F, sep = ',')
+
   }
 
 
@@ -804,8 +917,11 @@ combined_decisions
 
 
     output_path = paste0("stat_pack_OT23/Tables/oral_argument_speaking/oral_argument_speaking_times_", i, '.csv')
-
     write.table(time_spoken_total, file = output_path, row.names = F, quote = F, sep = ',')
+
+
+    output_path = paste0("stat_pack_OT23/Statpack Replication Data/Oral Arguments/Justice Speaking Times/", i, '_Sitting_OT23.csv')
+    write.table(time_spoken_total, file = output_path, row.names = F, quote = F, sep = ",")
 
 
   }
@@ -916,6 +1032,10 @@ save(dockets, file = 'docket_parser/OT23_docket_sheets/docket_filings_ot_23.rdat
 
 load('docket_parser/OT23_docket_sheets/docket_filings_ot_23.rdata')
 
+dockets <- dockets %>%
+  unique() #Make Sure to Only Get Unique
+
+
 {
 
   dockets_ot_23 <- dockets %>%
@@ -955,6 +1075,37 @@ load('docket_parser/OT23_docket_sheets/docket_filings_ot_23.rdata')
 
   ggsave("stat_pack_OT23/Figures/statpack_figures/dockets_ot_23.png", dockets_ot_23 , dpi = 300)
 
+  dockets_ot_23 <- dockets %>%
+    mutate(docket_type = case_when(
+      .default = 'Petitions',
+      grepl('A', docket_number) ~ 'Applications',
+      grepl('M', docket_number) ~ 'Motions'),
+      docketed = lubridate::mdy(docketed),
+      docketed = format(docketed, "%Y-%m")) %>%
+    group_by(docketed, docket_type) %>%
+    summarise(count = n()) %>%
+    pivot_wider(names_from = 'docket_type', values_from = 'count') %>%
+    mutate(month = gsub('.*\\-', '', docketed),
+           month = case_when(
+             month == '06' ~ 'June',
+             month == '07' ~ 'July',
+             month == '08' ~ 'August',
+             month == '09' ~ 'September',
+             month == '10' ~ 'October',
+             month == '11' ~ 'November',
+             month == '12' ~ 'December',
+             month == '01' ~ 'January',
+             month == '02' ~ 'February',
+             month == '03' ~ 'March',
+             month == '04' ~ 'April',
+             month == '05' ~ 'May'),
+           year = gsub('\\-.*', '', docketed),
+           docketed = paste0(month, ' ', year)) %>%
+    select(-c(month, year))
+
+
+  write.csv(dockets_ot_23, file = 'stat_pack_OT23/Statpack Replication Data/Docket/filing_trends_by_month_OT23.csv', row.names = F)
+
 
 } #Main Filing Trends (OT23) by Month
 
@@ -985,6 +1136,8 @@ load('docket_parser/OT23_docket_sheets/docket_filings_ot_23.rdata')
            `Petitions` = count,
            `Type` = origin_type)
 
+  write.csv(dockets_ot_23_origin, file = 'stat_pack_OT23/Statpack Replication Data/Docket/filings_court_of_origin_OT23.csv', row.names = F)
+
   fifth_circuit_petitions <- sum(dockets_ot_23_origin$Petitions[dockets_ot_23_origin$Origin == 'Fifth Circuit'])
   total_petitions <- sum(dockets_ot_23_origin$Petitions)
   (fifth_circuit_petitions / total_petitions) * 100
@@ -1007,6 +1160,8 @@ load('docket_parser/OT23_docket_sheets/docket_filings_ot_23.rdata')
     write.table(temp_data, file = temp_path, row.names = F, quote = F, sep = ',')
 
   }
+
+
 
 
 
@@ -1115,6 +1270,23 @@ load('docket_parser/OT23_docket_sheets/docket_filings_ot_23.rdata')
   ggsave("stat_pack_OT23/Figures/statpack_figures/longitudinal_docketing_trends_2018_2023.png", longitudinal_docketing_trends_2018_2023 , dpi = 300)
 
 
+  longitudinal_docketing_trends_2018_2023 <- ot18_ot22_dockets %>%
+    mutate(filing_type = case_when(
+      .default = 'Petitions',
+      grepl('(M|m)', docket_number) ~ 'Motions',
+      grepl('(a|A)', docket_number) ~ 'Applications')) %>%
+    mutate(filing_term = as.numeric(gsub('(\\-.*|a.*|A.*|m.*|M.*)', '', docket_number))) %>%
+    select(filing_term, filing_type)  %>%
+    group_by(filing_term, filing_type) %>%
+    summarise(count = n()) %>%
+    unique() %>%
+    rename(docketed = filing_term) %>%
+    mutate(docketed = paste0('20', docketed),
+           docketed = as.numeric(docketed)) %>%
+    bind_rows(dockets_ot_23) %>%
+    pivot_wider(names_from = 'filing_type', values_from = 'count')
+
+  write.csv(longitudinal_docketing_trends_2018_2023, file = 'stat_pack_OT23/Statpack Replication Data/Docket/filing_trends_OT18_OT23.csv', row.names = F)
 
 
 } #Combined Docket Trends (18-23)
