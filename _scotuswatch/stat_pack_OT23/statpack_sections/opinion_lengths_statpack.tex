@@ -1,0 +1,60 @@
+\begin{landscape}
+\subsection{\centering Opinion Lengths}
+\begin{minipage}[t]{0.5\linewidth}
+\begin{table}[H]
+    \centering
+            \caption{Ten Longest Decisions (2023 Term)}
+            \vspace{2mm}
+    \csvreader[
+        tabular= {p{0.6\textwidth}cc},
+        table head=\toprule
+		\multicolumn{1}{c}{Case} &
+		\multicolumn{1}{c}{Author} &
+		\multicolumn{1}{c}{Type}  \\
+		\midrule,
+        table foot=\bottomrule \multicolumn{3}{l}{\footnotesize{\emph{Note}: Word Counts calculated using \texttt{scotustext} (R) -- Footnotes omitted.}} \\ \bottomrule  % Specify the footer rule
+    ]{"Statpack Replication Data/Decisions/Opinion Lengths/ten_longest_decisions.csv"}{}%
+    {\footnotesize \csvcoli & \footnotesize \csvcoliv & \footnotesize \csvcolv} % Specify the columns to include
+    \label{tab:yourlabel}
+\end{table}
+\end{minipage}
+\begin{minipage}[t]{0.5\linewidth}
+\begin{table}[H]
+    \centering
+            \caption{Ten Shortest Decisions (2023 Term)}
+            \vspace{2mm}
+    \csvreader[
+        tabular= {p{0.6\textwidth}cc},
+        table head=\toprule
+		\multicolumn{1}{c}{Case} &
+		\multicolumn{1}{c}{Author} &
+		\multicolumn{1}{c}{Type} \\
+		\midrule,
+        table foot=\bottomrule \multicolumn{3}{l}{\footnotesize{\emph{Note}: Word Counts calculated using \texttt{scotustext} (R) -- Footnotes omitted.}} \\ \bottomrule  % Specify the footer rule
+    ]{"Statpack Replication Data/Decisions/Opinion Lengths/ten_shortest_decisions.csv"}{}%
+    {\footnotesize \csvcoli & \footnotesize \csvcoliv & \footnotesize \csvcolv} % Specify the columns to include
+    \label{tab:yourlabel}
+\end{table}
+\end{minipage}
+\end{landscape}
+
+\newpage
+
+\begin{figure}[H]
+\centering
+\caption{Average Opinion Lengths by Type (OT18-OT23)}
+\vspace{1.5mm}
+\includegraphics[width = 0.9\textwidth]{"Figures/statpack_figures/opinion_lengths_longitudinal.png"}
+
+\end{figure}
+
+\vspace{0.5mm}
+
+\centering
+\footnotesize{\emph{Note}: Dashed red line represents longitudinal mean.}
+
+\newpage
+
+
+
+

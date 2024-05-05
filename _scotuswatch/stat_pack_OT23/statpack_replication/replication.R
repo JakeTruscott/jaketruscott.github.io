@@ -70,16 +70,10 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
 } #SCDB Justice ID Conversion
 {
-  load("stat_pack_OT23/statpack_replication/Misc Data/scdb_cases_2023.rdata")
+  scdb_cases_2023 <- get(load("stat_pack_OT23/statpack_replication/Misc Data/scdb_cases_2023.rdata"))
   load("stat_pack_OT23/statpack_replication/Misc Data/scdb_justices_2023.rdata")
 
 } #SCDB Data (Updated September 2023)
-
-################################################################################
-# Decisions
-################################################################################
-
-
 {
 
   decisions_ot_23 <- read.csv(file = "ot23_decisions/OT_23_Decisions.csv")
@@ -89,10 +83,17 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
 
 } # Load OT23 Decisions Table
+{
 
-decisions_23 <- scotustext::decision_processor(dir_path = "ot23_decisions/decision_pdfs_OT23") #OT23
+  combined_sitting_calendar <- read.csv('stat_pack_OT23/Statpack Replication Data/Oral Arguments/Calendar - EmpiricalSCOTUS/combined_sittings_calendar.csv', as.is = T)
+  names(combined_sitting_calendar) = gsub('\\.', ' ', names(combined_sitting_calendar))
 
-earlier_decisions <- get(load('ot23_decisions/earlier_decisions_processed.rdata'))
+} #OA Sitting Calendars
+
+################################################################################
+# Decisions
+################################################################################
+
 
 combined_decisions
 
@@ -581,8 +582,122 @@ combined_decisions
 
 {
 
+  decisions_23 <- scotustext::decision_processor(dir_path = "ot23_decisions/decision_pdfs_OT23") #OT23
 
-} # Word Counts
+  ten_longest <- decisions_23 %>%
+    rename(docket = docket_id) %>%
+    left_join(shorthand_case_names, by = 'docket') %>%
+    select(short_hand, docket, sitting, opinion_writer, opinion_type, word_count) %>%
+    arrange(desc(word_count)) %>%
+    mutate(opinion_writer = gsub('\\;.*', '', opinion_writer),
+           opinion_writer = gsub('(CHIEF JUSTICE |JUSTICE )', '', opinion_writer),
+           opinion_writer = str_to_title(opinion_writer),
+           opinion_type = ifelse(opinion_type == 'Majority Opinion', 'Majority', opinion_type)) %>%
+    head(10)
+
+  ten_shortest <- decisions_23 %>%
+    rename(docket = docket_id) %>%
+    left_join(shorthand_case_names, by = 'docket') %>%
+    select(short_hand, docket, sitting, opinion_writer, opinion_type, word_count) %>%
+    arrange(word_count) %>%
+    mutate(opinion_writer = gsub('\\;.*', '', opinion_writer),
+           opinion_writer = gsub('(CHIEF JUSTICE |JUSTICE )', '', opinion_writer),
+           opinion_writer = str_to_title(opinion_writer),
+           opinion_type = ifelse(opinion_type == 'Majority Opinion', 'Majority', opinion_type)) %>%
+    head(10)
+
+  all_decisions <- decisions_23 %>%
+    rename(docket = docket_id) %>%
+    left_join(shorthand_case_names, by = 'docket') %>%
+    select(short_hand, docket, sitting, opinion_writer, opinion_type, word_count) %>%
+    arrange(word_count) %>%
+    rename(`Docket` = docket,
+           `Case` = short_hand,
+           `Sitting` = sitting,
+           `Author` = opinion_writer,
+           `Type` = opinion_type,
+           `Word Count` = word_count)
+
+  write.table(ten_longest, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Opinion Lengths/ten_longest_decisions.csv', row.names = F, sep = ',', quote = F)
+  write.table(ten_shortest, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Opinion Lengths/ten_shortest_decisions.csv', row.names = F, sep = ',', quote = F)
+  write.table(all_decisions, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Opinion Lengths/all_decision_lengths.csv', row.names = F, sep = ',', quote = F)
+
+
+} # Decision Word Counts (OT23)
+
+{
+
+  earlier_decisions <- get(load('ot23_decisions/earlier_decisions_processed.rdata')) # Load Older Decisions
+
+  combined_decisions <- data.frame() #Initialize Empty Df for Combined
+
+  for (i in names(earlier_decisions)){
+    temp_term <- earlier_decisions[[i]]
+    temp_term <- cbind(term = i,
+                       temp_term)
+    combined_decisions <- bind_rows(combined_decisions, temp_term)
+
+    message('Completed ', i, ' Term')
+
+  } #Append Earlier Decisions to DF
+
+  combined_decisions <- combined_decisions %>%
+    bind_rows(decisions_23 %>%
+                mutate(term = "2023")) #Combine to Single Object for OT18-23 Decisions
+
+
+  opinion_lengths_longitudinal <- combined_decisions %>%
+    select(term, opinion_type, word_count) %>%
+    group_by(term, opinion_type) %>%
+    summarise(average_length = round(mean(word_count), 0)) %>%
+    group_by(opinion_type) %>%
+    reframe(mean_mean = mean(average_length),
+            term = term,
+            average_length = average_length) %>%
+    mutate(opinion_type = factor(opinion_type, levels = c('Majority Opinion', 'Concurrence', 'Dissent', 'Per Curiam')))
+
+
+  write.csv(opinion_lengths_longitudinal, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Opinion Lengths/average_opinion_lengths_by_type_OT18_OT23.csv', row.names = F)
+
+
+  opinion_lengths_longitudinal <- combined_decisions %>%
+    select(term, opinion_type, word_count) %>%
+    group_by(term, opinion_type) %>%
+    summarise(average_length = round(mean(word_count), 0)) %>%
+    group_by(opinion_type) %>%
+    reframe(mean_mean = mean(average_length),
+            term = term,
+            average_length = average_length) %>%
+    mutate(opinion_type = factor(opinion_type, levels = c('Majority Opinion', 'Concurrence', 'Dissent', 'Per Curiam'))) %>%
+    ggplot(aes(x = term, y = average_length)) +
+    geom_bar(stat = 'identity', fill = 'gray50', position = position_dodge2(), colour = 'gray5') +
+    scale_y_continuous(breaks = seq(1000, 5000, 1000), lim = c(0, 5500)) +
+    geom_text(aes(label = average_length), vjust = -0.5) +
+    geom_hline(yintercept = 0) +
+    facet_wrap(~opinion_type) +
+    geom_hline(aes(yintercept = mean_mean), linetype = 2, colour = 'coral4', linewidth = 1.1) +
+    theme_bw() +
+    labs(
+      x = '\nTerm\n',
+      y = '\nAverag Word Count\n') +
+    theme(legend.position = 'none',
+          strip.text = element_text(size = 12, colour = 'black', face = 'bold',
+                                    margin = margin(b = 10), vjust = -1, hjust = 0.5),
+          strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+          panel.background = element_rect(size = 1, fill = 'white', colour = 'black'),
+          axis.text = element_text(size = 12, colour = 'black'),
+          axis.title = element_text(size = 12, colour = 'black'))
+
+
+  ggsave(opinion_lengths_longitudinal, file = 'stat_pack_OT23/Figures/statpack_figures/opinion_lengths_longitudinal.png')
+
+
+
+} #Average Word Counts by Type and Term
+
+{
+
+} #Decision Turnover (General + Each Case + Over Time)
 
 ################################################################################
 #Oral Arguments
@@ -1002,39 +1117,63 @@ combined_decisions
 # Docket
 ################################################################################
 
-docket_path <- list.files("docket_parser/OT23_docket_sheets", full.names = T)
+{
 
-dockets <- data.frame()
+  docket_path <- list.files("docket_parser/OT23_docket_sheets", full.names = T)
 
-for (i in 1:length(docket_path)){
+  dockets <- data.frame()
 
-  temp_docket <- get(load(docket_path[i]))
-  dockets <- bind_rows(dockets, temp_docket)
+  for (i in 1:length(docket_path)){
 
-  if (i %% 100 == 0){
-    message('Completed ', i, ' of ', length(docket_path))
-  }
+    temp_docket <- get(load(docket_path[i]))
+    dockets <- bind_rows(dockets, temp_docket)
 
-  rm(docket_combined) #Remove Temp Docket
-  rm(temp_docket)
+    if (i %% 100 == 0){
+      message('Completed ', i, ' of ', length(docket_path))
+    }
 
-} #Combine Docket Sheets Into Single DF
+    rm(docket_combined) #Remove Temp Docket
+    rm(temp_docket)
 
-for (i in 1:nrow(dockets)){
+  } #Combine Docket Sheets Into Single DF
 
-  if (dockets$docketed[i] == '') {
-    dockets$docketed[i] <- format(as.Date(dockets$docket[i][[1]][[1]][1], format = "%Y-%m-%d"), "%B %d, %Y")
-  }
+  for (i in 1:nrow(dockets)){
 
-} #Fix Dockets w/out Docketed Date (Applications & Motions)
+    if (dockets$docketed[i] == '') {
+      dockets$docketed[i] <- format(as.Date(dockets$docket[i][[1]][[1]][1], format = "%Y-%m-%d"), "%B %d, %Y")
+    }
 
-save(dockets, file = 'docket_parser/OT23_docket_sheets/docket_filings_ot_23.rdata')
+  } #Fix Dockets w/out Docketed Date (Applications & Motions)
 
-load('docket_parser/OT23_docket_sheets/docket_filings_ot_23.rdata')
+  dockets <- dockets %>%
+    unique() #Filter to Unique
 
-dockets <- dockets %>%
-  unique() #Make Sure to Only Get Unique
+  save(dockets, file = 'docket_parser/OT23_docket_sheets/docket_filings_ot_23.rdata')
 
+
+
+} #Compile OT23 Dockets (IF Needed)
+
+load('docket_parser/OT23_docket_sheets/docket_filings_ot_23.rdata') #Load OT23 Dockets
+
+load('docket_parser/OT18_OT22_dockets.rdata') #Load OT23 Dockets
+
+{
+
+  dockets_ot_23 <- dockets %>%
+    mutate(filing_year = 2023)
+
+
+  dockets_ot18_ot22 <- ot18_ot22_dockets %>%
+    unique() %>%
+    mutate(filing_year = gsub('(\\-.*|a.*|m.*)', '', docket_number),
+           filing_year = paste0('20', filing_year),
+           filing_year = as.numeric(filing_year))
+
+  combined_dockets <- dockets_ot18_ot22 %>%
+    bind_rows(dockets_ot_23)
+
+} #Create Combined OT18 - OT23 Docket Frame ('combined_dockets')
 
 {
 
@@ -1178,10 +1317,27 @@ dockets <- dockets %>%
     mutate(NAME = toupper(Origin)) %>%
     left_join(shapefile_circuit, by = 'NAME')
 
-  circuit_origin_figure <- circuit_origin %>%
+  circuit_origin <- circuit_origin %>%
     ggplot() +
     geom_sf(aes(fill = Petitions, geometry = geometry), color = 'black') +
     coord_sf(xlim = c(xmin = -130, xmax = -65), ylim = c(ymin = 25, ymax = 50)) +
+    geom_segment(aes(x = -65, xend = -69, y = 47, yend = 47)) +
+    geom_label(mapping = aes(x = -65, y = 47), label = '1st') +
+    geom_segment(aes(x = -75, xend = -75, y = 47, yend = 45)) +
+    geom_label(mapping = aes(x = -75, y = 47), label = '2nd') +
+    geom_segment(aes(x = -68, xend = -74, y = 40, yend = 40)) +
+    geom_label(mapping = aes(x = -68, y = 40), label = '3rd') +
+    geom_label(mapping = aes(x = -80, y = 35), label = '4th') +
+    geom_label(mapping = aes(x = -99, y = 31), label = '5th') +
+    geom_segment(aes(x = -82, xend = -83, y = 48, yend = 44)) +
+    geom_label(mapping = aes(x = -82, y = 48), label = '6th')  +
+    geom_label(mapping = aes(x = -88, y = 40), label = '7th') +
+    geom_label(mapping = aes(x = -97, y = 45), label = '8th') +
+    geom_label(mapping = aes(x = -118, y = 40), label = '9th') +
+    geom_label(mapping = aes(x = -108, y = 40), label = '10th') +
+    geom_label(mapping = aes(x = -85, y = 33), label = '11th') +
+    geom_segment(aes(x = -72, xend = -77, y = 37, yend = 38.5)) +
+    geom_label(mapping = aes(x = -72, y = 37), label = 'DC')  +
     scale_fill_continuous(low = 'gray',
                           high = 'black') +
     labs(fill = 'Petitions Filed (OT2023)') +
@@ -1203,7 +1359,7 @@ dockets <- dockets %>%
            size = guide_legend(title.position="top", title.hjust = 0.5)) +
     guides(fill = guide_colorbar(title.position = "top", title.hjust = 0.5))
 
-  ggsave(circuit_origin_figure, file = "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/Figures/circuit_origin_figure.png", width = 6, height = 3.5) # Adjust width and height as needed
+  ggsave(circuit_origin, file = "stat_pack_OT23/Figures/statpack_figures/circuit_court_map.png", width = 6, height = 3.5) # Adjust width and height as needed
 
 
 } #Circuit Map
@@ -1290,3 +1446,155 @@ dockets <- dockets %>%
 
 
 } #Combined Docket Trends (18-23)
+
+{
+
+  amici_dockets <- data.frame() #Create Empty DF to Store Output
+
+  combined_petitions <- combined_dockets %>%
+    filter(!grepl('(a|m)', docket_number, ignore.case = T))
+
+  {
+
+    grants_lists <- list.files('stat_pack_OT23/statpack_replication/Misc Data/SCOTUS_granted_cases_lists', full.names = T)
+    combined_grants_lists <- list()
+
+    for (i in 1:length(grants_lists)){
+      temp_pdf <- pdftools::pdf_text(grants_lists[i])
+      combined_grants_lists[[i]] <- temp_pdf
+    }
+
+
+    filter_words <- function(input_string) {
+      words <- str_split(input_string, "\\s+")[[1]]
+      filtered_words <- str_subset(words, "(16\\-|17\\-|18\\-|19\\-|20\\-|21\\-|22\\-|23\\-)")
+      return(filtered_words)
+    }
+
+    cases <- c()
+
+    for (i in 1:length(combined_grants_lists)){
+
+      pdf_text = combined_grants_lists[[i]]
+
+      temp_cases <- c()
+
+      for (page in 1:length(pdf_text)){
+        words <- str_split(pdf_text, "\\s+")[[page]]
+        filtered_words <- str_subset(words, "(16\\-|17\\-|18\\-|19\\-|20\\-|21\\-|22\\-|23\\-)")
+        filtered_words <- gsub("[^0-9-]", "", filtered_words)
+        filtered_words <- unique(filtered_words)
+        temp_cases <- c(temp_cases, filtered_words)
+      }
+
+      cases <- c(cases, temp_cases)
+
+      cases <- unique(cases)
+
+    }
+
+
+
+
+    } #Get List of Granted Cases from Grants Lists
+
+  granted_cases <- cases
+
+  for (i in 1:nrow(combined_petitions)){
+
+    temp_row <- combined_petitions[i,]
+
+    temp_docket_number <- temp_row$docket_number[1]
+    temp_filing_year <- temp_row$filing_year[1]
+    temp_docket <- temp_row$docket[[1]]
+    temp_docket <- temp_docket %>%
+      mutate(amici = ifelse(grepl('(Amicus Brief of|Brief amici curiae of|Brief amicus curiae of)', entry, ignore.case = T), 1, 0),
+             amici = ifelse(grepl('not accepted', entry, ignore.case = T) & amici == 1, 0, amici))
+    total_amici <- sum(temp_docket$amici)
+    petition_granted = ifelse(temp_docket_number %in% granted_cases, 1, 0)
+
+    temp_combined <- data.frame(docket_number = temp_docket_number,
+                                filing_year = temp_filing_year,
+                                total_amici = total_amici,
+                                petition_granted = petition_granted)
+
+    amici_dockets <- bind_rows(amici_dockets, temp_combined)
+
+    if (i %% 1000 == 0){
+      message('Completed ', i, ' of ', nrow(combined_dockets))
+    }
+
+  }
+
+  write.csv(amici_dockets, file = 'stat_pack_OT23/Statpack Replication Data/Docket/amici_filed_by_filing_year.csv', row.names = F)
+
+} # Amici Filings Compilation
+
+{
+
+  average_amici_filed_by_granted_type <- amici_dockets %>%
+    filter(grepl('\\-', docket_number)) %>%
+    group_by(filing_year, petition_granted) %>%
+    summarise(total_amici = sum(total_amici),
+              total_cases = n()) %>%
+    mutate(average_per_case = round(total_amici/total_cases, 2)) %>%
+    mutate(petition_granted = ifelse(petition_granted == 1, 'Petition Granted', 'Petition Denied'),
+           petition_granted = factor(petition_granted, levels = c('Petition Granted', 'Petition Denied'))) %>%
+    ggplot(aes(x = factor(filing_year), y = average_per_case)) +
+    geom_bar(stat = 'identity', fill = 'gray50', colour = 'gray5') +
+    facet_wrap(~petition_granted, scales = 'free_y') +
+    geom_text(aes(label = average_per_case), vjust = -1) +
+    geom_hline(yintercept = 0) +
+    theme_bw() +
+    labs(
+      x = '\nFiling Year\n',
+      y = '\nAverage Amici Filed\n') +
+    theme(legend.position = 'none',
+          strip.text = element_text(size = 12, colour = 'black', face = 'bold',
+                                    margin = margin(b = 10), vjust = -1, hjust = 0.5),
+          strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+          panel.background = element_rect(size = 1, fill = 'white', colour = 'black'),
+          axis.text = element_text(size = 12, colour = 'black'),
+          axis.title = element_text(size = 12, colour = 'black'))
+
+
+  ggsave(average_amici_filed_by_granted_type, file = 'stat_pack_OT23/Figures/statpack_figures/average_amici_filed_by_granted_type_term.png')
+
+} #Analyzing Amicus Filing Trends (2018-23)
+
+{
+
+  combined_sitting_calendar %>%
+    group_by(Sitting) %>%
+    summarise(cert_amici = round(mean(`Cert Stage Amici`), 2),
+              merits_amici = round(mean(`Merits Stage Amici`), 2)) %>%
+    pivot_longer(cols = c(cert_amici, merits_amici)) %>%
+    mutate(Sitting = factor(Sitting, levels = c('October', 'November', 'December', 'January', 'February', 'March', 'April')),
+           name = ifelse(name == 'cert_amici', 'Cert Stage', 'Merits Stage')) %>%
+    ggplot(aes(x = factor(Sitting), y = value)) +
+    geom_bar(stat = 'identity', aes(fill = name), position = position_dodge2(0.9), colour = 'gray5') +
+    scale_y_continuous(breaks = seq(5, 25, 5)) +
+    scale_fill_manual(values = c('coral3', 'deepskyblue4')) +
+    geom_text(aes(label = value), vjust = -0.5, position = position_dodge2(0.9)) +
+    labs(x = '\nSitting',
+         y = 'Number of Amici Filed\n') +
+    geom_hline(yintercept = 0) +
+    theme_minimal() +
+    theme(
+      panel.border = element_rect(size = 1, colour = 'gray5', fill = NA),
+      axis.text = element_text(size = 12, colour = 'black'),
+      axis.title = element_text(size = 14, colour = 'black'),
+      plot.title = element_text(size = 16, colour = 'black', face = 'bold'),
+      plot.subtitle = element_text(size = 14, colour = 'black'),
+      legend.position = 'bottom',
+      legend.title = element_blank(),
+      legend.text = element_text(size = 10, colour = 'black'),
+      strip.text = element_text(size = 12, colour = 'black', face = 'bold'),
+      strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+      panel.background = element_rect(size = 1, fill = 'white', colour = 'white'),
+      plot.background = element_rect(size = 1, fill = 'white', colour = 'white'))
+
+  ggsave('stat_pack_OT23/Figures/statpack_figures/cert_merits_amici_OT23.png')
+
+
+} #Amici Filed OT23 (Use Adam's Tables)

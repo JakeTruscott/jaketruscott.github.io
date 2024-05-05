@@ -306,3 +306,29 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
   phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
   webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/argument_sittings/april_sitting_cases.png", vwidth = 1000, vheight = 70)
 } #April Sitting
+
+
+combined_calendar <- october_sitting %>%
+  mutate(Sitting = 'October',
+        `Cert Stage Amici` = as.numeric(`Cert Stage Amici`)) %>%
+  bind_rows(november_sitting %>%
+              mutate(Sitting = 'November',
+                    `Cert Stage Amici` = as.numeric(`Cert Stage Amici`))) %>%
+  bind_rows(december_sitting %>%
+              mutate(Sitting = 'December',
+                     `Cert Stage Amici` = as.numeric(`Cert Stage Amici`))) %>%
+  bind_rows(january_sitting %>%
+              mutate(Sitting = 'January',
+                     `Cert Stage Amici` = as.numeric(`Cert Stage Amici`))) %>%
+  bind_rows(february_sitting %>%
+              mutate(Sitting = 'February',
+                     `Cert Stage Amici` = as.numeric(`Cert Stage Amici`))) %>%
+  bind_rows(March_sitting %>%
+              mutate(Sitting = 'March',
+                    `Cert Stage Amici` = as.numeric(`Cert Stage Amici`))) %>%
+  bind_rows(April_sitting %>%
+              mutate(Sitting = 'April',
+                     `Cert Stage Amici` = as.numeric(`Cert Stage Amici`))) %>%
+  mutate(`Cert Stage Amici` = ifelse(is.na(`Cert Stage Amici`), 0, `Cert Stage Amici`))
+
+write.csv(combined_calendar, file = 'stat_pack_OT23/Statpack Replication Data/Oral Arguments/Calendar - EmpiricalSCOTUS/combined_sittings_calendar.csv', row.names = F)
