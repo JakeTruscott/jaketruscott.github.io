@@ -94,10 +94,6 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 # Decisions
 ################################################################################
 
-
-combined_decisions
-
-
 {
 
   decisions_matrix_data <- decisions_ot_23 %>%
@@ -336,7 +332,7 @@ combined_decisions
                                     margin = margin(b = 10), vjust = -1, hjust = 0.5),
           strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
           panel.background = element_rect(size = 1, fill = 'white', colour = 'black'),
-          axis.text = element_text(size = 12, colour = 'black'),
+          axis.text = element_text(size = 14, colour = 'black'),
           axis.title = element_text(size = 12, colour = 'black'))
 
 
@@ -685,7 +681,7 @@ combined_decisions
                                     margin = margin(b = 10), vjust = -1, hjust = 0.5),
           strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
           panel.background = element_rect(size = 1, fill = 'white', colour = 'black'),
-          axis.text = element_text(size = 12, colour = 'black'),
+          axis.text = element_text(size = 14, colour = 'black'),
           axis.title = element_text(size = 12, colour = 'black'))
 
 
@@ -697,7 +693,136 @@ combined_decisions
 
 {
 
-} #Decision Turnover (General + Each Case + Over Time)
+  turnover_ot23 <- decisions_ot_23 %>%
+    select(Date_Argued, Date_Decided, Docket) %>%
+    rename(date_argued = Date_Argued,
+           date_decided = Date_Decided,
+           docket = Docket) %>%
+    mutate(turnover = anydate(date_decided) - anydate(date_argued),
+           turnover = as.numeric(turnover)) %>%
+    left_join(shorthand_case_names, by = 'docket') %>%
+    rename(case = short_hand) %>%
+    select(case, docket, sitting, turnover) %>%
+    group_by(sitting) %>%
+    reframe(average_turnover = round(mean(turnover), 0)) %>%
+    mutate(sitting = factor(sitting, levels = c('October', 'November', "December", 'January', 'February', 'March', 'April'))) %>%
+    ggplot(aes(x = factor(sitting), y = average_turnover)) +
+    geom_bar(stat = 'identity', colour = 'gray5', fill = 'gray50') +
+    geom_hline(yintercept = 0) +
+    geom_label(aes(label = paste0(average_turnover, ' Days')), vjust = -0.5) +
+    scale_y_continuous(breaks = seq(25, 150, 25), lim = c(0, 150)) +
+    theme_bw() +
+    labs(
+      x = '\nSitting\n',
+      y = '\nAverage Turnover\n') +
+    theme(legend.position = 'none',
+          strip.text = element_text(size = 12, colour = 'black', face = 'bold',
+                                    margin = margin(b = 10), vjust = -1, hjust = 0.5),
+          strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+          panel.background = element_rect(size = 1, fill = 'white', colour = 'black'),
+          axis.text = element_text(size = 14, colour = 'black'),
+          axis.title = element_text(size = 14, colour = 'black'))
+
+
+  ggsave(turnover_ot23, file = 'stat_pack_OT23/Figures/statpack_figures/decision_turnover_OT23.png')
+
+  turnover_ot23 <- decisions_ot_23 %>%
+    select(Date_Argued, Date_Decided, Docket) %>%
+    rename(date_argued = Date_Argued,
+           date_decided = Date_Decided,
+           docket = Docket) %>%
+    mutate(turnover = anydate(date_decided) - anydate(date_argued),
+           turnover = as.numeric(turnover)) %>%
+    left_join(shorthand_case_names, by = 'docket') %>%
+    rename(case = short_hand) %>%
+    select(case, docket, sitting, turnover) %>%
+    group_by(sitting) %>%
+    reframe(average_turnover = round(mean(turnover), 0),
+            min = min(turnover),
+            max = max(turnover)) %>%
+    mutate(sitting = factor(sitting, levels = c('October', 'November', "December", 'January', 'February', 'March', 'April')))
+
+  write.csv(turnover_ot23, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Decision Turnover/decision_turnover_OT23.csv', row.names = F)
+
+} #Decision Turnover (OT23)
+
+{
+
+  average_turnover_ot18_ot23 <- scdb_cases_2023 %>%
+    filter(term >= 2005) %>%
+    filter(!is.na(dateArgument)) %>%
+    select(dateDecision, dateArgument, dateRearg, term) %>%
+    mutate(dateArgument = ifelse(is.na(dateRearg), dateArgument, dateRearg)) %>%
+    select(dateArgument, dateDecision, term) %>%
+    rename(date_decided = dateDecision,
+           date_argued = dateArgument) %>%
+    mutate(date_decided = anydate(date_decided),
+           date_argued = anydate(date_argued),
+           turnover = date_decided - date_argued) %>%
+    filter(!is.na(turnover)) %>%
+    group_by(term) %>%
+    summarise(average_turnover = round(mean(turnover), 0),
+              average_turnover = as.numeric(average_turnover),
+              min = as.numeric(min(turnover)),
+              max = as.numeric(max(turnover))) %>%
+    bind_rows(turnover_ot23 %>%
+                summarise(average_turnover = round(mean(average_turnover), 0),
+                          min = min(min),
+                          max = max(max)) %>%
+                mutate(term = 2023)) %>%
+    ggplot(aes(x = factor(term), y = average_turnover)) +
+    geom_bar(stat = 'identity', aes(colour = 'Mean'),  fill = 'gray50') +
+    geom_errorbar(aes(ymin = average_turnover, ymax = max, color = 'Error'), show.legend = TRUE) +
+    geom_label(aes(label = average_turnover), vjust = 1.5) +
+    geom_text(aes(label = max, y = max -2 ), vjust = -1) +
+    scale_color_manual(values = c('black', 'gray5'), labels = c('Maximum Turnover (Days)  ', 'Average Turnover (Days)')) +
+    geom_hline(yintercept = 0) +
+    scale_x_discrete(breaks = seq(2006, 2022, 2)) +
+    scale_y_continuous(breaks = seq(50, 300, 50)) +
+    theme_bw() +
+    labs(
+      x = '\nSitting\n',
+      y = '\nTurnover (Days)\n',
+      colour = ' ') +
+    theme(legend.position = 'bottom',
+          strip.text = element_text(size = 12, colour = 'black', face = 'bold',
+                                    margin = margin(b = 10), vjust = -1, hjust = 0.5),
+          strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+          panel.background = element_rect(size = 1, fill = 'white', colour = 'black'),
+          axis.text = element_text(size = 14, colour = 'black'),
+          axis.title = element_text(size = 14, colour = 'black'),
+          legend.text = element_text(size = 12))
+
+
+  ggsave(average_turnover_ot18_ot23, file = 'stat_pack_OT23/Figures/statpack_figures/decision_turnover_OT18_OT23.png')
+
+  average_turnover_ot18_ot23 <- scdb_cases_2023 %>%
+    filter(term >= 2005) %>%
+    filter(!is.na(dateArgument)) %>%
+    select(dateDecision, dateArgument, dateRearg, term) %>%
+    mutate(dateArgument = ifelse(is.na(dateRearg), dateArgument, dateRearg)) %>%
+    select(dateArgument, dateDecision, term) %>%
+    rename(date_decided = dateDecision,
+           date_argued = dateArgument) %>%
+    mutate(date_decided = anydate(date_decided),
+           date_argued = anydate(date_argued),
+           turnover = date_decided - date_argued) %>%
+    filter(!is.na(turnover)) %>%
+    group_by(term) %>%
+    summarise(average_turnover = round(mean(turnover), 0),
+              average_turnover = as.numeric(average_turnover),
+              min = as.numeric(min(turnover)),
+              max = as.numeric(max(turnover))) %>%
+    bind_rows(turnover_ot23 %>%
+                summarise(average_turnover = round(mean(average_turnover), 0),
+                          min = min(min),
+                          max = max(max)) %>%
+                mutate(term = 2023))
+
+  write.csv(average_turnover_ot18_ot23, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Decision Turnover/decision_average_turnover_ot18_ot23.csv', row.names = F)
+
+
+} #Decision Turnover (OT18-OT23)
 
 ################################################################################
 #Oral Arguments
@@ -1554,7 +1679,7 @@ load('docket_parser/OT18_OT22_dockets.rdata') #Load OT23 Dockets
                                     margin = margin(b = 10), vjust = -1, hjust = 0.5),
           strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
           panel.background = element_rect(size = 1, fill = 'white', colour = 'black'),
-          axis.text = element_text(size = 12, colour = 'black'),
+          axis.text = element_text(size = 14, colour = 'black'),
           axis.title = element_text(size = 12, colour = 'black'))
 
 
