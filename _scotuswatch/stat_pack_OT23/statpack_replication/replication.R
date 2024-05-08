@@ -65,8 +65,8 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 {
 
   scdb_justice_names <- data.frame(
-    justice = c(106, 108, 109:118),
-    justice_name = c('KENNEDY', 'THOMAS', 'GINSBURG', 'BREYER', 'ROBERTS', 'ALITO', 'SOTOMAYOR', 'KAGAN', 'GORSUCH', 'KAVANAUGH', 'BARRETT', 'JACKSON'))
+    justice = c(103:108, 109:118),
+    justice_name = c('STEVENS', "O'CONNOR", 'SCALIA', 'KENNEDY', 'SOUTER', 'THOMAS', 'GINSBURG', 'BREYER', 'ROBERTS', 'ALITO', 'SOTOMAYOR', 'KAGAN', 'GORSUCH', 'KAVANAUGH', 'BARRETT', 'JACKSON'))
 
 } #SCDB Justice ID Conversion
 {
@@ -823,6 +823,91 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
 
 } #Decision Turnover (OT18-OT23)
+
+{
+
+  percent_majority_justice <- scdb_justices_2023 %>%
+    filter(term >= 2006) %>%
+    left_join(scdb_justice_names, by = 'justice') %>%
+    select(majority, justice_name) %>%
+    group_by(justice_name, majority) %>%
+    filter(!is.na(majority)) %>%
+    bind_rows(decisions_ot_23 %>%
+                select(ROBERTS:JACKSON) %>%
+                pivot_longer(cols = c(ROBERTS:JACKSON)) %>%
+                mutate(majority = ifelse(value >= 1, 2, 1),
+                       name = toupper(name)) %>%
+                select(name, majority) %>%
+                rename(justice_name = name)) %>%
+    mutate(majority = ifelse(majority == 1, 'Minority', 'Majority')) %>%
+    summarise(count = n()) %>%
+    pivot_wider(names_from = majority, values_from = count) %>%
+    mutate(percent_majority = ((Majority/(Majority + Minority))*100),
+           percent_minority = 100-percent_majority) %>%
+    pivot_longer(cols = c('percent_majority', 'percent_minority')) %>%
+    mutate(value = round(value, 2),
+           name = ifelse(name == 'percent_majority', 'Majority', 'Minority')) %>%
+    select(justice_name, name, value) %>%
+    mutate(justice_name = str_to_title(justice_name),
+           justice_name = factor(justice_name, levels = c('Roberts', 'Stevens', 'Kennedy', 'Scalia', 'Souter', 'Thomas', 'Ginsburg', 'Breyer', 'Alito', 'Sotomayor', 'Kagan', 'Gorsuch', 'Kavanaugh', 'Barrett', 'Jackson'))) %>%
+    ggplot(aes(x = "", y = value, fill = name)) +
+      geom_bar(stat = "identity", colour = 'gray5') +
+      coord_polar(theta = 'y', start = 0) +
+      facet_wrap(~justice_name, nrow = 3) +
+    theme_void() +
+    labs(
+      x = ' ',
+      y = ' ',
+      fill = ' ') +
+    scale_fill_manual(values = c('deepskyblue3', 'coral')) +
+    geom_label(aes(label = paste0(value, ' %')), position = position_stack(vjust = 0.5), color = "gray5", size=5, show.legend = F) +
+    theme(legend.position = 'bottom',
+          legend.text = element_text(size = 15, colour = 'gray5'),
+          axis.text.x = element_blank(),
+          axis.ticks = element_blank(),
+          axis.title = element_text(size = 12),
+          axis.line = element_line(colour = 'black'),
+          strip.text = element_text(size = 12, colour = 'black', face = 'bold',
+                                    margin = margin(b = 10), vjust = -1, hjust = 0.5),
+          strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+          panel.background = element_rect(size = 1, fill = 'white', colour = 'black'))
+
+
+  ggsave(percent_majority_justice, file = 'stat_pack_OT23/Figures/statpack_figures/percent_majority_justice.png')
+
+
+  percent_majority_justice <- scdb_justices_2023 %>%
+    filter(term >= 2006) %>%
+    left_join(scdb_justice_names, by = 'justice') %>%
+    select(majority, justice_name) %>%
+    group_by(justice_name, majority) %>%
+    filter(!is.na(majority)) %>%
+    bind_rows(decisions_ot_23 %>%
+                select(ROBERTS:JACKSON) %>%
+                pivot_longer(cols = c(ROBERTS:JACKSON)) %>%
+                mutate(majority = ifelse(value >= 1, 2, 1),
+                       name = toupper(name)) %>%
+                select(name, majority) %>%
+                rename(justice_name = name)) %>%
+    mutate(majority = ifelse(majority == 1, 'Minority', 'Majority')) %>%
+    summarise(count = n()) %>%
+    pivot_wider(names_from = majority, values_from = count) %>%
+    mutate(percent_majority = ((Majority/(Majority + Minority))*100),
+           percent_minority = 100-percent_majority) %>%
+    pivot_longer(cols = c('percent_majority', 'percent_minority')) %>%
+    mutate(value = round(value, 2),
+           name = ifelse(name == 'percent_majority', 'Majority', 'Minority')) %>%
+    select(justice_name, name, value) %>%
+    mutate(justice_name = str_to_title(justice_name),
+           justice_name = factor(justice_name, levels = c('Roberts', 'Stevens', 'Kennedy', 'Scalia', 'Souter', 'Thomas', 'Ginsburg', 'Breyer', 'Alito', 'Sotomayor', 'Kagan', 'Gorsuch', 'Kavanaugh', 'Barrett', 'Jackson'))) %>%
+    rename(Justice = justice_name,
+           Coalition = name,
+           Percent = value)
+
+  write.csv(percent_majority_justice, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Percent in Majority/percent_majority_justice.csv', row.names = F)
+
+
+} #Frequency in Majority Over Time
 
 ################################################################################
 #Oral Arguments

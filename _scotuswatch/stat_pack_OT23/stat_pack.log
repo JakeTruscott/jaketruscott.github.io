@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.15)  6 MAY 2024 09:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.15)  6 MAY 2024 14:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3170,7 +3170,26 @@ s been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.24 \end{landscape}
                      <./Figures/statpack_figures/decision_turnover_OT18_OT23.pn
-g>]) (statpack_sections/docket_introduction_statpack.tex
+g>]) (statpack_sections/decisions_percent_in_majority_statpack.tex
+<Figures/statpack_figures/percent_majority_justice.png, id=406, 652.839pt x 582
+.2553pt>
+File: Figures/statpack_figures/percent_majority_justice.png Graphic file (type 
+png)
+<use Figures/statpack_figures/percent_majority_justice.png>
+Package pdftex.def Info: Figures/statpack_figures/percent_majority_justice.png 
+ used on input line 5.
+(pdftex.def)             Requested size: 422.77664pt x 377.07547pt.
+[46
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.8 \end{landscape}
+                    <./Figures/statpack_figures/percent_majority_justice.png>])
+(statpack_sections/docket_introduction_statpack.tex
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 4.
@@ -3195,13 +3214,13 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 4.
 
-<Figures/intro_page_images/docket_filing.jpg, id=405, 1409.265pt x 666.49pt>
+<Figures/intro_page_images/docket_filing.jpg, id=412, 1409.265pt x 666.49pt>
 File: Figures/intro_page_images/docket_filing.jpg Graphic file (type jpg)
 <use Figures/intro_page_images/docket_filing.jpg>
 Package pdftex.def Info: Figures/intro_page_images/docket_filing.jpg  used on i
 nput line 7.
 (pdftex.def)             Requested size: 399.29463pt x 188.83295pt.
-<Figures/intro_page_images/docket_filing_books.jpg, id=406, 798.985pt x 542.025
+<Figures/intro_page_images/docket_filing_books.jpg, id=413, 798.985pt x 542.025
 pt>
 File: Figures/intro_page_images/docket_filing_books.jpg Graphic file (type jpg)
 
@@ -3209,10 +3228,10 @@ File: Figures/intro_page_images/docket_filing_books.jpg Graphic file (type jpg)
 Package pdftex.def Info: Figures/intro_page_images/docket_filing_books.jpg  use
 d on input line 10.
 (pdftex.def)             Requested size: 399.29463pt x 270.8795pt.
-[46
+[47
 
  <./Figures/intro_page_images/docket_filing.jpg> <./Figures/intro_page_images/d
-ocket_filing_books.jpg>] [47
+ocket_filing_books.jpg>] [48
 pdfTeX warning (ext4): destination with the same identifier (name{table.43}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -3271,13 +3290,13 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 2.
 
-<Figures/statpack_figures/dockets_ot_23.png, id=416, 781.4796pt x 551.1792pt>
+<Figures/statpack_figures/dockets_ot_23.png, id=423, 781.4796pt x 551.1792pt>
 File: Figures/statpack_figures/dockets_ot_23.png Graphic file (type png)
 <use Figures/statpack_figures/dockets_ot_23.png>
 Package pdftex.def Info: Figures/statpack_figures/dockets_ot_23.png  used on in
 put line 7.
 (pdftex.def)             Requested size: 352.31625pt x 248.4909pt.
-<Figures/statpack_figures/longitudinal_docketing_trends_2018_2023.png, id=417, 
+<Figures/statpack_figures/longitudinal_docketing_trends_2018_2023.png, id=424, 
 781.4796pt x 551.1792pt>
 File: Figures/statpack_figures/longitudinal_docketing_trends_2018_2023.png Grap
 hic file (type png)
@@ -3285,18 +3304,18 @@ hic file (type png)
 Package pdftex.def Info: Figures/statpack_figures/longitudinal_docketing_trends
 _2018_2023.png  used on input line 13.
 (pdftex.def)             Requested size: 352.31625pt x 248.4909pt.
-) [48
-pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.196 \newpage
-              
+) [49
 pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.196 \newpage
+l.210 \newpage
+              
+pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.210 \newpage
                <./Figures/statpack_figures/dockets_ot_23.png> <./Figures/statpa
 ck_figures/longitudinal_docketing_trends_2018_2023.png>] (statpack_sections/doc
 ket_court_of_origin.tex
@@ -3352,7 +3371,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 4.
 
-[49
+[50
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{table.44}) ha
@@ -3367,20 +3386,20 @@ s been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.34 \end{landscape}
                     ]
-<Figures/statpack_figures/circuit_court_map.png, id=431, 433.62pt x 252.945pt>
+<Figures/statpack_figures/circuit_court_map.png, id=438, 433.62pt x 252.945pt>
 File: Figures/statpack_figures/circuit_court_map.png Graphic file (type png)
 <use Figures/statpack_figures/circuit_court_map.png>
 Package pdftex.def Info: Figures/statpack_figures/circuit_court_map.png  used o
 n input line 41.
 (pdftex.def)             Requested size: 446.26582pt x 260.33556pt.
-) [50
+) [51
 
 
-pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) h
+pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.204 \newpage
+l.218 \newpage
                <./Figures/statpack_figures/circuit_court_map.png>] (statpack_se
 ctions/amici_statpack.tex
 
@@ -3435,7 +3454,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 1.
 
-<Figures/statpack_figures/average_amici_filed_by_granted_type_term.png, id=437,
+<Figures/statpack_figures/average_amici_filed_by_granted_type_term.png, id=444,
  646.0938pt x 709.9323pt>
 File: Figures/statpack_figures/average_amici_filed_by_granted_type_term.png Gra
 phic file (type png)
@@ -3443,15 +3462,15 @@ phic file (type png)
 Package pdftex.def Info: Figures/statpack_figures/average_amici_filed_by_grante
 d_type_term.png  used on input line 8.
 (pdftex.def)             Requested size: 328.82707pt x 361.32405pt.
-[51
-pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) h
+[52
+pdfTeX warning (ext4): destination with the same identifier (name{figure.13}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.18 \newpage
               <./Figures/statpack_figures/average_amici_filed_by_granted_type_t
 erm.png>]
-<Figures/statpack_figures/cert_merits_amici_OT23.png, id=443, 646.0938pt x 534.
+<Figures/statpack_figures/cert_merits_amici_OT23.png, id=450, 646.0938pt x 534.
 3162pt>
 File: Figures/statpack_figures/cert_merits_amici_OT23.png Graphic file (type pn
 g)
@@ -3459,63 +3478,63 @@ g)
 Package pdftex.def Info: Figures/statpack_figures/cert_merits_amici_OT23.png  u
 sed on input line 24.
 (pdftex.def)             Requested size: 375.80544pt x 310.80043pt.
-) [52
-pdfTeX warning (ext4): destination with the same identifier (name{figure.13}) h
+) [53
+pdfTeX warning (ext4): destination with the same identifier (name{figure.14}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.213 \newpage
+l.227 \newpage
                <./Figures/statpack_figures/cert_merits_amici_OT23.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 227.
+(hyperref)                removing `math shift' on input line 241.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 227.
+(hyperref)                removing `\@@underline' on input line 241.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 227.
+(hyperref)                removing `\hbox' on input line 241.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 227.
+(hyperref)                removing `\mathsurround' on input line 241.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 227.
+(hyperref)                removing `\z@' on input line 241.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 227.
+(hyperref)                removing `math shift' on input line 241.
 
-[53]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 236.
-
+[54]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@underline' on input line 236.
+(hyperref)                removing `math shift' on input line 250.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 236.
+(hyperref)                removing `\@@underline' on input line 250.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 236.
+(hyperref)                removing `\hbox' on input line 250.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 236.
+(hyperref)                removing `\mathsurround' on input line 250.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 236.
+(hyperref)                removing `\z@' on input line 250.
 
-[54] 
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 250.
+
+[55] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (stat_pack.aux)
  ***********
@@ -3526,17 +3545,17 @@ L3 programming layer <2024-01-04>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `stat_pack.out' has not changed.
-(rerunfilecheck)             Checksum: C707D5E3F842C13B6E79F4170130F44B;3976.
+(rerunfilecheck)             Checksum: B75312A71BA93B6E486305413FB04D0E;3976.
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 27 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 23423 strings out of 474485
- 458569 string characters out of 5739922
+ 23439 strings out of 474485
+ 459532 string characters out of 5739922
  1982542 words of memory out of 5000000
- 45052 multiletter control sequences out of 15000+600000
+ 45063 multiletter control sequences out of 15000+600000
  615794 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,19n,90p,899b,589s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -3548,9 +3567,9 @@ tt/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Jak
 e Truscott/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/U
 sers/Jake Truscott/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.
 pfb>
-Output written on stat_pack.pdf (56 pages, 6579435 bytes).
+Output written on stat_pack.pdf (57 pages, 6991089 bytes).
 PDF statistics:
- 514 PDF objects out of 1000 (max. 8388607)
- 116 named destinations out of 1000 (max. 500000)
- 333 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 521 PDF objects out of 1000 (max. 8388607)
+ 118 named destinations out of 1000 (max. 500000)
+ 338 words of extra memory for PDF output out of 10000 (max. 10000000)
 
