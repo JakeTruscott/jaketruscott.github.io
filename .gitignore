@@ -1,4 +1,5 @@
 _site/
 _scotuswatch/ot23_decisions/earlier_term_decisions
-
+_scotuswatch/docket_parser/OT01_OT22_docket_sheets
+_scotuswatch/docket_parser/OT23_docket_sheets
 .Rproj.user

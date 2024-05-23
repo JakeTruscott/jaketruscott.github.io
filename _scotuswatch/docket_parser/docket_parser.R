@@ -23,7 +23,7 @@ library(dplyr); library(stringr); library(stringi); library(rvest); library(httr
 # M: Through 23M95
 ################################################################################
 
-dockets_through_4_9 <- c(paste0('23-', 1:1162), paste0('23-', 5001:7323), paste0('23M', 1:95), paste0('23A', 1:965))
+dockets_through_5_23 <- c(paste0('23-', 1:1233), paste0('23-', 5001:7547), paste0('23M', 1:99), paste0('23A', 1:1044))
 
 
 docket_parser <- function(dockets){
@@ -51,8 +51,19 @@ docket_parser <- function(dockets){
 
       Sys.sleep(5)
 
-      base_url <- 'https://www.supremecourt.gov/search.aspx?filename=/docket/docketfiles/html/public/'
-      url <- paste0(base_url, dockets[d], ".html")
+      temp_term <- as.numeric(gsub('(\\-.*|M.*|A,*)', '', dockets[d]))
+
+      if (temp_term <= 16){
+
+        base_url <- 'https://www.supremecourt.gov/search.aspx?filename=/docketfiles/'
+        url <- paste0(base_url, dockets[d], '.htm')
+
+      } else {
+
+        base_url <- 'https://www.supremecourt.gov/search.aspx?filename=/docket/docketfiles/html/public/'
+        url <- paste0(base_url, dockets[d], ".html")
+
+      }
 
       response <- GET(url)
 
@@ -314,11 +325,11 @@ docket_parser <- function(dockets){
 } #Core Function
 
 
-docket_OT23_4_9_update <- docket_parser(dockets = dockets_through_4_9)
+docket_OT23_5_23_update <- docket_parser(dockets = dockets_through_5_23)
 
 
 ################################################################################
-# Get 2010 to 2023 Dockets
+# Get 2018 to 2023 Dockets
 ################################################################################
 old_dockets <- get(load("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/docket_parser/dockets_archive-062823_Update.rdata"))
 
@@ -616,4 +627,171 @@ docket_parser_old_dockets <- function(dockets){
 OT18_OT22_dockets_combined <- docket_parser_old_dockets(dockets = docket_OT_18_22)
 
 
+################################################################################
+# Rebuild 2001-2022 Dockets
+################################################################################
 
+cleaned_docket_archive <- data.frame()
+load("C:/Users/Jake Truscott/Desktop/docket search with data retrieval/dockets_archive.rdata")
+
+for (i in 53819:nrow(dockets_archive)){
+
+  temp_df <- dockets_archive[i,] %>%
+    select(docket_number, case_title, petitioner, respondent, docketed, linked_with, all_docket_entries, docket_url, all_petitioner_counsel, all_respondent_counsel, all_other_counsel) %>%
+    rename(scotus_docket_url = docket_url)
+
+  temp_archive_rebuilt <- list()
+
+  temp_archive_rebuilt <- temp_df %>%
+    mutate(parsed_docket = strsplit(all_docket_entries, "; ")) %>%
+    tidyr::unnest(cols = parsed_docket) %>%
+    tidyr::separate(parsed_docket, into = c("date", "entry"), sep = "(?<=20\\d{2})\\s+", remove = FALSE) %>%
+    select(date, entry) %>%
+    mutate(date = as.Date(date, format = "%b %d %Y"))
+
+  counsel <- list()
+
+  {
+
+    if (is.na(temp_df$all_petitioner_counsel)){
+
+      petitioner <- data.frame()
+
+    } else {
+
+      petitioner <- temp_df %>%
+        select(all_petitioner_counsel) %>%
+        mutate(parsed_counsel = strsplit(all_petitioner_counsel, '; ')) %>%
+        tidyr::unnest(cols = parsed_counsel) %>%
+        tidyr::separate(parsed_counsel, into = c('Attorney', 'Organization', 'Party'), sep = '(\\nOrganization\\:|\\nParty name\\:)', remove = F) %>%
+        select(-c(parsed_counsel, all_petitioner_counsel)) %>%
+        mutate(Attorney = gsub('Attorney\\: ', '', trimws(Attorney)),
+               Organization = trimws(Organization),
+               Party = trimws(Party))
+
+    }
+
+    if (is.na(temp_df$all_respondent_counsel)){
+
+      respondent <- data.frame()
+
+    } else {
+
+      respondent <- temp_df %>%
+        select(all_respondent_counsel)  %>%
+        mutate(parsed_counsel = strsplit(all_respondent_counsel, '; ')) %>%
+        tidyr::unnest(cols = parsed_counsel) %>%
+        tidyr::separate(parsed_counsel, into = c('Attorney', 'Organization', 'Party'), sep = '(\\nOrganization\\:|\\nParty name\\:)', remove = F) %>%
+        select(-c(parsed_counsel, all_respondent_counsel)) %>%
+        mutate(Attorney = gsub('Attorney\\: ', '', trimws(Attorney)),
+               Organization = trimws(Organization),
+               Party = trimws(Party))
+    }
+
+
+    if (is.na(temp_df$all_other_counsel)){
+
+      other <- data.frame()
+
+    } else {
+
+      other <- temp_df %>%
+        select(all_other_counsel) %>%
+        mutate(parsed_counsel = strsplit(all_other_counsel, '; ')) %>%
+        tidyr::unnest(cols = parsed_counsel) %>%
+        tidyr::separate(parsed_counsel, into = c('Attorney', 'Organization', 'Party'), sep = '(\\nOrganization\\:|\\nParty name\\:)', remove = F) %>%
+        select(-c(parsed_counsel, all_other_counsel)) %>%
+        mutate(Attorney = gsub('Attorney\\: ', '', trimws(Attorney)),
+               Organization = trimws(Organization),
+               Party = trimws(Party))
+
+    }
+
+
+
+  } #Counsel Reformatting
+
+  counsel[['Petitioner']] <- petitioner
+  counsel[['Respondent']] <- respondent
+  counsel[['Other_Amicus']] <- other
+
+  rebuilt_docket <- cbind(temp_df %>%
+                            mutate(linked_with = ifelse(linked_with == 'NA', NA, linked_with)) %>%
+                            select(-c(all_docket_entries, all_petitioner_counsel, all_respondent_counsel, all_other_counsel)),
+                          docket = I(list(temp_archive_rebuilt)),
+                          counsel = I(list(counsel)))
+
+
+  cleaned_docket_archive <- bind_rows(cleaned_docket_archive, rebuilt_docket)
+
+  if (i %% 500 == 0){
+    message('Completed ', i, ' of ', nrow(dockets_archive))
+  }
+
+
+}
+
+save(cleaned_docket_archive, file = 'docket_parser/OT01_OT22_dockets_updated.rdata')
+
+
+################################################################################
+# Grab Lower Court - Save
+################################################################################
+
+load('docket_parser/OT01_OT22_dockets_updated.rdata')
+
+update_dockets <- function(output_path, cleaned_dockets){
+
+  completed_dockets <- list.files(output_directory)
+  completed_dockets <- gsub('\\.rdata', '', completed_dockets)
+
+  message('Dockets Already Completed: ', length(completed_dockets))
+
+  dockets_to_complete <- cleaned_dockets %>%
+    filter(!docket_number %in% completed_dockets) %>%
+    filter(grepl('\\-', docket_number))
+
+  message('Dockets to Complete: ', nrow(dockets_to_complete))
+
+  estimated_time <- round(((nrow(dockets_to_complete)*5)/3600), 2)
+  message('Estimated Time to Complete: ', estimated_time, ' Hours')
+
+  for (i in 1:nrow(dockets_to_complete)){
+
+    temp_row <- dockets_to_complete[i,]
+    temp_docket_number <- temp_row$docket_number
+    temp_url <- temp_row$scotus_docket_url
+    temp_response <- GET(temp_url)
+    temp_text <- rvest::read_html(temp_response)
+    temp_text <- html_text(temp_text, trim = T)
+    lower_court <- gsub('.*Lower Ct\\:', '', temp_text)
+    lower_court <- gsub('Case N.*', '', lower_court)
+    lower_court <- gsub("[^A-Za-z]+$", '', as.character(lower_court))
+    lower_court = trimws(lower_court)
+
+    if (lower_court == ""){
+      lower_court <- NA
+    }
+
+    temp_row$lower_court <- lower_court
+    save(temp_row, file = file.path(output_directory, paste0(temp_docket_number, '.rdata')))
+
+    Sys.sleep(5)
+
+    if (i %% 50 == 0){
+      message('Completed ', i, ' of ', nrow(dockets_to_complete))
+    }
+
+  }
+
+}
+
+output_directory <- 'docket_parser/OT01_OT22_docket_sheets'
+
+
+update_dockets(output_path = output_directory,
+               cleaned_docket = cleaned_docket_archive)
+
+
+
+# TO do - Go to URL & Get Lower Court

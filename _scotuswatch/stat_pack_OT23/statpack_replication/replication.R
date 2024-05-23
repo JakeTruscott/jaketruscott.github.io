@@ -665,10 +665,20 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
             term = term,
             average_length = average_length) %>%
     mutate(opinion_type = factor(opinion_type, levels = c('Majority Opinion', 'Concurrence', 'Dissent', 'Per Curiam'))) %>%
+    mutate(term = case_when(
+      term == 2016 ~ 16,
+      term == 2017 ~ 17,
+      term == 2018 ~ 18,
+      term == 2019 ~ 19,
+      term == 2020 ~ 20,
+      term == 2021 ~ 21,
+      term == 2022 ~ 22,
+      term == 2023 ~ 23)) %>%
     ggplot(aes(x = term, y = average_length)) +
     geom_bar(stat = 'identity', fill = 'gray50', position = position_dodge2(), colour = 'gray5') +
     scale_y_continuous(breaks = seq(1000, 5000, 1000), lim = c(0, 5500)) +
     geom_text(aes(label = average_length), vjust = -0.5) +
+    scale_x_continuous(breaks = seq(16, 23, 1)) +
     geom_hline(yintercept = 0) +
     facet_wrap(~opinion_type) +
     geom_hline(aes(yintercept = mean_mean), linetype = 2, colour = 'coral4', linewidth = 1.1) +
@@ -705,7 +715,15 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     select(case, docket, sitting, turnover) %>%
     group_by(sitting) %>%
     reframe(average_turnover = round(mean(turnover), 0)) %>%
-    mutate(sitting = factor(sitting, levels = c('October', 'November', "December", 'January', 'February', 'March', 'April'))) %>%
+    mutate(sitting = case_when(
+      sitting == 'October' ~ 'Oct',
+      sitting == 'November' ~ 'Nov',
+      sitting == 'December' ~ 'Dec',
+      sitting == 'January' ~ 'Jan',
+      sitting == 'February' ~ 'Feb',
+      sitting == 'March' ~ 'Mar',
+      sitting == 'April' ~ 'Apr')) %>%
+    mutate(sitting = factor(sitting, levels = c('Oct', 'Nov', 'Dec', 'Jan', "Feb", 'Mar', 'Apr'))) %>%
     ggplot(aes(x = factor(sitting), y = average_turnover)) +
     geom_bar(stat = 'identity', colour = 'gray5', fill = 'gray50') +
     geom_hline(yintercept = 0) +
@@ -1342,7 +1360,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
       message('Completed ', i, ' of ', length(docket_path))
     }
 
-    rm(docket_combined) #Remove Temp Docket
+    #rm(docket_combined) #Remove Temp Docket
     rm(temp_docket)
 
   } #Combine Docket Sheets Into Single DF
