@@ -676,12 +676,12 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
       term == 2023 ~ 23)) %>%
     ggplot(aes(x = term, y = average_length)) +
     geom_bar(stat = 'identity', fill = 'gray50', position = position_dodge2(), colour = 'gray5') +
-    scale_y_continuous(breaks = seq(1000, 5000, 1000), lim = c(0, 5500)) +
-    geom_text(aes(label = average_length), vjust = -0.5) +
+    scale_y_continuous(breaks = seq(1000, 6000, 1000), lim = c(0, 6000)) +
+    geom_hline(aes(yintercept = mean_mean), linetype = 2, colour = 'coral4', linewidth = 1.1) +
+    geom_label(aes(label = average_length), vjust = -0.5) +
     scale_x_continuous(breaks = seq(16, 23, 1)) +
     geom_hline(yintercept = 0) +
     facet_wrap(~opinion_type) +
-    geom_hline(aes(yintercept = mean_mean), linetype = 2, colour = 'coral4', linewidth = 1.1) +
     theme_bw() +
     labs(
       x = '\nTerm\n',
@@ -695,7 +695,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
           axis.title = element_text(size = 12, colour = 'black'))
 
 
-  ggsave(opinion_lengths_longitudinal, file = 'stat_pack_OT23/Figures/statpack_figures/opinion_lengths_longitudinal.png')
+  ggsave(opinion_lengths_longitudinal, file = 'stat_pack_OT23/Figures/statpack_figures/opinion_lengths_longitudinal.png', width = 10, height = 6)
 
 
 
@@ -728,7 +728,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     geom_bar(stat = 'identity', colour = 'gray5', fill = 'gray50') +
     geom_hline(yintercept = 0) +
     geom_label(aes(label = paste0(average_turnover, ' Days')), vjust = -0.5) +
-    scale_y_continuous(breaks = seq(25, 150, 25), lim = c(0, 150)) +
+    scale_y_continuous(breaks = seq(25, 200, 25), lim = c(0, 200)) +
     theme_bw() +
     labs(
       x = '\nSitting\n',

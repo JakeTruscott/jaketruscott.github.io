@@ -231,12 +231,12 @@ save_kable(decisions_info, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott
 html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info.html"
 #webshot::install_phantomjs(force = T)
 phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
-webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info.png", vwidth = 1300, vheight = 70)
+webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info.png", vwidth = 1300, vheight = 300)
 
 
 save_kable(decision_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Table.html")
 html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Table.html"
 #webshot::install_phantomjs(force = T)
 phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
-webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Table.png", vwidth = 1000, vheight = 70)
+webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Table.png", vwidth = 1000, vheight = 300)
 

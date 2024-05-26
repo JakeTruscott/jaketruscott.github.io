@@ -160,17 +160,11 @@ We give particular thanks to \textcolor{blue}{\textless NAME\textgreater{}} and 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Opinion Lengths
+% Opinion Lengths & Turnover
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{"statpack_sections/opinion_lengths_statpack.tex"}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% OA -> Decision Turnover
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\input{"statpack_sections/decisions_turnover_statpack.tex"}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
