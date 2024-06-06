@@ -84,6 +84,7 @@ decisions <- read.csv(file = "C:/Users/Jake Truscott/Documents/GitHub/jaketrusco
       . == -1 ~ 'D',
       . == -2 ~ 'JD',
       . == -3 ~ 'D & JD',
+      is.na(.) ~ 'DNP',
       TRUE ~ as.character(.)
     )))
 
@@ -114,7 +115,7 @@ get_vote_color <- function(value){
   } else if (value == 'JRC'){
     return('#3399FF')
   } else if (value == 'RC & JRC'){
-    return('#66B2FF')
+    return('#3399FF')
   } else if (value == 'CJ'){
     return('#FF9933')
   } else if(value == 'JCJ'){
@@ -129,6 +130,8 @@ get_vote_color <- function(value){
     return('#CC0000')
   } else if (value == 'D & JD'){
     return('#990000')
+  } else if (value == 'DNP'){
+      return('#FFFFFF')
     }
   } #Assign Color to Box by Vote Type
 
@@ -158,74 +161,91 @@ get_vote_color <- function(value){
 } #Compile Summary Info Table
 
 {
-  decision_table <- decisions_data[, c(1:3, 8:16)] %>%
-    mutate(`Date Decided` = as.Date(`Date Decided`, "%m/%d/%y"),
-           `Date Argued` = as.Date(`Date Argued`, "%m/%d/%y")) %>%
-    arrange(`Date Decided`) %>%    select(-c(`Date Argued`)) %>%
-    kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
-    add_header_above(c(" ", " ", original_column_names[8:16])) %>%
-    column_spec(1, width = "3cm", bold = TRUE, border_right = TRUE) %>%
-    column_spec(2, bold = TRUE, border_right = TRUE) %>%
-    column_spec(c(2:11), width = "1.25cm", border_right = TRUE) %>%
-    column_spec(2:11, width = "1.25cm", border_right = TRUE, extra_css = "vertical-align: middle; font-size: 18px;") %>%
-    row_spec(0, bold = TRUE, color = 'white', background = '#080808', align = 'center') %>%
-    row_spec(seq(1, nrow(decisions_data), 1), align = 'center') %>%
-    row_spec(nrow(decisions_data), extra_css = "border-bottom: 2px solid;") %>%
-    kable_styling(font_size = 15, bootstrap_options = c("striped", "hover", "responsive")) %>%
-    add_footnote(
-      c(
-        "<span style=\"border-radius: 0px; padding: 1px; background-color: white !important; color: white;\"></span>",
-        "<span style=\"border-radius: 0px; padding: 0px; background-color: white !important; color: white;\"></span>",
 
-        "<span style=\"margin-left: 10px;\"></span>
-      <span style=\"border-radius: 1px; padding: 1px; background-color: darkolivegreen !important; color: white;\">M*</span> = Majority Author
-       <span style=\"margin-left: 10px;\"></span>
-       <span style=\"border-radius: 1px; padding: 1px; background-color: #99CCFF !important; color: white;\">M</span> = Joined Majority
-       <span style=\"margin-left: 10px;\"></span>
-       <span style=\"border-radius: 1px; padding: 1px; background-color: #66B2FF !important; color: white;\">RC</span> = Wrote Concurrence
-       <span style=\"margin-left: 10px;\"></span>
-       <span style=\"border-radius: 1px; padding: 1px; background-color: #3399FF !important; color: white;\">JRC</span> = Joined Concurrence
-       <span style=\"margin-left: 10px;\"></span>
-       <span style=\"border-radius: 1px; padding: 1px; background-color: #66B2FF !important; color: white;\">RC & JRC</span> = Wrote & Joined Concurrence",
-
-        "<span style=\"border-radius: 3px; padding: 1px; background-color: white !important; color: white;\"> </span>",
-
-        "<span style=\"margin-left: 10px;\"></span>
-      <span style=\"border-radius: 1px; padding: 1px; background-color: #FF9933 !important; color: white;\">CJ</span> = Wrote Concurrence In Judgement
-       <span style=\"margin-left: 10px;\"></span>
-      <span style=\"border-radius: 1px; padding: 1px; background-color: #FFCC99 !important; color: white;\">JCJ</span> = Joined Concurrence In Judgement
-       <span style=\"margin-left: 10px;\"></span>
-      <span style=\"border-radius: 1px; padding: 1px; background-color: #B265FF !important; color: white;\">SC</span> = Wrote Special Concurrence
-       <span style=\"margin-left: 10px;\"></span>
-      <span style=\"border-radius: 1px; padding: 1px; background-color: #6600CC !important; color: white;\">JSC</span> = Joined Special Concurrence
-       <span style=\"margin-left: 10px;\"></span>",
-
-        "<span style=\"border-radius: 3px; padding: 1px; background-color: white !important; color: white;\"> </span>",
-
-        "<span style=\"margin-left: 10px;\"></span>
-      <span style=\"border-radius: 1px; padding: 1px; background-color: #FF3333 !important; color: white;\">D</span> = Wrote Dissent
-       <span style=\"margin-left: 10px;\"></span>
-      <span style=\"border-radius: 1px; padding: 1px; background-color: #CC0000 !important; color: white;\">JD</span> = Joined Dissent
-       <span style=\"margin-left: 10px;\"></span>
-      <span style=\"border-radius: 1px; padding: 1px; background-color: #990000 !important; color: white;\">D & JD</span> = Wrote & Joined Dissent
-       <span style=\"margin-left: 10px;\"></span>"
+  chunk_size <- 10
+  num_rows <- nrow(decisions_data)
 
 
-      ),
-      notation = "none",
-      escape = FALSE  # Add escape parameter to allow HTML formatting
-    )
+  for (start_row in seq(1, num_rows, by = chunk_size)) {
+    end_row <- min(start_row + chunk_size - 1, num_rows)
+
+    chunk <- decisions_data[start_row:end_row, c(1:3, 8:16)]
+
+    chunk <- chunk %>% mutate(`Date Decided` = as.Date(`Date Decided`, "%m/%d/%y"),
+             `Date Argued` = as.Date(`Date Argued`, "%m/%d/%y")) %>%
+      arrange(`Date Decided`) %>%
+      select(-c(`Date Argued`)) %>%
+      kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
+      add_header_above(c(" ", " ", original_column_names[8:16])) %>%
+      column_spec(1, width = "3cm", bold = TRUE, border_right = TRUE) %>%
+      column_spec(2, bold = TRUE, border_right = TRUE) %>%
+      column_spec(c(2:11), width = "1.25cm", border_right = TRUE) %>%
+      column_spec(2:11, width = "1.25cm", border_right = TRUE, extra_css = "vertical-align: middle; font-size: 18px;") %>%
+      row_spec(0, bold = TRUE, color = 'white', background = '#080808', align = 'center') %>%
+      row_spec(seq(1, nrow(chunk), 1), align = 'center') %>%
+      row_spec(nrow(chunk), extra_css = "border-bottom: 2px solid;") %>%
+      kable_styling(font_size = 15, bootstrap_options = c("striped", "hover", "responsive")) %>%
+      add_footnote(
+        c(
+          "<span style=\"border-radius: 0px; padding: 1px; background-color: white !important; color: white;\"></span>",
+          "<span style=\"border-radius: 0px; padding: 0px; background-color: white !important; color: white;\"></span>",
+
+          "<span style=\"margin-left: 10px;\"></span>
+        <span style=\"border-radius: 1px; padding: 1px; background-color: darkolivegreen !important; color: white;\">M*</span> = Majority Author
+         <span style=\"margin-left: 10px;\"></span>
+         <span style=\"border-radius: 1px; padding: 1px; background-color: #99CCFF !important; color: white;\">M</span> = Joined Majority
+         <span style=\"margin-left: 10px;\"></span>
+         <span style=\"border-radius: 1px; padding: 1px; background-color: #66B2FF !important; color: white;\">RC</span> = Wrote Concurrence
+         <span style=\"margin-left: 10px;\"></span>
+         <span style=\"border-radius: 1px; padding: 1px; background-color: #3399FF !important; color: white;\">JRC</span> = Joined Concurrence
+         <span style=\"margin-left: 10px;\"></span>
+         <span style=\"border-radius: 1px; padding: 1px; background-color: #66B2FF !important; color: white;\">RC & JRC</span> = Wrote & Joined Concurrence",
+
+          "<span style=\"border-radius: 3px; padding: 1px; background-color: white !important; color: white;\"> </span>",
+
+          "<span style=\"margin-left: 10px;\"></span>
+        <span style=\"border-radius: 1px; padding: 1px; background-color: #FF9933 !important; color: white;\">CJ</span> = Wrote Concurrence In Judgement
+         <span style=\"margin-left: 10px;\"></span>
+        <span style=\"border-radius: 1px; padding: 1px; background-color: #FFCC99 !important; color: white;\">JCJ</span> = Joined Concurrence In Judgement
+         <span style=\"margin-left: 10px;\"></span>
+        <span style=\"border-radius: 1px; padding: 1px; background-color: #B265FF !important; color: white;\">SC</span> = Wrote Special Concurrence
+         <span style=\"margin-left: 10px;\"></span>
+        <span style=\"border-radius: 1px; padding: 1px; background-color: #6600CC !important; color: white;\">JSC</span> = Joined Special Concurrence
+         <span style=\"margin-left: 10px;\"></span>",
+
+          "<span style=\"border-radius: 3px; padding: 1px; background-color: white !important; color: white;\"> </span>",
+
+          "<span style=\"margin-left: 10px;\"></span>
+        <span style=\"border-radius: 1px; padding: 1px; background-color: #FF3333 !important; color: white;\">D</span> = Wrote Dissent
+         <span style=\"margin-left: 10px;\"></span>
+        <span style=\"border-radius: 1px; padding: 1px; background-color: #CC0000 !important; color: white;\">JD</span> = Joined Dissent
+         <span style=\"margin-left: 10px;\"></span>
+        <span style=\"border-radius: 1px; padding: 1px; background-color: #990000 !important; color: white;\">D & JD</span> = Wrote & Joined Dissent
+         <span style=\"margin-left: 10px;\"></span>"
+
+
+        ),
+        notation = "none",
+        escape = FALSE  # Add escape parameter to allow HTML formatting
+      )
+
+    save_kable(chunk, paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Table_", start_row, ".html"))
+    html_file_path <- paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Table_", start_row, ".html")
+    #webshot::install_phantomjs(force = T)
+    phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
+    webshot::webshot(html_file_path, paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Table_", start_row, ".png"), vwidth = 1000, vheight = 300)
+  }
+
+
+
 } #Compile Vote Matrix Table
 
 
-
 decisions_info #Preview Info Table
-decision_table #Preview Vote Matrix Table
 
 ###############################################################################
 #Save to Local Machine
 ###############################################################################
-
 
 save_kable(decisions_info, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info.html")
 html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info.html"
@@ -233,10 +253,4 @@ html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.i
 phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
 webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info.png", vwidth = 1300, vheight = 300)
 
-
-save_kable(decision_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Table.html")
-html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Table.html"
-#webshot::install_phantomjs(force = T)
-phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
-webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Table.png", vwidth = 1000, vheight = 300)
 

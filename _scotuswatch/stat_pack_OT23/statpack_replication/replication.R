@@ -928,6 +928,33 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 } #Frequency in Majority Over Time
 
 ################################################################################
+# Attorney Information
+################################################################################
+
+{
+
+  base_url <- "https://github.com/JakeTruscott/scotustext/raw/master/Data/"
+  rdata_url <- paste0(base_url, "scotus_transcripts_23.rdata")
+  oa23 <- get(load(url(rdata_url)))
+
+} #Load OT2023 OA Data
+
+{
+
+  attorneys_OT23 <- oa23 %>%
+    filter(speaker_type == 'Attorney') %>%
+    select(speaker, docket) %>%
+    unique() %>%
+    group_by(speaker) %>%
+    summarise(appearance_count = n(),
+              arguments = paste(docket, collapse = '; '))
+
+  write.csv(attorneys_OT23, 'stat_pack_OT23/Statpack Replication Data/Oral Arguments/Attorney Information/attorneys.csv', row.names = F)
+
+} #
+
+
+################################################################################
 #Oral Arguments
 # Calendar
 # Participation - Justices & Attorneys

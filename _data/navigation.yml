@@ -3,12 +3,6 @@ main:
 
   - title: "CV"
     url: /cv/
-
-  - title: "SCOTUSWatch"
-    url: /scotuswatch/
-  
-  - title: "SCOTUS Arguments"
-    url: /scotusoa/
     
   - title: "Active Research"
     url: /active/    

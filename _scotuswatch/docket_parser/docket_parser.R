@@ -795,3 +795,72 @@ update_dockets(output_path = output_directory,
 
 
 # TO do - Go to URL & Get Lower Court
+
+################################################################################
+# Recompile 2001-2022 Dockets
+################################################################################
+
+dockets_OT01_OT22 <- data.frame()
+files <- list.files('docket_parser/OT01_OT22_docket_sheets', full.names = T)
+
+for (i in 1:length(files)){
+  temp <- get(load(files[i]))
+  dockets_OT01_OT22 <- bind_rows(dockets_OT01_OT22, temp)
+
+  if (i %% 500 == 0){
+    message('Completed ', i, ' of ', length(files))
+  }
+
+}
+
+save(dockets_OT01_OT22, file = 'docket_parser/dockets_OT01_OT22_2024Update_original.rdata')
+
+load('docket_parser/dockets_OT01_OT22_2024Update_original.rdata')
+
+dockets_OT01_OT22 <- dockets_OT01_OT22 %>%
+  mutate(okay = ifelse(grepl('Lower Ct\\:', docketed), gsub('Lower Ct\\:', '', docketed), lower_court),
+         okay = ifelse(grepl('(In Re |In re)', case_title), 'Habeas', okay)) %>%
+  mutate(okay = trimws(okay)) %>%
+  mutate(docketed = ifelse(grepl('Lower Ct\\:', docketed), NA, docketed))
+
+for (i in 1:nrow(dockets_OT01_OT22)){
+
+  docketed_date <- dockets_OT01_OT22$docket[[i]]$date[1]
+  if (is.na(docketed_date)){
+    docketed_date <- dockets_OT01_OT22$docket[[i]]$date[2]
+
+    dockets_OT01_OT22$docket[[i]] <- dockets_OT01_OT22$docket[[i]] %>%
+      filter(!is.na(date))
+
+  }
+
+  dockets_OT01_OT22$docketed[i] <- as.character(docketed_date)
+
+  if (i %% 1000 == 0){
+    message('Completed ', i, ' of ', nrow(dockets_OT01_OT22))
+  }
+
+}
+
+dockets_OT01_OT22 <- dockets_OT01_OT22 %>%
+  mutate(lower_court = okay) %>%
+  select(-c(okay)) %>%
+  relocate(lower_court, .after = docketed) %>%
+  mutate(lower_court = gsub('Decision Date.*', '', lower_court),
+         lower_court = trimws(lower_court)) %>%
+  mutate(lower_court = ifelse(docket_number == '03-8786', 'United States Court of Appeals for the Third Circuit', lower_court),
+         lower_court = ifelse(docket_number == '12-6571', 'United States Court of Appeals for the Ninth Circuit', lower_court)) %>%
+  mutate(lower_court = ifelse(grepl('function', lower_court), 'Unknown', lower_court)) %>%
+  mutate(IFP_status = gsub('.*\\-', '', docket_number),
+         filing_term = gsub('\\-.*', '', docket_number),
+         IFP_status = ifelse(as.numeric(IFP_status) >= 5000, 'IFP', 'Paid'),
+         filing_term = as.numeric(paste0('20', filing_term)))  %>%
+  mutate(court_origin_type = ifelse(grepl('United States', lower_court), 'Federal', 'State/Other'),
+         court_origin_type = ifelse(lower_court == 'Habeas', 'Habeas', court_origin_type)) %>%
+  select(docket_number, filing_term, case_title, petitioner, respondent, counsel, docketed, linked_with, lower_court, court_origin_type, IFP_status, docket, scotus_docket_url)
+
+save(dockets_OT01_OT22, file = 'docket_parser/dockets_OT01_OT22_Update_cleaned.rdata')
+
+
+
+

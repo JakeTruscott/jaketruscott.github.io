@@ -96,13 +96,15 @@ We give particular thanks to \textcolor{blue}{\textless NAME\textgreater{}} and 
 
 \input{"statpack_sections/oral_argument_calendar_statpack.tex"}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Participation - Totals (Justice)
+% Attorney Summaries
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Participation - Totals (Justice)
 % OA Justice Word Counts
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -235,12 +237,6 @@ We give particular thanks to \textcolor{blue}{\textless NAME\textgreater{}} and 
 
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% References
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
-\section{\underline{References}}
 
 
 
