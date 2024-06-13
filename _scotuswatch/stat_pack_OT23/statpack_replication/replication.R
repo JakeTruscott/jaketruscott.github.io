@@ -89,7 +89,13 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
   names(combined_sitting_calendar) = gsub('\\.', ' ', names(combined_sitting_calendar))
 
 } #OA Sitting Calendars
+{
 
+  feldman_attorney <- readxl::read_excel("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/statpack_replication/attorney_information_feldman/AA-FINAL.xlsx")
+  feldman_attorney <- feldman_attorney[,c(1:11)]
+  names(feldman_attorney) <- c('name', 'law_school', 'scotus_clerkship', 'clerkship_justice', 'present_SG', 'previous_SG', 'SG_experience', 'firm', 'state', 'gender', 'undergrad_school')
+
+} # Load Feldman Attorney Information Data
 
 ################################################################################
 # Topline Info
@@ -233,6 +239,203 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
 } #Topline Information (Returns 'toplines')
 
+
+################################################################################
+# Attorney Information (Feldman RA)
+################################################################################
+
+{
+
+  colours <- data.frame(
+    school = c('Other', 'Harvard', 'Yale', 'Chicago', 'Virginia', 'Texas', 'NYU', 'Georgetown', 'Michigan', 'Stanford'),
+    outline = c('gray5', '#808285', '#978d85', '#767676', '#F84C1E', '#333F48', '#8B139C', '#8D817B', '#00274C', '#4D4F53'),
+    fill = c('gray5', '#A41034', '#00356b', '#800000', '#232D4B', '#BF5700', '#56018D', '#041E42', '#FFCB05', '#8C1515')
+  )
+
+  law_school_data <- feldman_attorney %>%
+    group_by(law_school) %>%
+    summarise(count = n()) %>%
+    arrange(desc(count)) %>%
+    mutate(law_school = ifelse(count >= 3, law_school, 'Other')) %>%
+    group_by(law_school) %>%
+    summarise(count = sum(count)) %>%
+    mutate(other = ifelse(law_school == 'Other', 0, 1)) %>%
+    arrange(desc(other), desc(count)) %>%
+    select(-c(other)) %>%
+    mutate(law_school = gsub(' University', '', gsub('University of ', '', law_school)))
+
+  law_school_figure <- law_school_data %>%
+    left_join(colours, by = c("law_school" = "school")) %>%
+    ggplot( aes(x = forcats::fct_reorder(law_school, count), y = count)) +
+    geom_bar(stat = 'identity', aes(fill = fill, colour = outline), size = 1) +
+    geom_hline(yintercept = 0) +
+    geom_label(aes(x = forcats::fct_reorder(law_school, count), y = count, label = count, hjust = 2, size = 5)) +
+    scale_y_continuous(breaks = seq(5, 30, 5)) +
+    labs(x = '',
+         y = '',
+         title = "Law School\nAttendance") +
+    coord_flip() +
+    theme_bw() +
+    scale_fill_identity() +  # Ensure the fill colors are used directly
+    scale_colour_identity() +  # Ensure the outline colors are used directly
+    theme(legend.position = 'none',
+          legend.text = element_text(size = 15, colour = 'gray5'),
+          plot.title = element_text(size = 18, hjust = 0.5),
+          axis.title = element_text(size = 15),
+          axis.ticks.y = element_blank(),
+          axis.text = element_text(size = 12),
+          axis.line = element_line(colour = 'black'),
+          strip.text = element_text(size = 12, colour = 'black', face = 'bold',
+                                    margin = margin(b = 10), vjust = -1, hjust = 0.5),
+          strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+          panel.background = element_rect(size = 1, fill = 'white', colour = 'black'))
+
+
+} # Law Schools
+
+{
+
+  attorney_gender <- feldman_attorney %>%
+    select(gender) %>%
+    group_by(gender) %>%
+    summarise(count = n()) %>%
+    mutate(percent = round(count/nrow(feldman_attorney), 2)) %>%
+    ggplot(aes(x = "", y = count, fill = gender)) +
+    geom_bar(stat = "identity", colour = 'gray5') +
+    coord_polar(theta = 'y', start = 0) +
+    theme_void() +
+    labs(
+      x = ' ',
+      y = ' ',
+      fill = ' ',
+      title = 'Attorney\nGender') +
+    scale_fill_manual(values = c('deepskyblue3', 'coral')) +
+    geom_label(aes(label = paste0(percent*100, '%\n', gender)), position = position_stack(vjust = 0.5), color = "gray5", size=5, show.legend = F) +
+    theme(legend.position = 'none',
+          legend.text = element_text(size = 15, colour = 'gray5'),
+          plot.title = element_text(size = 18, hjust = 0.5),
+          axis.text.x = element_blank(),
+          axis.ticks = element_blank(),
+          axis.title = element_text(size = 12),
+          axis.line = element_line(colour = 'black'),
+          strip.text = element_text(size = 12, colour = 'black', face = 'bold',
+                                    margin = margin(b = 10), vjust = -1, hjust = 0.5),
+          strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+          panel.background = element_rect(size = 1, fill = 'white', colour = 'black'))
+
+} # Gender
+
+{
+
+  scotus_clerkship <- feldman_attorney %>%
+    select(scotus_clerkship) %>%
+    mutate(scotus_clerkship = ifelse(scotus_clerkship == 'Y', 'Clerkship', 'None')) %>%
+    group_by(scotus_clerkship) %>%
+    summarise(count = n()) %>%
+    ungroup() %>%
+    select(scotus_clerkship, count) %>%
+    mutate(percent = count/nrow(feldman_attorney)) %>%
+    ggplot(aes(x =  '', y = count, fill = scotus_clerkship)) +
+    geom_bar(stat = "identity", colour = 'gray5') +
+    coord_polar(theta = 'y', start = 0) +
+    theme_void() +
+    labs(
+      x = ' ',
+      y = ' ',
+      fill = ' ',
+      title = 'Percent with\nSCOTUS Clerkship') +
+    scale_fill_manual(values = c('grey50', 'white')) +
+    geom_label(aes(label = paste0(percent*100, '%\n', scotus_clerkship)), position = position_stack(vjust = 0.5), color = "gray5", size=5, show.legend = F) +
+    theme(legend.position = 'none',
+          plot.title = element_text(size = 18, hjust = 0.5),
+          legend.text = element_text(size = 15, colour = 'gray5'),
+          axis.text.x = element_blank(),
+          axis.ticks = element_blank(),
+          axis.title = element_text(size = 12),
+          axis.line = element_line(colour = 'black'),
+          strip.text = element_text(size = 12, colour = 'black', face = 'bold',
+                                    margin = margin(b = 10), vjust = -1, hjust = 0.5),
+          strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+          panel.background = element_rect(size = 1, fill = 'white', colour = 'black'))
+
+
+  clerkships_by_justice <- feldman_attorney %>%
+    select(scotus_clerkship, clerkship_justice) %>%
+    mutate(scotus_clerkship = ifelse(scotus_clerkship == 'Y', 'Yes', 'No'),
+           clerkship_justice = ifelse(grepl('\\,', clerkship_justice), 'Multiple', clerkship_justice),
+           clerkship_justice = ifelse(clerkship_justice == "Day O'Connor", "O'Connor", clerkship_justice)) %>%
+    group_by(scotus_clerkship, clerkship_justice) %>%
+    filter(!clerkship_justice == 'N/A') %>%
+    summarise(count = n()) %>%
+    mutate(clerkship_justice = ifelse(clerkship_justice == 'N/A', 'None', clerkship_justice)) %>%
+    ungroup() %>%
+    select(clerkship_justice, count) %>%
+    ggplot(aes(x = forcats::fct_reorder(clerkship_justice, count), y = count)) +
+    geom_bar(stat = "identity", colour = 'gray5', fill = 'gray') +
+    theme_bw() +
+    scale_y_continuous(lim = c(0, 9), breaks = seq(1, 9, 1)) +
+    coord_flip() +
+    geom_label(aes(x = forcats::fct_reorder(clerkship_justice, count), y = count, label = count, hjust = 2, size = 5)) +
+    labs(x = '',
+         y = '',
+         title = 'SCOTUS Clerkships\nby Justice') +
+    theme(legend.position = 'none',
+          plot.title = element_text(size = 18, hjust = 0.5),
+          legend.text = element_text(size = 15, colour = 'gray5'),
+          axis.title = element_text(size = 15),
+          axis.text = element_text(size = 12),
+          axis.line = element_line(colour = 'black'),
+          strip.text = element_text(size = 12, colour = 'black', face = 'bold',
+                                    margin = margin(b = 10), vjust = -1, hjust = 0.5),
+          strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+          panel.background = element_rect(size = 1, fill = 'white', colour = 'black'))
+
+} # SCOTUS Clerkship
+
+{
+
+  sg_experience <- feldman_attorney %>%
+    select(SG_experience) %>%
+    mutate(SG_experience = ifelse(SG_experience == 'Y', 'Yes', 'No')) %>%
+    group_by(SG_experience) %>%
+    summarise(count = n()) %>%
+    mutate(percent = count/nrow(feldman_attorney)) %>%
+    ggplot(aes(x =  '', y = count, fill = SG_experience)) +
+    geom_bar(stat = "identity", colour = 'gray5') +
+    coord_polar(theta = 'y', start = 0) +
+    theme_void() +
+    labs(
+      x = ' ',
+      y = ' ',
+      fill = ' ',
+      title = "Solicitor General's\nOffice Experience") +
+    scale_fill_manual(values = c('grey50', 'white')) +
+    geom_label(aes(label = paste0(percent*100, '%\n', SG_experience)), position = position_stack(vjust = 0.5), color = "gray5", size=5, show.legend = F) +
+    theme(legend.position = 'none',
+          plot.title = element_text(size = 18, hjust = 0.5),
+          legend.text = element_text(size = 15, colour = 'gray5'),
+          axis.text.x = element_blank(),
+          axis.ticks = element_blank(),
+          axis.title = element_text(size = 12),
+          axis.line = element_line(colour = 'black'),
+          strip.text = element_text(size = 12, colour = 'black', face = 'bold',
+                                    margin = margin(b = 10), vjust = -1, hjust = 0.5),
+          strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+          panel.background = element_rect(size = 1, fill = 'white', colour = 'black'))
+} #SG Experience
+
+{
+
+  top_row <- cowplot::plot_grid(scotus_clerkship + theme(plot.margin = unit(c(0, 0, 0, 0), "cm")), attorney_gender + theme(plot.margin = unit(c(0, 0, 0, 0), "cm")), sg_experience + theme(plot.margin = unit(c(0, 0, 0, 0), "cm")), nrow = 3)
+  bottomrow <- cowplot::plot_grid(law_school_figure + theme(plot.margin = unit(c(0, 0, 0, 0), "cm")), clerkships_by_justice + theme(plot.margin = unit(c(0, 0, 0, 0), "cm")), nrow = 2)
+
+  combined_attorney_info <- cowplot::plot_grid(top_row, bottomrow, ncol = 2, align = 'h')
+
+  ggsave(combined_attorney_info, file = 'stat_pack_OT23/Figures/statpack_figures/combined_attorney_info.png')
+
+
+} #Combine Into Single Plot Space
+
 ################################################################################
 # Decisions
 ################################################################################
@@ -311,7 +514,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
 
 } # Decision-Level Breakdowns
-s
+
 {
 
   opinion_type_by_justice_ot23 <- decisions_ot_23 %>%
@@ -1912,7 +2115,8 @@ load('docket_parser/OT18_OT22_dockets.rdata') #Load OT23 Dockets
               total_cases = n()) %>%
     mutate(average_per_case = round(total_amici/total_cases, 2)) %>%
     mutate(petition_granted = ifelse(petition_granted == 1, 'Petition Granted', 'Petition Denied'),
-           petition_granted = factor(petition_granted, levels = c('Petition Granted', 'Petition Denied'))) %>%
+           petition_granted = factor(petition_granted, levels = c('Petition Granted', 'Petition Denied')),
+           filing_year = as.numeric(str_replace(as.character(filing_year), "^\\d{2}", ""))) %>%
     ggplot(aes(x = factor(filing_year), y = average_per_case)) +
     geom_bar(stat = 'identity', fill = 'gray50', colour = 'gray5') +
     facet_wrap(~petition_granted, scales = 'free_y') +
