@@ -666,7 +666,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     summarise(count = n()) %>%
     ggplot(aes(x = factor(term), y = count, group = coalition)) +
     geom_bar(stat = 'identity', fill = 'gray50', position = position_dodge2(0.9), colour = 'gray5') +
-    scale_y_continuous(lim = c(0, 40), breaks = seq(10, 40, 10)) +
+    scale_y_continuous(lim = c(0, 45), breaks = seq(10, 40, 10)) +
     facet_wrap(~coalition, nrow = 6) +
     geom_text(aes(label = count), vjust = -1) +
     geom_hline(yintercept = 0) +

@@ -1,5 +1,7 @@
 Case,Docket,Sitting,Author,Type,Word Count
 Wilkinson v. Garland,22-666,December,CHIEF JUSTICE ROBERTS,Dissent,81
+Vidal, Under Sec. of Comm. v. Elster,22-704,November,JUSTICE KAVANAUGH; CHIEF JUSTICE
+joins,Concurrence,85
 FBI v. Fikre,22-1178,January,JUSTICE ALITO; JUSTICE KAVANAUGH,Concurrence,166
 Trump v. Anderson,23-719,February,JUSTICE BARRETT,Concurrence,175
 Sheetz v. County of El Dorado,22-1074,January,JUSTICE KAVANAUGH; JUSTICE KAGAN; JUSTICE JACKSON,Concurrence,206
@@ -33,11 +35,13 @@ Macquarie Infrastructure Corp. v. Moab Partners,22-1165,January,JUSTICE SOTOMAYO
 Trump v. Anderson,23-719,February,Per Curiam,Per Curiam,2331
 Acheson Hotels v. Laufer,22-429,October,JUSTICE JACKSON,Concurrence,2467
 Bissonnette v. LePage Bakeries,23-51,February,CHIEF JUSTICE ROBERTS,Majority Opinion,2491
+FDA v. Alliance for Hippocratic Medicine (Cons. w. 23-236),23-235,March,JUSTICE THOMAS,Concurrence,2624
 Connelly v. United States,23-146,March,JUSTICE THOMAS,Majority Opinion,2791
 McElrath v. Georgia,22-721,December,JUSTICE JACKSON,Majority Opinion,2808
 FBI v. Fikre,22-1178,January,JUSTICE GORSUCH,Majority Opinion,2822
 Acheson Hotels v. Laufer,22-429,October,JUSTICE THOMAS,Concurrence,2836
 Harrow v. Dept. of Defense,23-21,March,JUSTICE KAGAN,Majority Opinion,2863
+Starbucks Corp. v. McKinney,23-367,April,JUSTICE THOMAS,Majority Opinion,3013
 Muldrow v. St. Louis,22-193,December,JUSTICE KAGAN,Majority Opinion,3015
 Sheetz v. County of El Dorado,22-1074,January,JUSTICE BARRETT,Majority Opinion,3031
 Culley v. Marshall,22-585,November,JUSTICE GORSUCH; JUSTICE THOMAS,Concurrence,3344
@@ -49,10 +53,13 @@ Cantero v. Bank of America,22-529,February,JUSTICE KAVANAUGH,Majority Opinion,37
 Greater Lakes Ins. v. Raiders Retreat Realty Co.,22-500,October,JUSTICE KAVANAUGH,Majority Opinion,3928
 Culley v. Marshall,22-585,November,JUSTICE KAVANAUGH,Majority Opinion,4007
 Truck Insurance Exchange v. Kaiser Gypsum,22-1079,March,JUSTICE SOTOMAYOR,Majority Opinion,4035
+Vidal, Under Sec. of Comm. v. Elster,22-704,November,JUSTICE BARRETT; JUSTICE KAGAN; JUSTICE SOTOMAYOR; JUSTICE JACKSON,Concurrence,4118
+Vidal, Under Sec. of Comm. v. Elster,22-704,November,JUSTICE SOTOMAYOR; JUSTICE KAGAN; JUSTICE JACKSON,Concurrence,4118
 Murray v. UBS Securities,22-660,October,JUSTICE SOTOMAYOR,Majority Opinion,4140
 Wilkinson v. Garland,22-666,December,JUSTICE SOTOMAYOR,Majority Opinion,4398
 Thornell v. Jones,22-982,April,JUSTICE ALITO,Majority Opinion,4404
 Lindke v. Freed,22-611,November,JUSTICE BARRETT,Majority Opinion,4671
+Starbucks Corp. v. McKinney,23-367,April,JUSTICE JACKSON,Dissent,4731
 Becerra v. San Carlos Apache Tribe (Cons. w. 23-253),23-250,March,CHIEF JUSTICE ROBERTS,Majority Opinion,5113
 Rudisill v. McDonough,22-888,November,JUSTICE JACKSON,Majority Opinion,5214
 Brown v. U.S. (Cons. w. 22-6640),22-6389,December,JUSTICE ALITO,Majority Opinion,5321
@@ -60,7 +67,9 @@ NRA v. Vullo,22-842,March,JUSTICE SOTOMAYOR,Majority Opinion,5504
 Brown v. U.S. (Cons. w. 22-6640),22-6389,December,JUSTICE JACKSON; JUSTICE KAGAN; JUSTICE GORSUCH,Dissent,5651
 Dept. of Agric. Rural Dev. v. Kirtz,22-846,November,JUSTICE GORSUCH,Majority Opinion,6087
 CFPB v. Community Financial Services Assn.,22-448,October,JUSTICE THOMAS,Majority Opinion,6442
+Vidal, Under Sec. of Comm. v. Elster,22-704,November,JUSTICE THOMAS; JUSTICE ALITO; JUSTICE GORSUCH,Majority Opinion,6519
 CFPB v. Community Financial Services Assn.,22-448,October,JUSTICE ALITO; JUSTICE GORSUCH,Dissent,6632
+FDA v. Alliance for Hippocratic Medicine (Cons. w. 23-236),23-235,March,JUSTICE KAVANAUGH,Majority Opinion,7027
 Alexander v. SC Conf. of NAACP,22-807,October,JUSTICE THOMAS,Concurrence,8517
 Pulsifer v. U.S.,22-340,October,JUSTICE KAGAN,Majority Opinion,8743
 Alexander v. SC Conf. of NAACP,22-807,October,JUSTICE ALITO,Majority Opinion,9155
