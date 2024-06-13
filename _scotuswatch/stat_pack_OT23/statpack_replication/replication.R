@@ -90,6 +90,149 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
 } #OA Sitting Calendars
 
+
+################################################################################
+# Topline Info
+################################################################################
+
+{
+
+  toplines <- list()
+
+  {
+
+    toplines[['Most Authored Opinions']] <- list()
+
+    decisions_23 <- scotustext::decision_processor(dir_path = "ot23_decisions/decision_pdfs_OT23") #OT23
+
+    most_authored_opinions <- decisions_23 %>%
+      select(opinion_writer, opinion_type) %>%
+      mutate(opinion_writer = gsub('\\;.*', '', opinion_writer),
+             opinion_writer = gsub('(CHIEF JUSTICE |JUSTICE )', '', opinion_writer)) %>%
+      group_by(opinion_type, opinion_writer) %>%
+      summarise(count = n())
+
+    opinion_types <- c('Majority Opinion', 'Concurrence', 'Dissent')
+
+    for (i in opinion_types){
+
+      temp <- most_authored_opinions %>%
+        filter(opinion_type == i) %>%
+        filter(count == max(count))
+
+      toplines[['Most Authored Opinions']][[i]] <- temp$opinion_writer
+
+    }
+
+  } # Most Authored Opinions
+
+  {
+
+    toplines[['Decisions (Coalition)']] <- list()
+
+    by_coalition <- decisions_ot_23 %>%
+      select(Coalition) %>%
+      group_by(Coalition) %>%
+      summarise(count = n()) %>%
+      mutate(Coalition = ifelse(Coalition == '(6-3)', '(6-3) Any Combination', Coalition))
+
+    ideologically_split <- decisions_ot_23 %>%
+      filter(Coalition == '(6-3)') %>%
+      mutate(split = ifelse(SOTOMAYOR < 0 & KAGAN < 0 & JACKSON < 0, 1, 0)) %>%
+      select(split)
+
+    by_coalition <- by_coalition %>%
+      add_row(Coalition = '(6-3) Ideologically Split', count = sum(ideologically_split$split)) %>%
+      mutate(count = ifelse(Coalition == '(6-3) Any Combination', count - sum(ideologically_split$split), count)) %>%
+      arrange(Coalition)
+
+    for (i in 1:nrow(by_coalition)){
+
+      temp_row <- by_coalition[i,]
+
+      toplines[['Decisions (Coalition)']][[temp_row$Coalition]] <- temp_row$count
+
+
+    }
+
+  } #Decisions by Coalition
+
+  {
+    toplines[['Longest Argument (Min)']] <- list()
+
+    base_url <- "https://github.com/JakeTruscott/scotustext/raw/master/Data/"
+    rdata_url <- paste0(base_url, "scotus_transcripts_23.rdata")
+    load(url(rdata_url))
+
+    longest_argument <- scotus_OT23 %>%
+      mutate(elapsed = text_stop - text_start) %>%
+      group_by(case_name) %>%
+      summarise(elapsed_time = sum(elapsed)) %>%
+      arrange(desc(elapsed_time)) %>%
+      filter(elapsed_time == max(elapsed_time))
+
+    toplines[['Longest Argument (Min)']] <- longest_argument$case_name
+
+    most_frequent_arguing_counsel <- scotus_OT23 %>%
+      filter(speaker_type == 'Attorney') %>%
+      select(case_name, speaker) %>%
+      unique() %>%
+      group_by(speaker) %>%
+      summarise(count = n()) %>%
+      arrange(desc(count)) %>%
+      filter(count == max(count))
+
+    toplines[['Most Frequent Arguing Counsel']] <- most_frequent_arguing_counsel$speaker
+
+    toplines[['Most Time Speaking']]
+
+    most_time_speaking_term_justice <- scotus_OT23 %>%
+      mutate(elapsed = text_stop - text_start) %>%
+      filter(speaker_type == 'Justice') %>%
+      group_by(speaker) %>%
+      summarise(total_time_speaking = sum(elapsed)) %>%
+      filter(total_time_speaking == max(total_time_speaking))
+
+    toplines[['Most Time Speaking']][['(Term, Justice)']] <- most_time_speaking_term_justice$speaker
+
+    most_time_speaking_argument_justice <- scotus_OT23 %>%
+      mutate(elapsed = text_stop - text_start) %>%
+      filter(speaker_type == 'Justice') %>%
+      group_by(case_name, speaker) %>%
+      summarise(total_time_speaking = sum(elapsed)) %>%
+      ungroup() %>%
+      filter(total_time_speaking == max(total_time_speaking))
+
+    toplines[['Most Time Speaking']][['(Argument, Justice)']]  <- most_time_speaking_argument_justice$speaker
+
+    most_time_speaking_argument_attorney <- scotus_OT23 %>%
+      mutate(elapsed = text_stop - text_start) %>%
+      filter(speaker_type == 'Attorney') %>%
+      group_by(case_name, speaker) %>%
+      summarise(total_time_speaking = sum(elapsed)) %>%
+      ungroup() %>%
+      filter(total_time_speaking == max(total_time_speaking))
+
+    toplines[['Most Time Speaking']][['(Argument, Attorney)']]  <- most_time_speaking_argument_attorney$speaker
+
+
+  } # Arguments
+
+  {
+
+    load('docket_parser/OT23_docket_sheets/docket_filings_ot_23.rdata') #Load OT23 Dockets
+
+    total_petitions <- dockets %>%
+      filter(grepl('\\-', docket_number))
+
+    toplines[['Total Petitions Filed (Approx.)']] <- nrow(total_petitions)
+
+  } # Dockets
+
+  toplines
+
+} #Topline Information (Returns 'toplines')
+
 ################################################################################
 # Decisions
 ################################################################################
@@ -101,15 +244,16 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     mutate(across(everything(), ~ ifelse(. > 0, 1, 0))) #Get Justices and Replace Vote w/ Majority or Dissent
   judge_matrix <- as.matrix(decisions_matrix_data) #Convert to Matrix
 
-  n_judges <- ncol(decisions_matrix_data) #Number of Justices
-  agreement_matrix <- matrix(NA, nrow = n_judges, ncol = n_judges) #Create Empty Matrix
+  n_judges <- ncol(decisions_matrix_data) # Number of Justices
+  agreement_matrix <- matrix(NA, nrow = n_judges, ncol = n_judges) # Create Empty Matrix
 
   # Calculate the percentage agreement between each pair of judges
   for (i in 1:n_judges) {
     for (j in 1:n_judges) {
-      agreement_matrix[i, j] <- round(sum(decisions_matrix_data[, i] == decisions_matrix_data[, j]) / nrow(decisions_matrix_data) * 100, 2)
+      valid_cases <- !is.na(decisions_matrix_data[, i]) & !is.na(decisions_matrix_data[, j])
+      agreement_matrix[i, j] <- round(sum(decisions_matrix_data[valid_cases, i] == decisions_matrix_data[valid_cases, j], na.rm = TRUE) / sum(valid_cases) * 100, 2)
     }
-  } #Calculate Agreement Percentage
+  }
 
   for (i in 1:ncol(agreement_matrix)) {
     for (j in 1:ncol(agreement_matrix)) {
@@ -119,7 +263,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
         agreement_matrix[i, j] <- ""
       }
     }
-  } #Replace Diagonal & Above w/ ""
+  } # Replace Diagonal & Above w/ ""
 
   colnames(agreement_matrix) <- colnames(decisions_matrix_data) #Add Column Names
   rownames(agreement_matrix) <- colnames(decisions_matrix_data) #Add Row Names
@@ -130,7 +274,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
   names(agreement_matrix)[1] <- ""
 
 
-  write.table(agreement_matrix, file = 'stat_pack_OT23/Tables/decision_tables/agreement_matrix.csv', sep = ',', quote = FALSE, row.names = F) #Save
+  write.table(agreement_matrix[-1,-10], file = 'stat_pack_OT23/Tables/decision_tables/agreement_matrix.csv', sep = ',', quote = FALSE, row.names = F) #Save
 
   agreement_matrix[,1] = gsub('\\.png', '', toupper(rownames(agreement_matrix)))
 
@@ -167,7 +311,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
 
 } # Decision-Level Breakdowns
-
+s
 {
 
   opinion_type_by_justice_ot23 <- decisions_ot_23 %>%
@@ -926,32 +1070,6 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
 
 } #Frequency in Majority Over Time
-
-################################################################################
-# Attorney Information
-################################################################################
-
-{
-
-  base_url <- "https://github.com/JakeTruscott/scotustext/raw/master/Data/"
-  rdata_url <- paste0(base_url, "scotus_transcripts_23.rdata")
-  oa23 <- get(load(url(rdata_url)))
-
-} #Load OT2023 OA Data
-
-{
-
-  attorneys_OT23 <- oa23 %>%
-    filter(speaker_type == 'Attorney') %>%
-    select(speaker, docket) %>%
-    unique() %>%
-    group_by(speaker) %>%
-    summarise(appearance_count = n(),
-              arguments = paste(docket, collapse = '; '))
-
-  write.csv(attorneys_OT23, 'stat_pack_OT23/Statpack Replication Data/Oral Arguments/Attorney Information/attorneys.csv', row.names = F)
-
-} #
 
 
 ################################################################################
