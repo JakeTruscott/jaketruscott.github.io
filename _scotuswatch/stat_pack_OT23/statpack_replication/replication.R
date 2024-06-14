@@ -92,8 +92,8 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 {
 
   feldman_attorney <- readxl::read_excel("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/statpack_replication/attorney_information_feldman/AA-FINAL.xlsx")
-  feldman_attorney <- feldman_attorney[,c(1:11)]
-  names(feldman_attorney) <- c('name', 'law_school', 'scotus_clerkship', 'clerkship_justice', 'present_SG', 'previous_SG', 'SG_experience', 'firm', 'state', 'gender', 'undergrad_school')
+  feldman_attorney <- feldman_attorney[,c(1:14)]
+  names(feldman_attorney) <- c('name', 'law_school', 'scotus_clerkship', 'clerkship_justice', 'present_SG', 'previous_SG', 'SG_experience', 'firm', 'state', 'gender', 'undergrad_school', 'repeater', 'previous_cases', 'arguments_2023')
 
 } # Load Feldman Attorney Information Data
 
@@ -334,7 +334,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     summarise(count = n()) %>%
     ungroup() %>%
     select(scotus_clerkship, count) %>%
-    mutate(percent = count/nrow(feldman_attorney)) %>%
+    mutate(percent = round(count/nrow(feldman_attorney), 2)) %>%
     ggplot(aes(x =  '', y = count, fill = scotus_clerkship)) +
     geom_bar(stat = "identity", colour = 'gray5') +
     coord_polar(theta = 'y', start = 0) +
@@ -399,7 +399,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     mutate(SG_experience = ifelse(SG_experience == 'Y', 'Yes', 'No')) %>%
     group_by(SG_experience) %>%
     summarise(count = n()) %>%
-    mutate(percent = count/nrow(feldman_attorney)) %>%
+    mutate(percent = round(count/nrow(feldman_attorney), 2)) %>%
     ggplot(aes(x =  '', y = count, fill = SG_experience)) +
     geom_bar(stat = "identity", colour = 'gray5') +
     coord_polar(theta = 'y', start = 0) +
@@ -435,6 +435,33 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
 
 } #Combine Into Single Plot Space
+
+{
+
+  attorney_summary_stats <- feldman_attorney %>%
+    select(name, firm, law_school, clerkship_justice, repeater, previous_cases) %>%
+    mutate(name = str_to_title(name),
+           clerkship_justice = ifelse(clerkship_justice == 'N/A', NA, clerkship_justice),
+           law_school = gsub(' University', '', gsub('University of ', '', law_school)),
+           clerkship_justice = ifelse(clerkship_justice == "Day O'Connor", "O'Connor", clerkship_justice),
+           firm = gsub('\\&', 'and', firm),
+           repeater = ifelse(repeater == 1, 'Yes', 'No')) %>%
+    rename(`Attorney` = name,
+           `Firm` = firm,
+           `Law School` = law_school,
+           `SCOTUS Clerkship` = clerkship_justice,
+           `Repeat Appearance` = repeater,
+           `Num. Previous Cases` = previous_cases) %>%
+    arrange(`Attorney`)
+
+  attorney_summary_stats$Attorney[13] <- 'Benjamin Aguinaga'
+
+  write.csv(attorney_summary_stats[c(1:30),], "stat_pack_OT23/Statpack Replication Data/Oral Arguments/Attorney Information/attorney_summary_stats_1.csv", row.names = F, quote = F)
+  write.csv(attorney_summary_stats[c(31:60),], "stat_pack_OT23/Statpack Replication Data/Oral Arguments/Attorney Information/attorney_summary_stats_2.csv", row.names = F, quote = F)
+  write.csv(attorney_summary_stats[c(61:90),], "stat_pack_OT23/Statpack Replication Data/Oral Arguments/Attorney Information/attorney_summary_stats_3.csv", row.names = F, quote = F)
+  write.csv(attorney_summary_stats[c(90:102),], "stat_pack_OT23/Statpack Replication Data/Oral Arguments/Attorney Information/attorney_summary_stats_4.csv", row.names = F, quote = F)
+
+} # Summary Tables (Name, Firm, Law School, Clerkship, Repeat, Former Cases )
 
 ################################################################################
 # Decisions

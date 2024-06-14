@@ -1,28 +1,28 @@
 "opinion_type","mean_mean","term","average_length"
-"Concurrence",1624.75,"2016",815
-"Concurrence",1624.75,"2017",1365
-"Concurrence",1624.75,"2018",1675
-"Concurrence",1624.75,"2019",1599
-"Concurrence",1624.75,"2020",1813
-"Concurrence",1624.75,"2021",1613
-"Concurrence",1624.75,"2022",2524
-"Concurrence",1624.75,"2023",1594
-"Dissent",4199.75,"2016",2822
-"Dissent",4199.75,"2017",4360
-"Dissent",4199.75,"2018",3869
-"Dissent",4199.75,"2019",4775
-"Dissent",4199.75,"2020",4307
-"Dissent",4199.75,"2021",4236
-"Dissent",4199.75,"2022",5267
-"Dissent",4199.75,"2023",3962
-"Majority Opinion",4680.375,"2016",4227
-"Majority Opinion",4680.375,"2017",4918
-"Majority Opinion",4680.375,"2018",4584
-"Majority Opinion",4680.375,"2019",5008
-"Majority Opinion",4680.375,"2020",4692
-"Majority Opinion",4680.375,"2021",4919
-"Majority Opinion",4680.375,"2022",4996
-"Majority Opinion",4680.375,"2023",4099
+"Concurrence",1618.125,"2016",815
+"Concurrence",1618.125,"2017",1365
+"Concurrence",1618.125,"2018",1675
+"Concurrence",1618.125,"2019",1599
+"Concurrence",1618.125,"2020",1813
+"Concurrence",1618.125,"2021",1613
+"Concurrence",1618.125,"2022",2524
+"Concurrence",1618.125,"2023",1541
+"Dissent",4243.75,"2016",2822
+"Dissent",4243.75,"2017",4360
+"Dissent",4243.75,"2018",3869
+"Dissent",4243.75,"2019",4775
+"Dissent",4243.75,"2020",4307
+"Dissent",4243.75,"2021",4236
+"Dissent",4243.75,"2022",5267
+"Dissent",4243.75,"2023",4314
+"Majority Opinion",4688.5,"2016",4227
+"Majority Opinion",4688.5,"2017",4918
+"Majority Opinion",4688.5,"2018",4584
+"Majority Opinion",4688.5,"2019",5008
+"Majority Opinion",4688.5,"2020",4692
+"Majority Opinion",4688.5,"2021",4919
+"Majority Opinion",4688.5,"2022",4996
+"Majority Opinion",4688.5,"2023",4164
 "Per Curiam",1319.375,"2016",1362
 "Per Curiam",1319.375,"2017",1424
 "Per Curiam",1319.375,"2018",1375
