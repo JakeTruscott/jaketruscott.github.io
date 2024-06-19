@@ -16,14 +16,14 @@ library(dplyr); library(stringr); library(stringi); library(rvest); library(httr
 # Core Function
 # Only Works for Cases Filed Post-2016...
 
-# As of 04/27 -
-# Regular: Up Through 23-1162
-# IFP: Through 23-7323
-# App: Through 23-965
-# M: Through 23M95
+# As of 6/16 -
+# Regular: Up Through 23-1312
+# IFP: Through 23-7730
+# App: Through 23-1114
+# M: Through 23M102
 ################################################################################
 
-dockets_through_5_23 <- c(paste0('23-', 1:1233), paste0('23-', 5001:7547), paste0('23M', 1:99), paste0('23A', 1:1044))
+dockets_through_6_16 <- c(paste0('23-', 1:1312), paste0('23-', 5001:7730), paste0('23M', 1:102), paste0('23A', 1:1114))
 
 
 docket_parser <- function(dockets){
@@ -325,7 +325,7 @@ docket_parser <- function(dockets){
 } #Core Function
 
 
-docket_OT23_5_23_update <- docket_parser(dockets = dockets_through_5_23)
+docket_OT23_5_23_update <- docket_parser(dockets = dockets_through_6_16)
 
 
 ################################################################################
