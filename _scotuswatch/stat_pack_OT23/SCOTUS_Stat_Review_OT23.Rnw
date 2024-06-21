@@ -23,7 +23,7 @@
   Version: 0.1 (Released \textcolor{blue}{\textless DATE\textgreater{}}) \\[2mm]
 
   \normalsize
-We give particular thanks to \textcolor{blue}{\textless NAME\textgreater{}} and \textcolor{blue}{\textless NAME\textgreater{}} for their assistance reviewing these materials prior to their public release. For additional data and accompanying analysis, please visit\\ \textcolor{blue}{\href{https://empiricalscotus.com/}{EmpiricalSCOTUS}} or \textcolor{blue}{\href{mailto:adam@feldmannet.com}{Contact Us}}.
+ For additional data and accompanying analysis, please visit\\ \textcolor{blue}{\href{https://empiricalscotus.com/}{EmpiricalSCOTUS}} or \textcolor{blue}{\href{mailto:adam@feldmannet.com}{Contact Us}}.
 
 \end{center}
 \newpage
@@ -92,9 +92,9 @@ We give particular thanks to \textcolor{blue}{\textless NAME\textgreater{}} and 
 % OA Calendar
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newpage
+%\newpage
 
-\input{"statpack_sections/oral_argument_calendar_statpack.tex"}
+%\input{"statpack_sections/oral_argument_calendar_statpack.tex"}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%

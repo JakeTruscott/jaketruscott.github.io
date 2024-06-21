@@ -2,6 +2,7 @@ Case,Docket,Sitting,Author,Type,Word Count
 Wilkinson v. Garland,22-666,December,CHIEF JUSTICE ROBERTS,Dissent,81
 Vidal, Under Sec. of Comm. v. Elster,22-704,November,JUSTICE KAVANAUGH; CHIEF JUSTICE
 joins,Concurrence,85
+Erlinger v. United States,23-370,March,CHIEF JUSTICE ROBERTS,Concurrence,87
 FBI v. Fikre,22-1178,January,JUSTICE ALITO; JUSTICE KAVANAUGH,Concurrence,166
 Garland v. Cargill,22-976,February,JUSTICE ALITO,Concurrence,175
 Trump v. Anderson,23-719,February,JUSTICE BARRETT,Concurrence,175
@@ -10,28 +11,45 @@ NRA v. Vullo,22-842,March,JUSTICE GORSUCH,Concurrence,221
 McElrath v. Georgia,22-721,December,JUSTICE ALITO,Concurrence,232
 Thornell v. Jones,22-982,April,JUSTICE SOTOMAYOR; JUSTICE KAGAN,Dissent,244
 Sheetz v. County of El Dorado,22-1074,January,JUSTICE SOTOMAYOR; JUSTICE JACKSON,Concurrence,271
+Gonzalez v. Trevino,22-1025,March,JUSTICE JACKSON; JUSTICE SOTOMAYOR,Concurrence,351
 Muldrow v. St. Louis,22-193,December,JUSTICE ALITO,Concurrence,360
+Dept. of State v. Munoz,23-334,April,JUSTICE GORSUCH,Concurrence,396
+Erlinger v. United States,23-370,March,JUSTICE THOMAS,Concurrence,417
 Thornell v. Jones,22-982,April,JUSTICE JACKSON,Dissent,419
 Coinbase Inc. v. Suski,23-3,February,JUSTICE GORSUCH,Concurrence,419
+Gonzalez v. Trevino,22-1025,March,Per Curiam,Per Curiam,468
 Wilkinson v. Garland,22-666,December,JUSTICE JACKSON,Concurrence,516
+Gonzalez v. Trevino,22-1025,March,JUSTICE KAVANAUGH,Concurrence,537
 O'Connor-Ratcliff v. Garner,22-324,November,Per Curiam,Per Curiam,558
+Smith v. Arizona,22-899,January,JUSTICE THOMAS,Concurrence,594
 Muldrow v. St. Louis,22-193,December,JUSTICE KAVANAUGH,Concurrence,670
 Warner Chappell Music Inc. v. Nealy,22-1078,February,JUSTICE GORSUCH; JUSTICE THOMAS; JUSTICE ALITO,Dissent,676
 CFPB v. Community Financial Services Assn.,22-448,October,JUSTICE JACKSON,Concurrence,688
+Smith v. Arizona,22-899,January,JUSTICE GORSUCH,Concurrence,697
 Muldrow v. St. Louis,22-193,December,JUSTICE THOMAS,Concurrence,704
 Sheetz v. County of El Dorado,22-1074,January,JUSTICE GORSUCH,Concurrence,738
+Chiaverini v. City of Napoleon,23-50,April,JUSTICE GORSUCH,Dissent,791
 Acheson Hotels v. Laufer,22-429,October,JUSTICE BARRETT,Majority Opinion,920
+Gonzalez v. Trevino,22-1025,March,JUSTICE THOMAS,Dissent,997
+Moore v. U.S.,22-800,December,JUSTICE JACKSON,Concurrence,1084
+U.S. v. Rahimi,22-915,November,JUSTICE BARRETT,Concurrence,1130
+Chiaverini v. City of Napoleon,23-50,April,JUSTICE THOMAS; JUSTICE ALITO,Dissent,1149
 CFPB v. Community Financial Services Assn.,22-448,October,JUSTICE KAGAN; JUSTICE SOTOMAYOR; JUSTICE KAVANAUGH; JUSTICE BARRETT,Concurrence,1285
 Rudisill v. McDonough,22-888,November,JUSTICE KAVANAUGH; JUSTICE BARRETT,Concurrence,1397
 Smith v. Spizzirri,22-1218,April,JUSTICE SOTOMAYOR,Majority Opinion,1407
+Diaz v. U.S.,23-14,March,JUSTICE JACKSON,Concurrence,1465
 NRA v. Vullo,22-842,March,JUSTICE JACKSON,Concurrence,1498
 Devillier v. Texas,22-913,January,JUSTICE THOMAS,Majority Opinion,1606
 Trump v. Anderson,23-719,February,JUSTICE SOTOMAYOR; JUSTICE KAGAN; JUSTICE
 JACKSON,Concurrence,1691
 Wilkinson v. Garland,22-666,December,JUSTICE ALITO; CHIEF JUSTICE and; JUSTICE THOMAS,Dissent,1715
+U.S. v. Rahimi,22-915,November,JUSTICE JACKSON,Concurrence,1716
+U.S. v. Rahimi,22-915,November,JUSTICE SOTOMAYOR; JUSTICE KAGAN,Concurrence,1805
 Warner Chappell Music Inc. v. Nealy,22-1078,February,JUSTICE KAGAN,Majority Opinion,1941
 Greater Lakes Ins. v. Raiders Retreat Realty Co.,22-500,October,JUSTICE THOMAS,Concurrence,2097
 Coinbase Inc. v. Suski,23-3,February,JUSTICE JACKSON,Majority Opinion,2117
+U.S. v. Rahimi,22-915,November,JUSTICE GORSUCH,Concurrence,2206
+Chiaverini v. City of Napoleon,23-50,April,JUSTICE KAGAN,Majority Opinion,2272
 Macquarie Infrastructure Corp. v. Moab Partners,22-1165,January,JUSTICE SOTOMAYOR,Majority Opinion,2281
 Trump v. Anderson,23-719,February,Per Curiam,Per Curiam,2331
 Acheson Hotels v. Laufer,22-429,October,JUSTICE JACKSON,Concurrence,2467
@@ -45,6 +63,7 @@ Harrow v. Dept. of Defense,23-21,March,JUSTICE KAGAN,Majority Opinion,2863
 Starbucks Corp. v. McKinney,23-367,April,JUSTICE THOMAS,Majority Opinion,3013
 Muldrow v. St. Louis,22-193,December,JUSTICE KAGAN,Majority Opinion,3015
 Sheetz v. County of El Dorado,22-1074,January,JUSTICE BARRETT,Majority Opinion,3031
+Diaz v. U.S.,23-14,March,JUSTICE THOMAS,Majority Opinion,3272
 Culley v. Marshall,22-585,November,JUSTICE GORSUCH; JUSTICE THOMAS,Concurrence,3344
 Rudisill v. McDonough,22-888,November,JUSTICE THOMAS; JUSTICE ALITO,Dissent,3458
 McIntosh v. U.S.,22-7386,February,JUSTICE SOTOMAYOR,Majority Opinion,3655
@@ -58,27 +77,40 @@ Vidal, Under Sec. of Comm. v. Elster,22-704,November,JUSTICE BARRETT; JUSTICE KA
 Vidal, Under Sec. of Comm. v. Elster,22-704,November,JUSTICE SOTOMAYOR; JUSTICE KAGAN; JUSTICE JACKSON,Concurrence,4118
 Murray v. UBS Securities,22-660,October,JUSTICE SOTOMAYOR,Majority Opinion,4140
 Wilkinson v. Garland,22-666,December,JUSTICE SOTOMAYOR,Majority Opinion,4398
+Diaz v. U.S.,23-14,March,JUSTICE GORSUCH; JUSTICE SOTOMAYOR; JUSTICE KAGAN,Dissent,4402
 Thornell v. Jones,22-982,April,JUSTICE ALITO,Majority Opinion,4404
+Gonzalez v. Trevino,22-1025,March,JUSTICE ALITO,Concurrence,4599
 Lindke v. Freed,22-611,November,JUSTICE BARRETT,Majority Opinion,4671
 U.S. Trustee v. John Q. Hammons,22-1238,January,JUSTICE JACKSON,Majority Opinion,4722
 Starbucks Corp. v. McKinney,23-367,April,JUSTICE JACKSON,Dissent,4731
 Garland v. Cargill,22-976,February,JUSTICE THOMAS,Majority Opinion,4804
+Dept. of State v. Munoz,23-334,April,JUSTICE BARRETT,Majority Opinion,4909
 Becerra v. San Carlos Apache Tribe (Cons. w. 23-253),23-250,March,CHIEF JUSTICE ROBERTS,Majority Opinion,5113
 Campos-Chavez v. Garland (Cons. w. 22-884),22-674,January,JUSTICE ALITO,Majority Opinion,5116
 Garland v. Cargill,22-976,February,JUSTICE SOTOMAYOR; JUSTICE KAGAN; JUSTICE JACKSON,Dissent,5123
 Rudisill v. McDonough,22-888,November,JUSTICE JACKSON,Majority Opinion,5214
 Brown v. U.S. (Cons. w. 22-6640),22-6389,December,JUSTICE ALITO,Majority Opinion,5321
+U.S. v. Rahimi,22-915,November,CHIEF JUSTICE ROBERTS,Majority Opinion,5344
 NRA v. Vullo,22-842,March,JUSTICE SOTOMAYOR,Majority Opinion,5504
 Brown v. U.S. (Cons. w. 22-6640),22-6389,December,JUSTICE JACKSON; JUSTICE KAGAN; JUSTICE GORSUCH,Dissent,5651
 U.S. Trustee v. John Q. Hammons,22-1238,January,JUSTICE GORSUCH; JUSTICE THOMAS; JUSTICE BARRETT,Dissent,5823
+Erlinger v. United States,23-370,March,JUSTICE KAVANAUGH; JUSTICE ALITO; JUSTICE JACKSON,Dissent,6062
 Dept. of Agric. Rural Dev. v. Kirtz,22-846,November,JUSTICE GORSUCH,Majority Opinion,6087
+Dept. of State v. Munoz,23-334,April,JUSTICE SOTOMAYOR; JUSTICE KAGAN; JUSTICE JACKSON,Dissent,6422
 CFPB v. Community Financial Services Assn.,22-448,October,JUSTICE THOMAS,Majority Opinion,6442
 Vidal, Under Sec. of Comm. v. Elster,22-704,November,JUSTICE THOMAS; JUSTICE ALITO; JUSTICE GORSUCH,Majority Opinion,6519
+Smith v. Arizona,22-899,January,JUSTICE KAGAN,Majority Opinion,6558
 Campos-Chavez v. Garland (Cons. w. 22-884),22-674,January,JUSTICE JACKSON; JUSTICE SOTOMAYOR; JUSTICE KAGAN; JUSTICE GORSUCH,Dissent,6564
+Moore v. U.S.,22-800,December,JUSTICE KAVANAUGH,Majority Opinion,6586
 CFPB v. Community Financial Services Assn.,22-448,October,JUSTICE ALITO; JUSTICE GORSUCH,Dissent,6632
+U.S. v. Rahimi,22-915,November,JUSTICE KAVANAUGH,Concurrence,6752
 FDA v. Alliance for Hippocratic Medicine (Cons. w. 23-236),23-235,March,JUSTICE KAVANAUGH,Majority Opinion,7027
+Erlinger v. United States,23-370,March,JUSTICE GORSUCH,Majority Opinion,7306
 Alexander v. SC Conf. of NAACP,22-807,October,JUSTICE THOMAS,Concurrence,8517
+Erlinger v. United States,23-370,March,JUSTICE JACKSON,Dissent,8616
 Pulsifer v. U.S.,22-340,October,JUSTICE KAGAN,Majority Opinion,8743
 Alexander v. SC Conf. of NAACP,22-807,October,JUSTICE ALITO,Majority Opinion,9155
+U.S. v. Rahimi,22-915,November,JUSTICE THOMAS,Dissent,9410
 Pulsifer v. U.S.,22-340,October,JUSTICE GORSUCH; JUSTICE SOTOMAYOR; JUSTICE JACKSON,Dissent,9656
+Moore v. U.S.,22-800,December,JUSTICE THOMAS; JUSTICE GORSUCH,Dissent,9774
 Alexander v. SC Conf. of NAACP,22-807,October,JUSTICE KAGAN; JUSTICE SOTOMAYOR; JUSTICE JACKSON,Dissent,10833

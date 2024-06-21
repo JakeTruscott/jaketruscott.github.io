@@ -147,7 +147,23 @@ get_vote_color <- function(value){
 } #Subset Decision Data - Match w/ Justice Images
 
 {
-  decisions_info <- decisions_data[,1:7] %>%
+  decisions_info_1 <- decisions_data[1:29, 1:7]
+  decisions_info_2 <- decisions_data[30:nrow(decisions_data), 1:7]
+
+  decisions_info_1 <- decisions_info_1 %>%
+      mutate(`Date Decided` = as.Date(`Date Decided`, "%m/%d/%y"),
+           `Date Argued` = as.Date(`Date Argued`, "%m/%d/%y")) %>%
+    arrange(`Date Decided`) %>%
+    kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
+    column_spec(c(1:6), bold = TRUE) %>%
+    column_spec(7, bold = TRUE, border_right = TRUE) %>%
+    row_spec(0, bold = TRUE, color = 'white', background = '#080808', align = 'center') %>%
+    row_spec(seq(1, nrow(decisions_info_1), 1), align = 'center') %>%
+    row_spec(nrow(decisions_info_1), extra_css = "border-bottom: 2px solid;") %>%
+    kable_styling(font_size = 18, bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+
+
+  decisions_info_2 <- decisions_info_2 %>%
     mutate(`Date Decided` = as.Date(`Date Decided`, "%m/%d/%y"),
            `Date Argued` = as.Date(`Date Argued`, "%m/%d/%y")) %>%
     arrange(`Date Decided`) %>%
@@ -155,10 +171,11 @@ get_vote_color <- function(value){
     column_spec(c(1:6), bold = TRUE) %>%
     column_spec(7, bold = TRUE, border_right = TRUE) %>%
     row_spec(0, bold = TRUE, color = 'white', background = '#080808', align = 'center') %>%
-    row_spec(seq(1, nrow(decisions_data), 1), align = 'center') %>%
-    row_spec(nrow(decisions_data), extra_css = "border-bottom: 2px solid;") %>%
+    row_spec(seq(1, nrow(decisions_info_2), 1), align = 'center') %>%
+    row_spec(nrow(decisions_info_2), extra_css = "border-bottom: 2px solid;") %>%
     kable_styling(font_size = 18, bootstrap_options = c("striped", "hover", "condensed", "responsive"))
-} #Compile Summary Info Table
+
+  } #Compile Summary Info Table
 
 {
 
@@ -247,10 +264,15 @@ decisions_info #Preview Info Table
 #Save to Local Machine
 ###############################################################################
 
-save_kable(decisions_info, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info.html")
-html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info.html"
+save_kable(decisions_info_1, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info_1.html")
+html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info_1.html"
 #webshot::install_phantomjs(force = T)
 phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
-webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info.png", vwidth = 1300, vheight = 300)
+webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info_1.png", vwidth = 1300, vheight = 1000)
 
+save_kable(decisions_info_2, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info_2.html")
+html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info_2.html"
+#webshot::install_phantomjs(force = T)
+phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
+webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info_2.png", vwidth = 1300, vheight = 1000)
 

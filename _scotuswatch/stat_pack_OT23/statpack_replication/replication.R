@@ -247,9 +247,9 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 {
 
   colours <- data.frame(
-    school = c('Other', 'Harvard', 'Yale', 'Chicago', 'Virginia', 'Texas', 'NYU', 'Georgetown', 'Michigan', 'Stanford'),
-    outline = c('gray5', '#808285', '#978d85', '#767676', '#F84C1E', '#333F48', '#8B139C', '#8D817B', '#00274C', '#4D4F53'),
-    fill = c('gray5', '#A41034', '#00356b', '#800000', '#232D4B', '#BF5700', '#56018D', '#041E42', '#FFCB05', '#8C1515')
+    school = c('Other', 'Harvard', 'Yale', 'Chicago', 'Virginia', 'Texas', 'NYU', 'Georgetown', 'Michigan', 'Stanford', 'Duke'),
+    outline = c('gray5', '#808285', '#978d85', '#767676', '#F84C1E', '#333F48', '#8B139C', '#8D817B', '#00274C', '#4D4F53', '#012169'),
+    fill = c('gray5', '#A41034', '#00356b', '#800000', '#232D4B', '#BF5700', '#56018D', '#041E42', '#FFCB05', '#8C1515', '#00539B')
   )
 
   law_school_data <- feldman_attorney %>%
@@ -526,15 +526,17 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
       rename(docket = Docket) %>%
       left_join(shorthand_case_names, by = 'docket') %>%
       mutate(docket = paste0('(', docket, ')')) %>%
-      mutate(description = 'This is a test. Your station is conducting a test of the Emergency Broadcast System. This is only a test.') %>%
-      mutate(Decision = gsub('\\&', '\\\\&', Decision)) %>%
+      #mutate(description = 'This is a test. Your station is conducting a test of the Emergency Broadcast System. This is only a test.') %>%
+      mutate(Decision = gsub('\\&', '\\\\&', Decision),
+             short_hand = gsub('\\,', ';', short_hand)) %>%
       select(short_hand, description, docket, Lower_Court, Decision, Author, Coalition, sitting) %>%
       filter(sitting == i) %>%
-      select(-c(sitting))
+      select(-c(sitting)) %>%
+      mutate(description = iconv(description, to ='utf-8'))
 
-    write.table(decision_descriptions_test, file = paste0('stat_pack_OT23/Tables/decision_tables/decision_description_', i, '.csv'), sep = ',', quote = FALSE, row.names = F)
+    write.table(decision_descriptions_test, file = paste0('stat_pack_OT23/Tables/decision_tables/decision_description_', i, '.csv'), sep = ',', quote = FALSE, row.names = F, fileEncoding = 'UTF-8')
 
-    write.table(decision_descriptions_test, file = paste0('stat_pack_OT23/Statpack Replication Data/Decisions/Decision Descriptions/', i, '_Decision_Descriptions_OT23.csv'), sep = ',', quote = F, row.names = F)
+    write.table(decision_descriptions_test, file = paste0('stat_pack_OT23/Statpack Replication Data/Decisions/Decision Descriptions/', i, '_Decision_Descriptions_OT23.csv'), sep = ',', quote = F, row.names = F, fileEncoding = 'UTF-8')
 
 
   }
@@ -668,8 +670,8 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     rename(case = short_hand,
            coalition = Coalition) %>%
     mutate(coalition = case_when(
-      .default = '(9-0)',
-      coalition %in% c('(8-1', '(8-0)') ~ '(8-1) or (8-0)',
+      .default = '(9-0) or (8-0)',
+      coalition %in% c('(8-1)') ~ '(8-1)',
       coalition %in% c('(7-2)', '(7-1)') ~  '(7-2) or (7-1)',
       coalition %in% c('(6-3)', '(6-2)') ~ '(6-3) or (6-2)',
       coalition %in% c('(5-4)', '(5-3)') ~ '(5-4) or (5-3)',
@@ -679,8 +681,8 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
   decisions_by_coalition_2018_2022 <- scdb_cases_2023 %>%
     filter(term >= 2018) %>%
     mutate(coalition = case_when(
-      majVotes == 9 ~ '(9-0)',
-      majVotes == 8 ~ '(8-1) or (8-0)',
+      majVotes == 9 ~ '(9-0) or (8-0)',
+      majVotes == 8 ~ '(8-1)',
       majVotes == 7 ~ '(7-2) or (7-1)',
       majVotes == 6 ~ '(6-3) or (6-2)',
       majVotes == 5 ~ '(5-4) or (5-3)',
@@ -693,9 +695,9 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     summarise(count = n()) %>%
     ggplot(aes(x = factor(term), y = count, group = coalition)) +
     geom_bar(stat = 'identity', fill = 'gray50', position = position_dodge2(0.9), colour = 'gray5') +
-    scale_y_continuous(lim = c(0, 45), breaks = seq(10, 40, 10)) +
+    scale_y_continuous(lim = c(0, 50), breaks = seq(10, 40, 10)) +
     facet_wrap(~coalition, nrow = 6) +
-    geom_text(aes(label = count), vjust = -1) +
+    geom_label(aes(label = count), vjust = -0.75) +
     geom_hline(yintercept = 0) +
     theme_bw() +
     labs(
@@ -742,8 +744,8 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     rename(case = short_hand,
            coalition = Coalition) %>%
     mutate(coalition = case_when(
-      .default = '(9-0)',
-      coalition %in% c('(8-1', '(8-0)') ~ '(8-1) or (8-0)',
+      .default = '(9-0) or (8-0)',
+      coalition %in% c('(8-1') ~ '(8-1)',
       coalition %in% c('(7-2)', '(7-1)') ~  '(7-2) or (7-1)',
       coalition %in% c('(6-3)', '(6-2)') ~ '(6-3) or (6-2)',
       coalition %in% c('(5-4)', '(5-3)') ~ '(5-4) or (5-3)',
@@ -753,8 +755,8 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
   share_of_unanimity <- scdb_cases_2023 %>%
     filter(term >= 2018) %>%
     mutate(coalition = case_when(
-      majVotes == 9 ~ '(9-0)',
-      majVotes == 8 ~ '(8-1) or (8-0)',
+      majVotes == 9 ~ '(9-0) or (8-0)',
+      majVotes == 8 ~ '(8-1)',
       majVotes == 7 ~ '(7-2) or (7-1)',
       majVotes == 6 ~ '(6-3) or (6-2)',
       majVotes == 5 ~ '(5-4) or (5-3)',
@@ -762,7 +764,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     select(term, coalition, docket) %>%
     bind_rows(decisions_by_coalition_longitudinal %>%
                 mutate(term = 2023)) %>%
-    mutate(coalition = ifelse(coalition == "(9-0)", "(9-0)", "Other")) %>%
+    mutate(coalition = ifelse(coalition == '(9-0) or (8-0)', '(9-0) or (8-0)', "Other")) %>%
     group_by(term, coalition) %>%
     summarise(count = n()) %>%
     group_by(term) %>%
