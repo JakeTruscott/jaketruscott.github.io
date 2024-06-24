@@ -1753,13 +1753,13 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
   dockets <- dockets %>%
     unique() #Filter to Unique
 
-  save(dockets, file = 'docket_parser/OT23_docket_sheets/docket_filings_ot_23.rdata')
+  save(dockets, file = 'docket_parser/docket_filings_ot_23.rdata')
 
 
 
 } #Compile OT23 Dockets (IF Needed)
 
-load('docket_parser/OT23_docket_sheets/docket_filings_ot_23.rdata') #Load OT23 Dockets
+load('docket_parser/docket_filings_ot_23.rdata') #Load OT23 Dockets
 
 load('docket_parser/OT18_OT22_dockets.rdata') #Load OT23 Dockets
 
@@ -1798,7 +1798,7 @@ load('docket_parser/OT18_OT22_dockets.rdata') #Load OT23 Dockets
     facet_wrap(~ docket_type, scales = "free_y", nrow = 3) +
     geom_text(aes(label = count), position = position_dodge(width = 0.9), vjust = -0.5, size = 4) +
     scale_y_continuous(expand = expansion(mult = c(0.1, 0.2)))  +
-    scale_x_discrete(labels = c('Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr')) +
+    scale_x_discrete(labels = c('Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun')) +
     geom_hline(yintercept = 0) +
     labs(
       x = '\n',
@@ -2179,7 +2179,7 @@ load('docket_parser/OT18_OT22_dockets.rdata') #Load OT23 Dockets
            name = ifelse(name == 'cert_amici', 'Cert Stage', 'Merits Stage')) %>%
     ggplot(aes(x = factor(Sitting), y = value)) +
     geom_bar(stat = 'identity', aes(fill = name), position = position_dodge2(0.9), colour = 'gray5') +
-    scale_y_continuous(breaks = seq(5, 25, 5)) +
+    scale_y_continuous(breaks = seq(5, 30, 5), lim = c(0, 32)) +
     scale_fill_manual(values = c('coral3', 'deepskyblue4')) +
     geom_text(aes(label = value), vjust = -0.5, position = position_dodge2(0.9)) +
     labs(x = '\nSitting',

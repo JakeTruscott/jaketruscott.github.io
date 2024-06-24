@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.15)  21 JUN 2024 13:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.15)  24 JUN 2024 07:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1123,7 +1123,7 @@ Package hyperref Info: Link coloring OFF on input line 4.
 \openout6 = `SCOTUS_Stat_Review_OT23.out'.
 
 (SCOTUS_Stat_Review_OT23-concordance.tex)
-<Figures/intro_page_images/empirical_scotus_logo.png, id=83, 803.0pt x 803.0pt>
+<Figures/intro_page_images/empirical_scotus_logo.png, id=82, 803.0pt x 803.0pt>
 
 File: Figures/intro_page_images/empirical_scotus_logo.png Graphic file (type pn
 g)
@@ -1361,7 +1361,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 3.
 
-<Figures/intro_page_images/hennessey_courtroom_sketch.jpg, id=156, 1232.605pt x
+<Figures/intro_page_images/hennessey_courtroom_sketch.jpg, id=155, 1232.605pt x
  748.7975pt>
 File: Figures/intro_page_images/hennessey_courtroom_sketch.jpg Graphic file (ty
 pe jpg)
@@ -1369,7 +1369,7 @@ pe jpg)
 Package pdftex.def Info: Figures/intro_page_images/hennessey_courtroom_sketch.j
 pg  used on input line 6.
 (pdftex.def)             Requested size: 352.31625pt x 214.02649pt.
-<Figures/intro_page_images/hennessey_courtroom_sketch_2.jpg, id=157, 1192.455pt
+<Figures/intro_page_images/hennessey_courtroom_sketch_2.jpg, id=156, 1192.455pt
  x 683.55376pt>
 File: Figures/intro_page_images/hennessey_courtroom_sketch_2.jpg Graphic file (
 type jpg)
@@ -1384,79 +1384,15 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.105 \newpage
-              ] (statpack_sections/attorney_summary.tex
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 3.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\\' on input line 3.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@centercr' on input line 3.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rightskip' on input line 3.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@flushglue' on input line 3.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leftskip' on input line 3.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@flushglue' on input line 3.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\finalhyphendemerits' on input line 3.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 3.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\parindent' on input line 3.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 3.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\parfillskip' on input line 3.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@skip' on input line 3.
-
-<Figures/statpack_figures/combined_attorney_info.png, id=167, 601.5273pt x 492.
-3996pt>
-File: Figures/statpack_figures/combined_attorney_info.png Graphic file (type pn
-g)
-<use Figures/statpack_figures/combined_attorney_info.png>
-Package pdftex.def Info: Figures/statpack_figures/combined_attorney_info.png  u
-sed on input line 7.
-(pdftex.def)             Requested size: 399.29463pt x 326.86308pt.
-[7
-
- <./Figures/statpack_figures/combined_attorney_info.png>] [8
-
+              ] (statpack_sections/attorney_summary.tex [7
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{table.3}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.36 \end{landscape}
-                    ] [9
+l.24 \end{landscape}
+                    ] [8
 
 
 
@@ -1464,8 +1400,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.4}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.63 \end{landscape}
-                    ] [10
+l.51 \end{landscape}
+                    ] [9
 
 
 
@@ -1473,8 +1409,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.5}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.90 \end{landscape}
-                    ] [11
+l.78 \end{landscape}
+                    ] [10
 
 
 
@@ -1482,9 +1418,73 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.6}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.117 \end{landscape}
-                     ]) (statpack_sections/oral_argument_word_counts_justices_s
-tatpack.tex
+l.105 \end{landscape}
+                     ]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<let>-command' on input line 110.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\\' on input line 110.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@centercr' on input line 110.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\rightskip' on input line 110.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@flushglue' on input line 110.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\leftskip' on input line 110.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@flushglue' on input line 110.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\finalhyphendemerits' on input line 110.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 110.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\parindent' on input line 110.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 110.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\parfillskip' on input line 110.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@skip' on input line 110.
+
+<Figures/statpack_figures/combined_attorney_info.png, id=186, 601.5273pt x 492.
+3996pt>
+File: Figures/statpack_figures/combined_attorney_info.png Graphic file (type pn
+g)
+<use Figures/statpack_figures/combined_attorney_info.png>
+Package pdftex.def Info: Figures/statpack_figures/combined_attorney_info.png  u
+sed on input line 114.
+(pdftex.def)             Requested size: 399.29463pt x 326.86308pt.
+[11
+
+
+ <./Figures/statpack_figures/combined_attorney_info.png>]) (statpack_sections/o
+ral_argument_word_counts_justices_statpack.tex
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\<let>-command' on input line 1.
@@ -3230,84 +3230,85 @@ l.38 \newpage
              ]) (statpack_sections/filing_trends_statpack.tex
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 2.
+(hyperref)                removing `\<let>-command' on input line 1.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\\' on input line 2.
+(hyperref)                removing `\\' on input line 1.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@centercr' on input line 2.
+(hyperref)                removing `\@centercr' on input line 1.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rightskip' on input line 2.
+(hyperref)                removing `\rightskip' on input line 1.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@flushglue' on input line 2.
+(hyperref)                removing `\@flushglue' on input line 1.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leftskip' on input line 2.
+(hyperref)                removing `\leftskip' on input line 1.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@flushglue' on input line 2.
+(hyperref)                removing `\@flushglue' on input line 1.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\finalhyphendemerits' on input line 2.
+(hyperref)                removing `\finalhyphendemerits' on input line 1.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 2.
+(hyperref)                removing `\z@' on input line 1.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\parindent' on input line 2.
+(hyperref)                removing `\parindent' on input line 1.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 2.
+(hyperref)                removing `\z@' on input line 1.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\parfillskip' on input line 2.
+(hyperref)                removing `\parfillskip' on input line 1.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@skip' on input line 2.
+(hyperref)                removing `\z@skip' on input line 1.
 
-<Figures/statpack_figures/dockets_ot_23.png, id=421, 505.89pt x 505.89pt>
+<Figures/statpack_figures/dockets_ot_23.png, id=421, 706.5597pt x 468.7914pt>
 File: Figures/statpack_figures/dockets_ot_23.png Graphic file (type png)
 <use Figures/statpack_figures/dockets_ot_23.png>
 Package pdftex.def Info: Figures/statpack_figures/dockets_ot_23.png  used on in
-put line 7.
-(pdftex.def)             Requested size: 352.31625pt x 352.32199pt.
+put line 5.
+(pdftex.def)             Requested size: 352.31625pt x 233.75848pt.
 <Figures/statpack_figures/longitudinal_docketing_trends_2018_2023.png, id=422, 
-505.89pt x 505.89pt>
+706.5597pt x 468.7914pt>
 File: Figures/statpack_figures/longitudinal_docketing_trends_2018_2023.png Grap
 hic file (type png)
 <use Figures/statpack_figures/longitudinal_docketing_trends_2018_2023.png>
 Package pdftex.def Info: Figures/statpack_figures/longitudinal_docketing_trends
-_2018_2023.png  used on input line 13.
-(pdftex.def)             Requested size: 352.31625pt x 352.32199pt.
-[51
+_2018_2023.png  used on input line 11.
+(pdftex.def)             Requested size: 352.31625pt x 233.75848pt.
+) [51
 pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.15 
-      <./Figures/statpack_figures/dockets_ot_23.png>]) [52
+l.208 \newpage
+              
 pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.208 \newpage
-               <./Figures/statpack_figures/longitudinal_docketing_trends_2018_2
-023.png>] (statpack_sections/docket_court_of_origin.tex
+               <./Figures/statpack_figures/dockets_ot_23.png> <./Figures/statpa
+ck_figures/longitudinal_docketing_trends_2018_2023.png>] (statpack_sections/doc
+ket_court_of_origin.tex
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\<let>-command' on input line 4.
@@ -3360,7 +3361,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 4.
 
-[53
+[52
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{table.40}) ha
@@ -3375,13 +3376,13 @@ s been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.34 \end{landscape}
                     ]
-<Figures/statpack_figures/circuit_court_map.png, id=441, 433.62pt x 252.945pt>
+<Figures/statpack_figures/circuit_court_map.png, id=436, 433.62pt x 252.945pt>
 File: Figures/statpack_figures/circuit_court_map.png Graphic file (type png)
 <use Figures/statpack_figures/circuit_court_map.png>
 Package pdftex.def Info: Figures/statpack_figures/circuit_court_map.png  used o
 n input line 42.
 (pdftex.def)             Requested size: 446.26582pt x 260.33556pt.
-[54
+[53
 
 
 
@@ -3444,15 +3445,15 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 1.
 
-<Figures/statpack_figures/average_amici_filed_by_granted_type_term.png, id=447,
- 505.89pt x 505.89pt>
+<Figures/statpack_figures/average_amici_filed_by_granted_type_term.png, id=443,
+ 706.5597pt x 468.7914pt>
 File: Figures/statpack_figures/average_amici_filed_by_granted_type_term.png Gra
 phic file (type png)
 <use Figures/statpack_figures/average_amici_filed_by_granted_type_term.png>
 Package pdftex.def Info: Figures/statpack_figures/average_amici_filed_by_grante
 d_type_term.png  used on input line 8.
-(pdftex.def)             Requested size: 328.82707pt x 328.8323pt.
-[55
+(pdftex.def)             Requested size: 328.82707pt x 218.17888pt.
+[54
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.13}) h
@@ -3462,15 +3463,15 @@ as been already used, duplicate ignored
 l.18 \newpage
               <./Figures/statpack_figures/average_amici_filed_by_granted_type_t
 erm.png>]
-<Figures/statpack_figures/cert_merits_amici_OT23.png, id=453, 505.89pt x 505.89
-pt>
+<Figures/statpack_figures/cert_merits_amici_OT23.png, id=449, 706.5597pt x 468.
+7914pt>
 File: Figures/statpack_figures/cert_merits_amici_OT23.png Graphic file (type pn
 g)
 <use Figures/statpack_figures/cert_merits_amici_OT23.png>
 Package pdftex.def Info: Figures/statpack_figures/cert_merits_amici_OT23.png  u
 sed on input line 24.
-(pdftex.def)             Requested size: 375.80544pt x 375.81166pt.
-) [56
+(pdftex.def)             Requested size: 375.80544pt x 249.34525pt.
+) [55
 pdfTeX warning (ext4): destination with the same identifier (name{figure.14}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -3488,17 +3489,17 @@ LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `SCOTUS_Stat_Review_OT23.out' has not changed
 .
-(rerunfilecheck)             Checksum: BD1F50DAA2D845E3996EAE71D4697D4B;3685.
+(rerunfilecheck)             Checksum: C62D6AF523143C50719F3CDFB34428D6;3685.
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 27 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 23459 strings out of 474485
- 460439 string characters out of 5739922
- 1982542 words of memory out of 5000000
- 45091 multiletter control sequences out of 15000+600000
+ 23457 strings out of 474485
+ 460423 string characters out of 5739922
+ 1983542 words of memory out of 5000000
+ 45090 multiletter control sequences out of 15000+600000
  616108 words of font info for 97 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,19n,90p,1065b,581s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -3510,9 +3511,9 @@ tt/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Jak
 e Truscott/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/U
 sers/Jake Truscott/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.
 pfb>
-Output written on SCOTUS_Stat_Review_OT23.pdf (58 pages, 7271315 bytes).
+Output written on SCOTUS_Stat_Review_OT23.pdf (57 pages, 7330640 bytes).
 PDF statistics:
- 516 PDF objects out of 1000 (max. 8388607)
- 115 named destinations out of 1000 (max. 500000)
+ 511 PDF objects out of 1000 (max. 8388607)
+ 114 named destinations out of 1000 (max. 500000)
  332 words of extra memory for PDF output out of 10000 (max. 10000000)
 
