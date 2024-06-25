@@ -153,6 +153,12 @@
 \input{"statpack_sections/decisions_descriptions_statpack.tex"}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Circuit Scorecard
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{"statpack_sections/decisions_circuit_scorecard.tex"}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Decisions by Coalition
 % Table by Coalition
 % Longitudinal Figures

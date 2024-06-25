@@ -269,11 +269,10 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     ggplot( aes(x = forcats::fct_reorder(law_school, count), y = count)) +
     geom_bar(stat = 'identity', aes(fill = fill, colour = outline), size = 1) +
     geom_hline(yintercept = 0) +
-    geom_label(aes(x = forcats::fct_reorder(law_school, count), y = count, label = count, hjust = 2, size = 5)) +
+    geom_label(aes(x = forcats::fct_reorder(law_school, count), y = count, label = count, hjust = 2, size = 7)) +
     scale_y_continuous(breaks = seq(5, 30, 5)) +
     labs(x = '',
-         y = '',
-         title = "Law School\nAttendance") +
+         y = '') +
     coord_flip() +
     theme_bw() +
     scale_fill_identity() +  # Ensure the fill colors are used directly
@@ -283,7 +282,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
           plot.title = element_text(size = 18, hjust = 0.5),
           axis.title = element_text(size = 15),
           axis.ticks.y = element_blank(),
-          axis.text = element_text(size = 12),
+          axis.text = element_text(size = 20, colour = 'black'),
           axis.line = element_line(colour = 'black'),
           strip.text = element_text(size = 12, colour = 'black', face = 'bold',
                                     margin = margin(b = 10), vjust = -1, hjust = 0.5),
@@ -307,13 +306,12 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     labs(
       x = ' ',
       y = ' ',
-      fill = ' ',
-      title = 'Attorney\nGender') +
+      fill = ' ') +
     scale_fill_manual(values = c('deepskyblue3', 'coral')) +
-    geom_label(aes(label = paste0(percent*100, '%\n', gender)), position = position_stack(vjust = 0.5), color = "gray5", size=5, show.legend = F) +
+    geom_label(aes(label = paste0(percent*100, '%\n', gender)), position = position_stack(vjust = 0.5), color = "gray5", size=10, show.legend = F) +
     theme(legend.position = 'none',
           legend.text = element_text(size = 15, colour = 'gray5'),
-          plot.title = element_text(size = 18, hjust = 0.5),
+          plot.title = element_text(size = 25, hjust = 0.5),
           axis.text.x = element_blank(),
           axis.ticks = element_blank(),
           axis.title = element_text(size = 12),
@@ -342,12 +340,11 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     labs(
       x = ' ',
       y = ' ',
-      fill = ' ',
-      title = 'Percent with\nSCOTUS Clerkship') +
+      fill = ' ') +
     scale_fill_manual(values = c('grey50', 'white')) +
-    geom_label(aes(label = paste0(percent*100, '%\n', scotus_clerkship)), position = position_stack(vjust = 0.5), color = "gray5", size=5, show.legend = F) +
+    geom_label(aes(label = paste0(percent*100, '%\n', scotus_clerkship)), position = position_stack(vjust = 0.5), color = "gray5", size=10, show.legend = F) +
     theme(legend.position = 'none',
-          plot.title = element_text(size = 18, hjust = 0.5),
+          plot.title = element_text(size = 25, hjust = 0.5),
           legend.text = element_text(size = 15, colour = 'gray5'),
           axis.text.x = element_blank(),
           axis.ticks = element_blank(),
@@ -375,15 +372,14 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     theme_bw() +
     scale_y_continuous(lim = c(0, 9), breaks = seq(1, 9, 1)) +
     coord_flip() +
-    geom_label(aes(x = forcats::fct_reorder(clerkship_justice, count), y = count, label = count, hjust = 2, size = 5)) +
+    geom_label(aes(x = forcats::fct_reorder(clerkship_justice, count), y = count, label = count, hjust = 2, size = 7)) +
     labs(x = '',
-         y = '',
-         title = 'SCOTUS Clerkships\nby Justice') +
+         y = '') +
     theme(legend.position = 'none',
           plot.title = element_text(size = 18, hjust = 0.5),
           legend.text = element_text(size = 15, colour = 'gray5'),
           axis.title = element_text(size = 15),
-          axis.text = element_text(size = 12),
+          axis.text = element_text(size = 20, colour = 'black'),
           axis.line = element_line(colour = 'black'),
           strip.text = element_text(size = 12, colour = 'black', face = 'bold',
                                     margin = margin(b = 10), vjust = -1, hjust = 0.5),
@@ -407,12 +403,11 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     labs(
       x = ' ',
       y = ' ',
-      fill = ' ',
-      title = "Solicitor General's\nOffice Experience") +
+      fill = ' ') +
     scale_fill_manual(values = c('grey50', 'white')) +
-    geom_label(aes(label = paste0(percent*100, '%\n', SG_experience)), position = position_stack(vjust = 0.5), color = "gray5", size=5, show.legend = F) +
+    geom_label(aes(label = paste0(percent*100, '%\n', SG_experience)), position = position_stack(vjust = 0.5), color = "gray5", size=10, show.legend = F) +
     theme(legend.position = 'none',
-          plot.title = element_text(size = 18, hjust = 0.5),
+          plot.title = element_text(size = 25, hjust = 0.5),
           legend.text = element_text(size = 15, colour = 'gray5'),
           axis.text.x = element_blank(),
           axis.ticks = element_blank(),
@@ -426,15 +421,14 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
 {
 
-  top_row <- cowplot::plot_grid(scotus_clerkship + theme(plot.margin = unit(c(0, 0, 0, 0), "cm")), attorney_gender + theme(plot.margin = unit(c(0, 0, 0, 0), "cm")), sg_experience + theme(plot.margin = unit(c(0, 0, 0, 0), "cm")), nrow = 3)
-  bottomrow <- cowplot::plot_grid(law_school_figure + theme(plot.margin = unit(c(0, 0, 0, 0), "cm")), clerkships_by_justice + theme(plot.margin = unit(c(0, 0, 0, 0), "cm")), nrow = 2)
+  ggsave(scotus_clerkship, file = 'stat_pack_OT23/Figures/statpack_figures/percentage_scotus_clerkship.png')
+  ggsave(attorney_gender, file = 'stat_pack_OT23/Figures/statpack_figures/percentage_gender.png')
+  ggsave(sg_experience, file = 'stat_pack_OT23/Figures/statpack_figures/percentage_sg_experience.png')
+  ggsave(law_school_figure, file = 'stat_pack_OT23/Figures/statpack_figures/law_school_figure.png', width = 12, height = 8)
+  ggsave(clerkships_by_justice, file = 'stat_pack_OT23/Figures/statpack_figures/clerkships_by_justice.png', width = 12, height = 8)
 
-  combined_attorney_info <- cowplot::plot_grid(top_row, bottomrow, ncol = 2, align = 'h')
 
-  ggsave(combined_attorney_info, file = 'stat_pack_OT23/Figures/statpack_figures/combined_attorney_info.png')
-
-
-} #Combine Into Single Plot Space
+} # Save
 
 {
 
@@ -1303,6 +1297,105 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
 } #Frequency in Majority Over Time
 
+{
+
+  circuit_scorecard <- decisions_ot_23 %>%
+    filter(Lower_Court %in% c('CA1', 'CA2', 'CA3', 'CA4', 'CA5', 'CA6', 'CA7', 'CA8', 'CA9', 'CA10', 'CA11', 'CADC')) %>%
+    select(Lower_Court, Decision) %>%
+    mutate(decision = case_when(
+      grepl('Affirm', Decision, ignore.case = TRUE) ~ 'Affirmed',
+      grepl('Reverse|Remand', Decision, ignore.case = TRUE) ~ 'Reverse, Vacate,\n(and/or) Remand',
+      TRUE ~ 'Other')) %>%
+    group_by(Lower_Court, decision) %>%
+    summarise(count = n()) %>%
+    ungroup() %>%
+    group_by(Lower_Court) %>%
+    mutate(total_cases = sum(count),
+           Lower_Court = case_when(
+             Lower_Court == 'CA1' ~ '1st Circuit',
+             Lower_Court == 'CA2' ~ '2nd Circuit',
+             Lower_Court == 'CA3' ~ '3rd Circuit',
+             Lower_Court == 'CA4' ~ '4th Circuit',
+             Lower_Court == 'CA5' ~ '5th Circuit',
+             Lower_Court == 'CA6' ~ '6th Circuit',
+             Lower_Court == 'CA7' ~ '7th Circuit',
+             Lower_Court == 'CA8' ~ '8th Circuit',
+             Lower_Court == 'CA9' ~ '9th Circuit',
+             Lower_Court == 'CA10' ~ '10th Circuit',
+             Lower_Court == 'CA11' ~ '11th Circuit',
+             Lower_Court == 'CADC' ~ 'DC Circuit'),
+           circuit_label = paste0(Lower_Court, ' (', total_cases, ')'),
+           percent = round((count / total_cases) * 100, 2)) %>%
+    select(circuit_label, Lower_Court, decision, percent, total_cases) %>%
+    mutate(Lower_Court = factor(Lower_Court, levels = c('1st Circuit', '2nd Circuit', '3rd Circuit', '4th Circuit', '5th Circuit', '6th Circuit', '7th Circuit', '8th Circuit', '9th Circuit', '10th Circuit', '11th Circuit', 'DC Circuit'))) %>%
+    arrange(Lower_Court) %>%
+    mutate(circuit_label = factor(circuit_label, levels = unique(circuit_label))) %>%
+    ggplot(aes(x = "", y = percent, fill = decision)) +
+    geom_bar(stat = "identity", colour = 'gray5') +
+    coord_polar(theta = 'y', start = 0) +
+    facet_wrap(~circuit_label, nrow = 3, scales = "free_y") +
+    theme_void() +
+    labs(
+      x = ' ',
+      y = ' ',
+      fill = ' ') +
+    scale_fill_manual(values = c('deepskyblue3', 'coral')) +
+    geom_label(aes(label = paste0(percent, ' %')), position = position_stack(vjust = 0.5), color = "gray5", size=5, show.legend = F) +
+    theme(legend.position = 'bottom',
+          legend.text = element_text(size = 15, colour = 'gray5'),
+          axis.text.x = element_blank(),
+          axis.ticks = element_blank(),
+          axis.title = element_text(size = 12),
+          axis.line = element_line(colour = 'black'),
+          strip.text = element_text(size = 12, colour = 'black', face = 'bold',
+                                    margin = margin(b = 10), vjust = -1, hjust = 0.5),
+          strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+          panel.background = element_rect(size = 1, fill = 'white', colour = 'black'))
+
+  ggsave(circuit_scorecard, file = 'stat_pack_OT23/Figures/statpack_figures/circuit_scorecard.png')
+
+  circuit_scorecard <- decisions_ot_23 %>%
+    filter(Lower_Court %in% c('CA1', 'CA2', 'CA3', 'CA4', 'CA5', 'CA6', 'CA7', 'CA8', 'CA9', 'CA10', 'CA11', 'CADC')) %>%
+    select(Lower_Court, Decision) %>%
+    mutate(decision = case_when(
+      grepl('Affirm', Decision, ignore.case = TRUE) ~ 'Affirmed',
+      grepl('Reverse|Remand', Decision, ignore.case = TRUE) ~ 'Reverse, Vacate, (and/or) Remand',
+      TRUE ~ 'Other')) %>%
+    group_by(Lower_Court, decision) %>%
+    summarise(count = n()) %>%
+    ungroup() %>%
+    group_by(Lower_Court) %>%
+    mutate(total_cases = sum(count),
+           Lower_Court = case_when(
+             Lower_Court == 'CA1' ~ '1st Circuit',
+             Lower_Court == 'CA2' ~ '2nd Circuit',
+             Lower_Court == 'CA3' ~ '3rd Circuit',
+             Lower_Court == 'CA4' ~ '4th Circuit',
+             Lower_Court == 'CA5' ~ '5th Circuit',
+             Lower_Court == 'CA6' ~ '6th Circuit',
+             Lower_Court == 'CA7' ~ '7th Circuit',
+             Lower_Court == 'CA8' ~ '8th Circuit',
+             Lower_Court == 'CA9' ~ '9th Circuit',
+             Lower_Court == 'CA10' ~ '10th Circuit',
+             Lower_Court == 'CA11' ~ '11th Circuit',
+             Lower_Court == 'CADC' ~ 'DC Circuit'),
+           circuit_label = paste0(Lower_Court, ' (', total_cases, ')'),
+           percent = round((count / total_cases) * 100, 2)) %>%
+    select(circuit_label, Lower_Court, decision, percent, total_cases) %>%
+    mutate(Lower_Court = factor(Lower_Court, levels = c('1st Circuit', '2nd Circuit', '3rd Circuit', '4th Circuit', '5th Circuit', '6th Circuit', '7th Circuit', '8th Circuit', '9th Circuit', '10th Circuit', '11th Circuit', 'DC Circuit'))) %>%
+    arrange(Lower_Court) %>%
+    mutate(circuit_label = factor(circuit_label, levels = unique(circuit_label))) %>%
+    select(Lower_Court, total_cases, decision, percent) %>%
+    ungroup() %>%
+    rename(`Lower Court (Circuit)` = Lower_Court,
+           `Total Cases` = total_cases,
+           `Decision (Type)` = decision,
+           `Percent Outcome` = percent)
+
+  write.csv(circuit_scorecard, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Circuit Scorecard/circuit_scorecard.csv', row.names = F)
+
+
+} # Circuit Scorecard
 
 ################################################################################
 #Oral Arguments
