@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.15)  24 JUN 2024 20:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.15)  24 JUN 2024 21:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3468,7 +3468,7 @@ l.34 \end{landscape}
 File: Figures/statpack_figures/circuit_court_map.png Graphic file (type png)
 <use Figures/statpack_figures/circuit_court_map.png>
 Package pdftex.def Info: Figures/statpack_figures/circuit_court_map.png  used o
-n input line 42.
+n input line 43.
 (pdftex.def)             Requested size: 446.26582pt x 260.33556pt.
 [56
 
@@ -3478,7 +3478,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.18}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.44 \end{landscape}
+l.46 \end{landscape}
                      <./Figures/statpack_figures/circuit_court_map.png>]) (stat
 pack_sections/amici_statpack.tex
 
@@ -3599,7 +3599,7 @@ tt/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Jak
 e Truscott/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/U
 sers/Jake Truscott/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.
 pfb>
-Output written on SCOTUS_Stat_Review_OT23.pdf (60 pages, 8436408 bytes).
+Output written on SCOTUS_Stat_Review_OT23.pdf (60 pages, 8437029 bytes).
 PDF statistics:
  539 PDF objects out of 1000 (max. 8388607)
  123 named destinations out of 1000 (max. 500000)

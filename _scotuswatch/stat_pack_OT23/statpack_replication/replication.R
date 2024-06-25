@@ -226,7 +226,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
   {
 
-    load('docket_parser/OT23_docket_sheets/docket_filings_ot_23.rdata') #Load OT23 Dockets
+    load('docket_parser/docket_filings_ot_23.rdata') #Load OT23 Dockets
 
     total_petitions <- dockets %>%
       filter(grepl('\\-', docket_number))
@@ -1055,7 +1055,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     theme_bw() +
     labs(
       x = '\nTerm\n',
-      y = '\nAverag Word Count\n') +
+      y = '\nAverage Word Count\n') +
     theme(legend.position = 'none',
           strip.text = element_text(size = 12, colour = 'black', face = 'bold',
                                     margin = margin(b = 10), vjust = -1, hjust = 0.5),
