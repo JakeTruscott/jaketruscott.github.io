@@ -61,7 +61,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 -3 = Wrote Dissent & Joined Dissent'
 
 ###############################################################################
-decisions <- read.csv(file = "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/ot23_decisions/OT_23_Decisions.csv", as.is = T)
+decisions <- read.csv(file = "ot23_decisions/OT_23_Decisions.csv", as.is = T)
 
 {
 

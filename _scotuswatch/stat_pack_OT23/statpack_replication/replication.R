@@ -91,7 +91,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 } #OA Sitting Calendars
 {
 
-  feldman_attorney <- readxl::read_excel("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/stat_pack_OT23/statpack_replication/attorney_information_feldman/AA-FINAL.xlsx")
+  feldman_attorney <- readxl::read_excel("stat_pack_OT23/statpack_replication/attorney_information_feldman/AA-FINAL.xlsx")
   feldman_attorney <- feldman_attorney[,c(1:14)]
   names(feldman_attorney) <- c('name', 'law_school', 'scotus_clerkship', 'clerkship_justice', 'present_SG', 'previous_SG', 'SG_experience', 'firm', 'state', 'gender', 'undergrad_school', 'repeater', 'previous_cases', 'arguments_2023')
 
@@ -706,7 +706,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
           axis.title = element_text(size = 12, colour = 'black'))
 
 
-    ggsave("stat_pack_OT23/Figures/statpack_figures/decisions_by_coalition_2018_2023.png", decisions_by_coalition_2018_2022, dpi = 300)
+    ggsave("stat_pack_OT23/Figures/statpack_figures/decisions_by_coalition_2018_2023.png", decisions_by_coalition_2018_2022, width = 8, height = 10, unit = 'in')
 
 
     decisions_by_coalition_2018_2022 <- scdb_cases_2023 %>%
@@ -1333,7 +1333,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     ggplot(aes(x = "", y = percent, fill = decision)) +
     geom_bar(stat = "identity", colour = 'gray5') +
     coord_polar(theta = 'y', start = 0) +
-    facet_wrap(~circuit_label, nrow = 3, scales = "free_y") +
+    facet_wrap(~circuit_label, nrow = 3) +
     theme_void() +
     labs(
       x = ' ',
@@ -1352,7 +1352,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
           strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
           panel.background = element_rect(size = 1, fill = 'white', colour = 'black'))
 
-  ggsave(circuit_scorecard, file = 'stat_pack_OT23/Figures/statpack_figures/circuit_scorecard.png')
+  ggsave(circuit_scorecard, file = 'stat_pack_OT23/Figures/statpack_figures/circuit_scorecard.png', width = 10, height = 8, units = 'in')
 
   circuit_scorecard <- decisions_ot_23 %>%
     filter(Lower_Court %in% c('CA1', 'CA2', 'CA3', 'CA4', 'CA5', 'CA6', 'CA7', 'CA8', 'CA9', 'CA10', 'CA11', 'CADC')) %>%
