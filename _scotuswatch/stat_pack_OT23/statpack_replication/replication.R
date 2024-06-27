@@ -435,10 +435,14 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
   attorney_summary_stats <- feldman_attorney %>%
     select(name, firm, law_school, clerkship_justice, repeater, previous_cases) %>%
     mutate(name = str_to_title(name),
+           name = gsub('\\,', '', name),
            clerkship_justice = ifelse(clerkship_justice == 'N/A', NA, clerkship_justice),
            law_school = gsub(' University', '', gsub('University of ', '', law_school)),
            clerkship_justice = ifelse(clerkship_justice == "Day O'Connor", "O'Connor", clerkship_justice),
+           clerkship_justice = gsub('\\,', ' and ', clerkship_justice),
            firm = gsub('\\&', 'and', firm),
+           firm = gsub('\\,', '', firm),
+           law_school = gsub('\\,', '', law_school),
            repeater = ifelse(repeater == 1, 'Yes', 'No')) %>%
     rename(`Attorney` = name,
            `Firm` = firm,
@@ -450,10 +454,10 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
   attorney_summary_stats$Attorney[13] <- 'Benjamin Aguinaga'
 
-  write.csv(attorney_summary_stats[c(1:30),], "stat_pack_OT23/Statpack Replication Data/Oral Arguments/Attorney Information/attorney_summary_stats_1.csv", row.names = F, quote = F)
-  write.csv(attorney_summary_stats[c(31:60),], "stat_pack_OT23/Statpack Replication Data/Oral Arguments/Attorney Information/attorney_summary_stats_2.csv", row.names = F, quote = F)
-  write.csv(attorney_summary_stats[c(61:90),], "stat_pack_OT23/Statpack Replication Data/Oral Arguments/Attorney Information/attorney_summary_stats_3.csv", row.names = F, quote = F)
-  write.csv(attorney_summary_stats[c(90:102),], "stat_pack_OT23/Statpack Replication Data/Oral Arguments/Attorney Information/attorney_summary_stats_4.csv", row.names = F, quote = F)
+  write.csv(attorney_summary_stats[c(1:25),], "stat_pack_OT23/Statpack Replication Data/Oral Arguments/Attorney Information/attorney_summary_stats_1.csv", row.names = F, quote = F)
+  write.csv(attorney_summary_stats[c(26:50),], "stat_pack_OT23/Statpack Replication Data/Oral Arguments/Attorney Information/attorney_summary_stats_2.csv", row.names = F, quote = F)
+  write.csv(attorney_summary_stats[c(51:75),], "stat_pack_OT23/Statpack Replication Data/Oral Arguments/Attorney Information/attorney_summary_stats_3.csv", row.names = F, quote = F)
+  write.csv(attorney_summary_stats[c(76:102),], "stat_pack_OT23/Statpack Replication Data/Oral Arguments/Attorney Information/attorney_summary_stats_4.csv", row.names = F, quote = F)
 
 } # Summary Tables (Name, Firm, Law School, Clerkship, Repeat, Former Cases )
 
