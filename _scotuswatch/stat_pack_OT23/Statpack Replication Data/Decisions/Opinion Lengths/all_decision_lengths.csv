@@ -1,4 +1,5 @@
 Case,Docket,Sitting,Author,Type,Word Count
+Moyle v. U.S. (Cons. w. 23-727),23-726,April,Per Curiam,Per Curiam,28
 Wilkinson v. Garland,22-666,December,CHIEF JUSTICE ROBERTS,Dissent,81
 Vidal, Under Sec. of Comm. v. Elster,22-704,November,JUSTICE KAVANAUGH; CHIEF JUSTICE
 joins,Concurrence,85
@@ -47,12 +48,14 @@ Wilkinson v. Garland,22-666,December,JUSTICE ALITO; CHIEF JUSTICE and; JUSTICE T
 U.S. v. Rahimi,22-915,November,JUSTICE JACKSON,Concurrence,1716
 U.S. v. Rahimi,22-915,November,JUSTICE SOTOMAYOR; JUSTICE KAGAN,Concurrence,1805
 Warner Chappell Music Inc. v. Nealy,22-1078,February,JUSTICE KAGAN,Majority Opinion,1941
+Moyle v. U.S. (Cons. w. 23-727),23-726,April,JUSTICE BARRETT; CHIEF JUSTICE and; JUSTICE KAVANAUGH,Concurrence,1998
 Greater Lakes Ins. v. Raiders Retreat Realty Co.,22-500,October,JUSTICE THOMAS,Concurrence,2097
 Coinbase Inc. v. Suski,23-3,February,JUSTICE JACKSON,Majority Opinion,2117
 U.S. v. Rahimi,22-915,November,JUSTICE GORSUCH,Concurrence,2206
 Chiaverini v. City of Napoleon,23-50,April,JUSTICE KAGAN,Majority Opinion,2272
 Macquarie Infrastructure Corp. v. Moab Partners,22-1165,January,JUSTICE SOTOMAYOR,Majority Opinion,2281
 Trump v. Anderson,23-719,February,Per Curiam,Per Curiam,2331
+Moyle v. U.S. (Cons. w. 23-727),23-726,April,JUSTICE JACKSON,Dissent,2391
 Acheson Hotels v. Laufer,22-429,October,JUSTICE JACKSON,Concurrence,2467
 Bissonnette v. LePage Bakeries,23-51,February,CHIEF JUSTICE ROBERTS,Majority Opinion,2491
 FDA v. Alliance for Hippocratic Medicine (Cons. w. 23-236),23-235,March,JUSTICE THOMAS,Concurrence,2624
@@ -93,12 +96,14 @@ Garland v. Cargill,22-976,February,JUSTICE SOTOMAYOR; JUSTICE KAGAN; JUSTICE JAC
 Rudisill v. McDonough,22-888,November,JUSTICE JACKSON,Majority Opinion,5214
 Brown v. U.S. (Cons. w. 22-6640),22-6389,December,JUSTICE ALITO,Majority Opinion,5321
 U.S. v. Rahimi,22-915,November,CHIEF JUSTICE ROBERTS,Majority Opinion,5344
+Harrington v. Purdue Pharma,23-124,December,JUSTICE GORSUCH,Majority Opinion,5469
 NRA v. Vullo,22-842,March,JUSTICE SOTOMAYOR,Majority Opinion,5504
 Brown v. U.S. (Cons. w. 22-6640),22-6389,December,JUSTICE JACKSON; JUSTICE KAGAN; JUSTICE GORSUCH,Dissent,5651
 U.S. Trustee v. John Q. Hammons,22-1238,January,JUSTICE GORSUCH; JUSTICE THOMAS; JUSTICE BARRETT,Dissent,5823
 Erlinger v. United States,23-370,March,JUSTICE KAVANAUGH; JUSTICE ALITO; JUSTICE JACKSON,Dissent,6062
 Dept. of Agric. Rural Dev. v. Kirtz,22-846,November,JUSTICE GORSUCH,Majority Opinion,6087
 Snyder v. U.S.,23-108,April,JUSTICE JACKSON; JUSTICE SOTOMAYOR; JUSTICE KAGAN,Dissent,6158
+Moyle v. U.S. (Cons. w. 23-727),23-726,April,JUSTICE ALITO; JUSTICE THOMAS; JUSTICE GORSUCH,Dissent,6351
 Dept. of State v. Munoz,23-334,April,JUSTICE SOTOMAYOR; JUSTICE KAGAN; JUSTICE JACKSON,Dissent,6422
 CFPB v. Community Financial Services Assn.,22-448,October,JUSTICE THOMAS,Majority Opinion,6442
 Vidal, Under Sec. of Comm. v. Elster,22-704,November,JUSTICE THOMAS; JUSTICE ALITO; JUSTICE GORSUCH,Majority Opinion,6519
@@ -110,8 +115,10 @@ U.S. v. Rahimi,22-915,November,JUSTICE KAVANAUGH,Concurrence,6752
 FDA v. Alliance for Hippocratic Medicine (Cons. w. 23-236),23-235,March,JUSTICE KAVANAUGH,Majority Opinion,7027
 Erlinger v. United States,23-370,March,JUSTICE GORSUCH,Majority Opinion,7306
 Murthy v. Missouri,23-411,March,JUSTICE BARRETT,Majority Opinion,7432
+SEC v. Jarkesy,22-859,December,CHIEF JUSTICE ROBERTS,Majority Opinion,7808
 Alexander v. SC Conf. of NAACP,22-807,October,JUSTICE THOMAS,Concurrence,8517
 Erlinger v. United States,23-370,March,JUSTICE JACKSON,Dissent,8616
+SEC v. Jarkesy,22-859,December,JUSTICE GORSUCH; JUSTICE THOMAS,Concurrence,8661
 Pulsifer v. U.S.,22-340,October,JUSTICE KAGAN,Majority Opinion,8743
 Alexander v. SC Conf. of NAACP,22-807,October,JUSTICE ALITO,Majority Opinion,9155
 Murthy v. Missouri,23-411,March,JUSTICE ALITO; JUSTICE THOMAS; JUSTICE GORSUCH,Dissent,9296
@@ -119,3 +126,5 @@ U.S. v. Rahimi,22-915,November,JUSTICE THOMAS,Dissent,9410
 Pulsifer v. U.S.,22-340,October,JUSTICE GORSUCH; JUSTICE SOTOMAYOR; JUSTICE JACKSON,Dissent,9656
 Moore v. U.S.,22-800,December,JUSTICE THOMAS; JUSTICE GORSUCH,Dissent,9774
 Alexander v. SC Conf. of NAACP,22-807,October,JUSTICE KAGAN; JUSTICE SOTOMAYOR; JUSTICE JACKSON,Dissent,10833
+SEC v. Jarkesy,22-859,December,JUSTICE SOTOMAYOR; JUSTICE KAGAN; JUSTICE JACKSON,Dissent,10911
+Harrington v. Purdue Pharma,23-124,December,JUSTICE KAVANAUGH; JUSTICE SOTOMAYOR; JUSTICE KAGAN,Dissent,15919

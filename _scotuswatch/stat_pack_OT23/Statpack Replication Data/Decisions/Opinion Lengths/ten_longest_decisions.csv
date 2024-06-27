@@ -1,4 +1,6 @@
 short_hand,docket,sitting,opinion_writer,opinion_type,word_count
+Harrington v. Purdue Pharma,23-124,December,Kavanaugh,Dissent,15919
+SEC v. Jarkesy,22-859,December,Sotomayor,Dissent,10911
 Alexander v. SC Conf. of NAACP,22-807,October,Kagan,Dissent,10833
 Moore v. U.S.,22-800,December,Thomas,Dissent,9774
 Pulsifer v. U.S.,22-340,October,Gorsuch,Dissent,9656
@@ -6,6 +8,4 @@ U.S. v. Rahimi,22-915,November,Thomas,Dissent,9410
 Murthy v. Missouri,23-411,March,Alito,Dissent,9296
 Alexander v. SC Conf. of NAACP,22-807,October,Alito,Majority,9155
 Pulsifer v. U.S.,22-340,October,Kagan,Majority,8743
-Erlinger v. United States,23-370,March,Jackson,Dissent,8616
-Alexander v. SC Conf. of NAACP,22-807,October,Thomas,Concurrence,8517
-Murthy v. Missouri,23-411,March,Barrett,Majority,7432
+SEC v. Jarkesy,22-859,December,Gorsuch,Concurrence,8661

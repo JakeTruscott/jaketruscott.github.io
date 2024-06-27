@@ -1101,12 +1101,12 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     ggplot(aes(x = factor(sitting), y = average_turnover)) +
     geom_bar(stat = 'identity', colour = 'gray5', fill = 'gray50') +
     geom_hline(yintercept = 0) +
-    geom_label(aes(label = paste0(average_turnover, ' Days')), vjust = -0.5) +
+    geom_label(aes(label = paste0(average_turnover)), vjust = -0.5) +
     scale_y_continuous(breaks = seq(25, 200, 25), lim = c(0, 200)) +
     theme_bw() +
     labs(
       x = '\nSitting\n',
-      y = '\nAverage Turnover\n') +
+      y = '\nAverage Turnover (Days)\n') +
     theme(legend.position = 'none',
           strip.text = element_text(size = 12, colour = 'black', face = 'bold',
                                     margin = margin(b = 10), vjust = -1, hjust = 0.5),
@@ -1116,7 +1116,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
           axis.title = element_text(size = 14, colour = 'black'))
 
 
-  ggsave(turnover_ot23, file = 'stat_pack_OT23/Figures/statpack_figures/decision_turnover_OT23.png')
+  ggsave(turnover_ot23, file = 'stat_pack_OT23/Figures/statpack_figures/decision_turnover_OT23.png', height = 8, width = 10, units = 'in')
 
   turnover_ot23 <- decisions_ot_23 %>%
     select(Date_Argued, Date_Decided, Docket) %>%
@@ -1186,7 +1186,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
           legend.text = element_text(size = 12))
 
 
-  ggsave(average_turnover_ot18_ot23, file = 'stat_pack_OT23/Figures/statpack_figures/decision_turnover_OT18_OT23.png')
+  ggsave(average_turnover_ot18_ot23, file = 'stat_pack_OT23/Figures/statpack_figures/decision_turnover_OT18_OT23.png', height = 10, width = 12, unit = 'in')
 
   average_turnover_ot18_ot23 <- scdb_cases_2023 %>%
     filter(term >= 2005) %>%
@@ -1333,7 +1333,8 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     select(circuit_label, Lower_Court, decision, percent, total_cases) %>%
     mutate(Lower_Court = factor(Lower_Court, levels = c('1st Circuit', '2nd Circuit', '3rd Circuit', '4th Circuit', '5th Circuit', '6th Circuit', '7th Circuit', '8th Circuit', '9th Circuit', '10th Circuit', '11th Circuit', 'DC Circuit'))) %>%
     arrange(Lower_Court) %>%
-    mutate(circuit_label = factor(circuit_label, levels = unique(circuit_label))) %>%
+    mutate(circuit_label = factor(circuit_label, levels = unique(circuit_label)),
+           decision = factor(decision, levels = c('Affirmed', 'Reverse, Vacate,\n(and/or) Remand', 'Other'))) %>%
     ggplot(aes(x = "", y = percent, fill = decision)) +
     geom_bar(stat = "identity", colour = 'gray5') +
     coord_polar(theta = 'y', start = 0) +
@@ -1343,7 +1344,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
       x = ' ',
       y = ' ',
       fill = ' ') +
-    scale_fill_manual(values = c('deepskyblue3', 'coral')) +
+    scale_fill_manual(values = c('deepskyblue3', 'coral3', 'gray')) +
     geom_label(aes(label = paste0(percent, ' %')), position = position_stack(vjust = 0.5), color = "gray5", size=5, show.legend = F) +
     theme(legend.position = 'bottom',
           legend.text = element_text(size = 15, colour = 'gray5'),
