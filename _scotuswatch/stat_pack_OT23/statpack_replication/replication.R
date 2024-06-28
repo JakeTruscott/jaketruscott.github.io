@@ -1403,6 +1403,58 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
 } # Circuit Scorecard
 
+{
+
+  scdb_justices_2023 %>%
+    filter(term == 2022) %>%
+    mutate(ideology = ifelse(justiceName %in% c('SGBreyer', 'KBJackson', 'SSotomayor', 'EKagan'), 'Liberal', 'Conservative')) %>%
+    select(docket, term, ideology, majVotes, majority) %>%
+    filter(majVotes == 6)
+
+  splits <- data.frame()
+
+  ideology_split_data <- scdb_justices_2023 %>%
+    filter(term >= 2021) %>%
+    mutate(ideology = ifelse(justiceName %in% c('SGBreyer', 'KBJackson', 'SSotomayor', 'EKagan'), 'Liberal', 'Conservative')) %>%
+    select(ideology, docket, justiceName, majVotes, majority, minVotes, term)
+
+  for (i in unique(ideology_split_data$docket)){
+    temp_docket <- ideology_split_data %>%
+      filter(docket == i) %>%
+      select(justiceName, ideology, majority, majVotes, minVotes, term)
+
+    majority_coalition <- temp_docket$ideology[temp_docket$majority == 2]
+    majority_coalition <- majority_coalition[!is.na(majority_coalition)]
+    minority_coalition <- temp_docket$ideology[!temp_docket$majority == 2]
+    minority_coalition <- minority_coalition[!is.na(minority_coalition)]
+
+    if (length(majority_coalition) == 0){
+      next
+    }
+
+
+    if (all(majority_coalition == 'Conservative') & all(minority_coalition == 'Liberal')){
+      split = 1
+    } else {
+      split = 0
+    }
+
+    temp_complete <- data.frame(docket = i,
+                                term = temp_docket$term[1],
+                                majVotes = temp_docket$majVotes[1],
+                                minVotes = temp_docket$minVotes[1],
+                                split = split)
+
+    splits <- bind_rows(splits, temp_complete)
+
+  }
+
+  splits <- splits %>%
+    filter(split == 1)
+
+
+} # Ideological Splits
+
 ################################################################################
 #Oral Arguments
 # Calendar
