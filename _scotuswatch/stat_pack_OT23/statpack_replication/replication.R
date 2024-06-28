@@ -1101,7 +1101,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     ggplot(aes(x = factor(sitting), y = average_turnover)) +
     geom_bar(stat = 'identity', colour = 'gray5', fill = 'gray50') +
     geom_hline(yintercept = 0) +
-    geom_label(aes(label = paste0(average_turnover)), vjust = -0.5) +
+    geom_label(aes(label = paste0(average_turnover)), vjust = -0.5, size = 7) +
     scale_y_continuous(breaks = seq(25, 200, 25), lim = c(0, 200)) +
     theme_bw() +
     labs(
@@ -1165,8 +1165,8 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     ggplot(aes(x = factor(term), y = average_turnover)) +
     geom_bar(stat = 'identity', aes(colour = 'Mean'),  fill = 'gray50') +
     geom_errorbar(aes(ymin = average_turnover, ymax = max, color = 'Error'), show.legend = TRUE) +
-    geom_label(aes(label = average_turnover), vjust = 1.5) +
-    geom_text(aes(label = max, y = max -2 ), vjust = -1) +
+    geom_label(aes(label = average_turnover), vjust = 1.5, size = 7) +
+    geom_text(aes(label = max, y = max -2 ), vjust = -1, size = 7) +
     scale_color_manual(values = c('black', 'gray5'), labels = c('Maximum Turnover (Days)  ', 'Average Turnover (Days)')) +
     geom_hline(yintercept = 0) +
     scale_x_discrete(breaks = seq(2006, 2022, 2)) +
@@ -1186,7 +1186,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
           legend.text = element_text(size = 12))
 
 
-  ggsave(average_turnover_ot18_ot23, file = 'stat_pack_OT23/Figures/statpack_figures/decision_turnover_OT18_OT23.png', height = 10, width = 12, unit = 'in')
+  ggsave(average_turnover_ot18_ot23, file = 'stat_pack_OT23/Figures/statpack_figures/decision_turnover_OT18_OT23.png', height = 12, width = 14, unit = 'in')
 
   average_turnover_ot18_ot23 <- scdb_cases_2023 %>%
     filter(term >= 2005) %>%
@@ -1894,7 +1894,7 @@ load('docket_parser/OT18_OT22_dockets.rdata') #Load OT23 Dockets
     scale_fill_manual(values = c('coral3', 'deepskyblue4', 'gray50')) +
     theme_minimal() +
     facet_wrap(~ docket_type, scales = "free_y", nrow = 3) +
-    geom_text(aes(label = count), position = position_dodge(width = 0.9), vjust = -0.5, size = 4) +
+    geom_label(aes(label = count), position = position_dodge(width = 0.9), vjust = -0.5, size = 4) +
     scale_y_continuous(expand = expansion(mult = c(0.1, 0.2)))  +
     scale_x_discrete(labels = c('Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun')) +
     geom_hline(yintercept = 0) +
@@ -1915,7 +1915,7 @@ load('docket_parser/OT18_OT22_dockets.rdata') #Load OT23 Dockets
       panel.background = element_rect(size = 1, fill = 'white', colour = 'white'),
       plot.background = element_rect(size = 1, fill = 'white', colour = 'white'))
 
-  ggsave("stat_pack_OT23/Figures/statpack_figures/dockets_ot_23.png", dockets_ot_23 , dpi = 300)
+  ggsave("stat_pack_OT23/Figures/statpack_figures/dockets_ot_23.png", dockets_ot_23 ,height = 10, width = 10, units = 'in')
 
   dockets_ot_23 <- dockets %>%
     mutate(docket_type = case_when(
@@ -2105,7 +2105,7 @@ load('docket_parser/OT18_OT22_dockets.rdata') #Load OT23 Dockets
     scale_fill_manual(values = c('coral3', 'deepskyblue4', 'gray50')) +
     theme_minimal() +
     facet_wrap(~ filing_type, scales = "free_y", nrow = 3) +
-    geom_text(aes(label = count), position = position_dodge(width = 0.9), vjust = -0.5, size = 4) +
+    geom_label(aes(label = count), position = position_dodge(width = 0.9), vjust = -0.5, size = 4) +
     scale_y_continuous(expand = expansion(mult = c(0.1, 0.2)))  +
     geom_hline(yintercept = 0) +
     labs(
@@ -2126,7 +2126,7 @@ load('docket_parser/OT18_OT22_dockets.rdata') #Load OT23 Dockets
       plot.background = element_rect(size = 1, fill = 'white', colour = 'white'))
 
 
-  ggsave("stat_pack_OT23/Figures/statpack_figures/longitudinal_docketing_trends_2018_2023.png", longitudinal_docketing_trends_2018_2023 , dpi = 300)
+  ggsave("stat_pack_OT23/Figures/statpack_figures/longitudinal_docketing_trends_2018_2023.png", longitudinal_docketing_trends_2018_2023 , height = 10, width = 10, units = 'in')
 
 
   longitudinal_docketing_trends_2018_2023 <- ot18_ot22_dockets %>%
@@ -2247,7 +2247,7 @@ load('docket_parser/OT18_OT22_dockets.rdata') #Load OT23 Dockets
     ggplot(aes(x = factor(filing_year), y = average_per_case)) +
     geom_bar(stat = 'identity', fill = 'gray50', colour = 'gray5') +
     facet_wrap(~petition_granted, scales = 'free_y') +
-    geom_text(aes(label = average_per_case), vjust = -1) +
+    geom_label(aes(label = average_per_case), vjust = 2) +
     geom_hline(yintercept = 0) +
     theme_bw() +
     labs(
@@ -2262,13 +2262,13 @@ load('docket_parser/OT18_OT22_dockets.rdata') #Load OT23 Dockets
           axis.title = element_text(size = 12, colour = 'black'))
 
 
-  ggsave(average_amici_filed_by_granted_type, file = 'stat_pack_OT23/Figures/statpack_figures/average_amici_filed_by_granted_type_term.png')
+  ggsave(average_amici_filed_by_granted_type, file = 'stat_pack_OT23/Figures/statpack_figures/average_amici_filed_by_granted_type_term.png', height = 10, width = 10, units = 'in')
 
 } #Analyzing Amicus Filing Trends (2018-23)
 
 {
 
-  combined_sitting_calendar %>%
+  amici_stages <- combined_sitting_calendar %>%
     group_by(Sitting) %>%
     summarise(cert_amici = round(mean(`Cert Stage Amici`), 2),
               merits_amici = round(mean(`Merits Stage Amici`), 2)) %>%
@@ -2279,7 +2279,7 @@ load('docket_parser/OT18_OT22_dockets.rdata') #Load OT23 Dockets
     geom_bar(stat = 'identity', aes(fill = name), position = position_dodge2(0.9), colour = 'gray5') +
     scale_y_continuous(breaks = seq(5, 30, 5), lim = c(0, 32)) +
     scale_fill_manual(values = c('coral3', 'deepskyblue4')) +
-    geom_text(aes(label = value), vjust = -0.5, position = position_dodge2(0.9)) +
+    geom_label(aes(label = value), vjust = -0.5, position = position_dodge2(0.9), size = 5) +
     labs(x = '\nSitting',
          y = 'Number of Amici Filed\n') +
     geom_hline(yintercept = 0) +
@@ -2298,7 +2298,7 @@ load('docket_parser/OT18_OT22_dockets.rdata') #Load OT23 Dockets
       panel.background = element_rect(size = 1, fill = 'white', colour = 'white'),
       plot.background = element_rect(size = 1, fill = 'white', colour = 'white'))
 
-  ggsave('stat_pack_OT23/Figures/statpack_figures/cert_merits_amici_OT23.png')
+  ggsave(amici_stages, file = 'stat_pack_OT23/Figures/statpack_figures/cert_merits_amici_OT23.png', height = 8, width = 10, units = 'in')
 
 
 } #Amici Filed OT23 (Use Adam's Tables)
