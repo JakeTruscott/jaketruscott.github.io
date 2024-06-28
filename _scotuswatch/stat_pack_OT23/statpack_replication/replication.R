@@ -524,13 +524,14 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
       rename(docket = Docket) %>%
       left_join(shorthand_case_names, by = 'docket') %>%
       mutate(docket = paste0('(', docket, ')')) %>%
-      #mutate(description = 'This is a test. Your station is conducting a test of the Emergency Broadcast System. This is only a test.') %>%
       mutate(Decision = gsub('\\&', '\\\\&', Decision),
              short_hand = gsub('\\,', ';', short_hand)) %>%
       select(short_hand, description, docket, Lower_Court, Decision, Author, Coalition, sitting) %>%
       filter(sitting == i) %>%
       select(-c(sitting)) %>%
-      mutate(description = iconv(description, to ='utf-8'))
+      mutate(description = iconv(description, to ='utf-8')) %>%
+      mutate(short_hand = ifelse(docket == '(22-451)', paste0(short_hand, ' (Together w. 22-1219)'), short_hand))
+
 
     write.table(decision_descriptions_test, file = paste0('stat_pack_OT23/Tables/decision_tables/decision_description_', i, '.csv'), sep = ',', quote = FALSE, row.names = F, fileEncoding = 'UTF-8')
 
@@ -990,7 +991,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
   write.table(ten_longest, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Opinion Lengths/ten_longest_decisions.csv', row.names = F, sep = ',', quote = F)
   write.table(ten_shortest, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Opinion Lengths/ten_shortest_decisions.csv', row.names = F, sep = ',', quote = F)
-  write.table(all_decisions, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Opinion Lengths/all_decision_lengths.csv', row.names = F, sep = ',', quote = F)
+  write.table(all_decisions, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Opinion Lengths/all_decision_lengths.csv', row.names = F, sep = ',', quote = T)
 
 
 } # Decision Word Counts (OT23)
