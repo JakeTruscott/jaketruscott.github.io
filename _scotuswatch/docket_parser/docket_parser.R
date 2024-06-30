@@ -23,7 +23,7 @@ library(dplyr); library(stringr); library(stringi); library(rvest); library(httr
 # M: Through 23M102
 ################################################################################
 
-dockets_through_6_24 <- c(paste0('23-', 1:1334), paste0('23-', 5001:7779), paste0('23M', 1:102), paste0('23A', 1:1142))
+dockets_through_6_30 <- c(paste0('23-', 1:1358), paste0('23-', 5001:7835), paste0('23M', 1:102), paste0('23A', 1:1169))
 
 
 docket_parser <- function(dockets){
@@ -325,7 +325,7 @@ docket_parser <- function(dockets){
 } #Core Function
 
 
-docket_OT23_5_23_update <- docket_parser(dockets = dockets_through_6_24)
+docket_OT23_5_23_update <- docket_parser(dockets = dockets_through_6_30)
 
 
 ################################################################################

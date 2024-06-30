@@ -23,6 +23,221 @@ Statpack: Feldman, A. & Truscott, J. S. (2024, June 30). Supreme Court 2023-2024
 ################################################################################
 library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); library(htmltools); library(ggplot2); library(png); library(dplyr); library(stringi); library(stringr); library(ggplot2); library(ggthemes); library(anytime); library(tm); library(scotustext); library(readxl); library(ggpattern); library(png); library(ggtext); library(grid); library(tidyr); library(readxl); library(anytime); library(sf); library(purrr); library(readxl)
 
+################################################################################
+# Amended SCOTUSTEXT Fix for Decision Processor
+################################################################################
+{
+
+  decision_processor2 <- function(dir_path) {
+    files <- list.files(dir_path, full.names = TRUE)
+    num_files <- length(files)
+    cat("\nDecisions to Process: ", num_files)
+    all_decisions <- NULL
+
+    decisions_cleaner <- function(file_path, dir_path) {
+
+      {
+        rtext <- readtext::readtext(file_path)
+        corpus <- Corpus(VectorSource(rtext$text))
+        corpus <- tm_map(corpus, content_transformer(iconv), to = "ASCII//TRANSLIT")
+        corpus <- tm_map(corpus, content_transformer(gsub), pattern = "on writ of certiorari", replacement = "<DECISION BREAK> on writ of certiorari", ignore.case = TRUE)
+        corpus <- tm_map(corpus, content_transformer(gsub), pattern = "on exception to", replacement = "<DECISION BREAK> on writ of certiorari", ignore.case = TRUE)
+        corpus <- tm_map(corpus, content_transformer(gsub), pattern = "on petition for writ of certiorari", replacement = "<DECISION BREAK> on writ of certiorari", ignore.case = TRUE)
+        corpus <- tm_map(corpus, content_transformer(gsub), pattern = "on writ of certiorari", replacement = "<DECISION BREAK> <KEEP>", ignore.case = TRUE)
+        corpus <- tm_map(corpus, content_transformer(gsub), pattern = "on petition for writ of certiorari", replacement = "<DECISION BREAK> <KEEP>", ignore.case = TRUE)
+        corpus <- tm_map(corpus, content_transformer(gsub), pattern = "certiorari to the (United States|Court|Supreme)", replacement = "<DECISION BREAK> <KEEP>", ignore.case = TRUE)
+        corpus <- tm_map(corpus, content_transformer(gsub), pattern = "appeal from the united states district court", replacement = "<DECISION BREAK> <KEEP>", ignore.case = TRUE)
+        corpus <- tm_map(corpus, content_transformer(gsub), pattern = "on bill of complaint", replacement = "<DECISION BREAK> <KEEP>", ignore.case = TRUE)
+        decisions <- data.frame(text = sapply(corpus, as.character), stringsAsFactors = FALSE)
+      } #Collect and Pre-Process Text
+
+      # Check if 'decisions' data frame is empty
+      if (nrow(decisions) == 0) {
+        message("\nError Processing PDF:", file_path)
+        return(NULL)
+      }
+
+
+      {
+        file_names_processed <- gsub(paste0(dir_path, "/"), "", file_path)
+        file_names_processed <- gsub("\\_.*", "", file_names_processed)
+        file_names_processed <- gsub(".pdf", "", file_names_processed)
+        decisions$argument <- file_names_processed
+
+        case_names <- c()
+
+        for (pdf_file in file_path) {
+          pdf_metadata <- pdf_info(pdf_file)
+          title <- pdf_metadata$keys$Title
+          case_names <- c(case_names, title)
+        }
+
+        case_names <- data.frame(case_names)
+        case_names$docket_number <- sapply(case_names$case_names, function(x) {
+          if (grepl(" ", x) & grepl("-", x)) {
+            return(sub(" .*", "", x))
+          } else {
+            return(NA)
+          }
+        })
+        case_names$published <- sapply(case_names$case_names, function(x) {
+          if (grepl("\\(", x)) {
+            x <- sub(".*\\(|\\).*", "", x)
+            x <- paste0("(", x)
+            return(x)
+          } else {
+            return(NA)
+          }
+        })
+
+        case_names$case_names <- mapply(function(case_name, published, docket_number) {
+          if (!is.na(published)) {
+            case_name <- gsub(published, "", case_name, fixed = TRUE)
+          }
+          if (!is.na(docket_number)) {
+            case_name <- gsub(docket_number, "", case_name, fixed = TRUE)
+          }
+          return(case_name)
+        }, case_names$case_names, case_names$published, case_names$docket_number)
+
+        decisions$argument <- case_names$case_names
+        decisions$docket_id <- case_names$docket_number
+        decisions$docket_id <- gsub("\\.", "", decisions$docket_id)
+        decisions$published <- case_names$published
+
+
+      } #File Metadata
+      {
+        decisions_test <- decisions %>%
+          mutate(text = str_split(text, "\\<DECISION BREAK\\>")) %>%
+          unnest(text) %>%
+          filter(grepl("\\<Keep\\>", text, ignore.case = TRUE)) %>%
+          filter(!grepl("syllabus\\n\\n", text, ignore.case = TRUE)) %>%
+          mutate(text = gsub("J.\\n\\n", "<END HEADER>", text, perl = TRUE)) %>%
+          mutate(text = gsub("(?<!\\S) {2,}(?!\\S)", " ", text, perl = TRUE)) %>%
+          mutate(text = gsub("(?<!\\S)\n(?!\\S)", " \n", text, perl = TRUE)) %>%
+          mutate(text = gsub("\\n\\n", " \n\n ", text, perl = TRUE)) %>%
+          mutate(text = gsub("\\n\\n ------\\n[ ]*", "<BEGIN FOOTNOTE> ", text)) %>%
+          mutate(text = gsub("\\n------\\n", " \n------\n ", text, perl = TRUE)) %>%
+          mutate(text = gsub("\\n------\\n", " <BEGIN FOOTNOTE> ", text, perl = TRUE)) %>%
+          mutate(text = gsub("in part \\n\\n", "<END HEADER> ", text, ignore.case = T)) %>%
+          mutate(text = gsub("in judgement \\n\\n", "<END HEADER> ", text, ignore.case = T)) %>%
+          mutate(text = gsub("C\\.J\\.\\, concurring", "<END HEADER> ", text, ignore.case = T)) %>%
+          mutate(text = gsub("J\\.\\, concurring", "<END HEADER> ", text, ignore.case = T)) %>%
+          mutate(text = gsub("C\\.J\\.\\, dissenting", "<END HEADER> ", text, ignore.case = T)) %>%
+          mutate(text = gsub("J\\.\\, dissenting", "<END HEADER> ", text, ignore.case = T)) %>%
+          mutate(text = str_replace_all(text, "Opinion of the Court\\s+\\n\\n", "<END HEADER> ")) %>%
+          mutate(text = str_replace_all(text, "Opinion of the Court", "<END HEADER> ")) %>%
+          mutate(text = str_replace_all(text, "Opinion of .*? , J", "<END HEADER>")) %>%
+          mutate(text = str_replace_all(text, "Order of (.*?), C\\.J\\.", "<END HEADER>")) %>%
+          mutate(text = str_replace_all(text, "\\n\\n\\s+\\d+", "<BEGIN HEADER>")) %>%
+          mutate(text = gsub("\\s{2,}", " ", text)) %>%
+          mutate(text = str_replace_all(text, "Cite as:", " <BEGIN HEADER> Cite as:"))  %>%
+          mutate(footnotes = text) %>%
+          mutate(footnotes = str_extract_all(text, "(?<=<BEGIN FOOTNOTE>)([\\s\\S]*?)(?=<BEGIN HEADER>)")) %>%
+          mutate(footnotes = sapply(footnotes, function(x) if (length(x) > 0) paste(x, collapse = "\n\n") else NA_character_))  %>%
+          mutate(text = gsub("<BEGIN FOOTNOTE>.*?<END HEADER>", "", text)) %>%
+          mutate(text = str_replace_all(text, "<BEGIN HEADER>.*?(<END HEADER>|<END SPECIAL HEADER>)", "")) %>%
+          mutate(text = gsub("<BEGIN HEADER>.*?<END SPECIAL HEADER>", "", text)) %>%
+          mutate(text = gsub(" C\\. J\\.\\,", "", text)) %>%
+          mutate(text = gsub(" C\\.J\\.\\,", "", text)) %>%
+          mutate(text = gsub(" J\\.\\,", "", text)) %>%
+          mutate(footnotes = gsub("\\n\\n {3,}(\\d+)", "<FOOTNOTE BREAK> \\1", footnotes)) %>%
+          mutate(footnotes = gsub("\\n\\n", "", footnotes)) %>%
+          mutate(footnotes = gsub("<FOOTNOTE BREAK>", "\n\n", footnotes)) %>%
+          mutate(footnotes = gsub("\\-  ", "", footnotes)) %>%
+          mutate(footnotes = gsub("\\- ", "", footnotes)) %>%
+          mutate(footnotes = gsub("\\n", " ", footnotes)) %>%
+          mutate(footnotes = gsub("  (\\d+)", "\n\n\\1", footnotes)) %>%
+          mutate(footnotes = gsub("(?<![A-Za-z0-9\\n])\\s{5,}(?![A-Za-z0-9\\n])", " ", footnotes, perl = TRUE)) %>%
+          mutate(footnotes = gsub("^\\s+", "", footnotes)) %>%
+          mutate(footnotes = gsub("(?<=\\n)(\\d+)", "[\\1]", footnotes, perl = TRUE)) %>%
+          mutate(footnotes = gsub("\\n\\n(?=\\[\\d{4,}\\])", "", footnotes, perl = TRUE)) %>%
+          mutate(footnotes = str_replace(footnotes, "^(\\d+)", "[\\1]")) %>%
+          mutate(footnotes = gsub("\\- ", "", footnotes)) %>%
+          mutate(text = gsub("\\n(?=\\d)", " [", text, perl = TRUE)) %>%
+          mutate(text = gsub("\\s(?=\\d)", "] ", text, perl = TRUE)) %>%
+          mutate(text = gsub("\\s(?=\\n)", "] ", text, perl = TRUE)) %>%
+          mutate(text = gsub("\\[(?=\\d)", "", text, perl = TRUE)) %>%
+          mutate(text = gsub("\\](?=\\n)", "", text, perl = TRUE)) %>%
+          mutate(text = gsub("\\](?=\\s)", "", text, perl = TRUE)) %>%
+          mutate(opinion = sub("\\.(.*)", "", text)) %>%
+          mutate(opinion = sub("\\.(.*)", "", text)) %>%
+          mutate(opinion = trimws(opinion) %>%
+                   paste0(".")) %>%
+          mutate(opinion_writer = str_extract_all(opinion, "(CHIEF JUSTICE|JUSTICE)\\s+(\\w+)") %>%
+                   sapply(paste, collapse = "; ") %>%
+                   sapply(function(x) gsub(" joins| join", "", x))) %>%
+          mutate(opinion_type = case_when(
+            grepl("deliv", opinion, ignore.case = T) & grepl("court", opinion, ignore.case = T) ~ "Majority Opinion",
+            grepl("con", opinion) ~ "Concurrence",
+            grepl("dis", opinion) ~ "Dissent",
+            grepl("con", opinion) & grepl("dis", opinion) & grepl("in part", opinion) ~ "Concur & Dissent (In Part)")) %>%
+          mutate(opinion_type = ifelse(is.na(opinion_type), "Per Curiam", opinion_type))  %>%
+          filter(!(opinion_type == "Per Curiam" & !grepl("PER CURIAM", text, ignore.case = TRUE))) %>%
+          mutate(text = ifelse(opinion_type == "Per Curiam", gsub(".*PER CURIAM", "", text), text)) %>%
+          mutate(opinion_writer = ifelse(opinion_type == "Per Curiam", "Per Curiam", opinion_writer)) %>%
+          mutate(text = sub(".*?\\.", "", text)) %>%
+          mutate(text = trimws(text)) %>%
+          mutate(text = gsub("U\\.\\sS\\.\\sC\\.\\s\\?", "U. S. C. \u00A7", text)) %>%
+          mutate(text = gsub("\\?(?=\\d)", "\u00A7", text, perl = T)) %>%
+          mutate(text = gsub("\\s{2,}", " ", text)) %>%
+          mutate(text = gsub("SUPREME COURT OF THE UNITED STATES.*", "", text)) %>%
+          mutate(text = gsub("-\\n", "", text)) %>%
+          mutate(text = gsub("\\n", " ", text)) %>%
+          select(-c(opinion)) %>%
+          mutate(word_count = str_count(text, "\\w+")) %>%
+          mutate(text = gsub("\\.(?!.*\\..*$)\\s?.*", ".", text, perl = TRUE)) %>%
+          mutate(text = gsub("\\<END HEADER\\>", "", text, perl = T)) %>%
+          mutate(text = gsub("\\<BEGIN HEADER\\>", "", text, perl = T)) %>%
+          mutate(text = gsub("\\,\\)", ", J.)", text, perl = T)) %>%
+          mutate(text = gsub("\\, \\)", ", J.)", text, perl = T)) %>%
+          select(argument, docket_id, published, text, footnotes, opinion_writer, opinion_type, word_count)
+      } #Process & Clean Docket Frame
+
+    } #Process Opinions
+
+    footnotes <- NULL
+    opinion <- NULL
+    opinion_type <- NULL
+    opinion_writer <- NULL
+    argument <- NULL
+    docket_id <- NULL
+    published <- NULL
+
+
+    start_time <- Sys.time()
+    count <- 1
+    for (i in files) {
+      tryCatch({
+        cleaned_decisions <- suppressWarnings(decisions_cleaner(file_path = i, dir_path = dir_path))
+        all_decisions <- rbind(all_decisions, cleaned_decisions)
+        if (count %% 25 == 0) {
+          message("\nCompleted ", count, " Decisions of ", length(files))
+        }
+        count <- count + 1
+      }, error = function(e) {
+        cat("Error with Decision ", i, ":\n")
+        print(e)
+      })
+    }
+
+    end_time <- Sys.time()
+    elapsed_time <- end_time - start_time
+
+    cat("\n- - - - - - - - COMPLETION SUMMARY - - - - - - - -")
+    cat("\nCompletion Time: ", round(as.numeric(elapsed_time), 2), "Seconds")
+    cat("\nNumber of Unique Decisions: ", length(unique(all_decisions$argument)))
+    cat("\nNumber of Majority Opinions: ", sum(all_decisions$opinion_type == "Majority Opinion"))
+    cat("\nNumber of Dissents: ", sum(all_decisions$opinion_type == "Dissent"))
+    cat("\nNumber of Concurrences: ", sum(all_decisions$opinion_type == "Concurrence"))
+    cat("\nNumber of Per Curiam: ", sum(all_decisions$opinion_type == "Per Curiam"))
+
+    return(all_decisions)
+  }
+
+
+} # Decision Processor 2
 
 ################################################################################
 # Load Data
@@ -96,6 +311,52 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
   names(feldman_attorney) <- c('name', 'law_school', 'scotus_clerkship', 'clerkship_justice', 'present_SG', 'previous_SG', 'SG_experience', 'firm', 'state', 'gender', 'undergrad_school', 'repeater', 'previous_cases', 'arguments_2023')
 
 } # Load Feldman Attorney Information Data
+{
+
+  split_data <- read.csv("stat_pack_OT23/statpack_replication/Misc Data/Splits2020-2022.csv")
+  split_data <- data.frame(term = c(2020, 2021, 2022),
+                           total_cases = c(13, 19, 11),
+                           ideological_split = c(8, 14, 5))
+
+  splits_23 <- decisions_ot_23 %>%
+    filter(Coalition %in% c('(6-3)', '(5-3)')) %>%
+    select(Docket, ROBERTS:JACKSON) %>%
+    mutate(across(ROBERTS:JACKSON, ~ ifelse(. >= 1, 1, 0)))  %>%
+    pivot_longer(cols = ROBERTS:JACKSON, names_to = "justice_name", values_to = "majority") %>%
+    mutate(justice_name = ifelse(justice_name %in% c('KAGAN', 'SOTOMAYOR', 'JACKSON'), 'Liberal', 'Conservative'))
+
+  ideological_splits <- data.frame()
+
+  for (i in unique(splits_23$Docket)){
+    temp_docket <- splits_23 %>%
+      filter(Docket == i)
+    majority <- temp_docket$justice_name[temp_docket$majority == 1]
+    minority <- temp_docket$justice_name[temp_docket$majority == 0]
+
+    if (all(majority == 'Conservative') & all(minority == 'Liberal')){
+      ideo_split <- 1
+    } else {
+      ideo_split <- 0
+    }
+
+    temp_complete <- data.frame(docket = i,
+                                ideo_split = ideo_split)
+
+    ideological_splits <- bind_rows(ideological_splits, temp_complete)
+
+  }
+
+
+  ideological_splits <- ideological_splits %>%
+    group_by(ideo_split) %>%
+    summarise(count = n())
+
+  split_data <- split_data %>%
+    add_row(term = 2023,
+            total_cases = sum(ideological_splits$count),
+            ideological_split = ideological_splits$count[ideological_splits$ideo_split == 1])
+
+} # Feldman Ideological Split Data
 
 ################################################################################
 # Topline Info
@@ -109,7 +370,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
     toplines[['Most Authored Opinions']] <- list()
 
-    decisions_23 <- scotustext::decision_processor(dir_path = "ot23_decisions/decision_pdfs_OT23") #OT23
+    decisions_23 <- decision_processor2(dir_path = "ot23_decisions/decision_pdfs_OT23") #OT23
 
     most_authored_opinions <- decisions_23 %>%
       select(opinion_writer, opinion_type) %>%
@@ -953,7 +1214,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
 {
 
-  decisions_23 <- scotustext::decision_processor(dir_path = "ot23_decisions/decision_pdfs_OT23") #OT23
+  decisions_23 <- decision_processor2(dir_path = "ot23_decisions/decision_pdfs_OT23") #OT23
 
   ten_longest <- decisions_23 %>%
     rename(docket = docket_id) %>%
@@ -963,7 +1224,8 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     mutate(opinion_writer = gsub('\\;.*', '', opinion_writer),
            opinion_writer = gsub('(CHIEF JUSTICE |JUSTICE )', '', opinion_writer),
            opinion_writer = str_to_title(opinion_writer),
-           opinion_type = ifelse(opinion_type == 'Majority Opinion', 'Majority', opinion_type)) %>%
+           opinion_type = ifelse(opinion_type == 'Majority Opinion', 'Majority', opinion_type),
+           short_hand = gsub('\\,', ' ', short_hand)) %>%
     head(10)
 
   ten_shortest <- decisions_23 %>%
@@ -974,13 +1236,15 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     mutate(opinion_writer = gsub('\\;.*', '', opinion_writer),
            opinion_writer = gsub('(CHIEF JUSTICE |JUSTICE )', '', opinion_writer),
            opinion_writer = str_to_title(opinion_writer),
-           opinion_type = ifelse(opinion_type == 'Majority Opinion', 'Majority', opinion_type)) %>%
+           opinion_type = ifelse(opinion_type == 'Majority Opinion', 'Majority', opinion_type),
+           short_hand = gsub('\\,', ' ', short_hand)) %>%
     head(10)
 
   all_decisions <- decisions_23 %>%
     rename(docket = docket_id) %>%
     left_join(shorthand_case_names, by = 'docket') %>%
     select(short_hand, docket, sitting, opinion_writer, opinion_type, word_count) %>%
+    mutate(short_hand = gsub('\\,', ' ', short_hand)) %>%
     arrange(word_count) %>%
     rename(`Docket` = docket,
            `Case` = short_hand,
@@ -994,7 +1258,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
   write.table(all_decisions, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Opinion Lengths/all_decision_lengths.csv', row.names = F, sep = ',', quote = T)
 
 
-} # Decision Word Counts (OT23)
+} # Decision Word Counts/Opinion Lengths (OT23)
 
 {
 
@@ -1049,12 +1313,13 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
       term == 2021 ~ 21,
       term == 2022 ~ 22,
       term == 2023 ~ 23)) %>%
+    mutate(term_label = paste0(term, "'")) %>%
     ggplot(aes(x = term, y = average_length)) +
     geom_bar(stat = 'identity', fill = 'gray50', position = position_dodge2(), colour = 'gray5') +
-    scale_y_continuous(breaks = seq(1000, 6000, 1000), lim = c(0, 6000)) +
+    scale_y_continuous(breaks = seq(1000, 6000, 1000), lim = c(0, 6500)) +
     geom_hline(aes(yintercept = mean_mean), linetype = 2, colour = 'coral4', linewidth = 1.1) +
     geom_label(aes(label = average_length), vjust = -0.5) +
-    scale_x_continuous(breaks = seq(16, 23, 1)) +
+    scale_x_continuous(breaks = seq(16, 23, 1), labels = function(x) paste0(x, "'")) +
     geom_hline(yintercept = 0) +
     facet_wrap(~opinion_type) +
     theme_bw() +
@@ -1297,10 +1562,144 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
            Coalition = name,
            Percent = value)
 
-  write.csv(percent_majority_justice, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Percent in Majority/percent_majority_justice.csv', row.names = F)
+  write.csv(percent_majority_justice, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Percent in Majority/percent_majority_justice_OT02_OT23.csv', row.names = F)
 
 
 } #Frequency in Majority Over Time
+
+{
+
+  percent_majority_OT23 <- decisions_ot_23 %>%
+    select(Docket, ROBERTS:JACKSON) %>%
+    mutate(across(ROBERTS:JACKSON, ~ ifelse(. >= 1, 1, 0))) %>%
+    pivot_longer(cols = ROBERTS:JACKSON, names_to = "justice_name", values_to = "majority") %>%
+    mutate(majority = ifelse(majority == 1, 'Majority', 'Minority')) %>%
+    filter(!is.na(majority)) %>%
+    mutate(total_cases = length(unique(Docket))) %>%
+    group_by(justice_name, majority) %>%
+    reframe(count = n(),
+            total_cases = total_cases) %>%
+    mutate(justice_name = str_to_title(justice_name),
+           justice_name = factor(justice_name, levels = c('Roberts', 'Thomas', 'Alito', 'Sotomayor', 'Kagan', 'Gorsuch', 'Kavanaugh', 'Barrett', 'Jackson')),
+           percent = round((count/total_cases)*100, 2)) %>%
+    unique() %>%
+    ggplot(aes(x = "", y = count, fill = majority)) +
+    geom_bar(stat = "identity", colour = 'gray5') +
+    coord_polar(theta = 'y', start = 0) +
+    facet_wrap(~justice_name, nrow = 3) +
+    theme_void() +
+    labs(
+      x = ' ',
+      y = ' ',
+      fill = ' ') +
+    scale_fill_manual(values = c('deepskyblue3', 'coral')) +
+    geom_label(aes(label = paste0(percent, ' %')), position = position_stack(vjust = 0.5), color = "gray5", size=5, show.legend = F) +
+    theme(legend.position = 'bottom',
+          legend.text = element_text(size = 15, colour = 'gray5'),
+          axis.text.x = element_blank(),
+          axis.ticks = element_blank(),
+          axis.title = element_text(size = 12),
+          axis.line = element_line(colour = 'black'),
+          strip.text = element_text(size = 12, colour = 'black', face = 'bold',
+                                    margin = margin(b = 10), vjust = -1, hjust = 0.5),
+          strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+          panel.background = element_rect(size = 1, fill = 'white', colour = 'black'))
+
+  ggsave(percent_majority_OT23, file = 'stat_pack_OT23/Figures/statpack_figures/percent_majority_OT23.png', height = 8, width = 8, units = 'in')
+
+  percent_majority_OT23 <- decisions_ot_23 %>%
+    select(Docket, ROBERTS:JACKSON) %>%
+    mutate(across(ROBERTS:JACKSON, ~ ifelse(. >= 1, 1, 0))) %>%
+    pivot_longer(cols = ROBERTS:JACKSON, names_to = "justice_name", values_to = "majority") %>%
+    mutate(majority = ifelse(majority == 1, 'Majority', 'Minority')) %>%
+    filter(!is.na(majority)) %>%
+    mutate(total_cases = length(unique(Docket))) %>%
+    group_by(justice_name, majority) %>%
+    reframe(count = n(),
+            total_cases = total_cases) %>%
+    mutate(justice_name = str_to_title(justice_name),
+           justice_name = factor(justice_name, levels = c('Roberts', 'Thomas', 'Alito', 'Sotomayor', 'Kagan', 'Gorsuch', 'Kavanaugh', 'Barrett', 'Jackson')),
+           percent = round((count/total_cases)*100, 2)) %>%
+    unique() %>%
+    select(-c(total_cases)) %>%
+    rename(`Justice` = justice_name,
+           `Vote` = majority,
+           `Raw Count` = count,
+           `Percent` = percent)
+
+  write.csv(percent_majority_OT23, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Percent in Majority/percent_majority_OT23.csv', row.names = F)
+
+
+} # Frequency in Majority (OT23)
+
+{
+
+  percent_majority_split_cases <- decisions_ot_23 %>%
+    filter(Coalition %in% c('(6-3)', '(5-4)')) %>%
+    select(Docket, ROBERTS:JACKSON) %>%
+    mutate(across(ROBERTS:JACKSON, ~ ifelse(. >= 1, 1, 0))) %>%
+    pivot_longer(cols = ROBERTS:JACKSON, names_to = "justice_name", values_to = "majority") %>%
+    mutate(majority = ifelse(majority == 1, 'Majority', 'Minority')) %>%
+    filter(!is.na(majority)) %>%
+    mutate(total_cases = length(unique(Docket))) %>%
+    group_by(justice_name, majority) %>%
+    reframe(count = n(),
+            total_cases = total_cases) %>%
+    mutate(justice_name = str_to_title(justice_name),
+           justice_name = factor(justice_name, levels = c('Roberts', 'Thomas', 'Alito', 'Sotomayor', 'Kagan', 'Gorsuch', 'Kavanaugh', 'Barrett', 'Jackson')),
+           percent = round((count/total_cases)*100, 2)) %>%
+    unique() %>%
+    ggplot(aes(x = "", y = count, fill = majority)) +
+    geom_bar(stat = "identity", colour = 'gray5') +
+    coord_polar(theta = 'y', start = 0) +
+    facet_wrap(~justice_name, nrow = 3) +
+    theme_void() +
+    labs(
+      x = ' ',
+      y = ' ',
+      fill = ' ') +
+    scale_fill_manual(values = c('deepskyblue3', 'coral')) +
+    geom_label(aes(label = paste0(percent, ' %')), position = position_stack(vjust = 0.5), color = "gray5", size=5, show.legend = F) +
+    theme(legend.position = 'bottom',
+          legend.text = element_text(size = 15, colour = 'gray5'),
+          axis.text.x = element_blank(),
+          axis.ticks = element_blank(),
+          axis.title = element_text(size = 12),
+          axis.line = element_line(colour = 'black'),
+          strip.text = element_text(size = 12, colour = 'black', face = 'bold',
+                                    margin = margin(b = 10), vjust = -1, hjust = 0.5),
+          strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+          panel.background = element_rect(size = 1, fill = 'white', colour = 'black'))
+
+
+  ggsave(percent_majority_split_cases, file = 'stat_pack_OT23/Figures/statpack_figures/percent_majority_split_cases.png', height = 8, width = 8, units = 'in')
+
+
+  percent_majority_split_cases <- decisions_ot_23 %>%
+    filter(Coalition %in% c('(6-3)', '(5-4)')) %>%
+    select(Docket, ROBERTS:JACKSON) %>%
+    mutate(across(ROBERTS:JACKSON, ~ ifelse(. >= 1, 1, 0))) %>%
+    pivot_longer(cols = ROBERTS:JACKSON, names_to = "justice_name", values_to = "majority") %>%
+    mutate(majority = ifelse(majority == 1, 'Majority', 'Minority')) %>%
+    filter(!is.na(majority)) %>%
+    mutate(total_cases = length(unique(Docket))) %>%
+    group_by(justice_name, majority) %>%
+    reframe(count = n(),
+            total_cases = total_cases) %>%
+    mutate(justice_name = str_to_title(justice_name),
+           justice_name = factor(justice_name, levels = c('Roberts', 'Thomas', 'Alito', 'Sotomayor', 'Kagan', 'Gorsuch', 'Kavanaugh', 'Barrett', 'Jackson')),
+           percent = round((count/total_cases)*100, 2)) %>%
+    unique() %>%
+    select(-c(total_cases)) %>%
+    rename(`Justice` = justice_name,
+           `Vote` = majority,
+           `Raw Count` = count,
+           `Percent` = percent)
+
+  write.csv(percent_majority_split_cases, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Percent in Majority/percent_majority_split_cases.csv', row.names = F)
+
+
+} # Frequency in Majority (OT23 -- 6-3 or 5-4 ONLY)
 
 {
 
@@ -1405,55 +1804,160 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
 {
 
-  scdb_justices_2023 %>%
-    filter(term == 2022) %>%
-    mutate(ideology = ifelse(justiceName %in% c('SGBreyer', 'KBJackson', 'SSotomayor', 'EKagan'), 'Liberal', 'Conservative')) %>%
-    select(docket, term, ideology, majVotes, majority) %>%
-    filter(majVotes == 6)
 
-  splits <- data.frame()
+  ideological_splits <- split_data %>%
+    group_by(term) %>%
+    mutate(no_ideological_split = total_cases - ideological_split) %>%
+    pivot_longer(cols = c(ideological_split, no_ideological_split)) %>%
+    mutate(name = ifelse(name == 'ideological_split', 'Ideological Split    ', 'No Ideological Split')) %>%
+    ggplot(aes(x = term, y = value, fill = name)) +
+    geom_bar(stat = 'identity', colour = 'gray5', position = position_dodge(width = 0.9)) +
+    geom_label(aes(label = value), position = position_dodge2(width = 0.9, preserve = "single"), color = "gray5", size=7, fill = 'white', show.legend = FALSE, vjust = 1.5) +
+  scale_fill_manual(values = c('gray75', 'gray10')) +
+    scale_y_continuous(breaks = seq(2, 14, 2), lim = c(0, 15)) +
+    labs(x = '\nTerm',
+         y = '\n',
+         fill = '') +
+    geom_hline(yintercept = 0) +
+    theme(legend.position = 'bottom',
+          legend.text = element_text(size = 15, colour = 'gray5'),
+          axis.text = element_text(size = 18, colour = 'gray5'),
+          axis.ticks = element_blank(),
+          axis.title = element_text(size = 20),
+          axis.line = element_line(colour = 'black'),
+          strip.text = element_text(size = 12, colour = 'black', face = 'bold',
+                                    margin = margin(b = 10), vjust = -1, hjust = 0.5),
+          strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+          panel.background = element_rect(size = 1, fill = 'white', colour = 'black'))
 
-  ideology_split_data <- scdb_justices_2023 %>%
-    filter(term >= 2021) %>%
-    mutate(ideology = ifelse(justiceName %in% c('SGBreyer', 'KBJackson', 'SSotomayor', 'EKagan'), 'Liberal', 'Conservative')) %>%
-    select(ideology, docket, justiceName, majVotes, majority, minVotes, term)
 
-  for (i in unique(ideology_split_data$docket)){
-    temp_docket <- ideology_split_data %>%
-      filter(docket == i) %>%
-      select(justiceName, ideology, majority, majVotes, minVotes, term)
+  ggsave(ideological_splits , file = 'stat_pack_OT23/Figures/statpack_figures/ideological_splits_OT20_OT23.png', width = 10, height = 8, units = 'in')
 
-    majority_coalition <- temp_docket$ideology[temp_docket$majority == 2]
-    majority_coalition <- majority_coalition[!is.na(majority_coalition)]
-    minority_coalition <- temp_docket$ideology[!temp_docket$majority == 2]
-    minority_coalition <- minority_coalition[!is.na(minority_coalition)]
+  ideological_splits <- split_data %>%
+    group_by(term) %>%
+    mutate(no_ideological_split = total_cases - ideological_split) %>%
+    pivot_longer(cols = c(ideological_split, no_ideological_split)) %>%
+    mutate(name = ifelse(name == 'ideological_split', 'Ideological Split', 'No Ideological Split')) %>%
+    rename(`Term` = term,
+           `Total (6-3) or (5-3) Cases` = total_cases,
+           `Split` = name,
+           `Value` = value)
 
-    if (length(majority_coalition) == 0){
-      next
-    }
-
-
-    if (all(majority_coalition == 'Conservative') & all(minority_coalition == 'Liberal')){
-      split = 1
-    } else {
-      split = 0
-    }
-
-    temp_complete <- data.frame(docket = i,
-                                term = temp_docket$term[1],
-                                majVotes = temp_docket$majVotes[1],
-                                minVotes = temp_docket$minVotes[1],
-                                split = split)
-
-    splits <- bind_rows(splits, temp_complete)
-
-  }
-
-  splits <- splits %>%
-    filter(split == 1)
+  write.csv(ideological_splits, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Decisions by Coalition/ideological_splits_OT20_OT23.csv', row.names = F)
 
 
 } # Ideological Splits
+
+{
+
+  opinions_by_justice_OT23 <- decisions_ot_23 %>%
+    select(ROBERTS:JACKSON) %>%
+    mutate(across(ROBERTS:JACKSON, ~ case_when(
+      . == 100 ~ 'Majority',
+      . %in% c(2, 4, 5, 7) ~ 'Concurrence',
+      . %in% c(-1, -3) ~ 'Dissent',
+      .default = NA
+    ))) %>%
+    pivot_longer(cols = ROBERTS:JACKSON, names_to = "opinion_writer", values_to = "opinion_type") %>%
+    filter(!is.na(opinion_writer)) %>%
+    filter(!is.na(opinion_type)) %>%
+    group_by(opinion_writer, opinion_type) %>%
+    summarise(count = n()) %>%
+    mutate(opinion_writer = str_to_title(opinion_writer)) %>%
+    mutate(opinion_type = factor(opinion_type, levels = c('Majority', 'Concurrence', 'Dissent')),
+           opinion_writer = factor(opinion_writer, levels = c('Roberts', 'Thomas', 'Alito', 'Sotomayor', 'Kagan', 'Gorsuch', 'Kavanaugh', 'Barrett', 'Jackson'))) %>%
+    ggplot(aes(x = forcats::fct_rev(opinion_writer), y = count, group = opinion_type)) +
+    geom_bar(stat = 'identity', colour = 'gray5', position = position_stack(reverse = TRUE), aes(fill = opinion_type)) +
+    scale_y_continuous(breaks = seq(2, 20, 2)) +
+    labs(x = '\n',
+         y = '',
+         fill = '') +
+    geom_hline(yintercept = 0) +
+    scale_fill_manual(values = c('deepskyblue3', 'chartreuse4', 'coral3')) +
+    geom_label(aes(label = count),
+               position=position_stack(vjust=0.5, reverse = T),  size = 7) +
+    coord_flip() +
+    theme(legend.position = 'bottom',
+          legend.text = element_text(size = 15, colour = 'gray5'),
+          axis.text = element_text(size = 18, colour = 'gray5'),
+          axis.ticks = element_blank(),
+          axis.title = element_text(size = 20),
+          axis.line = element_line(colour = 'black'),
+          strip.text = element_text(size = 12, colour = 'black', face = 'bold',
+                                    margin = margin(b = 10), vjust = -1, hjust = 0.5),
+          strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+          panel.background = element_rect(size = 1, fill = 'white', colour = 'black'))
+
+
+  ggsave(opinions_by_justice_OT23 , file = 'stat_pack_OT23/Figures/statpack_figures/opinions_by_justice_OT23.png', width = 12, height = 8, units = 'in')
+
+  opinions_by_justice_OT23 <- decisions_ot_23 %>%
+    select(ROBERTS:JACKSON) %>%
+    mutate(across(ROBERTS:JACKSON, ~ case_when(
+      . == 100 ~ 'Majority',
+      . %in% c(2, 4, 5, 7) ~ 'Concurrence',
+      . %in% c(-1, -3) ~ 'Dissent',
+      .default = NA
+    ))) %>%
+    pivot_longer(cols = ROBERTS:JACKSON, names_to = "opinion_writer", values_to = "opinion_type") %>%
+    filter(!is.na(opinion_writer)) %>%
+    filter(!is.na(opinion_type)) %>%
+    group_by(opinion_writer, opinion_type) %>%
+    summarise(count = n()) %>%
+    mutate(opinion_writer = str_to_title(opinion_writer)) %>%
+    mutate(opinion_type = factor(opinion_type, levels = c('Majority', 'Concurrence', 'Dissent')),
+           opinion_writer = factor(opinion_writer, levels = c('Roberts', 'Thomas', 'Alito', 'Sotomayor', 'Kagan', 'Gorsuch', 'Kavanaugh', 'Barrett', 'Jackson'))) %>%
+    rename(`Author` = opinion_writer,
+           `Opinion Type` = opinion_type,
+           `Count` = count)
+
+
+  write.csv(opinions_by_justice_OT23, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Decisions by Coalition/opinions_by_justice_OT23.csv', row.names = F)
+
+
+} # Total Opinions by Justice (OT23)
+
+{
+
+  majority_minority_votes <- decisions_ot_23 %>%
+    select(Docket, ROBERTS:JACKSON) %>%
+    mutate(across(ROBERTS:JACKSON, ~ ifelse(. >= 1, 1, 0))) %>%
+    pivot_longer(cols = ROBERTS:JACKSON, names_to = "justice_name", values_to = "majority") %>%
+    mutate(majority = ifelse(majority == 1, 'Majority Vote', 'Minority Vote')) %>%
+    group_by(justice_name, majority) %>%
+    summarise(count = n()) %>%
+    filter(!is.na(majority)) %>%
+    mutate(justice_name = str_to_title(justice_name),
+      justice_name = factor(justice_name, levels = c('Roberts', 'Thomas', 'Alito', 'Sotomayor', 'Kagan', 'Gorsuch', 'Kavanaugh', 'Barrett', 'Jackson')),
+      justice_name = forcats::fct_rev(justice_name),
+      majority = factor(majority, levels = c('Majority Vote', 'Minority Vote'))) %>%
+    ggplot(aes(x = justice_name, y = count, fill = majority)) +
+    geom_bar(stat = 'identity', colour = 'gray5', position = position_dodge2(width = 0.9)) +
+    geom_hline(yintercept = 0 ) +
+    scale_fill_manual(values = c('deepskyblue3', 'coral3')) +
+    geom_label(aes(label = count), position = position_dodge2(width = 0.9, preserve = "single"), color = "gray5", size=7, fill = 'white', show.legend = FALSE) +
+
+    labs(x = '',
+         y = '',
+         fill = '') +
+    scale_y_continuous(breaks = seq(10, 60, 10)) +
+    coord_flip() +
+    theme(legend.position = 'bottom',
+          legend.text = element_text(size = 15, colour = 'gray5'),
+          axis.text = element_text(size = 18, colour = 'gray5'),
+          axis.ticks = element_blank(),
+          axis.title = element_text(size = 20),
+          axis.line = element_line(colour = 'black'),
+          strip.text = element_text(size = 12, colour = 'black', face = 'bold',
+                                    margin = margin(b = 10), vjust = -1, hjust = 0.5),
+          strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+          panel.background = element_rect(size = 1, fill = 'white', colour = 'black'))
+
+
+  ggsave(majority_minority_votes, file = 'stat_pack_OT23/Figures/statpack_figures/majority_minority_votes_by_justice.png', height = 8, width = 10, units = 'in')
+
+  } # Dissent Counts
+
 
 ################################################################################
 #Oral Arguments
