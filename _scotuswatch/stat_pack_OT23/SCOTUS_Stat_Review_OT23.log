@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.15)  30 JUN 2024 06:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.15)  2 JUL 2024 05:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1123,7 +1123,7 @@ Package hyperref Info: Link coloring OFF on input line 4.
 \openout6 = `SCOTUS_Stat_Review_OT23.out'.
 
 (SCOTUS_Stat_Review_OT23-concordance.tex)
-<Figures/intro_page_images/empirical_scotus_logo.png, id=83, 803.0pt x 803.0pt>
+<Figures/intro_page_images/empirical_scotus_logo.png, id=86, 803.0pt x 803.0pt>
 
 File: Figures/intro_page_images/empirical_scotus_logo.png Graphic file (type pn
 g)
@@ -1311,7 +1311,47 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 69.
 
-[3] (statpack_sections/topline_statistics_statpack.tex
+(statpack_sections/introduction_statpack.tex
+Underfull \hbox (badness 10000) in paragraph at lines 2--3
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--7
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--9
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 10--11
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--13
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 14--15
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--17
+
+ []
+
+) [4] (statpack_sections/topline_statistics_statpack.tex
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 2.
@@ -1336,12 +1376,12 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 2.
 
-) [4
+) [5
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.80 \newpage
+l.81 \newpage
              ] (statpack_sections/oral_arguments_introduction.tex
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1367,7 +1407,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 3.
 
-<Figures/intro_page_images/hennessey_courtroom_sketch.jpg, id=156, 1232.605pt x
+<Figures/intro_page_images/hennessey_courtroom_sketch.jpg, id=165, 1232.605pt x
  748.7975pt>
 File: Figures/intro_page_images/hennessey_courtroom_sketch.jpg Graphic file (ty
 pe jpg)
@@ -1375,7 +1415,7 @@ pe jpg)
 Package pdftex.def Info: Figures/intro_page_images/hennessey_courtroom_sketch.j
 pg  used on input line 6.
 (pdftex.def)             Requested size: 352.31625pt x 214.02649pt.
-<Figures/intro_page_images/hennessey_courtroom_sketch_2.jpg, id=157, 1192.455pt
+<Figures/intro_page_images/hennessey_courtroom_sketch_2.jpg, id=166, 1192.455pt
  x 683.55376pt>
 File: Figures/intro_page_images/hennessey_courtroom_sketch_2.jpg Graphic file (
 type jpg)
@@ -1383,13 +1423,13 @@ type jpg)
 Package pdftex.def Info: Figures/intro_page_images/hennessey_courtroom_sketch_2
 .jpg  used on input line 8.
 (pdftex.def)             Requested size: 352.31625pt x 201.95952pt.
-[5 <./Figures/intro_page_images/hennessey_courtroom_sketch.jpg> <./Figures/intr
-o_page_images/hennessey_courtroom_sketch_2.jpg>]) [6
+[6 <./Figures/intro_page_images/hennessey_courtroom_sketch.jpg> <./Figures/intr
+o_page_images/hennessey_courtroom_sketch_2.jpg>]) [7
 pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.101 \newpage
+l.102 \newpage
               ] (statpack_sections/attorney_summary.tex
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1443,7 +1483,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 2.
 
-[7
+[8
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{table.3}) has
@@ -1451,7 +1491,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.3}) has
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.25 \end{landscape}
-                    ] [8
+                    ] [9
 
 
 
@@ -1460,7 +1500,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.4}) has
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.52 \end{landscape}
-                    ] [9
+                    ] [10
 
 
 
@@ -1469,7 +1509,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.5}) has
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.79 \end{landscape}
-                    ] [10
+                    ] [11
 
 
 
@@ -1479,7 +1519,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.6}) has
                                                   \__shipout_drop_firstpage_...
 l.106 \end{landscape}
                      ]
-<Figures/statpack_figures/percentage_scotus_clerkship.png, id=187, 757.1487pt x
+<Figures/statpack_figures/percentage_scotus_clerkship.png, id=196, 757.1487pt x
  696.4419pt>
 File: Figures/statpack_figures/percentage_scotus_clerkship.png Graphic file (ty
 pe png)
@@ -1487,14 +1527,14 @@ pe png)
 Package pdftex.def Info: Figures/statpack_figures/percentage_scotus_clerkship.p
 ng  used on input line 121.
 (pdftex.def)             Requested size: 210.14333pt x 193.29147pt.
-<Figures/statpack_figures/percentage_gender.png, id=188, 757.1487pt x 696.4419p
+<Figures/statpack_figures/percentage_gender.png, id=197, 757.1487pt x 696.4419p
 t>
 File: Figures/statpack_figures/percentage_gender.png Graphic file (type png)
 <use Figures/statpack_figures/percentage_gender.png>
 Package pdftex.def Info: Figures/statpack_figures/percentage_gender.png  used o
 n input line 128.
 (pdftex.def)             Requested size: 210.14333pt x 193.29147pt.
-<Figures/statpack_figures/percentage_sg_experience.png, id=189, 757.1487pt x 69
+<Figures/statpack_figures/percentage_sg_experience.png, id=198, 757.1487pt x 69
 6.4419pt>
 File: Figures/statpack_figures/percentage_sg_experience.png Graphic file (type 
 png)
@@ -1502,7 +1542,7 @@ png)
 Package pdftex.def Info: Figures/statpack_figures/percentage_sg_experience.png 
  used on input line 136.
 (pdftex.def)             Requested size: 210.14333pt x 193.29147pt.
-[11
+[12
 
 
 
@@ -1526,13 +1566,13 @@ l.144 \end{landscape}
                       <./Figures/statpack_figures/percentage_scotus_clerkship.p
 ng> <./Figures/statpack_figures/percentage_gender.png> <./Figures/statpack_figu
 res/percentage_sg_experience.png>]
-<Figures/statpack_figures/law_school_figure.png, id=201, 867.24pt x 578.16pt>
+<Figures/statpack_figures/law_school_figure.png, id=209, 867.24pt x 578.16pt>
 File: Figures/statpack_figures/law_school_figure.png Graphic file (type png)
 <use Figures/statpack_figures/law_school_figure.png>
 Package pdftex.def Info: Figures/statpack_figures/law_school_figure.png  used o
 n input line 154.
 (pdftex.def)             Requested size: 446.26582pt x 297.51312pt.
-[12
+[13
 
 
 
@@ -1542,7 +1582,7 @@ s been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.157 \end{landscape}
                       <./Figures/statpack_figures/law_school_figure.png>]
-<Figures/statpack_figures/clerkships_by_justice.png, id=207, 867.24pt x 578.16p
+<Figures/statpack_figures/clerkships_by_justice.png, id=215, 867.24pt x 578.16p
 t>
 File: Figures/statpack_figures/clerkships_by_justice.png Graphic file (type png
 )
@@ -1550,7 +1590,7 @@ File: Figures/statpack_figures/clerkships_by_justice.png Graphic file (type png
 Package pdftex.def Info: Figures/statpack_figures/clerkships_by_justice.png  us
 ed on input line 168.
 (pdftex.def)             Requested size: 446.26582pt x 297.51312pt.
-[13
+[14
 
 
 
@@ -1558,7 +1598,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.171 \end{landscape}
+l.173 \end{landscape}
                       <./Figures/statpack_figures/clerkships_by_justice.png>]) 
 (statpack_sections/oral_argument_word_counts_justices_statpack.tex
 
@@ -1613,15 +1653,14 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 1.
 
-<Figures/statpack_figures/word_count_plot_OT23.png, id=212, 505.89pt x 505.89pt
->
+<Figures/statpack_figures/word_count_plot_OT23.png, id=220, 722.7pt x 722.7pt>
 File: Figures/statpack_figures/word_count_plot_OT23.png Graphic file (type png)
 
 <use Figures/statpack_figures/word_count_plot_OT23.png>
 Package pdftex.def Info: Figures/statpack_figures/word_count_plot_OT23.png  use
 d on input line 6.
-(pdftex.def)             Requested size: 422.77664pt x 422.7833pt.
-[14
+(pdftex.def)             Requested size: 422.77664pt x 422.77228pt.
+[15
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) ha
@@ -1682,55 +1721,55 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 12.
 
-<Figures/justice_images/Roberts.png, id=217, 301.125pt x 200.75pt>
+<Figures/justice_images/Roberts.png, id=225, 301.125pt x 200.75pt>
 File: Figures/justice_images/Roberts.png Graphic file (type png)
 <use Figures/justice_images/Roberts.png>
 Package pdftex.def Info: Figures/justice_images/Roberts.png  used on input line
  38.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-<Figures/justice_images/Thomas.png, id=218, 301.125pt x 200.75pt>
+<Figures/justice_images/Thomas.png, id=226, 301.125pt x 200.75pt>
 File: Figures/justice_images/Thomas.png Graphic file (type png)
 <use Figures/justice_images/Thomas.png>
 Package pdftex.def Info: Figures/justice_images/Thomas.png  used on input line 
 38.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-<Figures/justice_images/Alito.png, id=219, 301.125pt x 200.75pt>
+<Figures/justice_images/Alito.png, id=227, 301.125pt x 200.75pt>
 File: Figures/justice_images/Alito.png Graphic file (type png)
 <use Figures/justice_images/Alito.png>
 Package pdftex.def Info: Figures/justice_images/Alito.png  used on input line 3
 8.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-<Figures/justice_images/Sotomayor.png, id=220, 301.125pt x 200.75pt>
+<Figures/justice_images/Sotomayor.png, id=228, 301.125pt x 200.75pt>
 File: Figures/justice_images/Sotomayor.png Graphic file (type png)
 <use Figures/justice_images/Sotomayor.png>
 Package pdftex.def Info: Figures/justice_images/Sotomayor.png  used on input li
 ne 38.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-<Figures/justice_images/Kagan.png, id=221, 301.125pt x 200.75pt>
+<Figures/justice_images/Kagan.png, id=229, 301.125pt x 200.75pt>
 File: Figures/justice_images/Kagan.png Graphic file (type png)
 <use Figures/justice_images/Kagan.png>
 Package pdftex.def Info: Figures/justice_images/Kagan.png  used on input line 3
 8.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-<Figures/justice_images/Gorsuch.png, id=222, 301.125pt x 200.75pt>
+<Figures/justice_images/Gorsuch.png, id=230, 301.125pt x 200.75pt>
 File: Figures/justice_images/Gorsuch.png Graphic file (type png)
 <use Figures/justice_images/Gorsuch.png>
 Package pdftex.def Info: Figures/justice_images/Gorsuch.png  used on input line
  38.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-<Figures/justice_images/Kavanaugh.png, id=223, 301.125pt x 200.75pt>
+<Figures/justice_images/Kavanaugh.png, id=231, 301.125pt x 200.75pt>
 File: Figures/justice_images/Kavanaugh.png Graphic file (type png)
 <use Figures/justice_images/Kavanaugh.png>
 Package pdftex.def Info: Figures/justice_images/Kavanaugh.png  used on input li
 ne 38.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-<Figures/justice_images/Barrett.png, id=224, 301.125pt x 200.75pt>
+<Figures/justice_images/Barrett.png, id=232, 301.125pt x 200.75pt>
 File: Figures/justice_images/Barrett.png Graphic file (type png)
 <use Figures/justice_images/Barrett.png>
 Package pdftex.def Info: Figures/justice_images/Barrett.png  used on input line
  38.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-<Figures/justice_images/Jackson.png, id=225, 301.125pt x 200.75pt>
+<Figures/justice_images/Jackson.png, id=233, 301.125pt x 200.75pt>
 File: Figures/justice_images/Jackson.png Graphic file (type png)
 <use Figures/justice_images/Jackson.png>
 Package pdftex.def Info: Figures/justice_images/Jackson.png  used on input line
@@ -1781,7 +1820,7 @@ File: Figures/justice_images/Jackson.png Graphic file (type png)
 Package pdftex.def Info: Figures/justice_images/Jackson.png  used on input line
  67.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-[15
+[16
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{table.7}) has
@@ -1839,7 +1878,7 @@ File: Figures/justice_images/Jackson.png Graphic file (type png)
 Package pdftex.def Info: Figures/justice_images/Jackson.png  used on input line
  97.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-[16
+[17
 pdfTeX warning (ext4): destination with the same identifier (name{table.8}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -1891,7 +1930,7 @@ File: Figures/justice_images/Jackson.png Graphic file (type png)
 Package pdftex.def Info: Figures/justice_images/Jackson.png  used on input line
  126.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-[17
+[18
 pdfTeX warning (ext4): destination with the same identifier (name{table.9}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -1943,7 +1982,7 @@ File: Figures/justice_images/Jackson.png Graphic file (type png)
 Package pdftex.def Info: Figures/justice_images/Jackson.png  used on input line
  155.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-[18
+[19
 pdfTeX warning (ext4): destination with the same identifier (name{table.10}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -1995,7 +2034,7 @@ File: Figures/justice_images/Jackson.png Graphic file (type png)
 Package pdftex.def Info: Figures/justice_images/Jackson.png  used on input line
  184.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-[19
+[20
 pdfTeX warning (ext4): destination with the same identifier (name{table.11}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2047,13 +2086,13 @@ File: Figures/justice_images/Jackson.png Graphic file (type png)
 Package pdftex.def Info: Figures/justice_images/Jackson.png  used on input line
  214.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-[20
+[21
 pdfTeX warning (ext4): destination with the same identifier (name{table.12}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.217 
-      ] [21
+      ] [22
 pdfTeX warning (ext4): destination with the same identifier (name{table.13}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2113,7 +2152,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 3.
 
-[22
+[23
 
 
 
@@ -2139,7 +2178,7 @@ Overfull \hbox (16.99998pt too wide) in paragraph at lines 70--110
 [][][] 
  []
 
-[23
+[24
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{table.17}) ha
@@ -2154,16 +2193,16 @@ s been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.111 \newpage
               ])
-Overfull \hbox (19.28001pt too wide) in paragraph at lines 113--117
+Overfull \hbox (19.28001pt too wide) in paragraph at lines 113--118
 [][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--117
+Underfull \hbox (badness 10000) in paragraph at lines 113--118
 
  []
 
-(statpack_sections/oral_argument_justice_speaking_times_statpack.tex [24
+(statpack_sections/oral_argument_justice_speaking_times_statpack.tex [25
 pdfTeX warning (ext4): destination with the same identifier (name{table.19}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2228,15 +2267,15 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 2.
 
-<Figures/statpack_figures/total_time_spoken_plot_OT23.png, id=289, 505.89pt x 5
-05.89pt>
+<Figures/statpack_figures/total_time_spoken_plot_OT23.png, id=297, 722.7pt x 72
+2.7pt>
 File: Figures/statpack_figures/total_time_spoken_plot_OT23.png Graphic file (ty
 pe png)
 <use Figures/statpack_figures/total_time_spoken_plot_OT23.png>
 Package pdftex.def Info: Figures/statpack_figures/total_time_spoken_plot_OT23.p
 ng  used on input line 7.
-(pdftex.def)             Requested size: 399.29463pt x 399.30135pt.
-[25
+(pdftex.def)             Requested size: 399.29463pt x 399.29474pt.
+[26
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) ha
@@ -2345,7 +2384,7 @@ Overfull \hbox (7.7583pt too wide) in paragraph at lines 72--74
  [][] 
  []
 
-[26
+[27
 pdfTeX warning (ext4): destination with the same identifier (name{table.21}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2402,7 +2441,7 @@ Overfull \hbox (7.7583pt too wide) in paragraph at lines 105--107
  [][] 
  []
 
-[27
+[28
 pdfTeX warning (ext4): destination with the same identifier (name{table.22}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2459,7 +2498,7 @@ Overfull \hbox (7.7583pt too wide) in paragraph at lines 138--140
  [][] 
  []
 
-[28
+[29
 pdfTeX warning (ext4): destination with the same identifier (name{table.23}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2516,7 +2555,7 @@ Overfull \hbox (7.7583pt too wide) in paragraph at lines 171--173
  [][] 
  []
 
-[29
+[30
 pdfTeX warning (ext4): destination with the same identifier (name{table.24}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2573,7 +2612,7 @@ Overfull \hbox (7.7583pt too wide) in paragraph at lines 204--206
  [][] 
  []
 
-[30
+[31
 pdfTeX warning (ext4): destination with the same identifier (name{table.25}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2630,13 +2669,13 @@ Overfull \hbox (7.7583pt too wide) in paragraph at lines 237--239
  [][] 
  []
 
-[31
+[32
 pdfTeX warning (ext4): destination with the same identifier (name{table.26}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.240 
-      ] [32
+      ] [33
 pdfTeX warning (ext4): destination with the same identifier (name{table.27}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2667,24 +2706,24 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 3.
 
-<Figures/intro_page_images/decision_image_1.jpg, id=330, 660.4675pt x 449.68pt>
+<Figures/intro_page_images/decision_image_1.jpg, id=338, 660.4675pt x 449.68pt>
 
 File: Figures/intro_page_images/decision_image_1.jpg Graphic file (type jpg)
 <use Figures/intro_page_images/decision_image_1.jpg>
 Package pdftex.def Info: Figures/intro_page_images/decision_image_1.jpg  used o
 n input line 6.
 (pdftex.def)             Requested size: 328.82707pt x 223.88568pt.
-<Figures/intro_page_images/decision_image_2.jpg, id=331, 1533.73pt x 1087.06125
+<Figures/intro_page_images/decision_image_2.jpg, id=339, 1533.73pt x 1087.06125
 pt>
 File: Figures/intro_page_images/decision_image_2.jpg Graphic file (type jpg)
 <use Figures/intro_page_images/decision_image_2.jpg>
 Package pdftex.def Info: Figures/intro_page_images/decision_image_2.jpg  used o
 n input line 9.
 (pdftex.def)             Requested size: 328.82707pt x 233.05013pt.
-[33
+[34
 
  <./Figures/intro_page_images/decision_image_1.jpg> <./Figures/intro_page_image
-s/decision_image_2.jpg>] [34
+s/decision_image_2.jpg>] [35
 pdfTeX warning (ext4): destination with the same identifier (name{table.28}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2735,7 +2774,42 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 6
 (C:\Users\Jake Truscott\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.f
 d
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)) (statpack_sections/decisions_agreement_matrix.tex [35]
+) [36]
+Underfull \hbox (badness 10000) in paragraph at lines 84--84
+|$[]$|
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 84.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 84.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 84.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 84.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 84.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 84.
+
+
+Overfull \hbox (1.25577pt too wide) in paragraph at lines 90--91
+[]\T1/ptm/m/n/12 Given the post-argument con-sol-i-da-tion of \T1/ptm/m/it/12 M
+oody v. NetChoice, LLC \T1/ptm/m/n/12 (22-277) with \T1/ptm/m/it/12 Netchoice,
+ []
+
+) (statpack_sections/decisions_agreement_matrix.tex [37]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\<let>-command' on input line 2.
@@ -2868,7 +2942,7 @@ File: Figures/justice_images/Jackson.png Graphic file (type png)
 Package pdftex.def Info: Figures/justice_images/Jackson.png  used on input line
  32.
 (pdftex.def)             Requested size: 42.67912pt x 28.45094pt.
-[36
+[38
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{table.29}) ha
@@ -2929,7 +3003,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 3.
 
-[37
+[39
 
 
 
@@ -2953,7 +3027,7 @@ Underfull \hbox (badness 2495) in paragraph at lines 55--55
 \T1/ptm/m/n/9 their of-fi-cial du-ties un-der the First
  []
 
-[38
+[40
 pdfTeX warning (ext4): destination with the same identifier (name{table.31}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2964,7 +3038,7 @@ Underfull \hbox (badness 3930) in paragraph at lines 84--84
 []|\T1/ptm/m/n/9 Court re-view agency's de-ci-sion on
  []
 
-[39
+[41
 pdfTeX warning (ext4): destination with the same identifier (name{table.32}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -2985,7 +3059,7 @@ Underfull \hbox (badness 1292) in paragraph at lines 112--112
 []|\T1/ptm/m/n/9 Loper Bright v. Rai-mondo;
  []
 
-[40
+[42
 pdfTeX warning (ext4): destination with the same identifier (name{table.33}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -3001,7 +3075,7 @@ Underfull \hbox (badness 2469) in paragraph at lines 140--140
 []|\T1/ptm/m/n/9 Ohio v. EPA (Cons. w.
  []
 
-[41
+[43
 pdfTeX warning (ext4): destination with the same identifier (name{table.34}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -3015,26 +3089,28 @@ Underfull \hbox (badness 1189) in paragraph at lines 168--168
 
 Overfull \vbox (16.60233pt too high) has occurred while \output is active []
 
-[42
+[44
 pdfTeX warning (ext4): destination with the same identifier (name{table.35}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.171 
-      ] [43
+      ] [45
 pdfTeX warning (ext4): destination with the same identifier (name{table.36}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.199 \newpage
               ]) (statpack_sections/decisions_circuit_scorecard.tex
-<Figures/statpack_figures/circuit_scorecard.png, id=385, 722.7pt x 578.16pt>
-File: Figures/statpack_figures/circuit_scorecard.png Graphic file (type png)
-<use Figures/statpack_figures/circuit_scorecard.png>
-Package pdftex.def Info: Figures/statpack_figures/circuit_scorecard.png  used o
-n input line 6.
+<Figures/statpack_figures/circuit_scorecard_argued_decided_only.png, id=397, 72
+2.7pt x 578.16pt>
+File: Figures/statpack_figures/circuit_scorecard_argued_decided_only.png Graphi
+c file (type png)
+<use Figures/statpack_figures/circuit_scorecard_argued_decided_only.png>
+Package pdftex.def Info: Figures/statpack_figures/circuit_scorecard_argued_deci
+ded_only.png  used on input line 6.
 (pdftex.def)             Requested size: 399.29463pt x 319.43579pt.
-[44
+[46
 
 
 
@@ -3043,9 +3119,28 @@ s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.10 \end{landscape}
-                     <./Figures/statpack_figures/circuit_scorecard.png>]) (stat
-pack_sections/coalition_figures_statpack.tex
-<Figures/statpack_figures/decisions_by_coalition_2018_2023.png, id=392, 578.16p
+                     <./Figures/statpack_figures/circuit_scorecard_argued_decid
+ed_only.png>]
+<Figures/statpack_figures/circuit_scorecard_with_consolidations .png, id=404, 7
+22.7pt x 578.16pt>
+File: Figures/statpack_figures/circuit_scorecard_with_consolidations .png Graph
+ic file (type png)
+<use Figures/statpack_figures/circuit_scorecard_with_consolidations .png>
+Package pdftex.def Info: Figures/statpack_figures/circuit_scorecard_with_consol
+idations .png  used on input line 17.
+(pdftex.def)             Requested size: 399.29463pt x 319.43579pt.
+[47
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.21 \end{landscape}
+                     <./Figures/statpack_figures/circuit_scorecard_with_consoli
+dations .png>]) (statpack_sections/coalition_figures_statpack.tex
+<Figures/statpack_figures/decisions_by_coalition_2018_2023.png, id=412, 578.16p
 t x 722.7pt>
 File: Figures/statpack_figures/decisions_by_coalition_2018_2023.png Graphic fil
 e (type png)
@@ -3053,53 +3148,34 @@ e (type png)
 Package pdftex.def Info: Figures/statpack_figures/decisions_by_coalition_2018_2
 023.png  used on input line 5.
 (pdftex.def)             Requested size: 422.77664pt x 528.47087pt.
-[45
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) ha
-s been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.12 \begin{landscape}
-                       <./Figures/statpack_figures/decisions_by_coalition_2018_
-2023.png>]
-<Figures/statpack_figures/share_of_unanimity_2018_2023.png, id=398, 613.3314pt 
-x 508.299pt>
-File: Figures/statpack_figures/share_of_unanimity_2018_2023.png Graphic file (t
-ype png)
-<use Figures/statpack_figures/share_of_unanimity_2018_2023.png>
-Package pdftex.def Info: Figures/statpack_figures/share_of_unanimity_2018_2023.
-png  used on input line 16.
-(pdftex.def)             Requested size: 375.80544pt x 311.45026pt.
-[46
+[48
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.21 \end{landscape}
-                     <./Figures/statpack_figures/share_of_unanimity_2018_2023.p
-ng>]
-<Figures/statpack_figures/opinion_type_share_18_23.png, id=405, 613.3314pt x 50
-8.299pt>
-File: Figures/statpack_figures/opinion_type_share_18_23.png Graphic file (type 
-png)
-<use Figures/statpack_figures/opinion_type_share_18_23.png>
-Package pdftex.def Info: Figures/statpack_figures/opinion_type_share_18_23.png 
- used on input line 29.
-(pdftex.def)             Requested size: 375.80544pt x 311.45026pt.
-[47
-
+l.12 \begin{landscape}
+                       <./Figures/statpack_figures/decisions_by_coalition_2018_
+2023.png>]
+<Figures/statpack_figures/share_of_unanimity_2018_2023.png, id=418, 722.7pt x 7
+22.7pt>
+File: Figures/statpack_figures/share_of_unanimity_2018_2023.png Graphic file (t
+ype png)
+<use Figures/statpack_figures/share_of_unanimity_2018_2023.png>
+Package pdftex.def Info: Figures/statpack_figures/share_of_unanimity_2018_2023.
+png  used on input line 16.
+(pdftex.def)             Requested size: 375.80544pt x 375.80615pt.
+[49
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.33 \end{landscape}
-                     <./Figures/statpack_figures/opinion_type_share_18_23.png>]
-) (statpack_sections/opinion_lengths_statpack.tex
+l.21 \end{landscape}
+                     <./Figures/statpack_figures/share_of_unanimity_2018_2023.p
+ng>]) (statpack_sections/opinion_lengths_statpack.tex
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\<let>-command' on input line 2.
@@ -3157,7 +3233,7 @@ Overfull \hbox (2.28001pt too wide) in paragraph at lines 3--39
 [] [] 
  []
 
-[48
+[50
 
 
 
@@ -3173,15 +3249,15 @@ s been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.45 \end{landscape}
                     ]
-<Figures/statpack_figures/opinion_lengths_longitudinal.png, id=418, 722.7pt x 4
-33.62pt>
+<Figures/statpack_figures/opinion_lengths_longitudinal.png, id=430, 722.7pt x 4
+69.755pt>
 File: Figures/statpack_figures/opinion_lengths_longitudinal.png Graphic file (t
 ype png)
 <use Figures/statpack_figures/opinion_lengths_longitudinal.png>
 Package pdftex.def Info: Figures/statpack_figures/opinion_lengths_longitudinal.
 png  used on input line 54.
-(pdftex.def)             Requested size: 587.19377pt x 352.31538pt.
-[49
+(pdftex.def)             Requested size: 587.19377pt x 381.675pt.
+[51
 
 
 
@@ -3243,7 +3319,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 66.
 
-<Figures/statpack_figures/decision_turnover_OT23.png, id=423, 722.7pt x 578.16p
+<Figures/statpack_figures/decision_turnover_OT23.png, id=435, 722.7pt x 578.16p
 t>
 File: Figures/statpack_figures/decision_turnover_OT23.png Graphic file (type pn
 g)
@@ -3251,14 +3327,14 @@ g)
 Package pdftex.def Info: Figures/statpack_figures/decision_turnover_OT23.png  u
 sed on input line 72.
 (pdftex.def)             Requested size: 399.29463pt x 319.43579pt.
-[50
+[52
 pdfTeX warning (ext4): destination with the same identifier (name{figure.13}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.75 \newpage
               <./Figures/statpack_figures/decision_turnover_OT23.png>]
-<Figures/statpack_figures/decision_turnover_OT18_OT23.png, id=429, 1011.78pt x 
+<Figures/statpack_figures/decision_turnover_OT18_OT23.png, id=441, 1011.78pt x 
 867.24pt>
 File: Figures/statpack_figures/decision_turnover_OT18_OT23.png Graphic file (ty
 pe png)
@@ -3266,7 +3342,7 @@ pe png)
 Package pdftex.def Info: Figures/statpack_figures/decision_turnover_OT18_OT23.p
 ng  used on input line 81.
 (pdftex.def)             Requested size: 399.29463pt x 342.25832pt.
-[51
+[53
 pdfTeX warning (ext4): destination with the same identifier (name{figure.14}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -3274,7 +3350,7 @@ as been already used, duplicate ignored
 l.88 \end{landscape}
                      <./Figures/statpack_figures/decision_turnover_OT18_OT23.pn
 g>]) (statpack_sections/decisions_percent_in_majority_statpack.tex
-<Figures/statpack_figures/percent_majority_OT23.png, id=435, 578.16pt x 578.16p
+<Figures/statpack_figures/percent_majority_OT23.png, id=448, 578.16pt x 578.16p
 t>
 File: Figures/statpack_figures/percent_majority_OT23.png Graphic file (type png
 )
@@ -3282,7 +3358,7 @@ File: Figures/statpack_figures/percent_majority_OT23.png Graphic file (type png
 Package pdftex.def Info: Figures/statpack_figures/percent_majority_OT23.png  us
 ed on input line 6.
 (pdftex.def)             Requested size: 352.31625pt x 352.31538pt.
-[52
+[54
 
 
 
@@ -3292,7 +3368,7 @@ as been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.9 \end{landscape}
                     <./Figures/statpack_figures/percent_majority_OT23.png>]
-<Figures/statpack_figures/percent_majority_split_cases.png, id=442, 578.16pt x 
+<Figures/statpack_figures/percent_majority_split_cases.png, id=455, 578.16pt x 
 578.16pt>
 File: Figures/statpack_figures/percent_majority_split_cases.png Graphic file (t
 ype png)
@@ -3300,7 +3376,7 @@ ype png)
 Package pdftex.def Info: Figures/statpack_figures/percent_majority_split_cases.
 png  used on input line 18.
 (pdftex.def)             Requested size: 352.31625pt x 352.31538pt.
-[53
+[55
 
 
 
@@ -3308,36 +3384,32 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.16}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.20 \end{landscape}
-                     <./Figures/statpack_figures/percent_majority_split_cases.p
-ng>]
-<Figures/statpack_figures/percent_majority_justice.png, id=450, 613.3314pt x 50
-8.299pt>
+l.21 \newpage
+              <./Figures/statpack_figures/percent_majority_split_cases.png>]
+<Figures/statpack_figures/percent_majority_justice.png, id=462, 505.89pt x 505.
+89pt>
 File: Figures/statpack_figures/percent_majority_justice.png Graphic file (type 
 png)
 <use Figures/statpack_figures/percent_majority_justice.png>
 Package pdftex.def Info: Figures/statpack_figures/percent_majority_justice.png 
- used on input line 28.
-(pdftex.def)             Requested size: 422.77664pt x 350.3854pt.
-[54
-
-
-
+ used on input line 26.
+(pdftex.def)             Requested size: 375.80544pt x 375.81166pt.
+[56
 pdfTeX warning (ext4): destination with the same identifier (name{figure.17}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.30 \end{landscape}
+l.28 \end{landscape}
                      <./Figures/statpack_figures/percent_majority_justice.png>]
-<Figures/statpack_figures/ideological_splits_OT20_OT23.png, id=457, 722.7pt x 5
+<Figures/statpack_figures/ideological_splits_OT20_OT23.png, id=469, 722.7pt x 5
 78.16pt>
 File: Figures/statpack_figures/ideological_splits_OT20_OT23.png Graphic file (t
 ype png)
 <use Figures/statpack_figures/ideological_splits_OT20_OT23.png>
 Package pdftex.def Info: Figures/statpack_figures/ideological_splits_OT20_OT23.
-png  used on input line 39.
-(pdftex.def)             Requested size: 422.77664pt x 338.21782pt.
-[55
+png  used on input line 37.
+(pdftex.def)             Requested size: 375.80544pt x 300.64493pt.
+[57
 
 
 
@@ -3345,18 +3417,18 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.18}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.44 \end{landscape}
+l.42 \end{landscape}
                      <./Figures/statpack_figures/ideological_splits_OT20_OT23.p
 ng>]
-<Figures/statpack_figures/opinions_by_justice_OT23.png, id=463, 867.24pt x 578.
+<Figures/statpack_figures/opinions_by_justice_OT23.png, id=475, 867.24pt x 578.
 16pt>
 File: Figures/statpack_figures/opinions_by_justice_OT23.png Graphic file (type 
 png)
 <use Figures/statpack_figures/opinions_by_justice_OT23.png>
 Package pdftex.def Info: Figures/statpack_figures/opinions_by_justice_OT23.png 
- used on input line 52.
+ used on input line 50.
 (pdftex.def)             Requested size: 469.75502pt x 313.17216pt.
-[56
+[58
 
 
 
@@ -3364,7 +3436,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.19}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.54 \end{landscape}
+l.52 \end{landscape}
                      <./Figures/statpack_figures/opinions_by_justice_OT23.png>]
 ) (statpack_sections/docket_introduction_statpack.tex
 
@@ -3391,13 +3463,13 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 4.
 
-<Figures/intro_page_images/docket_filing.jpg, id=468, 1409.265pt x 666.49pt>
+<Figures/intro_page_images/docket_filing.jpg, id=480, 1409.265pt x 666.49pt>
 File: Figures/intro_page_images/docket_filing.jpg Graphic file (type jpg)
 <use Figures/intro_page_images/docket_filing.jpg>
 Package pdftex.def Info: Figures/intro_page_images/docket_filing.jpg  used on i
 nput line 7.
 (pdftex.def)             Requested size: 399.29463pt x 188.83295pt.
-<Figures/intro_page_images/docket_filing_books.jpg, id=469, 798.985pt x 542.025
+<Figures/intro_page_images/docket_filing_books.jpg, id=481, 798.985pt x 542.025
 pt>
 File: Figures/intro_page_images/docket_filing_books.jpg Graphic file (type jpg)
 
@@ -3405,10 +3477,10 @@ File: Figures/intro_page_images/docket_filing_books.jpg Graphic file (type jpg)
 Package pdftex.def Info: Figures/intro_page_images/docket_filing_books.jpg  use
 d on input line 10.
 (pdftex.def)             Requested size: 399.29463pt x 270.8795pt.
-[57
+[59
 
  <./Figures/intro_page_images/docket_filing.jpg> <./Figures/intro_page_images/d
-ocket_filing_books.jpg>] [58
+ocket_filing_books.jpg>] [60
 pdfTeX warning (ext4): destination with the same identifier (name{table.39}) ha
 s been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -3467,20 +3539,20 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 1.
 
-<Figures/statpack_figures/dockets_ot_23.png, id=478, 722.7pt x 722.7pt>
+<Figures/statpack_figures/dockets_ot_23.png, id=491, 722.7pt x 722.7pt>
 File: Figures/statpack_figures/dockets_ot_23.png Graphic file (type png)
 <use Figures/statpack_figures/dockets_ot_23.png>
 Package pdftex.def Info: Figures/statpack_figures/dockets_ot_23.png  used on in
 put line 5.
 (pdftex.def)             Requested size: 352.31625pt x 352.31758pt.
-[59
+[61
 pdfTeX warning (ext4): destination with the same identifier (name{figure.20}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.12 \newpage
               <./Figures/statpack_figures/dockets_ot_23.png>]
-<Figures/statpack_figures/longitudinal_docketing_trends_2018_2023.png, id=487, 
+<Figures/statpack_figures/longitudinal_docketing_trends_2018_2023.png, id=499, 
 722.7pt x 722.7pt>
 File: Figures/statpack_figures/longitudinal_docketing_trends_2018_2023.png Grap
 hic file (type png)
@@ -3488,12 +3560,12 @@ hic file (type png)
 Package pdftex.def Info: Figures/statpack_figures/longitudinal_docketing_trends
 _2018_2023.png  used on input line 17.
 (pdftex.def)             Requested size: 352.31625pt x 352.31758pt.
-) [60
+) [62
 pdfTeX warning (ext4): destination with the same identifier (name{figure.21}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.207 \newpage
+l.208 \newpage
                <./Figures/statpack_figures/longitudinal_docketing_trends_2018_2
 023.png>] (statpack_sections/docket_court_of_origin.tex
 
@@ -3548,7 +3620,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 4.
 
-[61
+[63
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{table.40}) ha
@@ -3563,13 +3635,13 @@ s been already used, duplicate ignored
                                                   \__shipout_drop_firstpage_...
 l.34 \end{landscape}
                     ]
-<Figures/statpack_figures/circuit_court_map.png, id=501, 433.62pt x 252.945pt>
+<Figures/statpack_figures/circuit_court_map.png, id=513, 433.62pt x 252.945pt>
 File: Figures/statpack_figures/circuit_court_map.png Graphic file (type png)
 <use Figures/statpack_figures/circuit_court_map.png>
 Package pdftex.def Info: Figures/statpack_figures/circuit_court_map.png  used o
 n input line 43.
 (pdftex.def)             Requested size: 446.26582pt x 260.33556pt.
-[62
+[64
 
 
 
@@ -3632,38 +3704,38 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\z@skip' on input line 1.
 
-<Figures/statpack_figures/average_amici_filed_by_granted_type_term.png, id=507,
- 722.7pt x 722.7pt>
-File: Figures/statpack_figures/average_amici_filed_by_granted_type_term.png Gra
-phic file (type png)
-<use Figures/statpack_figures/average_amici_filed_by_granted_type_term.png>
+<Figures/statpack_figures/average_amici_filed_by_granted_type_granted.png, id=5
+19, 722.7pt x 722.7pt>
+File: Figures/statpack_figures/average_amici_filed_by_granted_type_granted.png 
+Graphic file (type png)
+<use Figures/statpack_figures/average_amici_filed_by_granted_type_granted.png>
 Package pdftex.def Info: Figures/statpack_figures/average_amici_filed_by_grante
-d_type_term.png  used on input line 8.
+d_type_granted.png  used on input line 8.
 (pdftex.def)             Requested size: 328.82707pt x 328.82901pt.
-[63
+[65
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.23}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.18 \newpage
-              <./Figures/statpack_figures/average_amici_filed_by_granted_type_t
-erm.png>]
-<Figures/statpack_figures/cert_merits_amici_OT23.png, id=513, 722.7pt x 578.16p
+l.20 \newpage
+              <./Figures/statpack_figures/average_amici_filed_by_granted_type_g
+ranted.png>]
+<Figures/statpack_figures/cert_merits_amici_OT23.png, id=526, 722.7pt x 578.16p
 t>
 File: Figures/statpack_figures/cert_merits_amici_OT23.png Graphic file (type pn
 g)
 <use Figures/statpack_figures/cert_merits_amici_OT23.png>
 Package pdftex.def Info: Figures/statpack_figures/cert_merits_amici_OT23.png  u
-sed on input line 24.
+sed on input line 26.
 (pdftex.def)             Requested size: 375.80544pt x 300.64493pt.
-) [64
+) [66
 pdfTeX warning (ext4): destination with the same identifier (name{figure.24}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.224 \newpage
+l.225 \newpage
                <./Figures/statpack_figures/cert_merits_amici_OT23.png>] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (SCOTUS_Stat_Review_OT23.aux)
@@ -3676,20 +3748,20 @@ LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `SCOTUS_Stat_Review_OT23.out' has not changed
 .
-(rerunfilecheck)             Checksum: ED5E5E7B62CAD77EA2355630195C6945;3764.
+(rerunfilecheck)             Checksum: 02FDAE02200DEC0858EB4551FD4715F9;4024.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 27 ({)
+### simple group (level 1) entered at line 29 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 23552 strings out of 474485
- 464712 string characters out of 5739922
+ 23561 strings out of 474485
+ 465397 string characters out of 5739922
  1982542 words of memory out of 5000000
- 45161 multiletter control sequences out of 15000+600000
+ 45165 multiletter control sequences out of 15000+600000
  618876 words of font info for 99 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,19n,90p,1065b,581s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,19n,90p,1134b,581s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Jake Truscott/AppData/Local/Programs/MiKTeX/fonts/typ
 e1/public/amsfonts/cm/cmsy6.pfb><C:/Users/Jake Truscott/AppData/Local/Programs/
 MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Jake Truscott/AppData
@@ -3699,9 +3771,9 @@ e Truscott/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/
 Users/Jake Truscott/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.
 pfb><C:/Users/Jake Truscott/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times
 /utmri8a.pfb>
-Output written on SCOTUS_Stat_Review_OT23.pdf (66 pages, 9810018 bytes).
+Output written on SCOTUS_Stat_Review_OT23.pdf (68 pages, 10069860 bytes).
 PDF statistics:
- 583 PDF objects out of 1000 (max. 8388607)
- 133 named destinations out of 1000 (max. 500000)
- 377 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 596 PDF objects out of 1000 (max. 8388607)
+ 135 named destinations out of 1000 (max. 500000)
+ 385 words of extra memory for PDF output out of 10000 (max. 10000000)
 

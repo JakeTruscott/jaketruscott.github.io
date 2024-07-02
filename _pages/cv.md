@@ -11,8 +11,11 @@ redirect_from:
 
 Academic Appointments
 ======
-* Postdoctoral Researcher, Center for C-SPAN Scholarship and Engagement (Purdue University), 2023-Present
-* Assistant Professor of Political Science, University of Florida, Beginning Fall 2024
+* Assistant Professor of Political Science, University of Florida, 2024-Present
+
+Prior Appointments
+======
+* Postdoctoral Researcher, Center for C-SPAN Scholarship and Engagement (Purdue University), 2023-2024
 
 Education
 ======
@@ -22,7 +25,7 @@ Education
 
 Research Interests
 ======
-Judicial Politics and Behavior, American Institutions, Constitutional Law, Criminal Justice Administration, Research Design, Research Methods (Text as Data, Natural Language Processing, Supervised and Unsupervised Machine Learning)
+Judicial Politics and Behavior, American Institutions, Constitutional Law, Criminal Justice Administration, Research Design, Research Methods (Text as Data, Natural Language Processing, and Machine Learning)
 
 Research Skills
 ======
@@ -96,6 +99,8 @@ Works In Progress
 
 Media Coverage
 ======
+* Marimow, A. (2024, July 2). As Trump dominated the docket, divided Supreme Court moved boldy to the right. <i> The Washington Post </i>. Retrieved from https://www.washingtonpost.com/politics/2024/07/02/supreme-court-2024-conservative-power-trump/ <br>
+* Blackman, J. (2024, July 2). Which circuit had the highest reversal rate? <i> Reason </i>. Retrieved from https://reason.com/volokh/2024/07/02/which-circuit-had-the-highest-reversal-rate/
 * Barnes, R. (2023, July 1). Supreme Court delivered big conservative wins, and a mixed message. <i> The Washington Post </i>. Retrieved from  https://www.washingtonpost.com/politics/2023/07/01/supreme-court-term-conservative-wins/ <br>
 * Hurley, L. (2023, July 2). 'Unabashed': Justice Jackson marks her first year on the Supreme Court unafraid to stake her own position. <i> NBCNews </i>. Retrieved from  https://www.nbcnews.com/politics/supreme-court/unabashed-justice-jackson-marks-first-year-supreme-court-unafraid-stak-rcna87424 <br>
 * Adler, J.H. (2023, July 1). Looking Back on the Supreme Court's 2022-23 Term. <i> reason </i>. Retrieved from  https://reason.com/volokh/2023/07/01/looking-back-on-the-supreme-courts-2022-23-term/ <br>
@@ -116,6 +121,7 @@ for president, according to survey data. <i>The Red & Black</i>. Retrieved from 
 
 Other Publications
 ======
+* Feldman, A. & Truscott, J. (2024, July 1). 2023 Stat Review. <i> Empirical SCOTUS </i>. Retrieved from https://empiricalscotus.com/2024/07/01/2023-stat-review/
 * Truscott, J. (2023, August 1). The Supreme Court: Where Everyone Knows Your Name. <i>EmpiricalSCOTUS</i>. Retrieved from: https://empiricalscotus.com
 * Truscott, J. & Feldman, A. (2022, December 30). The new hot bench: With Jackson leading the way, the
 justices are speaking more during oral arguments. <i>SCOTUSblog</i>. Retrieved from www.scotusblog.com <br>

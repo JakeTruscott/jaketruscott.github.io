@@ -67,6 +67,7 @@
 \newpage
 \section{\underline{Introduction}}
 
+\input{"statpack_sections/introduction_statpack.tex"}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Toplines %%

@@ -21,7 +21,7 @@ Statpack: Feldman, A. & Truscott, J. S. (2024, June 30). Supreme Court 2023-2024
 ################################################################################
 # Load Packages
 ################################################################################
-library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); library(htmltools); library(ggplot2); library(png); library(dplyr); library(stringi); library(stringr); library(ggplot2); library(ggthemes); library(anytime); library(tm); library(scotustext); library(readxl); library(ggpattern); library(png); library(ggtext); library(grid); library(tidyr); library(readxl); library(anytime); library(sf); library(purrr); library(readxl)
+library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); library(htmltools); library(ggplot2); library(png); library(dplyr); library(stringi); library(stringr); library(ggplot2); library(ggthemes); library(anytime); library(tm); library(scotustext); library(readxl); library(ggpattern); library(png); library(ggtext); library(grid); library(tidyr); library(readxl); library(anytime); library(sf); library(purrr); library(readxl); library(pdftools)
 
 ################################################################################
 # Amended SCOTUSTEXT Fix for Decision Processor
@@ -1004,8 +1004,8 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     rename(case = short_hand,
            coalition = Coalition) %>%
     mutate(coalition = case_when(
-      .default = '(9-0) or (8-0)',
-      coalition %in% c('(8-1') ~ '(8-1)',
+      coalition %in% c('(9-0)', '(8-0)') ~ '(9-0) or (8-0)',
+      coalition %in% c('(8-1)') ~ '(8-1)',
       coalition %in% c('(7-2)', '(7-1)') ~  '(7-2) or (7-1)',
       coalition %in% c('(6-3)', '(6-2)') ~ '(6-3) or (6-2)',
       coalition %in% c('(5-4)', '(5-3)') ~ '(5-4) or (5-3)',
@@ -1024,7 +1024,8 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     select(term, coalition, docket) %>%
     bind_rows(decisions_by_coalition_longitudinal %>%
                 mutate(term = 2023)) %>%
-    mutate(coalition = ifelse(coalition == '(9-0) or (8-0)', '(9-0) or (8-0)', "Other")) %>%
+    mutate(coalition = ifelse(coalition == '(9-0) or (8-0)', 'Unanimous', "Other"),
+           coalition = factor(coalition, levels = c('Unanimous', 'Other'))) %>%
     group_by(term, coalition) %>%
     summarise(count = n()) %>%
     group_by(term) %>%
@@ -1056,14 +1057,14 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
           panel.background = element_rect(size = 1, fill = 'white', colour = 'black'))
 
 
-  ggsave("stat_pack_OT23/Figures/statpack_figures/share_of_unanimity_2018_2023.png", share_of_unanimity, dpi = 300)
+  ggsave(share_of_unanimity, file = "stat_pack_OT23/Figures/statpack_figures/share_of_unanimity_2018_2023.png", width = 10, height = 10, units = 'in')
 
 
   share_of_unanimity <- scdb_cases_2023 %>%
     filter(term >= 2018) %>%
     mutate(coalition = case_when(
-      majVotes == 9 ~ '(9-0)',
-      majVotes == 8 ~ '(8-1) or (8-0)',
+      majVotes == 9 ~ '(9-0) or (8-0)',
+      majVotes == 8 ~ '(8-1)',
       majVotes == 7 ~ '(7-2) or (7-1)',
       majVotes == 6 ~ '(6-3) or (6-2)',
       majVotes == 5 ~ '(5-4) or (5-3)',
@@ -1071,7 +1072,8 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     select(term, coalition, docket) %>%
     bind_rows(decisions_by_coalition_longitudinal %>%
                 mutate(term = 2023)) %>%
-    mutate(coalition = ifelse(coalition == "(9-0)", "(9-0)", "Other")) %>%
+    mutate(coalition = ifelse(coalition == '(9-0) or (8-0)', 'Unanimous', "Other"),
+           coalition = factor(coalition, levels = c('Unanimous', 'Other'))) %>%
     group_by(term, coalition) %>%
     summarise(count = n()) %>%
     group_by(term) %>%
@@ -1079,7 +1081,13 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
             count = count,
             coalition = coalition) %>%
     mutate(percent = round((count/total_cases)*100, 2),
-           term = paste0(term, ' Term (', total_cases, ')'))
+           term = paste0(term, ' Term (', total_cases, ')')) %>%
+    select(-c(total_cases)) %>%
+    rename(`Term (Total Decisions)` = term,
+           `Count` = count,
+           `Coalition` = coalition,
+           `Percent` = percent)
+
 
   write.table(share_of_unanimity, file = 'stat_pack_OT23/Statpack replication Data/Decisions/Share of Unanimity/share_of_unanimity_OT18_OT23.csv', sep = ",", quote = F, row.names = F)
 
@@ -1335,7 +1343,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
           axis.title = element_text(size = 12, colour = 'black'))
 
 
-  ggsave(opinion_lengths_longitudinal, file = 'stat_pack_OT23/Figures/statpack_figures/opinion_lengths_longitudinal.png', width = 10, height = 6)
+  ggsave(opinion_lengths_longitudinal, file = 'stat_pack_OT23/Figures/statpack_figures/opinion_lengths_longitudinal.png', width = 10, height = 6.5)
 
 
 
@@ -1447,9 +1455,9 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
                                     margin = margin(b = 10), vjust = -1, hjust = 0.5),
           strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
           panel.background = element_rect(size = 1, fill = 'white', colour = 'black'),
-          axis.text = element_text(size = 14, colour = 'black'),
-          axis.title = element_text(size = 14, colour = 'black'),
-          legend.text = element_text(size = 12))
+          axis.text = element_text(size = 18, colour = 'black'),
+          axis.title = element_text(size = 18, colour = 'black'),
+          legend.text = element_text(size = 18))
 
 
   ggsave(average_turnover_ot18_ot23, file = 'stat_pack_OT23/Figures/statpack_figures/decision_turnover_OT18_OT23.png', height = 12, width = 14, unit = 'in')
@@ -1703,13 +1711,15 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
 {
 
-  circuit_scorecard <- decisions_ot_23 %>%
+  circuit_scorecard_argued_decided_only <- decisions_ot_23 %>%
     filter(Lower_Court %in% c('CA1', 'CA2', 'CA3', 'CA4', 'CA5', 'CA6', 'CA7', 'CA8', 'CA9', 'CA10', 'CA11', 'CADC')) %>%
     select(Lower_Court, Decision) %>%
     mutate(decision = case_when(
       grepl('Affirm', Decision, ignore.case = TRUE) ~ 'Affirmed',
       grepl('Reverse|Remand', Decision, ignore.case = TRUE) ~ 'Reverse, Vacate,\n(and/or) Remand',
       TRUE ~ 'Other')) %>%
+    #add_row(Lower_Court = 'CA1', Decision = 'Vacate & Remand', decision = 'Reverse, Vacate,\n(and/or) Remand') %>% # Relentless
+    #add_row(Lower_Court = 'CA5', Decision = 'Vacate & Remand', decision = 'Reverse, Vacate,\n(and/or) Remand') %>% # Add Paxton v. Net Choice
     group_by(Lower_Court, decision) %>%
     summarise(count = n()) %>%
     ungroup() %>%
@@ -1757,15 +1767,17 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
           strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
           panel.background = element_rect(size = 1, fill = 'white', colour = 'black'))
 
-  ggsave(circuit_scorecard, file = 'stat_pack_OT23/Figures/statpack_figures/circuit_scorecard.png', width = 10, height = 8, units = 'in')
+  ggsave(circuit_scorecard_argued_decided_only, file = 'stat_pack_OT23/Figures/statpack_figures/circuit_scorecard_argued_decided_only.png', width = 10, height = 8, units = 'in')
 
-  circuit_scorecard <- decisions_ot_23 %>%
+  circuit_scorecard_argued_decided_only <- decisions_ot_23 %>%
     filter(Lower_Court %in% c('CA1', 'CA2', 'CA3', 'CA4', 'CA5', 'CA6', 'CA7', 'CA8', 'CA9', 'CA10', 'CA11', 'CADC')) %>%
     select(Lower_Court, Decision) %>%
     mutate(decision = case_when(
       grepl('Affirm', Decision, ignore.case = TRUE) ~ 'Affirmed',
       grepl('Reverse|Remand', Decision, ignore.case = TRUE) ~ 'Reverse, Vacate, (and/or) Remand',
       TRUE ~ 'Other')) %>%
+    #add_row(Lower_Court = 'CA1', Decision = 'Vacate & Remand', decision = 'Reverse, Vacate,\n(and/or) Remand') %>% # Relentless
+    #add_row(Lower_Court = 'CA5', Decision = 'Vacate & Remand', decision = 'Reverse, Vacate,\n(and/or) Remand') %>% # Add Paxton v. Net Choice
     group_by(Lower_Court, decision) %>%
     summarise(count = n()) %>%
     ungroup() %>%
@@ -1797,10 +1809,119 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
            `Decision (Type)` = decision,
            `Percent Outcome` = percent)
 
-  write.csv(circuit_scorecard, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Circuit Scorecard/circuit_scorecard.csv', row.names = F)
+  write.csv(circuit_scorecard_argued_decided_only, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Circuit Scorecard/circuit_scorecard_argued_decided_only.csv', row.names = F)
 
 
-} # Circuit Scorecard
+} # Circuit Scorecard (Orally Argued & Decided -- No Consolidations)
+
+{
+
+  additional_cases_consolidated <- data.frame(Lower_Court = c('CA11', 'CA9', 'CADC', 'CADC', 'CADC', 'CA10', 'CA5', 'CA9', 'CA9'),
+                                              Decision = c('Affirmed', 'DIG', 'Stay Granted', 'Stay Granted', 'Stay Granted', 'Affirmed', 'Reverse', 'Reverse', 'Reverse')) # Jackson (Brown), Idaho (Moyle), Kinder Morgan (Ohio), American Forest (Ohio), US Steel Corp (Ohio), Becerra (Becerra), Danco (FDA), Garland-Singh (Campos Chavez), Garland-Mendez (Campos Chavez)
+
+  circuit_scorecard_with_consolidations <- decisions_ot_23 %>%
+    filter(Lower_Court %in% c('CA1', 'CA2', 'CA3', 'CA4', 'CA5', 'CA6', 'CA7', 'CA8', 'CA9', 'CA10', 'CA11', 'CADC')) %>%
+    select(Lower_Court, Decision) %>%
+    bind_rows(additional_cases_consolidated) %>%
+    mutate(decision = case_when(
+      grepl('Affirm', Decision, ignore.case = TRUE) ~ 'Affirmed',
+      grepl('Reverse|Remand', Decision, ignore.case = TRUE) ~ 'Reverse, Vacate,\n(and/or) Remand',
+      TRUE ~ 'Other')) %>%
+    add_row(Lower_Court = 'CA1', Decision = 'Vacate & Remand', decision = 'Reverse, Vacate,\n(and/or) Remand') %>% # Relentless
+    add_row(Lower_Court = 'CA5', Decision = 'Vacate & Remand', decision = 'Reverse, Vacate,\n(and/or) Remand') %>% # Add Paxton v. Net Choice
+    group_by(Lower_Court, decision) %>%
+    summarise(count = n()) %>%
+    ungroup() %>%
+    group_by(Lower_Court) %>%
+    mutate(total_cases = sum(count),
+           Lower_Court = case_when(
+             Lower_Court == 'CA1' ~ '1st Circuit',
+             Lower_Court == 'CA2' ~ '2nd Circuit',
+             Lower_Court == 'CA3' ~ '3rd Circuit',
+             Lower_Court == 'CA4' ~ '4th Circuit',
+             Lower_Court == 'CA5' ~ '5th Circuit',
+             Lower_Court == 'CA6' ~ '6th Circuit',
+             Lower_Court == 'CA7' ~ '7th Circuit',
+             Lower_Court == 'CA8' ~ '8th Circuit',
+             Lower_Court == 'CA9' ~ '9th Circuit',
+             Lower_Court == 'CA10' ~ '10th Circuit',
+             Lower_Court == 'CA11' ~ '11th Circuit',
+             Lower_Court == 'CADC' ~ 'DC Circuit'),
+           circuit_label = paste0(Lower_Court, ' (', total_cases, ')'),
+           percent = round((count / total_cases) * 100, 2)) %>%
+    select(circuit_label, Lower_Court, decision, percent, total_cases) %>%
+    mutate(Lower_Court = factor(Lower_Court, levels = c('1st Circuit', '2nd Circuit', '3rd Circuit', '4th Circuit', '5th Circuit', '6th Circuit', '7th Circuit', '8th Circuit', '9th Circuit', '10th Circuit', '11th Circuit', 'DC Circuit'))) %>%
+    arrange(Lower_Court) %>%
+    mutate(circuit_label = factor(circuit_label, levels = unique(circuit_label)),
+           decision = factor(decision, levels = c('Affirmed', 'Reverse, Vacate,\n(and/or) Remand', 'Other'))) %>%
+    ggplot(aes(x = "", y = percent, fill = decision)) +
+    geom_bar(stat = "identity", colour = 'gray5') +
+    coord_polar(theta = 'y', start = 0) +
+    facet_wrap(~circuit_label, nrow = 3) +
+    theme_void() +
+    labs(
+      x = ' ',
+      y = ' ',
+      fill = ' ') +
+    scale_fill_manual(values = c('deepskyblue3', 'coral3', 'gray')) +
+    geom_label(aes(label = paste0(percent, ' %')), position = position_stack(vjust = 0.5), color = "gray5", size=5, show.legend = F) +
+    theme(legend.position = 'bottom',
+          legend.text = element_text(size = 15, colour = 'gray5'),
+          axis.text.x = element_blank(),
+          axis.ticks = element_blank(),
+          axis.title = element_text(size = 12),
+          axis.line = element_line(colour = 'black'),
+          strip.text = element_text(size = 12, colour = 'black', face = 'bold',
+                                    margin = margin(b = 10), vjust = -1, hjust = 0.5),
+          strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+          panel.background = element_rect(size = 1, fill = 'white', colour = 'black'))
+
+  ggsave(circuit_scorecard_with_consolidations , file = 'stat_pack_OT23/Figures/statpack_figures/circuit_scorecard_with_consolidations .png', width = 10, height = 8, units = 'in')
+
+
+  circuit_scorecard_with_consolidations <- decisions_ot_23 %>%
+    filter(Lower_Court %in% c('CA1', 'CA2', 'CA3', 'CA4', 'CA5', 'CA6', 'CA7', 'CA8', 'CA9', 'CA10', 'CA11', 'CADC')) %>%
+    select(Lower_Court, Decision) %>%
+    bind_rows(additional_cases_consolidated) %>%
+    mutate(decision = case_when(
+      grepl('Affirm', Decision, ignore.case = TRUE) ~ 'Affirmed',
+      grepl('Reverse|Remand', Decision, ignore.case = TRUE) ~ 'Reverse, Vacate,\n(and/or) Remand',
+      TRUE ~ 'Other')) %>%
+    add_row(Lower_Court = 'CA1', Decision = 'Vacate & Remand', decision = 'Reverse, Vacate,\n(and/or) Remand') %>% # Relentless
+    add_row(Lower_Court = 'CA5', Decision = 'Vacate & Remand', decision = 'Reverse, Vacate,\n(and/or) Remand') %>% # Add Paxton v. Net Choice
+    group_by(Lower_Court, decision) %>%
+    summarise(count = n()) %>%
+    ungroup() %>%
+    group_by(Lower_Court) %>%
+    mutate(total_cases = sum(count),
+           Lower_Court = case_when(
+             Lower_Court == 'CA1' ~ '1st Circuit',
+             Lower_Court == 'CA2' ~ '2nd Circuit',
+             Lower_Court == 'CA3' ~ '3rd Circuit',
+             Lower_Court == 'CA4' ~ '4th Circuit',
+             Lower_Court == 'CA5' ~ '5th Circuit',
+             Lower_Court == 'CA6' ~ '6th Circuit',
+             Lower_Court == 'CA7' ~ '7th Circuit',
+             Lower_Court == 'CA8' ~ '8th Circuit',
+             Lower_Court == 'CA9' ~ '9th Circuit',
+             Lower_Court == 'CA10' ~ '10th Circuit',
+             Lower_Court == 'CA11' ~ '11th Circuit',
+             Lower_Court == 'CADC' ~ 'DC Circuit'),
+           circuit_label = paste0(Lower_Court, ' (', total_cases, ')'),
+           percent = round((count / total_cases) * 100, 2)) %>%
+    select(circuit_label, Lower_Court, decision, percent, total_cases) %>%
+    mutate(Lower_Court = factor(Lower_Court, levels = c('1st Circuit', '2nd Circuit', '3rd Circuit', '4th Circuit', '5th Circuit', '6th Circuit', '7th Circuit', '8th Circuit', '9th Circuit', '10th Circuit', '11th Circuit', 'DC Circuit'))) %>%
+    arrange(Lower_Court) %>%
+    mutate(circuit_label = factor(circuit_label, levels = unique(circuit_label)),
+           decision = factor(decision, levels = c('Affirmed', 'Reverse, Vacate,\n(and/or) Remand', 'Other'))) %>%
+  rename(`Lower Court (Circuit)` = Lower_Court,
+         `Total Cases` = total_cases,
+         `Decision (Type)` = decision,
+         `Percent Outcome` = percent)
+
+  write.csv(circuit_scorecard_with_consolidations, file = 'stat_pack_OT23/Statpack Replication Data/Decisions/Circuit Scorecard/circuit_scorecard_with_consolidations.csv', row.names = F)
+
+} # Circuit Scorecard (with Consolidations Included)
 
 {
 
@@ -2179,7 +2300,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
   word_count_plot <- ggplot(data = word_counts, aes(y = word_count, x = speaker, fill = word_count)) +
     geom_hline(yintercept = 0, colour = 'gray5') +
     geom_col(colour = 'gray5') +
-    geom_text(aes(label = scales::comma(word_count)), vjust = -0.5, size = 5) +
+    geom_text(aes(label = scales::comma(word_count)), vjust = -0.5, size = 7) +
     geom_vline(xintercept = 0, linetype = "solid", color = "black", size = 1) + # Add a vertical line for the y-axis
     scale_fill_gradientn(
       colors = custom_colors,
@@ -2209,7 +2330,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
       plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
       plot.subtitle = element_text(size = 15, hjust = 0.5))
 
-  ggsave(word_count_plot, file = 'stat_pack_OT23/figures/word_count_plot_OT23.png')
+  ggsave(word_count_plot, file = 'stat_pack_OT23/Figures/statpack_figures/word_count_plot_OT23.png', height = 10, width = 10, units = 'in')
 
 } # Word Count (Total Figure)
 
@@ -2338,7 +2459,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     #scale_y_continuous(labels = scales::comma, breaks = seq(10000, 80000, 10000)) +
     geom_hline(yintercept = 0, colour = 'gray5') +
     geom_col(colour = 'gray5') +
-    geom_text(aes(label = scales::comma(total_word_count)), vjust = -0.5, size = 5) +
+    geom_text(aes(label = scales::comma(round(total_word_count, 0))), vjust = -0.5, size = 7) +
     geom_vline(xintercept = 0, linetype = "solid", color = "black", size = 1) + # Add a vertical line for the y-axis
     scale_fill_gradientn(
       colors = custom_colors,
@@ -2368,7 +2489,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
       plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
       plot.subtitle = element_text(size = 15, hjust = 0.5))
 
-    ggsave(speaking_time_plot, file = 'stat_pack_OT23/figures/total_time_spoken_plot_OT23.png')
+    ggsave(speaking_time_plot, file = 'stat_pack_OT23/Figures/statpack_figures/total_time_spoken_plot_OT23.png', height = 10, width = 10, units = 'in')
 
 } #Speaking Times (Total Figure)
 
@@ -2792,7 +2913,34 @@ load('docket_parser/OT18_OT22_dockets.rdata') #Load OT23 Dockets
 
 {
 
-  average_amici_filed_by_granted_type <- amici_dockets %>%
+  average_amici_filed_by_granted_type_granted <- amici_dockets %>%
+    filter(grepl('\\-', docket_number)) %>%
+    group_by(filing_year, petition_granted) %>%
+    summarise(total_amici = sum(total_amici),
+              total_cases = n()) %>%
+    mutate(average_per_case = round(total_amici/total_cases, 2)) %>%
+    mutate(petition_granted = ifelse(petition_granted == 1, 'Petition Granted', 'Petition Denied'),
+           petition_granted = factor(petition_granted, levels = c('Petition Granted', 'Petition Denied'))) %>%
+    filter(petition_granted == 'Petition Granted') %>%
+    ggplot(aes(x = factor(filing_year), y = average_per_case)) +
+    geom_bar(stat = 'identity', fill = 'gray50', colour = 'gray5') +
+    scale_y_continuous(breaks = seq(5, 30, 5)) +
+    geom_label(aes(label = average_per_case), vjust = 2, size = 7) +
+    geom_hline(yintercept = 0) +
+    theme_bw() +
+    labs(
+      x = '\nFiling Year\n',
+      y = '\nAverage Amici Filed\n') +
+    theme(legend.position = 'none',
+          strip.text = element_text(size = 12, colour = 'black', face = 'bold',
+                                    margin = margin(b = 10), vjust = -1, hjust = 0.5),
+          strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
+          panel.background = element_rect(size = 1, fill = 'white', colour = 'black'),
+          axis.text = element_text(size = 18, colour = 'black'),
+          axis.title = element_text(size = 18, colour = 'black'))
+
+
+  average_amici_filed_by_granted_type_denied <- amici_dockets %>%
     filter(grepl('\\-', docket_number)) %>%
     group_by(filing_year, petition_granted) %>%
     summarise(total_amici = sum(total_amici),
@@ -2801,9 +2949,10 @@ load('docket_parser/OT18_OT22_dockets.rdata') #Load OT23 Dockets
     mutate(petition_granted = ifelse(petition_granted == 1, 'Petition Granted', 'Petition Denied'),
            petition_granted = factor(petition_granted, levels = c('Petition Granted', 'Petition Denied')),
            filing_year = as.numeric(str_replace(as.character(filing_year), "^\\d{2}", ""))) %>%
+    filter(petition_granted == 'Petition Denied') %>%
     ggplot(aes(x = factor(filing_year), y = average_per_case)) +
     geom_bar(stat = 'identity', fill = 'gray50', colour = 'gray5') +
-    facet_wrap(~petition_granted, scales = 'free_y') +
+    scale_y_continuous(breaks = seq(0.05, 0.15, 0.05), lim = c(0, 0.15)) +
     geom_label(aes(label = average_per_case), vjust = 2) +
     geom_hline(yintercept = 0) +
     theme_bw() +
@@ -2815,11 +2964,12 @@ load('docket_parser/OT18_OT22_dockets.rdata') #Load OT23 Dockets
                                     margin = margin(b = 10), vjust = -1, hjust = 0.5),
           strip.background = element_rect(size = 1, colour = 'black', fill = 'gray'),
           panel.background = element_rect(size = 1, fill = 'white', colour = 'black'),
-          axis.text = element_text(size = 14, colour = 'black'),
-          axis.title = element_text(size = 12, colour = 'black'))
+          axis.text = element_text(size = 18, colour = 'black'),
+          axis.title = element_text(size = 18, colour = 'black'))
 
+  ggsave(average_amici_filed_by_granted_type_granted, file = 'stat_pack_OT23/Figures/statpack_figures/average_amici_filed_by_granted_type_granted.png', height = 10, width = 10, units = 'in')
+  ggsave(average_amici_filed_by_granted_type_denied, file = 'stat_pack_OT23/Figures/statpack_figures/average_amici_filed_by_granted_type_denied.png', height = 10, width = 10, units = 'in')
 
-  ggsave(average_amici_filed_by_granted_type, file = 'stat_pack_OT23/Figures/statpack_figures/average_amici_filed_by_granted_type_term.png', height = 10, width = 10, units = 'in')
 
 } #Analyzing Amicus Filing Trends (2018-23)
 

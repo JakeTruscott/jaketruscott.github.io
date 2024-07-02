@@ -257,9 +257,6 @@ get_vote_color <- function(value){
 
 } #Compile Vote Matrix Table
 
-
-decisions_info #Preview Info Table
-
 ###############################################################################
 #Save to Local Machine
 ###############################################################################

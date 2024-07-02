@@ -1,12 +1,13 @@
-term,total_cases,count,coalition,percent
-2018 Term (76),76,27,(9-0),35.53
-2018 Term (76),76,49,Other,64.47
-2019 Term (76),76,25,(9-0),32.89
-2019 Term (76),76,51,Other,67.11
-2020 Term (80),80,28,(9-0),35
-2020 Term (80),80,52,Other,65
-2021 Term (72),72,19,(9-0),26.39
-2021 Term (72),72,53,Other,73.61
-2022 Term (69),69,32,(9-0),46.38
-2022 Term (69),69,37,Other,53.62
-2023 Term (56),56,56,Other,100
+Term (Total Decisions),Count,Coalition,Percent
+2018 Term (76),27,Unanimous,35.53
+2018 Term (76),49,Other,64.47
+2019 Term (76),25,Unanimous,32.89
+2019 Term (76),51,Other,67.11
+2020 Term (80),28,Unanimous,35
+2020 Term (80),52,Other,65
+2021 Term (72),19,Unanimous,26.39
+2021 Term (72),53,Other,73.61
+2022 Term (69),32,Unanimous,46.38
+2022 Term (69),37,Other,53.62
+2023 Term (59),27,Unanimous,45.76
+2023 Term (59),32,Other,54.24
