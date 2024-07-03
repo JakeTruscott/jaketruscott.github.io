@@ -99,6 +99,8 @@ Works In Progress
 
 Media Coverage
 ======
+* Quinn, M. (2024, July 3). 4 major takeaways from the Supreme Court's most consequential term in years. <i> CBS News </i>. Retrieved from https://www.cbsnews.com/news/supreme-court-takeaways-trump-chevron-abortion/ <br>
+* Wall Street Journal Editorial Board. (2024, July 2). The ‘MAGA Supreme Court’ Doesn’t Exist. <i> The Wall Street Journal </i>. Retrieved from https://www.wsj.com/articles/supreme-court-term-donald-trump-joe-biden-chuck-schumer-sonia-sotomayor-7ea655b3?mod=hp_opin_pos_1 <br>
 * Marimow, A. (2024, July 2). As Trump dominated the docket, divided Supreme Court moved boldy to the right. <i> The Washington Post </i>. Retrieved from https://www.washingtonpost.com/politics/2024/07/02/supreme-court-2024-conservative-power-trump/ <br>
 * Blackman, J. (2024, July 2). Which circuit had the highest reversal rate? <i> Reason </i>. Retrieved from https://reason.com/volokh/2024/07/02/which-circuit-had-the-highest-reversal-rate/
 * Barnes, R. (2023, July 1). Supreme Court delivered big conservative wins, and a mixed message. <i> The Washington Post </i>. Retrieved from  https://www.washingtonpost.com/politics/2023/07/01/supreme-court-term-conservative-wins/ <br>
