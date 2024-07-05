@@ -930,19 +930,23 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     rename(case = short_hand,
            coalition = Coalition) %>%
     mutate(coalition = case_when(
-      .default = '(9-0) or (8-0)',
-      coalition %in% c('(8-1)') ~ '(8-1)',
+      .default = '(9-0)',
+      coalition %in% c('(8-1)') ~ '(8-1) or (8-0)',
       coalition %in% c('(7-2)', '(7-1)') ~  '(7-2) or (7-1)',
       coalition %in% c('(6-3)', '(6-2)') ~ '(6-3) or (6-2)',
       coalition %in% c('(5-4)', '(5-3)') ~ '(5-4) or (5-3)',
       coalition == '(4-4)' ~ '(4-4)')) %>%
     mutate(case = ifelse(grepl('U\\.\\S\\.', case), case, gsub(' v\\..*', '', case)))
 
-  decisions_by_coalition_2018_2022 <- scdb_cases_2023 %>%
+
+  decisions_by_coalition_2018_2022 <- scdb_justices_2023 %>%
+    filter(!is.na(dateArgument)) %>%
+    select(docket, term, majVotes) %>%
+    unique() %>%
     filter(term >= 2018) %>%
     mutate(coalition = case_when(
-      majVotes == 9 ~ '(9-0) or (8-0)',
-      majVotes == 8 ~ '(8-1)',
+      majVotes == 9 ~ '(9-0)',
+      majVotes == 8 ~ '(8-1) or (8-0)',
       majVotes == 7 ~ '(7-2) or (7-1)',
       majVotes == 6 ~ '(6-3) or (6-2)',
       majVotes == 5 ~ '(5-4) or (5-3)',
@@ -975,7 +979,10 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     ggsave("stat_pack_OT23/Figures/statpack_figures/decisions_by_coalition_2018_2023.png", decisions_by_coalition_2018_2022, width = 8, height = 10, unit = 'in')
 
 
-    decisions_by_coalition_2018_2022 <- scdb_cases_2023 %>%
+    decisions_by_coalition_2018_2022 <- scdb_justices_2023 %>%
+      filter(!is.na(dateArgument)) %>%
+      select(docket, term, majVotes) %>%
+      unique() %>%
       filter(term >= 2018) %>%
       mutate(coalition = case_when(
         majVotes == 9 ~ '(9-0)',

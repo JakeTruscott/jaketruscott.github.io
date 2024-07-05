@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.15)  2 JUL 2024 05:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.15)  3 JUL 2024 22:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3155,7 +3155,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.12 \begin{landscape}
+l.11 \begin{landscape}
                        <./Figures/statpack_figures/decisions_by_coalition_2018_
 2023.png>]
 <Figures/statpack_figures/share_of_unanimity_2018_2023.png, id=418, 722.7pt x 7
@@ -3164,7 +3164,7 @@ File: Figures/statpack_figures/share_of_unanimity_2018_2023.png Graphic file (t
 ype png)
 <use Figures/statpack_figures/share_of_unanimity_2018_2023.png>
 Package pdftex.def Info: Figures/statpack_figures/share_of_unanimity_2018_2023.
-png  used on input line 16.
+png  used on input line 15.
 (pdftex.def)             Requested size: 375.80544pt x 375.80615pt.
 [49
 
@@ -3173,7 +3173,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.21 \end{landscape}
+l.20 \end{landscape}
                      <./Figures/statpack_figures/share_of_unanimity_2018_2023.p
 ng>]) (statpack_sections/opinion_lengths_statpack.tex
 
@@ -3417,7 +3417,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.18}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.42 \end{landscape}
+l.43 \end{landscape}
                      <./Figures/statpack_figures/ideological_splits_OT20_OT23.p
 ng>]
 <Figures/statpack_figures/opinions_by_justice_OT23.png, id=475, 867.24pt x 578.
@@ -3426,7 +3426,7 @@ File: Figures/statpack_figures/opinions_by_justice_OT23.png Graphic file (type
 png)
 <use Figures/statpack_figures/opinions_by_justice_OT23.png>
 Package pdftex.def Info: Figures/statpack_figures/opinions_by_justice_OT23.png 
- used on input line 50.
+ used on input line 51.
 (pdftex.def)             Requested size: 469.75502pt x 313.17216pt.
 [58
 
@@ -3436,7 +3436,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.19}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.52 \end{landscape}
+l.53 \end{landscape}
                      <./Figures/statpack_figures/opinions_by_justice_OT23.png>]
 ) (statpack_sections/docket_introduction_statpack.tex
 
@@ -3771,7 +3771,7 @@ e Truscott/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/
 Users/Jake Truscott/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.
 pfb><C:/Users/Jake Truscott/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times
 /utmri8a.pfb>
-Output written on SCOTUS_Stat_Review_OT23.pdf (68 pages, 10069860 bytes).
+Output written on SCOTUS_Stat_Review_OT23.pdf (68 pages, 10071628 bytes).
 PDF statistics:
  596 PDF objects out of 1000 (max. 8388607)
  135 named destinations out of 1000 (max. 500000)
