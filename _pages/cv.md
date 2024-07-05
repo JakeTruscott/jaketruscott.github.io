@@ -94,6 +94,8 @@ Works In Progress
 * Measuring Judicial Ideology Through Text. Co-Author: Michael K. Romano (Shenandoah University).
 * Do Oral Arguments Influence the Language of Majority Opinions? Co-Authors: Dr. Bryce Dietrich (Purdue University) and Dr. Maya Sen (Harvard University)
 * Untitled Research Using C-SPAN Archives. Co-Author: Dr. Bryce Dietrich (Purdue University)
+* A Multimodal Analysis of Emotional Arousal and Activation in Supreme Court Confirmation Hearings. Co-Author: Dr. Myriam Shiran (CCSE)
+* Predictions as Inference (Working Title). Co-Authors: Dr. Benjamin Johnson (University of Florida) and Dr. Logan Strother (Purdue University)
 * Ideological Congruence and Judicial Departures from the U.S. Courts of Appeals. Co-Author: Dr. Richard Vining (University of Georgia)
 
 
