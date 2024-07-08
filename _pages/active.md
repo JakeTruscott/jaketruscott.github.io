@@ -23,10 +23,6 @@ Large language models pre-trained on massive corpora of text from the Internet h
 
 Recommended citation: Ornstein, J. T., Blasingame, E. N., & Truscott, J. S. (2022). How to Train Your Stochastic Parrot: Large Language Models for Political Texts.
 
-<h3> A Social Media Platform Model of Supreme Court News </h3>
-An economic model of news (Hamilton 2004; McManus 1988; Vining and Marcin 2014) contends that the pressures of limited column space and market competition force media actors to be strategic about which notable events receive a great deal of coverage, if any at all. Applying this framework to the Supreme Court can explain why print and digital coverage of the justices’ decision-making has historically been sensationalized and reserved for decisions sure to have a pronounced effect on public discourse. However, the emergence of social media as a practical alternative for mass media dissemination raises notable questions, chief among them being whether the economic framework fully extends to this newer medium. In this study, I analyze media coverage of the Court using Twitter and observe important distinctions among environments for news dissemination. I argue that the apparent reduction in the economic costs associated with coverage dissemination and consumption on social media like Twitter requires viewing Supreme Court news on these platforms through an amended theoretical framework.
-
-
 <h2><b>Works in Progress</b></h2> 
 
 <h3> Idea Diffusion and Coalition Building: How Oral Arguments Influence the Language of U.S. Supreme Court Opinions</h3>
@@ -42,4 +38,10 @@ An economic model of news (Hamilton 2004; McManus 1988; Vining and Marcin 2014) 
 <i> Co-Authored with Bryce Dietrich, Myriam Shiran, Jasper Neath, and Ryan Funkhouser (Purdue University) </i>
 
 <h3> Amici as Information: Re-Examining the Role of Amicus Curiae in an Information-Bolstering Environment </h3>
-<i> Co-Authored with Bryce Dietrich (Purdue University </i>
+<i> Co-Authored with Bryce Dietrich (Purdue University) </i>
+
+<h3> Predictions as Inference (Working Title) </h3>
+<i> Co-Authored with Benjamin Johnson (University of Florida) and Logan Strother (Purdue University) </i>
+
+<h3> A Multimodal Analysis of Emotional Arousal and Activation in Supreme Court Confirmation Hearings </h3>
+<i> Co-Authored with Myriam Shiran (Purdue University) </i>
