@@ -101,6 +101,8 @@ Works In Progress
 
 Media Coverage
 ======
+* Joseph, J. (2024, August 1). Unpacking the Supreme Court: Why it's not just a MAGA stronghold, and how the justices really vote. <i> FOXNEWS </i>. Retrieved from https://www.foxnews.com/politics/unpacking-supreme-court-why-its-not-just-maga-stronghold-how-justices-really-vote <br>
+* Biskupic, J. (2024, July 30). Exclusive: The inside story of John Roberts and Trump’s immunity win at the Supreme Court. <i> CNN </i>. Retrieved from https://www.cnn.com/2024/07/30/politics/supreme-court-john-roberts-trump-immunity-6-3-biskupic <br>
 * Quinn, M. (2024, July 3). 4 major takeaways from the Supreme Court's most consequential term in years. <i> CBS News </i>. Retrieved from https://www.cbsnews.com/news/supreme-court-takeaways-trump-chevron-abortion/ <br>
 * Wall Street Journal Editorial Board. (2024, July 2). The ‘MAGA Supreme Court’ Doesn’t Exist. <i> The Wall Street Journal </i>. Retrieved from https://www.wsj.com/articles/supreme-court-term-donald-trump-joe-biden-chuck-schumer-sonia-sotomayor-7ea655b3?mod=hp_opin_pos_1 <br>
 * Marimow, A. (2024, July 2). As Trump dominated the docket, divided Supreme Court moved boldy to the right. <i> The Washington Post </i>. Retrieved from https://www.washingtonpost.com/politics/2024/07/02/supreme-court-2024-conservative-power-trump/ <br>
