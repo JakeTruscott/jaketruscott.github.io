@@ -1229,7 +1229,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
 {
 
-  decisions_23 <- decision_processor2(dir_path = "ot23_decisions/decision_pdfs_OT23") #OT23
+  decisions_23 <- decision_processor2(dir_path = "stat_pack_OT23/ot23_decisions/decision_pdfs_OT23") #OT23
 
   ten_longest <- decisions_23 %>%
     rename(docket = docket_id) %>%

@@ -10,6 +10,8 @@
 library(kableExtra); library(dplyr); library(tidyr); library(scotustext); library(htmltools); library(ggplot2); library(png); library(dplyr); library(stringi); library(stringr); library(ggplot2); library(ggthemes); library(anytime); library(tm); library(scotustext); library(readxl); library(ggpattern); library(png); library(ggtext); library(grid); library(wesanderson); library(tidyr)
 
 
+####  PUSH FIGURES TO STAT_PACK_O24/EMPIRICAL_SCOTUS_FIGURES!!!
+
 ################################################################################
 # Justice Images
 # Note: Set Directory to Folder Containing Data Repository (Will Include 'justice_images' folder...)
