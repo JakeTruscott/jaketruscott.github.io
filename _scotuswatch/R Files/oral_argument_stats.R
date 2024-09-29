@@ -90,41 +90,27 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
     oa_table <- oa_data %>%
       kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
-      add_header_above( original_column_names) %>%
+      add_header_above(original_column_names) %>%
       column_spec(1, bold = TRUE, border_right = TRUE) %>%
       row_spec(0, bold = TRUE, color = 'white', background = '#080808', align = 'center') %>%
       row_spec(seq(1, nrow(oa_data), 1), align = 'center') %>%
       kable_styling(font_size = 12, bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
-      column_spec(2, color = "white",
-                  background = spec_color(oa$ROBERTS, end = 0.5),
-                  popover = paste("am:", oa$ROBERTS)) %>%
-      column_spec(3, color = "white",
-                  background = spec_color(oa$ALITO, end = 0.5),
-                  popover = paste("am:", oa$ALITO)) %>%
-      column_spec(4, color = "white",
-                  background = spec_color(oa$BARRETT, end = 0.5),
-                  popover = paste("am:", oa$BARRETT)) %>%
-      column_spec(5, color = "white",
-                  background = spec_color(oa$GORSUCH, end = 0.5),
-                  popover = paste("am:", oa$GORSUCH)) %>%
-      column_spec(6, color = "white",
-                  background = spec_color(oa$JACKSON, end = 0.5),
-                  popover = paste("am:", oa$JACKSON)) %>%
-      column_spec(7, color = "white",
-                  background = spec_color(oa$KAGAN, end = 0.5),
-                  popover = paste("am:", oa$KAGAN)) %>%
-      column_spec(8, color = "white",
-                  background = spec_color(oa$KAVANAUGH, end = 0.5),
-                  popover = paste("am:", oa$KAVANAUGH)) %>%
-      column_spec(9, color = "white",
-                  background = spec_color(oa$SOTOMAYOR, end = 0.5),
-                  popover = paste("am:", oa$SOTOMAYOR)) %>%
-      column_spec(10, color = "white",
-                  background = spec_color(oa$THOMAS, end = 0.5),
-                  popover = paste("am:", oa$THOMAS))
+      column_spec(2, color = "white", background = spec_color(oa$ROBERTS, end = 0.5), popover = paste("am:", oa$ROBERTS)) %>%
+      column_spec(3, color = "white", background = spec_color(oa$ALITO, end = 0.5), popover = paste("am:", oa$ALITO)) %>%
+      column_spec(4, color = "white", background = spec_color(oa$BARRETT, end = 0.5), popover = paste("am:", oa$BARRETT)) %>%
+      column_spec(5, color = "white", background = spec_color(oa$GORSUCH, end = 0.5), popover = paste("am:", oa$GORSUCH)) %>%
+      column_spec(6, color = "white", background = spec_color(oa$JACKSON, end = 0.5), popover = paste("am:", oa$JACKSON)) %>%
+      column_spec(7, color = "white", background = spec_color(oa$KAGAN, end = 0.5), popover = paste("am:", oa$KAGAN)) %>%
+      column_spec(8, color = "white", background = spec_color(oa$KAVANAUGH, end = 0.5), popover = paste("am:", oa$KAVANAUGH)) %>%
+      column_spec(9, color = "white", background = spec_color(oa$SOTOMAYOR, end = 0.5), popover = paste("am:", oa$SOTOMAYOR)) %>%
+      column_spec(10, color = "white", background = spec_color(oa$THOMAS, end = 0.5), popover = paste("am:", oa$THOMAS)) %>%
+      scroll_box(height = "500px", extra_css = "thead th { position: sticky; top: 0; background: #080808; color: white; }")
+
 
 
     oa_table
+
+    save_kable(oa_table, "C:/Users/Jake Truscott/Desktop/test.html")
 
   } #By Argument Table
   save_kable(oa_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/oa_table_23_active.html")
@@ -182,7 +168,9 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
                   popover = paste("am:", totals$SOTOMAYOR)) %>%
       column_spec(10, color = "white",
                   background = spec_color(totals$THOMAS, end = 0.5),
-                  popover = paste("am:", totals$THOMAS))
+                  popover = paste("am:", totals$THOMAS)) %>%
+      scroll_box(height = "500px", extra_css = "thead th { position: sticky; top: 0; background: #080808; color: white; }")
+
 
 
 
