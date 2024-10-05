@@ -31,18 +31,18 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   KENNEDY <- readPNG("justice_images/Kennedy.png")
 
   justice_image_labels <- c(
-    ALITO = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Alito.png' width='75' /><br>",
-    ROBERTS = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Roberts.png' width='75' /><br>",
-    THOMAS = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Thomas.png' width='75' /><br>",
-    SOTOMAYOR = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Sotomayor.png' width='75' /><br>",
-    KAGAN = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Kagan.png' width='75' /><br>",
-    GORSUCH = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Gorsuch.png' width='75' /><br>",
-    KAVANAUGH = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Kavanaugh.png' width='75' /><br>",
-    BARRETT = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Barrett.png' width='75' /><br>",
-    JACKSON = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Jackson.png' width='75' /><br>",
-    BREYER = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Breyer.png' width='75' /><br>",
-    GINSBURG = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Ginsburg.png' width='75' /><br>",
-    KENNEDY = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Kennedy.png' width='75' /><br>"
+    ALITO = "<img src='https://github.com/JakeTruscott/jaketruscott.github.io/blob/master/_scotuswatch/justice_images/Alito.png?raw=true' style='width: 75%; height: 75%; object-fit: cover;' /><br>",
+    ROBERTS = "<img src='https://github.com/JakeTruscott/jaketruscott.github.io/blob/master/_scotuswatch/justice_images/Roberts.png?raw=true' style='width: 75%; height: 75%; object-fit: cover;' /><br>",
+    THOMAS = "<img src='https://github.com/JakeTruscott/jaketruscott.github.io/blob/master/_scotuswatch/justice_images/Thomas.png?raw=true' style='width: 75%; height: 75%; object-fit: cover;' /><br>",
+    SOTOMAYOR = "<img src='https://github.com/JakeTruscott/jaketruscott.github.io/blob/master/_scotuswatch/justice_images/Sotomayor.png?raw=true' style='width: 75%; height: 75%; object-fit: cover;' /><br>",
+    KAGAN = "<img src='https://github.com/JakeTruscott/jaketruscott.github.io/blob/master/_scotuswatch/justice_images/Kagan.png?raw=true' style='width: 75%; height: 75%; object-fit: cover;' /><br>",
+    GORSUCH = "<img src='https://github.com/JakeTruscott/jaketruscott.github.io/blob/master/_scotuswatch/justice_images/Gorsuch.png?raw=true' style='width: 75%; height: 75%; object-fit: cover;' /><br>",
+    KAVANAUGH = "<img src='https://github.com/JakeTruscott/jaketruscott.github.io/blob/master/_scotuswatch/justice_images/Kavanaugh.png?raw=true' style='width: 75%; height: 75%; object-fit: cover;' /><br>",
+    BARRETT = "<img src='https://github.com/JakeTruscott/jaketruscott.github.io/blob/master/_scotuswatch/justice_images/Barrett.png?raw=true' style='width: 75%; height: 75%; object-fit: cover;' /><br>",
+    JACKSON = "<img src='https://github.com/JakeTruscott/jaketruscott.github.io/blob/master/_scotuswatch/justice_images/Jackson.png?raw=true' style='width: 75%; height: 75%; object-fit: cover;' /><br>",
+    BREYER = "<img src='https://github.com/JakeTruscott/jaketruscott.github.io/blob/master/_scotuswatch/justice_images/Breyer.png?raw=true' style='width: 75%; height: 75%; object-fit: cover;' /><br>",
+    GINSBURG = "<img src='https://github.com/JakeTruscott/jaketruscott.github.io/blob/master/_scotuswatch/justice_images/Ginsburg.png?raw=true' style='width: 75%; height: 75%; object-fit: cover;' /><br>",
+    KENNEDY = "<img src='https://github.com/JakeTruscott/jaketruscott.github.io/blob/master/_scotuswatch/justice_images/Kennedy.png?raw=true' style='width: 75%; height: 75%; object-fit: cover;' /><br>"
   )
 } #Justice Images
 
@@ -399,11 +399,14 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     oa_table
 
   } #By Argument Table
-  save_kable(oa_table, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/April Sitting 2023/oa_table_23_april.html")
+  save_kable(oa_table, "stat_pack_OT24/Oral Arguments/Test Folder/test_html_figure.html")
   html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/April Sitting 2023/oa_table_23_april.html"
   #webshot::install_phantomjs(force = T)
   phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
   webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/April Sitting 2023/oa_table_23_april.png", vwidth = 1250, vheight = 100)
+
+  html_output <- as.character(oa_table)
+  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/Test Folder/test_html_figure.txt')
 
   {
 

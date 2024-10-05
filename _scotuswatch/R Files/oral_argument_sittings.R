@@ -9,6 +9,70 @@
 ###############################################################################
 library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); library(htmltools); library(ggplot2); library(png); library(dplyr); library(stringi); library(stringr); library(ggplot2); library(ggthemes); library(anytime); library(tm); library(scotustext); library(readxl); library(ggpattern); library(png); library(ggtext); library(grid); library(wesanderson); library(tidyr); library(readxl)
 
+
+
+
+
+
+{
+  case <- c('Nancy Williams, et al. v. Fitzgerald Washington, AL Sec. of Labor', "Royal Canin U.S.A, Inc., et al. v. Anastasia Wullschleger, et al.", "Garland, Attorney Gen., et al. v. Jennifer VanDerStok, et al.", "Gerald F. Lackey, Comm. VA DMV v. Damian Stinnie, et al.", "Richard Eugene Glossip v. Oklahoma", "Medical Marijuana, Inc., et al. v. Douglas J. Horn", "Amina Bouarfa v. Alejandro Mayorkas, Sec. of Homeland Security, et al.", "Joshua Bufkin v. Denis R. McDonough, Sec. of Veterans Affairs", "City and County of San Francisco, CA v. EPA")
+  docket <- c('23-191', '23-677', '23-852', '23-621',  '22-7466', '23-365', '23-583', '23-713', '23-753')
+  argued <- c('10/07/24', '10/07/24', '10/08/24', '10/08/24', '10/09/24', '10/15/24', '10/15/24', '10/16/24', '10/16/24')
+  petitioner <- c('Adam G. Unikowsky', 'Katherine B. Wellington', 'Elizabeth B. Prelogar', 'Erika L. Maley', 'Seth P. Waxman', 'Lisa S. Blatt', 'Samir Deger-Sen', 'Melanie L. Bostwick', 'Tara M. Steeley')
+  respondent <- c('Edmund G. LaCour, Jr.', 'Ashley C. Keller', 'Peter A. Patterson', 'Brian D. Schmalzbach', 'Paul D. Clement', 'Easha Anand', 'Colleen R. Sinzdak', 'Sopan Joshi', 'Frederick Liu')
+  amici <- c('', '', '', 'Anthony A. Yang', 'Christopher G. Michel', '', '', '', '')
+  lower_court <- c('SCAL', 'CA8',  'CA5', 'CA4', 'CCAOK', 'CA2', 'CA11', 'CAFC', 'CA9')
+  cert_amici <- c(rep(0, 9))
+  merits_amici <- c(rep(0, 9))
+
+  october_sitting <- data.frame(
+    'Case' = case,
+    'Docket' = docket,
+    'Argued' = argued,
+    'Petitioner Counsel' = petitioner,
+    'Respondent Counsel' = respondent,
+    'Arguing Amici' = amici,
+    'Lower Court' = lower_court,
+    'Cert-Stage Amici' = cert_amici,
+    'Merits-Stage Amici' = merits_amici
+  )
+  names(october_sitting) <- gsub("\\.", " ", names(october_sitting))
+
+  october_sitting_cases <- october_sitting %>%
+    kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
+    column_spec(1, bold = TRUE, border_right = TRUE, width = "6cm") %>%  # Set the width of the first column
+    column_spec(2:8, width = "3cm") %>%  # Set the width of columns 2 to 8
+    row_spec(0, bold = TRUE, color = 'white', background = '#080808', align = 'center') %>%
+    row_spec(seq(1, nrow(october_sitting), 1), align = 'center') %>%
+    kable_styling(font_size = 12, bootstrap_options = c("striped", "hover", "condensed"))
+
+
+  html_output <- as.character(october_sitting_cases)
+  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/October/october_sitting.txt')
+
+
+
+
+
+} #October Sitting
+
+
+
+
+
+
+
+
+
+
+
+
+###############################################################################
+###############################################################################
+#Old Terms
+###############################################################################
+###############################################################################
+
 ###############################################################################
 # Tables by Sitting
 ###############################################################################
