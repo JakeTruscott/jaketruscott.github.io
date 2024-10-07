@@ -22,8 +22,9 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
   respondent <- c('Edmund G. LaCour, Jr.', 'Ashley C. Keller', 'Peter A. Patterson', 'Brian D. Schmalzbach', 'Paul D. Clement', 'Easha Anand', 'Colleen R. Sinzdak', 'Sopan Joshi', 'Frederick Liu')
   amici <- c('', '', '', 'Anthony A. Yang', 'Christopher G. Michel', '', '', '', '')
   lower_court <- c('SCAL', 'CA8',  'CA5', 'CA4', 'CCAOK', 'CA2', 'CA11', 'CAFC', 'CA9')
-  cert_amici <- c(rep(0, 9))
-  merits_amici <- c(rep(0, 9))
+  cert_briefs <- c(0, 1, 2, 1, 3, 1, 1, 4, 2)
+  merits_briefs <- c(6, 6, 24, 14, 14, 7, 8, 5, 10)
+
 
   october_sitting <- data.frame(
     'Case' = case,
@@ -33,8 +34,8 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
     'Respondent Counsel' = respondent,
     'Arguing Amici' = amici,
     'Lower Court' = lower_court,
-    'Cert-Stage Amici' = cert_amici,
-    'Merits-Stage Amici' = merits_amici
+    'Cert Amici' = cert_briefs,
+    'Merits Amici' = merits_briefs
   )
   names(october_sitting) <- gsub("\\.", " ", names(october_sitting))
 
