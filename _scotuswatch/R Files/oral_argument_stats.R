@@ -45,12 +45,6 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
 } #Justice Images
 
-
-
-################################################################################
-# OT 2024 (Totals)
-################################################################################
-
 {
 
   base_url <- "https://github.com/JakeTruscott/scotustext/raw/master/Data/"
@@ -58,6 +52,12 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   load(url(rdata_url))
 
 } # Load 2024 Data from Github Repository
+
+
+
+################################################################################
+# OT 2024 (Totals -- Justices)
+################################################################################
 
 
 {
@@ -131,7 +131,6 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
   } # Cell Color Assignment
 
-
   {
 
     oa_words_table <- colored_data %>%
@@ -157,7 +156,90 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   writeLines(html_output, 'stat_pack_OT24/Oral Arguments/Combined/combined_total_words.txt')
 
 
-} # Word Totals
+} # Word Totals Table
+
+{
+
+  {
+    oa <- scotus_OT23 %>%
+      filter(speaker_type == 'Justice') %>%
+      group_by(speaker, case_name) %>%
+      summarise(total_word_count = sum(word_count)) %>%
+      pivot_wider(names_from = speaker, values_from = total_word_count, names_prefix = "word_count_")
+
+    names(oa) <- gsub('(CHIEF JUSTICE |JUSTICE )', '', names(oa))
+    names(oa) <- gsub('word_count_', '', names(oa))
+
+
+    totals <- oa %>%
+      select(-case_name) %>%
+      summarise_all(.funs = sum, na.rm = T)
+
+    totals <- cbind(data.frame('case_name' = 'Totals'), totals)
+
+    oa <- oa %>%
+      mutate(case_name = ifelse(grepl('Kinder Morgan', case_name), 'Ohio, Et Al. Applicants v. Epa (Consolidated w/ 23A350, 23A351, 23A384)', case_name)) %>%
+      rename(' ' = case_name)
+
+    oa_data <- oa
+    matching_columns <- intersect(colnames(oa_data), names(justice_image_labels))
+
+    original_column_names <- colnames(oa_data)
+
+
+  } #Process Data
+
+  {
+
+
+
+    figure_data <- oa_data %>%
+      pivot_longer(cols = -1, names_to = "justice", values_to = "count") %>%
+      mutate(count = ifelse(is.na(count), 0, count)) %>%
+      group_by(justice) %>%
+      summarize(total = sum(count), .groups = "drop") %>%
+      mutate(image_labels = justice_image_labels[match(justice, names(justice_image_labels))],
+             image_labels = gsub(' style\\=.*', '', image_labels),
+             image_labels = paste0(image_labels, " width='100' /><br><strong>", justice, "</strong>"))
+
+    image_labels <- figure_data$image_labels
+
+    words_spoken_figure <- ggplot(figure_data, aes(x = factor(justice), y = total)) +
+      geom_col(aes(fill = total), colour = 'gray5') +
+      labs(y = " ",
+           x = " ",
+           title = " ") +
+      scale_fill_gradient(low = 'gray50', high = 'olivedrab') +
+      geom_label(aes(label = scales::comma(total)), vjust = 1, size = 4) +
+      geom_hline(yintercept = 0) +
+      scale_x_discrete(labels = image_labels) +
+      theme_classic() +
+      theme(
+        axis.text.x = ggtext::element_markdown(),
+        panel.grid = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.ticks.y = element_blank(),
+        legend.background = element_rect(linewidth = 1, fill = "NA", colour = "black"),
+        legend.box.background = element_rect(fill = NA, colour = "black"),
+        legend.position = "none",
+        legend.title = element_blank(),
+        legend.title.align = 0.5,
+        legend.text = element_text(size = 12),
+        plot.caption = element_text(hjust = 0.5, size = 12),
+        plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+        plot.subtitle = element_text(size = 15, hjust = 0.5))
+
+
+
+  } # Totals Figure
+
+
+  ggsave(words_spoken_figure, file = 'stat_pack_OT24/Oral Arguments/Combined/words_spoken_total.png', height = 6, width = 8, units = 'in')
+
+
+
+} # Word Totals Figure
 
 
 {
@@ -256,22 +338,90 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
   } # Cell Color Assignment
 
-} # Speech Totals
-
-
-
-
-################################################################################
-# OT 2024 (By Sitting)
-################################################################################
+} # Speech Totals Table
 
 {
 
-  base_url <- "https://github.com/JakeTruscott/scotustext/raw/master/Data/"
-  rdata_url <- paste0(base_url, "scotus_transcripts_23.rdata")
-  load(url(rdata_url))
 
-} # Load 2024 Data from Github Repository
+  {
+
+    time_spoken_total <- scotus_OT23 %>%
+      filter(speaker_type == 'Justice') %>%
+      mutate(time_spoken = text_stop - text_start) %>%
+      group_by(speaker, case_name) %>%
+      summarise(total_time_spoken = sum(time_spoken)) %>%
+      mutate(total_time_spoken_minutes = round(total_time_spoken/60, 2)) %>%
+      pivot_wider(names_from = speaker, values_from = total_time_spoken_minutes, names_prefix = "time_spoken_") %>%
+      select(-case_name) %>%
+      summarise_all(.funs = sum, na.rm = T) %>%
+      mutate(total_time_spoken = rowSums(across(-total_time_spoken))) %>%
+      rename_with(~str_replace(., "time_spoken_", ""), -total_time_spoken) %>%
+      rename("Total Time\n(Minutes)" = total_time_spoken)
+
+
+    speaking_data <- time_spoken_total
+    matching_columns <- intersect(colnames(speaking_data), names(justice_image_labels))
+
+    original_column_names <- colnames(speaking_data)
+    original_column_names[1] <- ' '
+
+
+  } # Process Data
+
+  {
+
+
+
+     figure_data <- speaking_data %>%
+      pivot_longer(cols = -1, names_to = "justice", values_to = "count") %>%
+      mutate(count = ifelse(is.na(count), 0, count)) %>%
+      group_by(justice) %>%
+      summarize(total = sum(count), .groups = "drop") %>%
+      mutate(image_labels = justice_image_labels[match(justice, names(justice_image_labels))],
+             image_labels = gsub(' style\\=.*', '', image_labels),
+             image_labels = paste0(image_labels, " width='100' /><br><strong>", justice, "</strong>"))
+
+    image_labels <- figure_data$image_labels
+
+    time_spoken_figure <- ggplot(figure_data, aes(x = factor(justice), y = total)) +
+      geom_col(aes(fill = total), colour = 'gray5') +
+      labs(y = " ",
+           x = " ",
+           title = " ") +
+      scale_fill_gradient(low = 'gray50', high = 'olivedrab') +
+      geom_label(aes(label = scales::comma(total)), vjust = 1, size = 4) +
+      geom_hline(yintercept = 0) +
+      scale_x_discrete(labels = image_labels) +
+      theme_classic() +
+      theme(
+        axis.text.x = ggtext::element_markdown(),
+        panel.grid = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.ticks.y = element_blank(),
+        legend.background = element_rect(linewidth = 1, fill = "NA", colour = "black"),
+        legend.box.background = element_rect(fill = NA, colour = "black"),
+        legend.position = "none",
+        legend.title = element_blank(),
+        legend.title.align = 0.5,
+        legend.text = element_text(size = 12),
+        plot.caption = element_text(hjust = 0.5, size = 12),
+        plot.title = element_text(size = 18, face = "bold", hjust = 0.5),
+        plot.subtitle = element_text(size = 15, hjust = 0.5))
+
+
+
+  } # Totals Figure
+
+  ggsave(time_spoken_figure, file = 'stat_pack_OT24/Oral Arguments/Combined/time_spoken_total.png', height = 6, width = 8, units = 'in')
+
+
+} # Speech Totals Figure
+
+
+################################################################################
+# OT 2024 (By Sitting -- Justices)
+################################################################################
 
 {
 
@@ -366,7 +516,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   html_output <- as.character(oa_speaking_table)
   writeLines(html_output, 'stat_pack_OT24/Oral Arguments/October/october_total_words_table.txt')
 
-} # Words by Sitting
+} # Words by Sitting Table
 
 {
 
@@ -461,10 +611,215 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   html_output <- as.character(oa_time_table)
   writeLines(html_output, 'stat_pack_OT24/Oral Arguments/October/october_total_speaking_time.txt')
 
-} # Speech by Sitting
+} # Speech by Sitting Table
 
 
+################################################################################
+# OT 2024 (By Sitting -- Attorneys)
+################################################################################
 
+{
+
+  {
+
+
+    attorneys <- scotus_OT23 %>%
+      mutate(response_to = ifelse(lag(speaker_type) == 'Justice', lag(speaker), NA)) %>%
+      filter(speaker_type == "Attorney") %>%
+      mutate(speaker = ifelse(speaker == 'MR. SYNDER', 'MR. SNYDER', speaker)) %>%
+      filter(!is.na(response_to)) %>%
+      group_by(case_name, speaker, response_to) %>%
+      summarise(total_words = sum(word_count, na.rm = TRUE)) %>%
+      ungroup() %>%
+      mutate(response_to = gsub("(CHIEF JUSTICE |JUSTICE )", "", response_to)) %>%
+      pivot_wider(names_from = response_to, values_from = total_words) %>%
+      mutate('Total Words' = rowSums(select(., -c(case_name, speaker)), na.rm = TRUE)) %>%
+      relocate('Total Words', .after = speaker) %>%
+      rename(' ' = case_name,
+             'Attorney' = speaker)
+
+    attorney_participation <- attorneys
+    original_column_names <- colnames(attorney_participation)
+
+    original_column_names[1] <- " "
+    original_column_names[2] <- " "
+    original_column_names[3] <- " "
+
+    attorney_participation <- attorney_participation %>%
+      rename_at(.vars = matching_columns, .funs = ~ justice_image_labels[.])
+
+  } # Process Data
+
+  {
+    colfunc <- colorRampPalette(c("grey50", "olivedrab"))(9)
+
+    colored_data <- data.frame() %>%
+      bind_rows(attorney_participation[1,])
+
+    for (i in 1:nrow(attorney_participation)){
+
+      temp_data <- attorney_participation[i,]
+      temp_case <- temp_data[,1]
+      temp_attorney <- temp_data[,2]
+      temp_total_words <- temp_data[,3]
+      colnames(temp_data) <- NULL
+      combined_values <- c(temp_data[, 3:ncol(temp_data)])
+      values <- unlist(temp_data[, c(4:ncol(temp_data))])
+      values[is.na(values)] <- 0
+      unique_values <- unique(values)
+
+      if (length(unique_values) > 1) {
+        unique_breaks <- quantile(unique_values, probs = seq(0, 1, length.out = 10), na.rm = TRUE)
+      } else {
+        unique_breaks <- c(min(values) - 1, max(values) + 1) # Ensure we have at least 2 breaks
+      }
+
+      color_index <- as.numeric(cut(values, breaks = unique_breaks, labels = 1:9, include.lowest = TRUE))
+      values <- cell_spec(values, color = 'white', bold = T, background = colfunc[color_index], font_size = 'large')
+
+      temp_combined_df <- matrix(nrow = 1, ncol = 9)
+
+      for (value in 1:length(values)){
+        temp_combined_df[, value] <- values[value]}
+      temp_combined_df <- data.frame(temp_case, temp_attorney, temp_total_words, temp_combined_df)
+      colnames(temp_combined_df) <- NULL
+
+      colored_data[i, ] <- temp_combined_df
+
+    } # Assign Colors to Cells
+
+
+  } # Cell Color Assignment
+
+  {
+
+
+   attorney_participation_table <- colored_data %>%
+      kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
+      add_header_above(original_column_names) %>%
+      column_spec(1, bold = TRUE, border_right = TRUE) %>%
+      row_spec(0,
+               bold = TRUE,
+               color = 'white',
+               background = '#080808',
+               align = 'center',
+               extra_css = "padding: 0; margin: 0;") %>%
+      row_spec(seq(1, nrow(colored_data), 1), align = 'center') %>%
+      kable_styling(font_size = 12, bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+
+  } # Attorney Participation Table
+
+  html_output <- as.character(attorney_participation_table)
+  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/Combined/combined_attorney_participation.txt')
+
+} # Attorney Engagement Table (Total)
+
+{
+
+  {
+
+
+    attorneys <- scotus_OT23 %>%
+      mutate(response_to = ifelse(lag(speaker_type) == 'Justice', lag(speaker), NA)) %>%
+      filter(speaker_type == "Attorney") %>%
+      filter(sitting == 'October') %>%
+      filter(!is.na(response_to)) %>%
+      group_by(case_name, speaker, response_to) %>%
+      summarise(total_words = sum(word_count, na.rm = TRUE)) %>%
+      ungroup() %>%
+      mutate(response_to = gsub("(CHIEF JUSTICE |JUSTICE )", "", response_to)) %>%
+      pivot_wider(names_from = response_to, values_from = total_words) %>%
+      mutate('Total Words' = rowSums(select(., -c(case_name, speaker)), na.rm = TRUE)) %>%
+      relocate('Total Words', .after = speaker) %>%
+      rename(' ' = case_name,
+             'Attorney' = speaker)
+
+    attorney_participation <- attorneys
+    original_column_names <- colnames(attorney_participation)
+
+    original_column_names[1] <- " "
+    original_column_names[2] <- " "
+    original_column_names[3] <- " "
+
+    attorney_participation <- attorney_participation %>%
+      rename_at(.vars = matching_columns, .funs = ~ justice_image_labels[.])
+
+  } # Process Data
+
+  {
+    colfunc <- colorRampPalette(c("grey50", "olivedrab"))(9)
+
+    colored_data <- data.frame() %>%
+      bind_rows(attorney_participation[1,])
+
+    for (i in 1:nrow(attorney_participation)){
+
+      temp_data <- attorney_participation[i,]
+      temp_case <- temp_data[,1]
+      temp_attorney <- temp_data[,2]
+      temp_total_words <- temp_data[,3]
+      colnames(temp_data) <- NULL
+      combined_values <- c(temp_data[, 3:ncol(temp_data)])
+      values <- unlist(temp_data[, c(4:ncol(temp_data))])
+      values[is.na(values)] <- 0
+      unique_values <- unique(values)
+
+      if (length(unique_values) > 1) {
+        unique_breaks <- quantile(unique_values, probs = seq(0, 1, length.out = 10), na.rm = TRUE)
+      } else {
+        unique_breaks <- c(min(values) - 1, max(values) + 1) # Ensure we have at least 2 breaks
+      }
+
+      color_index <- as.numeric(cut(values, breaks = unique_breaks, labels = 1:9, include.lowest = TRUE))
+      values <- cell_spec(values, color = 'white', bold = T, background = colfunc[color_index], font_size = 'large')
+
+      temp_combined_df <- matrix(nrow = 1, ncol = 9)
+
+      for (value in 1:length(values)){
+        temp_combined_df[, value] <- values[value]}
+      temp_combined_df <- data.frame(temp_case, temp_attorney, temp_total_words, temp_combined_df)
+      colnames(temp_combined_df) <- NULL
+
+      colored_data[i, ] <- temp_combined_df
+
+    } # Assign Colors to Cells
+
+
+  } # Cell Color Assignment
+
+  {
+
+
+    attorney_participation_table <- colored_data %>%
+      kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
+      add_header_above(original_column_names) %>%
+      column_spec(1, bold = TRUE, border_right = TRUE) %>%
+      row_spec(0,
+               bold = TRUE,
+               color = 'white',
+               background = '#080808',
+               align = 'center',
+               extra_css = "padding: 0; margin: 0;") %>%
+      row_spec(seq(1, nrow(colored_data), 1), align = 'center') %>%
+      kable_styling(font_size = 12, bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+      footnote(
+        general = c(
+          "<div style='font-size: 15px;'>Note: Values corresponding with Justice columns indicates volume of words they offered in response to arguing attorney</div>"
+        ),
+        general_title = "<br>",
+        footnote_as_chunk = TRUE,
+        escape = FALSE
+      )
+
+
+    attorney_participation_table
+
+  } # Attorney Participation Table
+
+  html_output <- as.character(attorney_participation_table)
+  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/October/october_attorney_participation.txt')
+
+} # Attorney Engagement Table (By Sitting)
 
 
 
