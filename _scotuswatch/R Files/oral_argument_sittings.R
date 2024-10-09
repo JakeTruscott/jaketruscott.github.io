@@ -11,9 +11,6 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
 
 
-
-
-
 {
   case <- c('Nancy Williams, et al. v. Fitzgerald Washington, AL Sec. of Labor', "Royal Canin U.S.A, Inc., et al. v. Anastasia Wullschleger, et al.", "Garland, Attorney Gen., et al. v. Jennifer VanDerStok, et al.", "Gerald F. Lackey, Comm. VA DMV v. Damian Stinnie, et al.", "Richard Eugene Glossip v. Oklahoma", "Medical Marijuana, Inc., et al. v. Douglas J. Horn", "Amina Bouarfa v. Alejandro Mayorkas, Sec. of Homeland Security, et al.", "Joshua Bufkin v. Denis R. McDonough, Sec. of Veterans Affairs", "City and County of San Francisco, CA v. EPA")
   docket <- c('23-191', '23-677', '23-852', '23-621',  '22-7466', '23-365', '23-583', '23-713', '23-753')
