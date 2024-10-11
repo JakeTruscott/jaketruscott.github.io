@@ -10,7 +10,6 @@
 library(kableExtra); library(dplyr); library(tidyr); library(scotustext); library(htmltools); library(ggplot2); library(png); library(dplyr); library(stringi); library(stringr); library(ggplot2); library(ggthemes); library(anytime); library(tm); library(scotustext); library(readxl); library(ggpattern); library(png); library(ggtext); library(grid); library(wesanderson); library(tidyr)
 
 
-####  PUSH FIGURES TO STAT_PACK_O24/EMPIRICAL_SCOTUS_FIGURES!!!
 
 ################################################################################
 # Justice Images
@@ -48,12 +47,21 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 {
 
   base_url <- "https://github.com/JakeTruscott/scotustext/raw/master/Data/"
-  rdata_url <- paste0(base_url, "scotus_transcripts_23.rdata")
+  rdata_url <- paste0(base_url, "scotus_transcripts_24.rdata")
   load(url(rdata_url))
 
 } # Load 2024 Data from Github Repository
 
+{
 
+  shorthand_case_names <- read.csv("oral_argument_oyez/ot_24_arguments/shorthand_case_names.csv", as.is = T)
+
+  scotus_OT24 <- scotus_OT24 %>%
+    left_join(shorthand_case_names, by = 'docket') %>%
+    mutate(case_name = short_hand)
+
+
+} # Replace Case Name w/ Shorthand
 
 ################################################################################
 # OT 2024 (Totals -- Justices)
@@ -63,7 +71,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 {
 
   {
-    oa <- scotus_OT23 %>%
+    oa <- scotus_OT24 %>%
       filter(speaker_type == 'Justice') %>%
       group_by(speaker, case_name) %>%
       summarise(total_word_count = sum(word_count)) %>%
@@ -161,7 +169,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 {
 
   {
-    oa <- scotus_OT23 %>%
+    oa <- scotus_OT24 %>%
       filter(speaker_type == 'Justice') %>%
       group_by(speaker, case_name) %>%
       summarise(total_word_count = sum(word_count)) %>%
@@ -246,7 +254,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
   {
 
-    time_spoken_total <- scotus_OT23 %>%
+    time_spoken_total <- scotus_OT24 %>%
       filter(speaker_type == 'Justice') %>%
       mutate(time_spoken = text_stop - text_start) %>%
       group_by(speaker, case_name) %>%
@@ -345,7 +353,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
   {
 
-    time_spoken_total <- scotus_OT23 %>%
+    time_spoken_total <- scotus_OT24 %>%
       filter(speaker_type == 'Justice') %>%
       mutate(time_spoken = text_stop - text_start) %>%
       group_by(speaker, case_name) %>%
@@ -426,7 +434,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 {
 
   {
-    oa <- scotus_OT23 %>%
+    oa <- scotus_OT24 %>%
       filter(speaker_type == 'Justice') %>%
       filter(sitting == 'October') %>%
       group_by(speaker, case_name) %>%
@@ -488,7 +496,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     } # Assign Colors to Cells
     names(colored_data) <- names(oa_data)
     names(colored_data)[1] <- 'Case'
-    original_column_names[1] <-
+    original_column_names[1] <- ''
 
 
   } # Cell Color Assignment
@@ -522,7 +530,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
   {
 
-    time_spoken_sitting <- scotus_OT23 %>%
+    time_spoken_sitting <- scotus_OT24 %>%
       filter(speaker_type == 'Justice') %>%
       filter(sitting == 'October') %>%
       mutate(time_spoken = text_stop - text_start) %>%
@@ -623,7 +631,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   {
 
 
-    attorneys <- scotus_OT23 %>%
+    attorneys <- scotus_OT24 %>%
       mutate(response_to = ifelse(lag(speaker_type) == 'Justice', lag(speaker), NA)) %>%
       filter(speaker_type == "Attorney") %>%
       mutate(speaker = ifelse(speaker == 'MR. SYNDER', 'MR. SNYDER', speaker)) %>%
@@ -719,7 +727,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   {
 
 
-    attorneys <- scotus_OT23 %>%
+    attorneys <- scotus_OT24 %>%
       mutate(response_to = ifelse(lag(speaker_type) == 'Justice', lag(speaker), NA)) %>%
       filter(speaker_type == "Attorney") %>%
       filter(sitting == 'October') %>%
@@ -859,7 +867,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     load(url(rdata_url))
 
     {
-      oa <- scotus_OT23 %>%
+      oa <- scotus_OT24 %>%
         filter(speaker_type == 'Justice') %>%
         group_by(speaker, case_name) %>%
         summarise(total_word_count = sum(word_count)) %>%
@@ -988,7 +996,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     {
       custom_colors <- c("#5FA934", "#3B5E8B", "#522559")
 
-      scotus_term <- scotus_OT23 %>%
+      scotus_term <- scotus_OT24 %>%
         filter(speaker_type == 'Justice') %>%
         group_by(speaker, case_name) %>%
         summarise(total_word_count = sum(word_count)) %>%
@@ -1038,7 +1046,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     {
 
 
-      attorneys <- scotus_OT23 %>%
+      attorneys <- scotus_OT24 %>%
         mutate(response_to = ifelse(lag(speaker_type) == 'Justice', lag(speaker), NA)) %>%
         filter(speaker_type == "Attorney") %>%
         mutate(speaker = ifelse(speaker == 'MR. SYNDER', 'MR. SNYDER', speaker)) %>%
@@ -1130,7 +1138,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     load(url(rdata_url))
 
     {
-      oa <- scotus_OT23 %>%
+      oa <- scotus_OT24 %>%
         filter(speaker_type == 'Justice') %>%
         filter(sitting == 'April') %>%
         group_by(speaker, case_name) %>%
@@ -1272,7 +1280,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     {
       custom_colors <- c("#5FA934", "#3B5E8B", "#522559")
 
-      scotus_term <- scotus_OT23 %>%
+      scotus_term <- scotus_OT24 %>%
         filter(sitting == 'April') %>%
         filter(speaker_type == 'Justice') %>%
         group_by(speaker, case_name) %>%
@@ -1323,7 +1331,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     {
 
 
-      attorneys <- scotus_OT23 %>%
+      attorneys <- scotus_OT24 %>%
         filter(sitting == "April") %>%
         mutate(response_to = ifelse(lag(speaker_type) == 'Justice', lag(speaker), NA)) %>%
         filter(speaker_type == "Attorney") %>%
@@ -1417,7 +1425,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   } #Compile Data from Github (If OT23 Data Not Already Loaded...)
 
   {
-    time_spoken_total <- scotus_OT23 %>%
+    time_spoken_total <- scotus_OT24 %>%
       filter(speaker_type == 'Justice') %>%
       mutate(time_spoken = text_stop - text_start) %>%
       group_by(speaker, case_name) %>%
@@ -1439,7 +1447,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
     speaking_data <- speaking_data %>%
       rename_at(.vars = matching_columns, .funs = ~ justice_image_labels[.])
-  } #Compile Speaking Times from scotus_OT23
+  } #Compile Speaking Times from scotus_OT24
 
   {
     speaking_times_total_OT23 <- speaking_data %>%
@@ -1492,7 +1500,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   ################################################################################
 
   {
-    time_spoken_total_april <- scotus_OT23 %>%
+    time_spoken_total_april <- scotus_OT24 %>%
       filter(speaker_type == 'Justice') %>%
       filter(sitting == 'April') %>%
       mutate(case_name = ifelse(grepl('Kinder Morgan', case_name), 'Ohio, Et Al. Applicants v. Epa (Consolidated w/ 23A350, 23A351, 23A384)', case_name)) %>%
@@ -1517,7 +1525,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     speaking_data <- speaking_data %>%
       rename_at(.vars = matching_columns, .funs = ~ justice_image_labels[.]) %>%
       rename(`Case` = case_name)
-  } #Compile Speaking Times from scotus_OT23
+  } #Compile Speaking Times from scotus_OT24
 
   {
     speaking_times_april <- speaking_data %>%
@@ -1569,9 +1577,9 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
   {
 
-    for (i in unique(scotus_OT23$sitting)){
+    for (i in unique(scotus_OT24$sitting)){
 
-      time_spoken_total <- scotus_OT23 %>%
+      time_spoken_total <- scotus_OT24 %>%
         filter(speaker_type == 'Justice') %>%
         filter(sitting == i) %>%
         mutate(case_name = ifelse(grepl('Kinder Morgan', case_name), 'Ohio, Et Al. Applicants v. Epa', case_name)) %>%
@@ -1645,7 +1653,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     }
 
 
-    for (i in unique(scotus_OT23$sitting)){
+    for (i in unique(scotus_OT24$sitting)){
 
       html_file_path = paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/statpack_oa_times/oa_speaking_times_", i, '.html')
       png_file_path = paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/OT23 Totals/statpack_oa_times/oa_speaking_times_", i, '.png')

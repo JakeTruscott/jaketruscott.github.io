@@ -206,7 +206,7 @@ for (i in unique(links$term)){
       })
     }
 
-    active_data_term <- paste0('OT_23_', sitting)
+    active_data_term <- paste0('OT_24_', sitting)
     assign(active_data_term, transcripts)
 
     save(transcripts, file = file.path(output_directory, paste0(active_data_term, ".RData")))
