@@ -9,6 +9,9 @@ redirect_from:
 
 {% include base_path %}
 
+<a href="images/Truscott_CV_2024.pdf" download="Truscott_CV_2024.pdf">Download CV</a>
+
+
 Academic Appointments
 ======
 * Assistant Professor of Political Science, University of Florida, 2024-Present
