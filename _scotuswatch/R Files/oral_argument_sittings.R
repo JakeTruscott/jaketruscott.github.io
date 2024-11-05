@@ -54,6 +54,42 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 
 } #October Sitting
 
+{
+
+  november_sitting <- read.csv('oral_argument_oyez/argument_sittings_csvs/november_sitting.csv', as.is = T)
+
+
+  november_sitting <- data.frame(
+    'Case' = november_sitting$Case,
+    'Docket' = november_sitting$Docket,
+    #'Argued' = november_sitting$,
+    'Petitioner Counsel' = november_sitting$Petitioner,
+    'Respondent Counsel' = november_sitting$Respondent,
+    'Arguing Amici' = november_sitting$Amicus,
+    'Lower Court' = november_sitting$Lower.Ct,
+    'Cert Amici' = november_sitting$Cert.Amici,
+    'Merits Amici' = november_sitting$Merits.Amici
+  )
+  names(november_sitting) <- gsub("\\.", " ", names(november_sitting))
+
+  november_sitting_cases <- november_sitting %>%
+    kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
+    column_spec(1, bold = TRUE, border_right = TRUE, width = "6cm") %>%  # Set the width of the first column
+    column_spec(2:8, width = "3cm") %>%  # Set the width of columns 2 to 8
+    row_spec(0, bold = TRUE, color = 'white', background = '#080808', align = 'center') %>%
+    row_spec(seq(1, nrow(november_sitting), 1), align = 'center') %>%
+    kable_styling(font_size = 12, bootstrap_options = c("striped", "hover", "condensed"))
+
+
+  html_output <- as.character(november_sitting_cases)
+  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/November/November_sitting.txt')
+
+
+
+
+
+
+} # November Sitting
 
 
 
