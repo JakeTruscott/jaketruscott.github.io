@@ -9,7 +9,19 @@
 ###############################################################################
 library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); library(htmltools); library(ggplot2); library(png); library(dplyr); library(stringi); library(stringr); library(ggplot2); library(ggthemes); library(anytime); library(tm); library(scotustext); library(readxl); library(ggpattern); library(png); library(ggtext); library(grid); library(wesanderson); library(tidyr); library(readxl)
 
-
+custom_css <- "
+<style>
+  /* Make table columns automatically adjust on smaller screens */
+  @media (max-width: 768px) {
+    .kable-table td, .kable-table th {
+      width: auto;
+      font-size: smaller; /* Adjust font size for smaller screens if needed */
+      padding: 4px; /* Adjust padding if needed */
+    }
+  }
+  /* Add other styles as necessary */
+</style>
+"
 
 {
   case <- c('Nancy Williams, et al. v. Fitzgerald Washington, AL Sec. of Labor', "Royal Canin U.S.A, Inc., et al. v. Anastasia Wullschleger, et al.", "Garland, Attorney Gen., et al. v. Jennifer VanDerStok, et al.", "Gerald F. Lackey, Comm. VA DMV v. Damian Stinnie, et al.", "Richard Eugene Glossip v. Oklahoma", "Medical Marijuana, Inc., et al. v. Douglas J. Horn", "Amina Bouarfa v. Alejandro Mayorkas, Sec. of Homeland Security, et al.", "Joshua Bufkin v. Denis R. McDonough, Sec. of Veterans Affairs", "City and County of San Francisco, CA v. EPA")
