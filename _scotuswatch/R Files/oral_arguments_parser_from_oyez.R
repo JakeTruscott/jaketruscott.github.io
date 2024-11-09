@@ -267,3 +267,9 @@ for (file in transcript_list) {
 
 save(scotus_OT24, file = "C:/Users/jaketruscott/Github/scotustext/Data/scotus_transcripts_24.rdata")
 writexl::write_xlsx(scotus_OT24, path = "C:/Users/jaketruscott/Github/scotustext/Data/scotus_transcripts_24.xlsx")
+
+
+#save(scotus_OT24, file = "C:/Users/Jake Truscott/Documents/Github/scotustext/Data/scotus_transcripts_24.rdata")
+#writexl::write_xlsx(scotus_OT24, path = "C:/Users/Jake Truscott/Documents//Github/scotustext/Data/scotus_transcripts_24.xlsx")
+
+
