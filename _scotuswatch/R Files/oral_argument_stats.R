@@ -436,7 +436,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   {
     oa <- scotus_OT24 %>%
       filter(speaker_type == 'Justice') %>%
-      filter(sitting == 'October') %>%
+      filter(sitting == 'November') %>%
       group_by(speaker, case_name) %>%
       summarise(total_word_count = sum(word_count)) %>%
       pivot_wider(names_from = speaker, values_from = total_word_count, names_prefix = "word_count_")
@@ -522,7 +522,10 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   } # Compile Figure
 
   html_output <- as.character(oa_speaking_table)
-  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/October/october_total_words_table.txt')
+  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/November/november_total_words_table.txt')
+
+  oa_speaking_table %>%
+    as_image()
 
 } # Words by Sitting Table
 
@@ -532,7 +535,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
     time_spoken_sitting <- scotus_OT24 %>%
       filter(speaker_type == 'Justice') %>%
-      filter(sitting == 'October') %>%
+      filter(sitting == 'November') %>%
       mutate(time_spoken = text_stop - text_start) %>%
       group_by(speaker, case_name) %>%
       summarise(total_time_spoken = sum(time_spoken)) %>%
@@ -617,7 +620,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
 
   html_output <- as.character(oa_time_table)
-  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/October/october_total_speaking_time.txt')
+  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/November/november_total_speaking_time.txt')
 
 } # Speech by Sitting Table
 
@@ -730,7 +733,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     attorneys <- scotus_OT24 %>%
       mutate(response_to = ifelse(lag(speaker_type) == 'Justice', lag(speaker), NA)) %>%
       filter(speaker_type == "Attorney") %>%
-      filter(sitting == 'October') %>%
+      filter(sitting == 'November') %>%
       filter(!is.na(response_to)) %>%
       group_by(case_name, speaker, response_to) %>%
       summarise(total_words = sum(word_count, na.rm = TRUE)) %>%
@@ -825,7 +828,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   } # Attorney Participation Table
 
   html_output <- as.character(attorney_participation_table)
-  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/October/october_attorney_participation.txt')
+  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/November/november_attorney_participation.txt')
 
 } # Attorney Engagement Table (By Sitting)
 
