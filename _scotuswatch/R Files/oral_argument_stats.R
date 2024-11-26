@@ -524,8 +524,6 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   html_output <- as.character(oa_speaking_table)
   writeLines(html_output, 'stat_pack_OT24/Oral Arguments/November/november_total_words_table.txt')
 
-  oa_speaking_table %>%
-    as_image()
 
 } # Words by Sitting Table
 
