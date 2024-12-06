@@ -522,7 +522,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   } # Compile Figure
 
   html_output <- as.character(oa_speaking_table)
-  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/November/november_total_words_table.txt')
+  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/December/december_total_words_table.txt')
 
 
 } # Words by Sitting Table
@@ -618,7 +618,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
 
   html_output <- as.character(oa_time_table)
-  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/November/november_total_speaking_time.txt')
+  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/December/december_total_speaking_time.txt')
 
 } # Speech by Sitting Table
 
@@ -826,7 +826,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   } # Attorney Participation Table
 
   html_output <- as.character(attorney_participation_table)
-  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/November/november_attorney_participation.txt')
+  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/December/december_attorney_participation.txt')
 
 } # Attorney Engagement Table (By Sitting)
 
