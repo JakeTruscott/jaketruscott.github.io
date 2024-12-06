@@ -436,7 +436,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   {
     oa <- scotus_OT24 %>%
       filter(speaker_type == 'Justice') %>%
-      filter(sitting == 'November') %>%
+      filter(sitting == 'December') %>%
       group_by(speaker, case_name) %>%
       summarise(total_word_count = sum(word_count)) %>%
       pivot_wider(names_from = speaker, values_from = total_word_count, names_prefix = "word_count_")
@@ -533,7 +533,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
     time_spoken_sitting <- scotus_OT24 %>%
       filter(speaker_type == 'Justice') %>%
-      filter(sitting == 'November') %>%
+      filter(sitting == 'December') %>%
       mutate(time_spoken = text_stop - text_start) %>%
       group_by(speaker, case_name) %>%
       summarise(total_time_spoken = sum(time_spoken)) %>%
@@ -731,7 +731,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     attorneys <- scotus_OT24 %>%
       mutate(response_to = ifelse(lag(speaker_type) == 'Justice', lag(speaker), NA)) %>%
       filter(speaker_type == "Attorney") %>%
-      filter(sitting == 'November') %>%
+      filter(sitting == 'December') %>%
       filter(!is.na(response_to)) %>%
       group_by(case_name, speaker, response_to) %>%
       summarise(total_words = sum(word_count, na.rm = TRUE)) %>%
