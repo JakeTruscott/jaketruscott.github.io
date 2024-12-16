@@ -116,7 +116,7 @@ for (i in unique(links$term)){
     return(all_json_files)
   } #Recursively Search Folder to Folder
 
-  directory_path <- "oral_argument_oyez/oral_argument_jsons"
+  directory_path <- "oral_argument_oyez/oral_argument_jsons/2024"
 
   min_file_size_kb <- 2 #Only Keep Files Greater than 2kb (Indicating They Aren't Empty)
   transcript_json_list <- list_json_files_recursive(directory_path)
@@ -132,8 +132,10 @@ for (i in unique(links$term)){
   files <- data.frame(files = files)
 
   json_files <- files %>%
-    mutate(sitting = gsub('(.*\\/2023\\/|.*\\/2024\\/)', '', files),
+    mutate(sitting = gsub('(.*\\/2023\\/|.*\\/2024\\/|.*\\/2022\\/)', '', files),
            sitting = gsub('\\/.*', '', sitting))
+
+  #json_files <- json_files %>% filter(grepl('\\/2022\\/', files))
 
   for(sitting in unique(json_files$sitting)){
     files <- json_files$files[json_files$sitting == sitting] #Subset Files to sitting
@@ -258,7 +260,6 @@ for (file in transcript_list) {
     mutate(case_name = gsub("Llc", "LLC", case_name)) %>%
     mutate(case_name = gsub( " V.\\ ", " v. ", case_name))
 } #Specialized Fixes for OT2024
-
 
 
 ################################################################################
