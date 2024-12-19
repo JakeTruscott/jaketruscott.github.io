@@ -62,5 +62,5 @@ author_profile: true
 
 
 <p>
-Truscott, Jake S. (2024). scotustext: A Comprehensive R Package for Retrieving, Cleaning, and Parsing Documents from the United States Supreme Court. Retrieved from GitHub repository: https://github.com/JakeTruscott/scotustext
+Truscott, Jake S. (2024). scotustext(v2): A Comprehensive R Package for Retrieving, Cleaning, and Parsing Documents from the United States Supreme Court. Retrieved from GitHub repository: https://github.com/JakeTruscott/scotustext
 </p>
