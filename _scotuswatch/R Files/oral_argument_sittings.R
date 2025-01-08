@@ -103,6 +103,40 @@ custom_css <- "
 
 } # November Sitting
 
+{
+
+  december_sitting <- read.csv('oral_argument_oyez/argument_sittings_csvs/december_sitting.csv', as.is = T)
+
+
+  december_sitting <- data.frame(
+    'Case' = december_sitting$Case,
+    'Docket' = december_sitting$Docket,
+    'Argued' = december_sitting$Date,
+    'Petitioner Counsel' = december_sitting$Petitioner,
+    'Respondent Counsel' = december_sitting$Respondent,
+    'Arguing Amici' = december_sitting$Amicus,
+    'Lower Court' = december_sitting$Lower.Ct
+  )
+  names(december_sitting) <- gsub("\\.", " ", names(december_sitting))
+
+  december_sitting_cases <- december_sitting %>%
+    kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
+    column_spec(1, bold = TRUE, border_right = TRUE, width = "6cm") %>%  # Set the width of the first column
+    column_spec(2:7, width = "3cm") %>%  # Set the width of columns 2 to 8
+    row_spec(0, bold = TRUE, color = 'white', background = '#080808', align = 'center') %>%
+    row_spec(seq(1, nrow(december_sitting), 1), align = 'center') %>%
+    kable_styling(font_size = 12, bootstrap_options = c("striped", "hover", "condensed"))
+
+
+  html_output <- as.character(december_sitting_cases)
+  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/December/december_sitting.txt')
+
+
+
+
+
+
+} # december Sitting
 
 
 
