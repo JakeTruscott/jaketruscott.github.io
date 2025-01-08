@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-<a href="images/Truscott_CV_2024.pdf" download="Truscott_CV_2024.pdf">Download CV</a>
+<a href="https://github.com/JakeTruscott/jaketruscott.github.io/blob/e79522cdc0636b10b02a0778dadb945c71ef66b6/images/Truscott_CV_2024.pdf" download="Truscott_CV_2024.pdf">Download CV</a>
 
 
 Academic Appointments
