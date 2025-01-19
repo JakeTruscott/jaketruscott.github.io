@@ -46,14 +46,6 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
 {
 
-  base_url <- "https://github.com/JakeTruscott/scotustext/raw/master/Data/"
-  rdata_url <- paste0(base_url, "scotus_transcripts_24.rdata")
-  load(url(rdata_url))
-
-} # Load 2024 Data from Github Repository
-
-{
-
   shorthand_case_names <- read.csv("oral_argument_oyez/ot_24_arguments/shorthand_case_names.csv", as.is = T)
 
   scotus_OT24 <- scotus_OT24 %>%
@@ -436,7 +428,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   {
     oa <- scotus_OT24 %>%
       filter(speaker_type == 'Justice') %>%
-      filter(sitting == 'December') %>%
+      filter(sitting == 'January') %>%
       group_by(speaker, case_name) %>%
       summarise(total_word_count = sum(word_count)) %>%
       pivot_wider(names_from = speaker, values_from = total_word_count, names_prefix = "word_count_")
@@ -522,7 +514,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   } # Compile Figure
 
   html_output <- as.character(oa_speaking_table)
-  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/December/december_total_words_table.txt')
+  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/January/january_total_words_table.txt')
 
 
 } # Words by Sitting Table
@@ -533,7 +525,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
     time_spoken_sitting <- scotus_OT24 %>%
       filter(speaker_type == 'Justice') %>%
-      filter(sitting == 'December') %>%
+      filter(sitting == 'January') %>%
       mutate(time_spoken = text_stop - text_start) %>%
       group_by(speaker, case_name) %>%
       summarise(total_time_spoken = sum(time_spoken)) %>%
@@ -618,7 +610,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
 
   html_output <- as.character(oa_time_table)
-  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/December/december_total_speaking_time.txt')
+  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/January/january_total_speaking_time.txt')
 
 } # Speech by Sitting Table
 
@@ -731,7 +723,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
     attorneys <- scotus_OT24 %>%
       mutate(response_to = ifelse(lag(speaker_type) == 'Justice', lag(speaker), NA)) %>%
       filter(speaker_type == "Attorney") %>%
-      filter(sitting == 'December') %>%
+      filter(sitting == 'January') %>%
       filter(!is.na(response_to)) %>%
       group_by(case_name, speaker, response_to) %>%
       summarise(total_words = sum(word_count, na.rm = TRUE)) %>%
@@ -826,7 +818,7 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
   } # Attorney Participation Table
 
   html_output <- as.character(attorney_participation_table)
-  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/December/december_attorney_participation.txt')
+  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/January/january_attorney_participation.txt')
 
 } # Attorney Engagement Table (By Sitting)
 
