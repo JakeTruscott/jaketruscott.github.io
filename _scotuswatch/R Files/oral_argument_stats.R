@@ -43,7 +43,6 @@ library(kableExtra); library(dplyr); library(tidyr); library(scotustext); librar
 
 
 } #Justice Images
-
 {
 
   shorthand_case_names <- read.csv("oral_argument_oyez/ot_24_arguments/shorthand_case_names.csv", as.is = T)

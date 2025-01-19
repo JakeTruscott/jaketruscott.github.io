@@ -14,33 +14,32 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 #Justice Images
 ###############################################################################
 {
-  ROBERTS <- readPNG("justice_images/Roberts.png")
-  ALITO <- readPNG("justice_images/Alito.png")
-  THOMAS <- readPNG("justice_images/Thomas.png")
-  SOTOMAYOR <- readPNG("justice_images/Sotomayor.png")
-  KAGAN <- readPNG("justice_images/Kagan.png")
-  GORSUCH <- readPNG("justice_images/Gorsuch.png")
-  KAVANAUGH <- readPNG("justice_images/Kavanaugh.png")
-  BARRETT <- readPNG("justice_images/Barrett.png")
-  JACKSON <- readPNG("justice_images/Jackson.png")
-  BREYER <- readPNG("justice_images/Breyer.png")
-  GINSBURG <- readPNG("justice_images/Ginsburg.png")
-  KENNEDY <- readPNG("justice_images/Kennedy.png")
 
   justice_image_labels <- c(
-    ALITO = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Alito.png' width='75' /><br>",
-    ROBERTS = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Roberts.png' width='75' /><br>",
-    THOMAS = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Thomas.png' width='75' /><br>",
-    SOTOMAYOR = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Sotomayor.png' width='75' /><br>",
-    KAGAN = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Kagan.png' width='75' /><br>",
-    GORSUCH = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Gorsuch.png' width='75' /><br>",
-    KAVANAUGH = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Kavanaugh.png' width='75' /><br>",
-    BARRETT = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Barrett.png' width='75' /><br>",
-    JACKSON = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Jackson.png' width='75' /><br>",
-    BREYER = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Breyer.png' width='75' /><br>",
-    GINSBURG = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Ginsburg.png' width='75' /><br>",
-    KENNEDY = "<img src='C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/_scotuswatch/justice_images/Kennedy.png' width='75' /><br>"
+
+    JACKSON = "<img src='https://api.oyez.org/sites/default/files/filefield_paths/thumbnail_ketanji_brown_jackson.png' style='width: 75px; height: 75px; object-fit: cover;' />",
+    BARRETT = "<img src='https://api.oyez.org/sites/default/files/filefield_paths/barret-thumb.png' style='width: 75px; height: 75px; object-fit: cover;' />",
+    KAVANAUGH = "<img src='https://api.oyez.org/sites/default/files/filefield_paths/Kavanaugh-thumb.png' style='width: 75px; height: 75px; object-fit: cover;' />",
+    GORSUCH = "<img src='https://api.oyez.org/sites/default/files/filefield_paths/neil_gorsuch.thumb__0.png' style='width: 75px; height: 75px; object-fit: cover;' />",
+    SOTOMAYOR = "<img src='https://api.oyez.org/sites/default/files/images/people/sonia_sotomayor/sonia_sotomayor.thumb.png' style='width: 75px; height: 75px; object-fit: cover;' />",
+    KAGAN = "<img src='https://api.oyez.org/sites/default/files/images/people/elena_kagan/elena_kagan.thumb.png' style='width: 75px; height: 75px; object-fit: cover;' />",
+    ALITO = "<img src='https://api.oyez.org/sites/default/files/images/people/samuel_alito_jr/samuel_alito_jr.thumb.png' style='width: 75px; height: 75px; object-fit: cover;' />",
+    ROBERTS = "<img src='https://api.oyez.org/sites/default/files/images/people/john_g_roberts_jr/john_g_roberts_jr.thumb.png' style='width: 75px; height: 75px; object-fit: cover;' />",
+    BREYER = "<img src='https://api.oyez.org/sites/default/files/images/people/stephen_g_breyer/stephen_g_breyer.thumb.png' style='width: 75px; height: 75px; object-fit: cover;' />",
+    GINSBURG = "<img src='https://api.oyez.org/sites/default/files/images/people/ruth_bader_ginsburg/ruth_bader_ginsburg.thumb.png' style='width: 75px; height: 75px; object-fit: cover;' />",
+    THOMAS = "<img src='https://api.oyez.org/sites/default/files/images/people/clarence_thomas/clarence_thomas.thumb.png' style='width: 75px; height: 75px; object-fit: cover;' />",
+    SOUTER = "<img src='https://api.oyez.org/sites/default/files/images/people/david_h_souter/david_h_souter.thumb.png' style='width: 75px; height: 75px; object-fit: cover;' />",
+    KENNEDY = "<img src='https://api.oyez.org/sites/default/files/images/people/anthony_m_kennedy/anthony_m_kennedy.thumb.png' style='width: 75px; height: 75px; object-fit: cover;' />"
+
+
   )
+
+
+
+
+
+
+
 } #Justice Images
 
 ###############################################################################
@@ -61,7 +60,7 @@ library(kableExtra); library(dplyr);  library(tidyr); library(scotustext); libra
 -3 = Wrote Dissent & Joined Dissent'
 
 ###############################################################################
-decisions <- read.csv(file = "ot23_decisions/OT_23_Decisions.csv", as.is = T)
+decisions <- read.csv(file = "stat_pack_OT24/ot24_decisions/OT_24_Decisions.csv", as.is = T)
 
 {
 
@@ -246,13 +245,11 @@ get_vote_color <- function(value){
         escape = FALSE  # Add escape parameter to allow HTML formatting
       )
 
-    save_kable(chunk, paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Table_", start_row, ".html"))
-    html_file_path <- paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Table_", start_row, ".html")
-    #webshot::install_phantomjs(force = T)
-    phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
-    webshot::webshot(html_file_path, paste0("C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Table_", start_row, ".png"), vwidth = 1000, vheight = 300)
-  }
 
+    html_output <- as.character(chunk)
+    writeLines(html_output, paste0("stat_pack_OT24/ot24_decisions/decisions_tables/table_", start_row, ".txt"))
+
+  }
 
 
 } #Compile Vote Matrix Table
@@ -261,15 +258,6 @@ get_vote_color <- function(value){
 #Save to Local Machine
 ###############################################################################
 
-save_kable(decisions_info_1, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info_1.html")
-html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info_1.html"
-#webshot::install_phantomjs(force = T)
-phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
-webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info_1.png", vwidth = 1300, vheight = 1000)
-
-save_kable(decisions_info_2, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info_2.html")
-html_file_path <- "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info_2.html"
-#webshot::install_phantomjs(force = T)
-phantomjs <- "C:/Users/Jake Truscott/AppData/Roaming/PhantomJS"
-webshot::webshot(html_file_path, "C:/Users/Jake Truscott/Documents/GitHub/jaketruscott.github.io/images/scotuswatch_tables/Decisions/OT_23_Decisions_Info_2.png", vwidth = 1300, vheight = 1000)
+decisions_info_1 <- as.character(decisions_info_1)
+writeLines(decisions_info_1, "stat_pack_OT24/ot24_decisions/decisions_tables/decisions_info_1.txt")
 

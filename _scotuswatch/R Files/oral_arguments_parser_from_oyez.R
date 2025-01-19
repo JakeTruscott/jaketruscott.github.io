@@ -14,17 +14,24 @@ library(dplyr); library(httr); library(tidyr); library(stringr); library(stringi
 #Load URL Dataframe
 ################################################################################
 links <- read.csv("oral_argument_oyez/ot_24_arguments/ot_24_media_links.csv", as.is = T)
+to_run <- read.csv('oral_argument_oyez//ot_24_arguments/ot_24_arguments_list.csv', as.is = T) %>%
+  filter(run == 1)
+links <- links[links$docket %in% to_run$docket,]
 
 
 ################################################################################
 # Retrieve Transcript - Save as JSON
-# If Erors -- Get Missing Links from setdiff()
+# If Errors -- Get Missing Links from setdiff()
 ################################################################################
 
-for (i in unique(links$term)){
+unique_terms <- unique(links$term)
+
+for (i in unique_terms){
 
   temp_data <- links %>%
     filter(term == i) # Temp Data for Term[i]
+
+  message('Beginning Retrieval for ', nrow(temp_data), ' Argument Links from ', i, ' Term')
 
   sittings <- unique(temp_data$sitting) # Unique Sittings for Term[t]
   term_output_path <- paste0('oral_argument_oyez/oral_argument_jsons/') # Output Path for JSONs
@@ -47,7 +54,6 @@ for (i in unique(links$term)){
 
 
   } # Create Folder Paths for JSONS (If Needed)
-
 
   for (j in 1:nrow(temp_data)) {
 
@@ -135,9 +141,7 @@ for (i in unique(links$term)){
     mutate(sitting = gsub('(.*\\/2023\\/|.*\\/2024\\/|.*\\/2022\\/)', '', files),
            sitting = gsub('\\/.*', '', sitting))
 
-  #json_files <- json_files %>% filter(grepl('\\/2022\\/', files))
-
-  for(sitting in unique(json_files$sitting)){
+  for (sitting in unique(json_files$sitting)){
     files <- json_files$files[json_files$sitting == sitting] #Subset Files to sitting
     transcripts <- data.frame() #Create Empty Frame
 
