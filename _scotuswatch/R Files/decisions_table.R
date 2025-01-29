@@ -146,7 +146,8 @@ get_vote_color <- function(value){
 } #Subset Decision Data - Match w/ Justice Images
 
 {
-  decisions_info_1 <- decisions_data[1:29, 1:7]
+  decisions_info_1 <- decisions_data[1:29, 1:7] %>%
+    filter(!is.na(Case))
   decisions_info_2 <- decisions_data[30:nrow(decisions_data), 1:7]
 
   decisions_info_1 <- decisions_info_1 %>%
