@@ -138,7 +138,69 @@ custom_css <- "
 
 } # december Sitting
 
+{
 
+  january_sitting <- read.csv('oral_argument_oyez/argument_sittings_csvs/january_sitting.csv', as.is = T)
+
+
+  january_sitting <- data.frame(
+    'Case' = january_sitting[,2],
+    'Docket' = january_sitting[,1],
+    'Petitioner Counsel' = january_sitting[,4],
+    'Respondent Counsel' = january_sitting[,5],
+    'Arguing Amici' = january_sitting[,6],
+    'Lower Court' = january_sitting[,3],
+    'Cert Amici' = january_sitting[,7],
+    'Merits Amici' = january_sitting[,8]
+  )
+  names(january_sitting) <- gsub("\\.", " ", names(january_sitting))
+
+  january_sitting_cases <- january_sitting %>%
+    kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
+    column_spec(1, bold = TRUE, border_right = TRUE, width = "6cm") %>%  # Set the width of the first column
+    column_spec(2:8, width = "3cm") %>%  # Set the width of columns 2 to 8
+    row_spec(0, bold = TRUE, color = 'white', background = '#080808', align = 'center') %>%
+    row_spec(seq(1, nrow(january_sitting), 1), align = 'center') %>%
+    kable_styling(font_size = 12, bootstrap_options = c("striped", "hover", "condensed"))
+
+
+  html_output <- as.character(january_sitting_cases)
+  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/january/january_sitting.txt')
+
+
+} # January Sitting
+
+{
+
+  february_sitting <- read.csv('oral_argument_oyez/argument_sittings_csvs/february_sitting.csv', as.is = T)
+
+
+  february_sitting <- data.frame(
+    'Case' = february_sitting[,2],
+    'Docket' = february_sitting[,1],
+    'Petitioner Counsel' = february_sitting[,4],
+    'Respondent Counsel' = february_sitting[,5],
+    'Arguing Amici' = february_sitting[,6],
+    'Lower Court' = february_sitting[,3],
+    'Cert Amici' = february_sitting[,7],
+    'Merits Amici' = february_sitting[,8]
+  )
+  names(february_sitting) <- gsub("\\.", " ", names(february_sitting))
+
+  february_sitting_cases <- february_sitting %>%
+    kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
+    column_spec(1, bold = TRUE, border_right = TRUE, width = "6cm") %>%  # Set the width of the first column
+    column_spec(2:8, width = "3cm") %>%  # Set the width of columns 2 to 8
+    row_spec(0, bold = TRUE, color = 'white', background = '#080808', align = 'center') %>%
+    row_spec(seq(1, nrow(february_sitting), 1), align = 'center') %>%
+    kable_styling(font_size = 12, bootstrap_options = c("striped", "hover", "condensed"))
+
+
+  html_output <- as.character(february_sitting_cases)
+  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/february/february_sitting.txt')
+
+
+} # Feb Sitting
 
 
 
