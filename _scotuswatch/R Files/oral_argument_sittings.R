@@ -202,7 +202,37 @@ custom_css <- "
 
 } # Feb Sitting
 
+{
 
+  march_sitting <- read.csv('oral_argument_oyez/argument_sittings_csvs/march_sitting.csv', as.is = T)
+
+
+  march_sitting <- data.frame(
+    'Case' = march_sitting[,2],
+    'Docket' = march_sitting[,1],
+    'Petitioner Counsel' = march_sitting[,4],
+    'Respondent Counsel' = march_sitting[,5],
+    'Arguing Amici' = march_sitting[,6],
+    'Lower Court' = march_sitting[,3],
+    'Cert Amici' = march_sitting[,7],
+    'Merits Amici' = march_sitting[,8]
+  )
+  names(march_sitting) <- gsub("\\.", " ", names(march_sitting))
+
+  march_sitting_cases <- march_sitting %>%
+    kbl(longtable = TRUE, escape = FALSE, booktabs = TRUE, align = "c") %>%
+    column_spec(1, bold = TRUE, border_right = TRUE, width = "6cm") %>%  # Set the width of the first column
+    column_spec(2:8, width = "3cm") %>%  # Set the width of columns 2 to 8
+    row_spec(0, bold = TRUE, color = 'white', background = '#080808', align = 'center') %>%
+    row_spec(seq(1, nrow(march_sitting), 1), align = 'center') %>%
+    kable_styling(font_size = 12, bootstrap_options = c("striped", "hover", "condensed"))
+
+
+  html_output <- as.character(march_sitting_cases)
+  writeLines(html_output, 'stat_pack_OT24/Oral Arguments/March/march_sitting.txt')
+
+
+} # Feb Sitting
 
 
 
