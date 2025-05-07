@@ -1,7 +1,7 @@
 ---
 title: Ornstein, Blasengame, and Truscott (2025)
 parent: Research Projects
-nav_order: 4
+nav_order: 3
 ---
 
 # How to Train Your Stochastic Parrot: _Large Language Models for Political Texts_

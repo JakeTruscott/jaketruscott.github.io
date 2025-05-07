@@ -1,7 +1,7 @@
 ---
 title: Truscott (2023)
 parent: Research Projects
-nav_order: 6
+nav_order: 5
 ---
 
 # Analyzing the Rhetoric of Supreme Court Confirmation Hearings

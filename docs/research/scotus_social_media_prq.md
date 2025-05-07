@@ -1,7 +1,7 @@
 ---
 title: Truscott (2024)
 parent: Research Projects
-nav_order: 5
+nav_order: 4
 ---
 
 # A Social Media Platform Model of Supreme Court News
