@@ -5,7 +5,7 @@ has_children: true
 ---
 
 <div style="text-align: center;">
-  <img src="/assets/images/wallpaper.jpg" alt="Jake Truscott" width="500"/>
+  <img src="/assets/images/jake_circle.png" alt="Jake Truscott" width="300"/>
 </div>
 
 <h3>Welcome!</h3><p> I am an Assistant Professor of Political Science at the <a href="https://polisci.ufl.edu/">University of Florida (Gainesville, FL)</a>. I received my Ph.D. from the University of Georgia (2023) with focuses in American Politics (Major) & Formal Theory (Minor). My research works to merge conventional studies of judicial politics with emerging computational methods. To date, my research has been published, mentioned, or featured in <em>The Journal of Law and Courts</em>, <em> Political Science Research and Methods </em>, <em> Political Research Quarterly </em>, <em>The Justice System Journal</em>, <em>The Associated Press</em>, <em>The Washington Post</em>, <em>Newsweek</em>, <em>ABCNews</em>, <em>The Washington Times</em>, <em>The Daily Kos</em>, <em>SCOTUSBlog</em>, and <em>Empirical SCOTUS</em>, among others. </p>
@@ -18,8 +18,7 @@ has_children: true
 
 <p>Prior to my appointment at Florida, I held a postdoctoral appointmnet with the <a href="https://www.cla.purdue.edu/academic/communication/cspan/ccse/index.html">Center for C-SPAN Scholarship and Engagement</a> at Purdue University (West Lafayette, IN). When I am not researching, you can find me watching the back-to-back national champion Georgia Bulldogs or engaging in a perpetual spiral of self-loathing while watching the New York Mets waste another $350 million payroll and prove that being able to hit a baseball is apparently not a pre-requisite to play in the major leagues. My wife, a fellow Georgia alumnus and Atlanta Braves fan (albeit only because she knows it gets under my skin), appears to enjoy it when I'm doing either.</p>
 
----
 
 <div style="text-align: center;">
-  <img src="/assets/images/jake_circle.png" alt="Jake Truscott" width="300"/>
+  <img src="/assets/images/wallpaper.jpg" alt="Jake Truscott" width="500"/>
 </div>
