@@ -1,5 +1,5 @@
 ---
-title: Explaining Congressional Support for the Federal Judiciary
+title: Truscott & Wilhelm (2023)
 parent: Research Projects
 nav_order: 3
 ---

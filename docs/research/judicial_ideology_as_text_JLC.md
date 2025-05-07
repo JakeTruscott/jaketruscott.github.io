@@ -1,5 +1,5 @@
 ---
-title: Judicial Ideology as Text (Truscott & Romano 2025)
+title: Truscott & Romano (2025)
 parent: Research Projects
 nav_order: 2
 ---
