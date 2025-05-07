@@ -4,34 +4,16 @@ nav_order: 1
 has_children: true
 ---
 
-# The American Legal Lexicon
-
-The **American Legal Lexicon** is a comprehensive research agenda spearheaded by [Jake S. Truscott](https://polisci.ufl.edu/directory/jake-truscott/) (University of Florida) and [Michael K. Romano](https://www.su.edu/faculty-staff/faculty/michael-romano/) (Shenandoah University) focusing on the application of high-performance computing systems to study the latent and explicit properties of language employed within the American legal community. 
-
 <div style="text-align: center;">
-  <img src="{{ site.baseurl }}/assets/images/ALL_Logo.png" alt="American Legal Lexicon" width="300"/>
+  <img src="/assets/images/wallpaper.png" alt="Jake Truscott" width="500"/>
 </div>
 
----
+<h3>Welcome!</h3><p> I am an Assistant Professor of Political Science at the University of Florida. I received my Ph.D. from the University of Georgia (2023) with focuses in American Politics (Major) & Formal Theory (Minor). My research works to merge conventional studies of judicial politics with emerging computational methods. To date, my research has been published, mentioned, or featured in <em>The Journal of Law and Courts</em>, <em>The Justice System Journal</em>, <em>The Associated Press</em>, <em>The Washington Post</em>, <em>Newsweek</em>, <em>ABCNews</em>, <em>The Washington Times</em>, <em>The Daily Kos</em>, <em>SCOTUSBlog</em>, and <em>Empirical SCOTUS</em>, among others. Beginning in Fall 2024, I will be an Assistant Professor of Political Science at the <a href="https://polisci.ufl.edu/">University of Florida (Gainesville, FL)</a>. </p>
 
-## Acknowledgments
+<p> My research focuses principally on analyses of the American federal court system using high performance computing environments. In particular, I am interested in how scholars can employ contemporary and emerging technologies in computing resources (e.g., high performance computing, large language models, natural language processing, and other sectors of machine learning) towards traditional elements of judicial politics research. This has most recently pushed me towards analyzing how non-traditional data sources like written text and audio can be leveraged as critical tools for understanding judicial behavior and decision-making. </p>
 
-We would like to give special thanks to the following individuals whose efforts as research assistants, peer reviewers, and other contributors have been instrumental in developing this research agenda. 
+<p>In addition, my research focuses extensively on federal courts, with particular interest in the United States Supreme Court. To date, I have published or have works in progress that consider the motivations and effects of rhetorical behaviors during Supreme Court confirmation hearings, the institutionalization of the Article III federal courts, strategic retention and departure of lower federal court judges, among other research areas. For more information on my published and pending research, please see my <a href="https://jaketruscott.github.io/cv/">Curriculum Vitae</a>. </p>
 
-#### Research Assistants
-- Manya Arora (University of Florida)
-- Gabriella Santos (University of Florida)
-- Liberty Jean Tennyson (Shenandoah University)
+<p>Apart from published research, I recently completed Version 0.0.1 of <em><b>scotustext</b></em>, a Comprehensive R Package for Retrieving, Cleaning, and Parsing Documents from the United States Supreme Court. For more information, please visit the <a href="https://jaketruscott.github.io/scotustext/">Package Site</a>.</p>
 
-#### Peer Reviewers
-- Michael Nelson (Penn State University)
-- Mark Hurwitz (Western Michigan University)
-
-#### Other Notable
-- Greg Goelzhauser (Utah State University)
-
----
-
-## Contact
-
-Feel free to reach out via [Email](jaketruscott@ufl.edu) or connect on [GitHub](https://jaketruscott.github.io/). 
+<p>Prior to my appointment at Florida, I held a postdoctoral appointmnet with the <a href="https://www.cla.purdue.edu/academic/communication/cspan/ccse/index.html">Center for C-SPAN Scholarship and Engagement</a> at Purdue University (West Lafayette, IN). When I am not researching, you can find me watching the back-to-back national champion Georgia Bulldogs or engaging in a perpetual spiral of self-loathing while watching the New York Mets waste another $350 million payroll and prove that being able to hit a baseball is apparently not a pre-requisite to play in the major leagues. My wife, a fellow Georgia alumnus and Atlanta Braves fan (albeit only because she knows it gets under my skin), appears to enjoy it when I’m doing either.</p>
