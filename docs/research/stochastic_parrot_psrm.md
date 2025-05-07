@@ -1,5 +1,5 @@
 ---
-title: Ornstein, Blasengame, and Truscott (2025)
+title: Ornstein, Blasingame, and Truscott (2025)
 parent: Research Projects
 nav_order: 3
 ---
