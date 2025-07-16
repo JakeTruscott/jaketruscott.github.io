@@ -4,7 +4,11 @@ parent: Home
 nav_order: 2
 ---
 
-### Updated June 2025
+### Updated July 2025
+<br>
+
+<p> <a href="/assets/other_documents/Truscott_CV.pdf" target="_blank"> Click Here to Download </a></p>
+
 <br>
 
 <div style="position: relative; width: 100%; height: 0; padding-bottom: 140%; overflow: hidden;">
@@ -17,5 +21,4 @@ nav_order: 2
 
 <br>
 
-<p> <a href="/assets/other_documents/Truscott_CV.pdf" target="_blank"> Click Here to Download</a></p>
 
