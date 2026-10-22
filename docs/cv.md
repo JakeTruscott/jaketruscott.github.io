@@ -4,7 +4,7 @@ parent: Home
 nav_order: 2
 ---
 
-### Updated February 2026
+### Updated October 2026
 <br>
 
 <p> <a href="/assets/other_documents/Truscott_CV.pdf" target="_blank"> Click Here to Download </a></p>
